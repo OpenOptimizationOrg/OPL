@@ -5,7 +5,7 @@ This folder contains utility scripts for working with the YAML format to describ
 The intended way of adding a new problem to the repository is thus as follows:
 
 * Change the [new_problem.yaml](new_problem.yaml) template file to fit the new problem.
-* Create a PR which modifies with the changes.
+* Create a PR which modifies with the changes (for example with a fork).
 
 What happens in the background then is:
 
