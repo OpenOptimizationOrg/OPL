@@ -868,11 +868,11 @@
   noise: 'no'
   multimodal: 'yes'
   multi-fidelity: 'no'
-  reference: https://ieeexplore.ieee.org/abstract/document/11042973
+  reference: https://doi.org/10.1109/CEC65147.2025.11042973
   implementation: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
   source (real-world/artificial): 'real-world'
   textual description: ''
-- name:  KinematicsRobotArm
+- name: KinematicsRobotArm
   suite/generator/single: suite
   objectives: '1'
   dimensionality: 21
@@ -882,7 +882,7 @@
   noise: 'no'
   multimodal: 'no'
   multi-fidelity: 'no'
-  reference: https://gaussianprocess.org/gpml/chapters/RW.pdf
+  reference: https://doi.org/10.1023/A:1013258808932
   implementation: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
   source (real-world/artificial): 'real-world'
   textual description: ''
