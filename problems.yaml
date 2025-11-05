@@ -900,3 +900,219 @@
   implementation: https://zenodo.org/records/8307853
   source (real-world/artificial): 'real-world'
   textual description: ''
+- &rcm2
+  name: RCM2 - Vibrating platform design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 5
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 5
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 2 in the RCM suite, 5 inequality constraints.'
+- &rcm3
+  name: RCM3 - Two bar truss design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 3
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 3
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 3 in the RCM suite, 3 inequality constraints.'
+- &rcm4
+  name: RCM4 - Welded beam design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 4
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 4
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 4 in the RCM suite, 4 inequality constraints.'
+- &rcm5
+  name: RCM5 - Disc brake design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 4
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 4
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 5 in the RCM suite, 4 inequality constraints.'
+- &rcm10
+  name: RCM10 - Two bar plane truss design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 2
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 2
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 10 in the RCM suite, 2 inequality constraints.'
+- &rcm11
+  name: RCM11 - Water resources management
+  suite/generator/single: single
+  objectives: '5'
+  dimensionality: 3
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 7
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 11 in the RCM suite, 7 inequality constraints.'
+- &rcm12
+  name: RCM12 - Simply supported beam design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 4
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 1
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 12 in the RCM suite, 1 inequality constraint.'
+- &rcm14
+  name: RCM14 - Multiple disk clutch brake design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 5
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 8
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 14 in the RCM suite, 8 inequality constraints.'
+- &rcm16
+  name: RCM16 - Cantilever beam design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 2
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 2
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 16 in the RCM suite, 2 inequality constraints.'
+- &rcm18
+  name: RCM18 - Front rail design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 3
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 3
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 18 in the RCM suite, 3 inequality constraints.'
+- &rcm20
+  name: RCM20 - Hydro-static thrust bearing design
+  suite/generator/single: single
+  objectives: '2'
+  dimensionality: 4
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 7
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'Problem 20 in the RCM suite, 7 inequality constraints.'
+- name: RCM / RWCMOP
+  suite/generator/single: suite
+  objectives: '2,5'
+  dimensionality: 2-34
+  variable type: ''
+  constraints: 'yes'
+  inequality constraints: 0-29
+  equality constraints: 0-26
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: ''
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1016/j.swevo.2021.100961
+  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
+  language: matlab
+  source (real-world/artificial): 'real-world'
+  textual description: 'A Benchmark-Suite of real-World constrained multi-objective optimization problems. Includes problems with 0-29 inequality constraints, 0-26 euqality constraints, including some with both types.'
+  problems:
+    - <<: *rcm2
+    - <<: *rcm3
+    - <<: *rcm4
+    - <<: *rcm5
+    - <<: *rcm10
+    - <<: *rcm11
+    - <<: *rcm12
+    - <<: *rcm14
+    - <<: *rcm16
+    - <<: *rcm18
+    - <<: *rcm20
