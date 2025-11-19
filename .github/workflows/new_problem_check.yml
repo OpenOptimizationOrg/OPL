@@ -6,6 +6,7 @@ on:
       - "utils/new_problem.yaml"
       - "utils/validate_yaml.py"
   pull_request:
+    paths:
       - "utils/new_problem.yaml"
       - "utils/validate_yaml.py"
   workflow_dispatch: # allow triggering workflow manually
