@@ -858,3 +858,45 @@
   implementation:
   source (real-world/artificial): 'artificial'
   textual description: ''
+- name: PorkchopPlotInterplanetaryTrajectory
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: 2
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1109/CEC65147.2025.11042973
+  implementation: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name: KinematicsRobotArm
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: 21
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'no'
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1023/A:1013258808932
+  implementation: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name:  VehicleDynamics
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: 2
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://www.scitepress.org/Papers/2023/121580/121580.pdf
+  implementation: https://zenodo.org/records/8307853
+  source (real-world/artificial): 'real-world'
+  textual description: ''
