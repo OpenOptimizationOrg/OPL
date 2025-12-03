@@ -900,3 +900,73 @@
   implementation: https://zenodo.org/records/8307853
   source (real-world/artificial): 'real-world'
   textual description: ''
+- name:  RW-GAN-Mario
+  suite/generator/single: suite
+  objectives: 1-2
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://dl.acm.org/doi/pdf/10.1145/3321707.3321805
+  implementation: https://codeocean.com/capsule/2600355/tree/v2
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name:  TopTrumps
+  suite/generator/single: suite
+  objectives: 1-2
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://dl.acm.org/doi/pdf/10.1145/3321707.3321805
+  implementation: https://codeocean.com/capsule/2600355/tree/v2
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name:  AutomotiveCrashworthiness
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: 8–22 (fixed per instance)
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://dl.acm.org/doi/pdf/10.1145/3646554
+  implementation: https://github.com/fx-long/CEOELA
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name: PowertrainAnomalyTimeseries
+  suite/generator/single: suite
+  objectives: 1
+  dimensionality: 1–7 (problem-dependent; fixed per instance)
+  variable type: continuous
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://www.sciencedirect.com/science/article/pii/S2214579625000681
+  implementation: https://zenodo.org/records/14892756
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name: HPA
+  suite/generator/single: suite
+  objectives: 1–9
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://link.springer.com/chapter/10.1007/978-981-96-3506-1_14
+  implementation: https://github.com/Nobuo-Namura/hpa
+  source (real-world/artificial): 'real-world-inspired'
+  textual description: ''
