@@ -93,29 +93,36 @@ def check_novelty(data):
     return True
 
 
-def validate_yaml(filepath):
-    status, data = read_data(filepath)
-    if status != 0:
-        sys.exit(1)
+def validate_data(data) -> bool:
     if not check_format(data):
-        sys.exit(1)
-    assert data is not None
+        return False
 
     for i, new_data in enumerate(data):  # Iterate through each top-level entry
         # Check required and unique fields
         if not check_fields(new_data) or not check_novelty(new_data):
             print(f"::error::Validation failed for entry {i+1}.")
-            sys.exit(1)
+            return False
 
     # YAML is valid if we reach this point
-    print("YAML syntax is valid.")
-    sys.exit(0)
+    print("::notice::YAML syntax is valid.")
+    return True
+
+
+def validate_yaml(filepath: str) -> bool:
+    status, data = read_data(filepath)
+    if status != 0:
+        return False
+    return validate_data(data)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
+    if len(sys.argv) != 2:
         print("::error::Usage: python validate_yaml.py <yourfile.yaml>")
         sys.exit(1)
 
     filepath = sys.argv[1]
-    validate_yaml(filepath)
+    valid = validate_yaml(filepath)
+    if valid:
+        sys.exit(0)
+    else:
+        sys.exit(1)
