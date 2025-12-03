@@ -1,0 +1,52 @@
+# Please enter the relevant information.
+# Fields that are not relevant can be left empty.
+- name:
+    short: BBOB
+    full: Real-Parameter Black-Box Optimization Benchmarking
+  suite/generator/single: suite
+  objectives:
+    number: '1'
+    types: single
+  variables:
+    types: continuous
+    conditional: 'no'
+    dimensionality: scalable
+  constraints:
+    present: 'no'
+    soft: '0'
+    hard: '0'
+    boundary/box: 'yes'
+    permutation: 'no'
+  dynamic:
+    present: 'no'
+    types: ''
+  noise: 'no'
+  modality:
+    types: 'unimodal, multimodal'
+  evaluations:
+    multi-fidelity: 'no'
+    partial possible: 'no'
+    independent objectives: 'no'
+  reference:
+    links:
+      - https://doi.org/10.1080/10556788.2020.1808977
+    authors: ''
+    contact person: ''
+  implementations:
+    - name: COCO
+      link: https://github.com/numbbo/coco
+      languges: 'C, Python'
+      evaluation time: 'less than a second'
+      specific requirements: 'no'
+  source:
+    real-world:
+      degree: ''
+      open/closed: ''
+    artificial: 'yes'
+    other: 'no'
+  textual description:
+    general info: ''
+    motivation: 'evaluate algorithm performance for typical difficulties that occur in continuous problems'
+    challenage/key characteristics: ''
+    limitations: ''
+  other info: ''
