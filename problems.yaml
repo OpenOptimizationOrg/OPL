@@ -900,3 +900,21 @@
   implementation: https://zenodo.org/records/8307853
   source (real-world/artificial): 'real-world'
   textual description: ''
+- name: MECHBench
+  suite/generator/single: Problem Suite
+  variable type: Continuous
+  dimensionality: scalable'
+  objectives: 1
+  constraints: Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Present
+  multi-fidelity: Not Present
+  source (real-world/artificial): Real-World Application
+  implementation: https://github.com/BayesOptApp/MECHBench
+  textual description: This is a set of problems with inspiration from Structural
+    Mechanics Design Optimization. The suite comprises three physical models, from
+    which the user may define different kind of problems which impact the final design
+    output.
+  reference: https://arxiv.org/abs/2511.10821
+  other info: ''
