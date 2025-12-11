@@ -1,0 +1,51 @@
+# Please enter the relevant information.
+# Fields that are not relevant can be removed (delete the whole line), or left empty.
+- name:
+    short: BBOB
+    full: Real-Parameter Black-Box Optimization Benchmarking
+  suite/generator/single: suite
+  objectives:
+    number: '1' # Can be scalable, enter a single number, a range: '1-5', or 'scalable', if it can be any value
+  variables:
+    types: continuous # Can be one or more of (continuous, integer, binary, categorical, mixed) in case of mixed, describe which mixes are possible
+    conditional: 'no'
+    dimensionality: scalable
+  constraints:
+    present: 'no'
+    soft: '0'
+    hard: '0'
+    boundary/box: 'yes'
+    permutation: 'no'
+  dynamic:
+    present: 'no' # Enter, yes, no, or optional
+    types: ''
+  noise: 'no'
+  modality:
+    types: 'unimodal, multimodal' # Enter all that are present
+  evaluations:
+    multi-fidelity: 'no'
+    partial possible: 'no'
+    independent objectives: 'no'
+  reference:
+    links:
+      - https://doi.org/10.1080/10556788.2020.1808977
+    authors: 'Nikolaus Hansen, Anne Auger, Raymond Ros, Olaf Mersmann, Tea Tušar, Dimo Brockhoff'
+    contact person: ''
+  implementations:
+    - name: COCO
+      link: https://github.com/numbbo/coco
+      languages: 'C, Python'
+      evaluation time: 'less than a second'
+      specific requirements: 'no' # Can be things like memory/GPU requirements, or the need for a specific simulator. Enter 'no' if none.
+  source:
+    real-world:
+      domain: '' # E.g., automotive
+      open/closed: '' # Is the problem open source or not
+    artificial: 'yes'
+    other: 'no'
+  textual description:
+    general info: ''
+    motivation: 'evaluate algorithm performance for typical difficulties that occur in continuous problems'
+    challenge/key characteristics: ''
+    limitations: ''
+  other info: ''
