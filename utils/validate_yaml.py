@@ -12,6 +12,7 @@ from yaml_to_html import default_columns as REQUIRED_FIELDS
 
 OPTIONAL_FIELDS = ["multimodal"]
 UNIQUE_FIELDS = ["name"]
+NON_EMPTY_FIELDS = ["name"]
 UNIQUE_WARNING_FIELDS = ["reference", "implementation"]
 PROBLEMS_FILE = "problems.yaml"
 
@@ -65,6 +66,17 @@ def check_fields(data):
             "::error::Please change the 'name' field from 'template' to a unique name."
         )
         return False
+    # Check non-empty fields
+    empty_fields = [
+        field
+        for field in NON_EMPTY_FIELDS
+        if data.get(field, None) is None or data.get(field, "").strip() == ""
+    ]
+    if empty_fields:
+        print(
+            f"::error::The following fields cannot be empty: {', '.join(empty_fields)}"
+        )
+        return False
     return True
 
 
@@ -72,10 +84,13 @@ def check_novelty(data):
     # Load existing problems
     read_status, existing_data = read_data(PROBLEMS_FILE)
     if read_status != 0:
-        print("::eror::Could not read existing problems for novelty check.")
+        print("::error::Could not read existing problems for novelty check.")
         return False
     assert existing_data is not None
-    for field in UNIQUE_FIELDS or UNIQUE_WARNING_FIELDS:
+    for field in UNIQUE_FIELDS + UNIQUE_WARNING_FIELDS:
+        # skip empty fields
+        if not data.get(field):
+            continue
         existing_values = {
             entry.get(field) for entry in existing_data if isinstance(entry, dict)
         }
