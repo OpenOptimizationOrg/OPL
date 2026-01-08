@@ -917,4 +917,24 @@
     which the user may define different kind of problems which impact the final design
     output.
   reference: https://arxiv.org/abs/2511.10821
-  other info: ''
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: MECHBench
+    constraint properties: Hard Constraints
+    number of constraints: 1 or 2
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: Unstructured or non isotropic multimodality
+    key challenges / characteristics: Embeds physical simulations and is flexible
+      and modular
+    scientific motivation: Bridge the black-box optimization techniques to a Mechanical
+      Design Problem which require these kinds of algorithms
+    limitations: The models do not include fracture or damage mechanics, just plasticity.
+    implementation languages: Python
+    links to implementations: https://github.com/BayesOptApp/MECHBench
+    approximate evaluation time: Times -> from 1 minute to 7 minutes
+    links to usage examples: ''
+    general: ''
