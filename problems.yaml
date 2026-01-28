@@ -1064,7 +1064,7 @@
   textual description: Determine the optimal investment and operation decisions  for
     different types of assets in the energy system (production, consumption, conversion,
     storage, and transport), while minimizing loss of load.
-  reference: See https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
+  reference: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
   other info:
     name: null
     partial evaluations: Unknown
@@ -1174,7 +1174,7 @@
     can be covered. Moving a vehicle from one base to another to help cover trips
     is OK as long as the original base can still cover its trips. Link to paper with
     more details: https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
-  reference: ''
+  reference: 'https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
   other info:
     name: null
     partial evaluations: Present
