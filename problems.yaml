@@ -905,11 +905,11 @@
   variable type: Continuous
   dimensionality: scalable'
   objectives: '1'
-  constraints: Present
-  dynamic: Not Present
-  noise: Not Present
-  multimodal: Present
-  multi-fidelity: Not Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
   source (real-world/artificial): Real-World Application
   implementation: https://github.com/BayesOptApp/MECHBench
   textual description: This is a set of problems with inspiration from Structural
@@ -943,11 +943,11 @@
   variable type: Continuous, Integer, Categorical, Conditional
   dimensionality: 10 to 135
   objectives: '1'
-  constraints: Present
-  dynamic: Not Present
-  noise: Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'yes'
   multimodal: Unknown
-  multi-fidelity: Not Present
+  multi-fidelity: 'no'
   source (real-world/artificial): Real-World Application
   implementation: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
   textual description: Wind farm layout optimization, gas filter design, pipe shape
@@ -980,11 +980,11 @@
   variable type: Continuous, Ordinal
   dimensionality: '7'
   objectives: '2'
-  constraints: Present
-  dynamic: Not Present
-  noise: Not Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
   multimodal: Unknown
-  multi-fidelity: Present
+  multi-fidelity: 'yes'
   source (real-world/artificial): Real-World Application
   implementation: https://doi.org/10.1016/j.ejor.2022.08.032
   textual description: 'A multi-objective optimization problem seeking to minimize
@@ -1019,11 +1019,11 @@
   variable type: Continuous
   dimensionality: scalable
   objectives: '2'
-  constraints: Not Present
-  dynamic: Not Present
-  noise: Not Present
-  multimodal: Present
-  multi-fidelity: Not Present
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
   source (real-world/artificial): Artificially Generated
   implementation: https://github.com/Stebbet/BEACON/
   textual description: Generator for bi-objective benchmark problems with explicitly
@@ -1054,11 +1054,11 @@
   variable type: Continuous
   dimensionality: scalable
   objectives: '1'
-  constraints: Present
-  dynamic: Not Present
-  noise: Present
-  multimodal: Not Present
-  multi-fidelity: Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'no'
+  multi-fidelity: 'yes'
   source (real-world/artificial): Real-World Application
   implementation: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
   textual description: Determine the optimal investment and operation decisions  for
@@ -1091,11 +1091,11 @@
   variable type: Continuous
   dimensionality: '10'
   objectives: '2'
-  constraints: Not Present
-  dynamic: Not Present
-  noise: Not Present
-  multimodal: Not Present
-  multi-fidelity: Not Present
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'no'
+  multi-fidelity: 'no'
   source (real-world/artificial): Real-World Application
   implementation: '-'
   textual description: Parameters of the Modules of the Automatic Train Operation
@@ -1126,11 +1126,11 @@
   variable type: Continuous
   dimensionality: 100-500
   objectives: 2-3
-  constraints: Present
-  dynamic: Not Present
-  noise: Not Present
-  multimodal: Present
-  multi-fidelity: Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'yes'
   source (real-world/artificial): Real-World Application
   implementation: ''
   textual description: Treatment planning for internal radiation therapy
@@ -1159,11 +1159,11 @@
   variable type: Integer
   dimensionality: 'Upper level: 54; lower level: 13208'
   objectives: '1'
-  constraints: Present
-  dynamic: Not Present
-  noise: Not Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
   multimodal: Unknown
-  multi-fidelity: Not Present
+  multi-fidelity: 'no'
   source (real-world/artificial): Real-World Application
   implementation: 'Not public: was done for real client with their private data'
   textual description: 'Healthcare organisation in the UK provided data about their
@@ -1199,11 +1199,11 @@
   variable type: Continuous, Boolean
   dimensionality: scalable depending on problem size (e.g. 90 for)
   objectives: '2'
-  constraints: Present
-  dynamic: Not Present
-  noise: Not Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
   multimodal: Unknown
-  multi-fidelity: Not Present
+  multi-fidelity: 'no'
   source (real-world/artificial): Real-World Application
   implementation: https://github.com/TUe-excellent-buildings/BSO-toolbox
   textual description: 'Optimise the spatial layout of a building to: minimise energy
@@ -1238,11 +1238,11 @@
   variable type: Continuous, Integer
   dimensionality: '13'
   objectives: '1'
-  constraints: Present
-  dynamic: Not Present
-  noise: Present
-  multimodal: Present
-  multi-fidelity: Not Present
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
   source (real-world/artificial): Real-World Application
   implementation: Implementation not freely available
   textual description: The goal is to find a design of a synchronous electric motor
