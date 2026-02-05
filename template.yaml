@@ -34,7 +34,7 @@
   implementations:
     - name: COCO
       link: https://github.com/numbbo/coco
-      languages: 'C, Python'
+      languages: 'C/C++, Python, Java, Matlab/Octave'
       evaluation time: 'less than a second'
       specific requirements: 'no' # Can be things like memory/GPU requirements, or the need for a specific simulator. Enter 'no' if none.
   source:
