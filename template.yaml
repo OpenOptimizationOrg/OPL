@@ -1,51 +1,62 @@
-# Please enter the relevant information.
-# Fields that are not relevant can be removed (delete the whole line), or left empty.
+# Please enter the information relevant to your problem/suite/generator.
+#
+# Instructions:
+# - Fields that are not relevant can be removed (delete the whole line), or left empty.
+# - Enter 'unknown' for fields where the value is unknown.
+# - If multiple suggested values are relevant, include all those that fit.
+# - Suggested values for fields are recommendations. If they are not a good fit, feel free to add something else (and ideally, explain why).
+# - If some property is present, it does not have to apply to all problems/variables.
 - name:
-    short: BBOB
-    full: Real-Parameter Black-Box Optimization Benchmarking
-  suite/generator/single: suite
+    short: BBOB # Short name or abbreviation
+    full: Real-Parameter Black-Box Optimization Benchmarking # Full name
+  suite/generator/single: suite # Whether this is a single problem, a problem suite, or problem generator
   objectives:
-    number: '1' # Can be scalable, enter a single number, a range: '1-5', or 'scalable', if it can be any value
-  variables:
+    number: '1' # (list of) fixed numbers, or ranges (5-11,19,85), scalable if it can be any value
+  variables: # Information about the input variables
     types: continuous # Can be one or more of (continuous, integer, binary, categorical, mixed) in case of mixed, describe which mixes are possible
-    conditional: 'no'
-    dimensionality: scalable
+    conditional: 'no' # Whether there are conditional dependencies between variables, 'yes' or 'no'
+    dimensionality:
+      scalable: 'yes' # Is the dimensionality scalable yes or no
+      number: '2-40' # (list of) fixed numbers, or ranges (5-11,19,85), or 'any' if it can be any value
   constraints:
-    present: 'no'
-    soft: '0'
-    hard: '0'
-    boundary/box: 'yes'
-    permutation: 'no'
-  dynamic:
+    present: 'no' # Whether there are constraints yes or no
+    soft: 'no' # Whether there are soft constraints yes or no
+    hard: 'no' # Whether there are hard constraints yes or no
+    number: '0' # How many constraints there are in total, fixed numbers or range, scalable if it can by any value
+    boundary/box: 'yes' # Is the problem box-constrained yes, no, or some (if only some variables are bounded)
+    permutation: 'no' # Variables must be a permutation yes, no, or some
+  dynamic: # Dynamic properties, e.g., changing objective functions
     present: 'no' # Enter, yes, no, or optional
-    types: ''
-  noise: 'no'
+    types: '' # Types of dynamic behaviour that are present
+  noise: # Noise on the objective function(s)
+    present: 'no' # Enter, yes, no, or optional
+    types: '' # Types of noise that are present
   modality:
     types: 'unimodal, multimodal' # Enter all that are present
   evaluations:
-    multi-fidelity: 'no'
-    partial possible: 'no'
-    independent objectives: 'no'
+    multi-fidelity: 'no' # Whether evaluations can be performed at multiple fidelities, yes, no, or optional
+    partial possible: 'no' # Whether evaluation of subset(s) of decision variables are possible
+    independent objectives: 'no' # Can objective functions be evaluated independently of each other yes or no
   reference:
     links:
-      - https://doi.org/10.1080/10556788.2020.1808977
+      - https://doi.org/10.1080/10556788.2020.1808977 # URL to source or closely related research article, preferably DOI based. Add a new line below for each additional article.
     authors: 'Nikolaus Hansen, Anne Auger, Raymond Ros, Olaf Mersmann, Tea Tušar, Dimo Brockhoff'
     contact person: ''
   implementations:
-    - name: COCO
+    - name: COCO # Name of the tool/library/package
       link: https://github.com/numbbo/coco
-      languages: 'C/C++, Python, Java, Matlab/Octave'
-      evaluation time: 'less than a second'
+      languages: 'C/C++, Python, Java, Matlab/Octave' # Programming languages the implementation can be used with
+      evaluation time: 'less than a second' # Choose: 'less than a second', 'seconds', 'minutes', 'hours', 'days'
       specific requirements: 'no' # Can be things like memory/GPU requirements, or the need for a specific simulator. Enter 'no' if none.
   source:
-    real-world:
+    origin: 'artificial' # Is the problem artificial, real-world, or real-world-like
+    real-world: # In case it is real-world (like), provide details
       domain: '' # E.g., automotive
-      open/closed: '' # Is the problem open source or not
-    artificial: 'yes'
-    other: 'no'
+      open/closed: '' # Is the problem open source yes or no
   textual description:
     general info: ''
     motivation: 'evaluate algorithm performance for typical difficulties that occur in continuous problems'
     challenge/key characteristics: ''
     limitations: ''
+    example links: '' # URLs to examples where it was used (e.g., scientific articles) - Note: URLs to where it was proposed should go under the 'reference' field.
   other info: ''
