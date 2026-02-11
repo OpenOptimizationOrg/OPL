@@ -4,6 +4,15 @@ import pandas as pd
 import yaml
 import shutil
 
+import re
+
+URL_RE = re.compile(r'(https?://[^\s,;]+)')
+
+def linkify_cell(value):
+    if not isinstance(value, str):
+        return value
+    return URL_RE.sub(r'<a href="\1">\1</a>', value)
+
 yaml_file = "problems.yaml"
 
 html_dir = "docs/"
@@ -37,8 +46,11 @@ if all_columns is False:
     columns = default_columns
     data = data[columns]
 
+data = data.map(linkify_cell)
+
 # Generate plain table
-table = data.to_html(render_links=True,
+table = data.to_html(render_links=False,
+                     escape=False,  # Don't escape HTML in cells (to allow links)
                      index=False,
                      table_id="problems",
                      classes=["display compact", "display", "styled-table"],  # Set display style
