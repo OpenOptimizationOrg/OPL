@@ -6,12 +6,19 @@ import shutil
 
 import re
 
-URL_RE = re.compile(r'(https?://[^\s,;]+)')
+URL_RE = re.compile(r'\b((?:https?://|www\.)[^\s<>"\']+)', re.IGNORECASE)
+
 
 def linkify_cell(value):
     if not isinstance(value, str):
         return value
-    return URL_RE.sub(r'<a href="\1">\1</a>', value)
+
+    def repl(m):
+        url = m.group(1)
+        href = url if url.lower().startswith(("http://", "https://")) else f"https://{url}"
+        return f'<a href="{href}">{url}</a>'
+
+    return URL_RE.sub(repl, value)
 
 yaml_file = "problems.yaml"
 
