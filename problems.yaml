@@ -938,3 +938,266 @@
     approximate evaluation time: Times -> from 1 minute to 7 minutes
     links to usage examples: ''
     general: ''
+- name: EXPObench
+  suite/generator/single: Problem Suite
+  variable type: Continuous, Integer, Categorical, Conditional
+  dimensionality: 10 to 135
+  objectives: '1'
+  constraints: Present
+  dynamic: Not Present
+  noise: Present
+  multimodal: Unknown
+  multi-fidelity: Not Present
+  source (real-world/artificial): Real-World Application
+  implementation: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+  textual description: Wind farm layout optimization, gas filter design, pipe shape
+    optimization, hyperparameter tuning, and hospital simulation
+  reference: https://doi.org/10.1016/j.asoc.2023.110744
+  other info:
+    partial evaluations: Not Present
+    full name: EXPensive Optimization benchmark library
+    constraint properties: Hard Constraints, Soft Constraints, Box Constraints, only
+      box constraints implemented, others appear as penalty in objective
+    number of constraints: 2 per variable (box), other constraints unknown (simulator
+      fails)
+    form of noise model: real-life (unknown)
+    type of noise space: Observational
+    key challenges / characteristics: Expensive objectives
+    scientific motivation: Address the lack of real-life expensive benchmarks
+    limitations: single-objective only, constraints are handled naively (penalty in
+      objective), no parallelization
+    implementation languages: Python
+    links to implementations: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+    approximate evaluation time: 2 to 80 seconds
+- name: Gasoline direct injection engine design
+  suite/generator/single: Single Problem
+  variable type: Continuous, Ordinal
+  dimensionality: '7'
+  objectives: '2'
+  constraints: Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Unknown
+  multi-fidelity: Present
+  source (real-world/artificial): Real-World Application
+  implementation: https://doi.org/10.1016/j.ejor.2022.08.032
+  textual description: 'A multi-objective optimization problem seeking to minimize
+    fuel consumption and NOx emissions over a two-minute dynamic duty cycle, subject
+    to five constraints (turbine inlet temperature, number of knock occurrences, peak
+    cylinder pressure, peak cylinder pressure rise, total work). Seven decision variables
+    are defined: four define the hardware choices of cylinder compression ratio, turbo
+    machinery and EGR cooler sizing; three relate to control variables that parameterise
+    the engine control logic.'
+  reference: ''
+  other info:
+    partial evaluations: Unknown
+    constraint properties: Hard Constraints, Soft Constraints
+    number of constraints: '5'
+    key challenges / characteristics: Expensive
+    limitations: Proprietary
+    implementation languages: Matlab Simulink and Wave RT co-simulation
+- name: BEACON
+  suite/generator/single: Generator
+  variable type: Continuous
+  dimensionality: scalable
+  objectives: '2'
+  constraints: Not Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Present
+  multi-fidelity: Not Present
+  source (real-world/artificial): Artificially Generated
+  implementation: https://github.com/Stebbet/BEACON/
+  textual description: Generator for bi-objective benchmark problems with explicitly
+    controlled correlations in continuous spaces.
+  reference: https://dl.acm.org/doi/10.1145/3712255.3734303
+  other info:
+    partial evaluations: Not Present
+    full name: Continuous Bi-objective Benchmark problems with Explicit Adjustable
+      COrrelatioN control
+    constraint properties: Box Constraints
+    number of constraints: '0'
+    description of multimodality: Random
+    key challenges / characteristics: Multimodal, different correlations among objectives
+    scientific motivation: Controlled correlation among objectives
+    limitations: No analytical Pareto front, only bi-objective
+    implementation languages: Python
+    links to implementations: https://github.com/Stebbet/BEACON/tree/main
+    approximate evaluation time: Negligible
+- name: TulipaEnergy
+  suite/generator/single: Problem Suite
+  variable type: Continuous
+  dimensionality: scalable
+  objectives: '1'
+  constraints: Present
+  dynamic: Not Present
+  noise: Present
+  multimodal: Not Present
+  multi-fidelity: Present
+  source (real-world/artificial): Real-World Application
+  implementation: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
+  textual description: Determine the optimal investment and operation decisions  for
+    different types of assets in the energy system (production, consumption, conversion,
+    storage, and transport), while minimizing loss of load.
+  reference: See https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
+  other info:
+    partial evaluations: Unknown
+    full name: TulipaEnergyModel.jl
+    constraint properties: Hard Constraints, Soft Constraints
+    number of constraints: millions
+    type of dynamicism: none
+    form of noise model: "depends on input \u2014 still working on stochastic inputs"
+    type of noise space: Parameter
+    key challenges / characteristics: modeled as a potentially very large linear program,
+      different fidelities possible
+    scientific motivation: new techniques for solving large whitebox linear optimization
+      problems
+    limitations: not yet stochastic
+    implementation languages: Julia / JMP
+    links to implementations: https://github.com/TulipaEnergy/TulipaEnergyModel.jl
+    approximate evaluation time: from minutes to hours
+    links to usage examples: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
+- name: ATO
+  suite/generator/single: Single Problem
+  variable type: Continuous
+  dimensionality: '10'
+  objectives: '2'
+  constraints: Not Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Not Present
+  multi-fidelity: Not Present
+  source (real-world/artificial): Real-World Application
+  implementation: '-'
+  textual description: Parameters of the Modules of the Automatic Train Operation
+    should be optimized. The parameters are continuous with different ranges. There
+    are two objectives (minimizing energy consumption, minimizing driving duration.
+  reference: ''
+  other info:
+    partial evaluations: Not Present
+- name: Brachytherapy treatment planning
+  suite/generator/single: Problem Suite
+  variable type: Continuous
+  dimensionality: 100-500
+  objectives: 2-3
+  constraints: Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Present
+  multi-fidelity: Present
+  source (real-world/artificial): Real-World Application
+  implementation: ''
+  textual description: Treatment planning for internal radiation therapy
+  reference: https://www.sciencedirect.com/science/article/pii/S1538472123016781
+  other info:
+    partial evaluations: Present
+    full name: Brachytherapy treatment planning
+    constraint properties: Hard Constraints
+    number of constraints: scalable
+    key challenges / characteristics: Multi-objective; aggregated objectives
+    limitations: No public source code
+- name: FleetOpt
+  suite/generator/single: Single Problem
+  variable type: Integer
+  dimensionality: 'Upper level: 54; lower level: 13208'
+  objectives: '1'
+  constraints: Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Unknown
+  multi-fidelity: Not Present
+  source (real-world/artificial): Real-World Application
+  implementation: 'Not public: was done for real client with their private data'
+  textual description: 'Healthcare organisation in the UK provided data about their
+    current fleet of vehicles to conduct non-emergency heathcare trips in the Argyll
+    and Bute region of Scotland, UK. They also provided historical data about the
+    trips the vehicles took and about the bases which the vehicles return to. The
+    aim is to reduce the existing fleet of vehicles while still ensuring all trips
+    can be covered. Moving a vehicle from one base to another to help cover trips
+    is OK as long as the original base can still cover its trips. Link to paper with
+    more details: https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  reference: ''
+  other info:
+    partial evaluations: Present
+- name: Building spatial design
+  suite/generator/single: Single Problem
+  variable type: Continuous, Boolean
+  dimensionality: scalable depending on problem size (e.g. 90 for)
+  objectives: '2'
+  constraints: Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Unknown
+  multi-fidelity: Not Present
+  source (real-world/artificial): Real-World Application
+  implementation: https://github.com/TUe-excellent-buildings/BSO-toolbox
+  textual description: 'Optimise the spatial layout of a building to: minimise energy
+    consumption for climate control, and minimise the strain on the structure'
+  reference: https://hdl.handle.net/1887/81789
+  other info:
+    partial evaluations: Not Present
+    full name: Building spatial design
+    constraint properties: Hard Constraints, Box Constraints, Permutation Constraints
+    number of constraints: 2065 (as example, depends on problem size)
+    key challenges / characteristics: Many hard constraints (simulator cannot evaluate
+      the solution if these are violated); Mixed-variable search space (continuous
+      + binary); Multiple objectives; (Somewhat) expensive solution evaluations
+    implementation languages: C++
+    links to implementations: https://github.com/TUe-excellent-buildings/BSO-toolbox
+    approximate evaluation time: Roughly 1 second per evaluation for the smallest
+      considered design, and roughly 40 seconds for the larger designs we considered.
+      (Even the larger designs we considered are still relatively small for the considered
+      problem.)
+- name: Electric Motor Design Optimization
+  suite/generator/single: Single Problem
+  variable type: Continuous, Integer
+  dimensionality: '13'
+  objectives: '1'
+  constraints: Present
+  dynamic: Not Present
+  noise: Present
+  multimodal: Present
+  multi-fidelity: Not Present
+  source (real-world/artificial): Real-World Application
+  implementation: Implementation not freely available
+  textual description: The goal is to find a design of a synchronous electric motor
+    for power steering systems that minimizes costs and satisfies all constraints.
+  reference: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf (paper in Slovene)
+  other info:
+    partial evaluations: Not Present
+    full name: Electric Motor Design Optimization
+    constraint properties: Hard Constraints, Soft Constraints, Box Constraints
+    number of constraints: '12'
+    description of multimodality: Constraints are multimodal
+    key challenges / characteristics: Time-consuming solution evaluation, highly-constrained
+      problem
+    scientific motivation: Challenging to find good solutions in a limited time
+    limitations: 'Unavailability, even if available, it wouldn''t be helpful to use
+      for benchmarking due taking a long time to evaluate a single solution '
+    implementation languages: Python
+    links to implementations: Implementation not freely available
+    approximate evaluation time: 8 minutes
+    general: This is not an available problem, but could be interesting to show to
+      researchers which difficulties appear in real-world problems
+- name: BONO-Bench
+  suite/generator/single: Generator
+  variable type: Continuous
+  dimensionality: scalable
+  objectives: '2'
+  constraints: Not Present
+  dynamic: Not Present
+  noise: Not Present
+  multimodal: Present
+  multi-fidelity: Not Present
+  source (real-world/artificial): Artificially Generated
+  implementation: https://github.com/schaepermeier/bonobench
+  textual description: Bi-objective problem generator and suite with scalable continuous
+    decision space. Features complex problem properties (different types of multimodality
+    and challenges in decision and objective space) as well as Pareto front approximations
+    with error guarantees for the hypervolume and exact R2 indicators.
+  reference: ''
+  other info:
+    partial evaluations: Not Present
+    full name: Bi-objective Numerical Optimization Benchmark (BONO-Bench)
+    constraint properties: Box Constraints
+    implementation languages: Python

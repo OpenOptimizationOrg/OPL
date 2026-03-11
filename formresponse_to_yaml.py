@@ -1,7 +1,7 @@
 import pandas as pd
 import yaml
 
-csv_file = "OPL_form.csv"
+csv_file = "responses_OPL.csv"
 yaml_file = "problems.yaml"
 
 
@@ -67,7 +67,8 @@ for dict_m, dict_o in zip(dict_main, dict_other):
 
 with open(yaml_file) as in_file:
     data = pd.json_normalize(yaml.safe_load(in_file))
-existing_names = [d['name'] for d in data] + ['test']
+# print(data['name'].tolist())
+existing_names = data['name'].tolist() + ['test']
 
 #Filter out entries already in the yaml file
 dict_new = []
