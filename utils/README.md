@@ -32,7 +32,7 @@ python utils/validate_yaml.py utils/new_problem.yaml
 
 ## new problem example
 
-```json
+```yaml
 - name: example-problem-name
   suite/generator/single: suite
   objectives: '1'
