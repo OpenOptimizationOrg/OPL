@@ -33,7 +33,7 @@ python utils/validate_yaml.py utils/new_problem.yaml
 ## new problem example
 
 ```json
-- name: template
+- name: example-problem-name
   suite/generator/single: suite
   objectives: '1'
   dimensionality: scalable
@@ -47,4 +47,3 @@ python utils/validate_yaml.py utils/new_problem.yaml
   implementation: ''
   source (real-world/artificial): ''
   textual description: 'This is a dummy template'
-``
