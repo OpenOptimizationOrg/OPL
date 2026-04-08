@@ -1280,7 +1280,7 @@
   noise: 'yes'
   multimodal: 'yes'
   multi-fidelity: 'no'
-  reference: https://dl.acm.org/doi/pdf/10.1145/3321707.3321805
+  reference: https://doi.org/10.1145/3321707.3321805
   implementation: https://github.com/ttusar/coco-gbea
   source (real-world/artificial): 'real-world'
   textual description: 'RW-GAN-Mario is a component of GBEA'
@@ -1294,7 +1294,7 @@
   noise: 'yes'
   multimodal: 'yes'
   multi-fidelity: 'no'
-  reference: https://dl.acm.org/doi/pdf/10.1145/3321707.3321805
+  reference: https://doi.org/10.1145/3321707.3321805
   implementation: https://github.com/ttusar/coco-gbea
   source (real-world/artificial): 'real-world'
   textual description: 'TopTrump is a component of GBEA'
