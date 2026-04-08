@@ -4,7 +4,7 @@ This folder contains utility scripts for working with the YAML format to describ
 
 The intended way of adding a new problem to the repository is thus as follows:
 
-* Change the [new_problem.yaml](new_problem.yaml) template file to fit the new problem.
+* Create a file in 'utils/new_problem.yaml' based on the template (see below).
 * Create a PR with the changes (for example with a fork).
 
 What happens in the background then is:
@@ -13,7 +13,7 @@ What happens in the background then is:
 * Then the PR should be reviewed manually.
 * When the PR is merged into the main branch, a second script runs (which doesn't exist yet), that adds the content of [new_problem.yaml](new_problem.yaml) to the [problems.yaml](../problems.yaml) file, and reverts the changes to the new_problem.yaml.
 
-:alert: Note that the GitHubActions do not exist yet either, this is a WIP.
+:warning: Note that the GitHubActions do not exist yet either, this is a WIP.
 
 ## validate_yaml.py
 
@@ -23,7 +23,7 @@ This script checks the new content for the following:
 * The required fields are present.
 * Specific fields are unique across the new set of problems (e.g. name)
 
-:alert: Execute from root of the repository. Tested with python 3.12
+:warning: Execute from root of the repository. Tested with python 3.12
 
 ```bash
 pip install -r utils/requirements.txt
