@@ -272,12 +272,12 @@
   constraints: 'no'
   dynamic: 'no'
   noise: 'yes'
-  multimodal: '?'
+  multimodal: 'yes'
   multi-fidelity: 'no'
   reference: https://doi.org/10.1145/3321707.3321805
-  implementation: '?'
+  implementation: 'https://github.com/ttusar/coco-gbea'
   source (real-world/artificial): real world
-  textual description: expensive evaluations 5s-35s
+  textual description: 'expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA'
 - name: Car structure
   suite/generator/single: suite
   objectives: '2'
@@ -1281,9 +1281,9 @@
   multimodal: 'yes'
   multi-fidelity: 'no'
   reference: https://dl.acm.org/doi/pdf/10.1145/3321707.3321805
-  implementation: https://codeocean.com/capsule/2600355/tree/v2
+  implementation: https://github.com/ttusar/coco-gbea
   source (real-world/artificial): 'real-world'
-  textual description: ''
+  textual description: 'RW-GAN-Mario is a component of GBEA'
 - name:  TopTrumps
   suite/generator/single: suite
   objectives: 1-2
@@ -1295,9 +1295,9 @@
   multimodal: 'yes'
   multi-fidelity: 'no'
   reference: https://dl.acm.org/doi/pdf/10.1145/3321707.3321805
-  implementation: https://codeocean.com/capsule/2600355/tree/v2
+  implementation: https://github.com/ttusar/coco-gbea
   source (real-world/artificial): 'real-world'
-  textual description: ''
+  textual description: 'TopTrump is a component of GBEA'
 - name:  AutomotiveCrashworthiness
   suite/generator/single: suite
   objectives: '1'
