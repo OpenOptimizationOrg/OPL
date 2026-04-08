@@ -29,3 +29,22 @@ This script checks the new content for the following:
 pip install -r utils/requirements.txt
 python utils/validate_yaml.py utils/new_problem.yaml
 ```
+
+## new problem example
+
+```json
+- name: template
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: ''
+  implementation: ''
+  source (real-world/artificial): ''
+  textual description: 'This is a dummy template'
+``
