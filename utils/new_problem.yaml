@@ -1,6 +1,6 @@
 - name: template
   suite/generator/single: suite
-  objectives: '1'
+  objectives: '2'
   dimensionality: scalable
   variable type: continuous
   constraints: 'no'
