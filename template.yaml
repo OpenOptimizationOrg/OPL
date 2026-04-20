@@ -14,17 +14,14 @@
     number: '1' # (list of) fixed numbers, or ranges (5-11,19,85), scalable if it can be any value
   variables: # Information about the input variables
     types: continuous # Can be one or more of (continuous, integer, binary, categorical, mixed) in case of mixed, describe which mixes are possible
-    conditional: 'no' # Whether there are conditional dependencies between variables, 'yes' or 'no'
+    conditional: 'no' # Whether there are conditional dependencies between variables (some variables are only active when others meet certain conditions), 'yes' or 'no'
     dimensionality:
-      scalable: 'yes' # Is the dimensionality scalable yes or no
       number: '2-40' # (list of) fixed numbers, or ranges (5-11,19,85), or 'any' if it can be any value
-  constraints:
-    present: 'no' # Whether there are constraints yes or no
-    soft: 'no' # Whether there are soft constraints yes or no
-    hard: 'no' # Whether there are hard constraints yes or no
-    number: '0' # How many constraints there are in total, fixed numbers or range, scalable if it can by any value
-    boundary/box: 'yes' # Is the problem box-constrained yes, no, or some (if only some variables are bounded)
-    permutation: 'no' # Variables must be a permutation yes, no, or some
+      scalable: 'yes' # Is the dimensionality scalable yes or no (problems can be generated for varying dimensionalities)
+  constraints: # List of constraints, if any. Add a new entry for each additional constraint type.
+    - type: 'box' # Type of constraint, e.g., box, permutation, linear, nonlinear, equality, inequality, etc. Add a new line for each additional type.
+      hard: no # Whether the constraint is hard (violations don't have a true fitness value) yes, no or mixed
+      number: '1' # number of constraints of this type, or ranges (5-11,19,85) or scalable if it can be arbitrarily changed
   dynamic: # Dynamic properties, e.g., changing objective functions
     present: 'no' # Enter, yes, no, or optional
     types: '' # Types of dynamic behaviour that are present
@@ -36,23 +33,26 @@
   evaluations:
     multi-fidelity: 'no' # Whether evaluations can be performed at multiple fidelities, yes, no, or optional
     partial possible: 'no' # Whether evaluation of subset(s) of decision variables are possible
-    independent objectives: 'no' # Can objective functions be evaluated independently of each other yes or no
+    independent objectives: 'no' # Can objective functions be evaluated independently of each other yes, no or some
   reference:
     links:
       - https://doi.org/10.1080/10556788.2020.1808977 # URL to source or closely related research article, preferably DOI based. Add a new line below for each additional article.
     authors: 'Nikolaus Hansen, Anne Auger, Raymond Ros, Olaf Mersmann, Tea Tušar, Dimo Brockhoff'
-    contact person: ''
+  contact person: '' # If available, a contact person for questions about the problem/suite/generator, e.g., the maintainer or author
   implementations:
     - name: COCO # Name of the tool/library/package
       link: https://github.com/numbbo/coco
-      languages: 'C/C++, Python, Java, Matlab/Octave' # Programming languages the implementation can be used with
-      evaluation time: 'less than a second' # Choose: 'less than a second', 'seconds', 'minutes', 'hours', 'days'
+      languages: # Programming languages the implementation can be used with
+       - 'C/C++'
+       - 'Python'
+       - 'Java'
+       - 'Matlab/Octave' 
+      evaluation time: 'less than a second' # Time for a single (full) evaluation. Choose: 'less than a second', 'seconds', 'minutes', 'hours', 'days'
       specific requirements: 'no' # Can be things like memory/GPU requirements, or the need for a specific simulator. Enter 'no' if none.
   source:
     origin: 'artificial' # Is the problem artificial, real-world, or real-world-like
-    real-world: # In case it is real-world (like), provide details
-      domain: '' # E.g., automotive
-      open/closed: '' # Is the problem open source yes or no
+    domain: '' # In case it is real-world (like) E.g., automotive
+    open/closed: '' # Is the problem open source yes or no
   textual description:
     general info: ''
     motivation: 'evaluate algorithm performance for typical difficulties that occur in continuous problems'
