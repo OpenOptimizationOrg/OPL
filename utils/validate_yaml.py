@@ -2,6 +2,7 @@ import yaml
 
 import sys
 from pathlib import Path
+from typing import List, Dict, Tuple
 
 # Add parent directory to sys.path
 parent = Path(__file__).resolve().parent.parent
@@ -17,7 +18,7 @@ UNIQUE_WARNING_FIELDS = ["reference", "implementation"]
 PROBLEMS_FILE = "problems.yaml"
 
 
-def read_data(filepath):
+def read_data(filepath: str) -> Tuple[int, List[Dict] | None]:
     try:
         with open(filepath, "r") as f:
             data = yaml.safe_load(f)
@@ -30,7 +31,7 @@ def read_data(filepath):
         return 1, None
 
 
-def check_format(data):
+def check_format(data: List[Dict]) -> bool:
     num_problems = len(data)
     if len(data) < 1:
         print("::error::YAML file should contain at least one top level entry.")
@@ -50,7 +51,7 @@ def check_format(data):
     return True
 
 
-def check_fields(data):
+def check_fields(data: Dict) -> bool:
     missing = [field for field in REQUIRED_FIELDS if field not in data]
     if missing:
         print(f"::error::Missing required fields: {', '.join(missing)}")
@@ -80,7 +81,7 @@ def check_fields(data):
     return True
 
 
-def check_novelty(data):
+def check_novelty(data: Dict) -> bool:
     # Load existing problems
     read_status, existing_data = read_data(PROBLEMS_FILE)
     if read_status != 0:
@@ -108,7 +109,7 @@ def check_novelty(data):
     return True
 
 
-def validate_data(data):
+def validate_data(data: List[Dict]) -> bool:
     assert data is not None
     if not check_format(data):
         return False
@@ -125,9 +126,9 @@ def validate_data(data):
     return True
 
 
-def validate_yaml(filepath):
+def validate_yaml(filepath: str) -> None:
     status, data = read_data(filepath)
-    if status != 0:
+    if status != 0 or data is None:
         sys.exit(1)
     valid = validate_data(data)
     if not valid:
