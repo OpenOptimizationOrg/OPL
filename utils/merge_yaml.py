@@ -1,5 +1,5 @@
 import yaml
-
+import os
 import sys
 from pathlib import Path
 
@@ -8,26 +8,6 @@ parent = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(parent))
 
 from .validate_yaml import read_data, validate_data, PROBLEMS_FILE
-
-TEMPLATE_FILE = "template.yaml"
-
-
-def validity_check(old_data, new_data):
-    # Check there are not duplicate keys
-    duplicates = len(set(old_data[0].keys()) & set(new_data[0].keys())) > 0
-    if duplicates:
-        print(
-            "::error::Duplicate problem names found between existing and new problems."
-        )
-        return False
-
-    # Validate new data
-    is_valid = validate_data(new_data)
-    if not is_valid:
-        print("::error::New problems YAML validation failed")
-        return False
-
-    return True
 
 
 def write_data(filepath, data):
@@ -51,25 +31,29 @@ def update_existing_data(existing_data, new_data):
     return write_success
 
 
-def reset_to_template(file_path):
-    # Reset the content of the file to a template
-    template_data_status, template_data = read_data(TEMPLATE_FILE)
-    if template_data_status != 0:
-        return template_data_status
-    write_success = write_data(file_path, template_data)
-    return write_success
+def delete_new_file(file_path):
+    # Delete the new file after merging
+    try:
+        os.remove(file_path)
+        print(f"::notice::Deleted new problem file {file_path}.")
+    except OSError as e:
+        print(f"::error::Error deleting file {file_path}: {e}")
+        return False
+    return True
 
 
 def merge_new_problems(new_problems_yaml_path: str):
-    existing_data_status, existing_data = read_data(PROBLEMS_FILE)
-    if not existing_data_status:
-        return False
+    # Read and validate new data
     new_data_status, new_data = read_data(new_problems_yaml_path)
     if not new_data_status:
         return False
-    # Validate data
-    is_valid = validity_check(existing_data, new_data)
-    if not is_valid:
+    valid = validate_data(new_data)
+    if not valid:
+        return False
+
+    # Read existing data
+    existing_data_status, existing_data = read_data(PROBLEMS_FILE)
+    if not existing_data_status:
         return False
 
     # All valid, we can now just merge the dicts
@@ -80,7 +64,7 @@ def merge_new_problems(new_problems_yaml_path: str):
         return False
 
     # Reset the template content
-    reset_status = reset_to_template(new_problems_yaml_path)
+    reset_status = delete_new_file(new_problems_yaml_path)
     if not reset_status:
         return False
 
