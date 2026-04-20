@@ -19,6 +19,9 @@ def write_data(filepath: str, data: List[Dict]) -> bool:
     except FileNotFoundError:
         print(f"::error::File not found: {filepath}")
         return False
+    except OSError as e:
+        print(f"::error::Error writing file {filepath}: {e}")
+        return False
     except yaml.YAMLError as e:
         print(f"::error::YAML syntax error: {e}")
         return False
@@ -74,8 +77,10 @@ def merge_new_problems(new_problems_yaml_path: str) -> bool:
     # Remove the new file after merging
     reset_status = delete_new_file(new_problems_yaml_path)
     if not reset_status:
-        print(f"::error::Failed to delete new problem file {new_problems_yaml_path}.")
-        return False
+        print(
+            f"::warning::Merged data into {PROBLEMS_FILE}, but failed to delete "
+            f"new problem file {new_problems_yaml_path}."
+        )
 
     print(f"::notice::Merged {len(new_data)} new problems into {PROBLEMS_FILE}.")
     return True
