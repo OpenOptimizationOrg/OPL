@@ -2,6 +2,8 @@ name: New Problem Check
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "utils/new_problem.yaml"
   pull_request:
@@ -32,6 +34,7 @@ jobs:
           pip install -r utils/requirements.txt
 
       - name: Run New Problem Check
+        if: ${{ hashFiles('utils/new_problem.yaml') != '' }}
         run: |
           python utils/validate_yaml.py utils/new_problem.yaml
 
