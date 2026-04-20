@@ -75,8 +75,8 @@ def merge_new_problems(new_problems_yaml_path: str) -> bool:
         return False
 
     # Remove the new file after merging
-    reset_status = delete_new_file(new_problems_yaml_path)
-    if not reset_status:
+    rm_status = delete_new_file(new_problems_yaml_path)
+    if not rm_status:
         print(
             f"::warning::Merged data into {PROBLEMS_FILE}, but failed to delete "
             f"new problem file {new_problems_yaml_path}."
