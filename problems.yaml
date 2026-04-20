@@ -272,12 +272,12 @@
   constraints: 'no'
   dynamic: 'no'
   noise: 'yes'
-  multimodal: '?'
+  multimodal: 'yes'
   multi-fidelity: 'no'
   reference: https://doi.org/10.1145/3321707.3321805
-  implementation: '?'
+  implementation: 'https://github.com/ttusar/coco-gbea'
   source (real-world/artificial): real world
-  textual description: expensive evaluations 5s-35s
+  textual description: 'expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA'
 - name: Car structure
   suite/generator/single: suite
   objectives: '2'
@@ -918,10 +918,22 @@
     output.
   reference: https://arxiv.org/abs/2511.10821
   other info:
+<<<<<<< feat/form_to_yaml
     partial evaluations: 'no'
     full name: MECHBench
     constraint properties: Hard Constraints
     number of constraints: 1 or 2
+=======
+    name: null
+    partial evaluations: Not Present
+    full name: MECHBench
+    constraint properties: Hard Constraints
+    number of constraints: 1 or 2
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+>>>>>>> main
     description of multimodality: Unstructured or non isotropic multimodality
     key challenges / characteristics: Embeds physical simulations and is flexible
       and modular
@@ -929,7 +941,14 @@
       Design Problem which require these kinds of algorithms
     limitations: The models do not include fracture or damage mechanics, just plasticity.
     implementation languages: Python
+<<<<<<< feat/form_to_yaml
     approximate evaluation time: Times -> from 1 minute to 7 minutes
+=======
+    links to implementations: https://github.com/BayesOptApp/MECHBench
+    approximate evaluation time: Times -> from 1 minute to 7 minutes
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: EXPObench
   suite/generator/single: Problem Suite
   variable type: Continuous, Integer, Categorical, Conditional
@@ -946,20 +965,40 @@
     optimization, hyperparameter tuning, and hospital simulation
   reference: https://doi.org/10.1016/j.asoc.2023.110744
   other info:
+<<<<<<< feat/form_to_yaml
     partial evaluations: 'no'
+=======
+    name: null
+    partial evaluations: Not Present
+>>>>>>> main
     full name: EXPensive Optimization benchmark library
     constraint properties: Hard Constraints, Soft Constraints, Box Constraints, only
       box constraints implemented, others appear as penalty in objective
     number of constraints: 2 per variable (box), other constraints unknown (simulator
       fails)
+<<<<<<< feat/form_to_yaml
     form of noise model: real-life (unknown)
     type of noise space: Observational
+=======
+    type of dynamicism: ''
+    form of noise model: real-life (unknown)
+    type of noise space: Observational
+    other noise properties: ''
+    description of multimodality: ''
+>>>>>>> main
     key challenges / characteristics: Expensive objectives
     scientific motivation: Address the lack of real-life expensive benchmarks
     limitations: single-objective only, constraints are handled naively (penalty in
       objective), no parallelization
     implementation languages: Python
+<<<<<<< feat/form_to_yaml
     approximate evaluation time: 2 to 80 seconds
+=======
+    links to implementations: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+    approximate evaluation time: 2 to 80 seconds
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: Gasoline direct injection engine design
   suite/generator/single: Single Problem
   variable type: Continuous, Ordinal
@@ -979,6 +1018,7 @@
     are defined: four define the hardware choices of cylinder compression ratio, turbo
     machinery and EGR cooler sizing; three relate to control variables that parameterise
     the engine control logic.'
+<<<<<<< feat/form_to_yaml
   other info:
     partial evaluations: Unknown
     constraint properties: Hard Constraints, Soft Constraints
@@ -986,6 +1026,28 @@
     key challenges / characteristics: Expensive
     limitations: Proprietary
     implementation languages: Matlab Simulink and Wave RT co-simulation
+=======
+  reference: ''
+  other info:
+    name: null
+    partial evaluations: Unknown
+    full name: ''
+    constraint properties: Hard Constraints, Soft Constraints
+    number of constraints: '5'
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Expensive
+    scientific motivation: ''
+    limitations: Proprietary
+    implementation languages: Matlab Simulink and Wave RT co-simulation
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: BEACON
   suite/generator/single: Generator
   variable type: Continuous
@@ -1002,17 +1064,36 @@
     controlled correlations in continuous spaces.
   reference: https://dl.acm.org/doi/10.1145/3712255.3734303
   other info:
+<<<<<<< feat/form_to_yaml
     partial evaluations: 'no'
+=======
+    name: null
+    partial evaluations: Not Present
+>>>>>>> main
     full name: Continuous Bi-objective Benchmark problems with Explicit Adjustable
       COrrelatioN control
     constraint properties: Box Constraints
     number of constraints: '0'
+<<<<<<< feat/form_to_yaml
+=======
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+>>>>>>> main
     description of multimodality: Random
     key challenges / characteristics: Multimodal, different correlations among objectives
     scientific motivation: Controlled correlation among objectives
     limitations: No analytical Pareto front, only bi-objective
     implementation languages: Python
+<<<<<<< feat/form_to_yaml
     approximate evaluation time: Negligible
+=======
+    links to implementations: https://github.com/Stebbet/BEACON/tree/main
+    approximate evaluation time: Negligible
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: TulipaEnergy
   suite/generator/single: Problem Suite
   variable type: Continuous
@@ -1028,8 +1109,14 @@
   textual description: Determine the optimal investment and operation decisions  for
     different types of assets in the energy system (production, consumption, conversion,
     storage, and transport), while minimizing loss of load.
+<<<<<<< feat/form_to_yaml
   reference: See https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
   other info:
+=======
+  reference: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
+  other info:
+    name: null
+>>>>>>> main
     partial evaluations: Unknown
     full name: TulipaEnergyModel.jl
     constraint properties: Hard Constraints, Soft Constraints
@@ -1037,14 +1124,26 @@
     type of dynamicism: none
     form of noise model: "depends on input \u2014 still working on stochastic inputs"
     type of noise space: Parameter
+<<<<<<< feat/form_to_yaml
+=======
+    other noise properties: ''
+    description of multimodality: ''
+>>>>>>> main
     key challenges / characteristics: modeled as a potentially very large linear program,
       different fidelities possible
     scientific motivation: new techniques for solving large whitebox linear optimization
       problems
     limitations: not yet stochastic
     implementation languages: Julia / JMP
+<<<<<<< feat/form_to_yaml
     approximate evaluation time: from minutes to hours
     links to usage examples: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
+=======
+    links to implementations: https://github.com/TulipaEnergy/TulipaEnergyModel.jl
+    approximate evaluation time: from minutes to hours
+    links to usage examples: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
+    general: ''
+>>>>>>> main
 - name: ATO
   suite/generator/single: Single Problem
   variable type: Continuous
@@ -1060,8 +1159,31 @@
   textual description: Parameters of the Modules of the Automatic Train Operation
     should be optimized. The parameters are continuous with different ranges. There
     are two objectives (minimizing energy consumption, minimizing driving duration.
+<<<<<<< feat/form_to_yaml
   other info:
     partial evaluations: 'no'
+=======
+  reference: ''
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: ''
+    constraint properties: ''
+    number of constraints: ''
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: ''
+    scientific motivation: ''
+    limitations: ''
+    implementation languages: ''
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: Brachytherapy treatment planning
   suite/generator/single: Problem Suite
   variable type: Continuous
@@ -1073,6 +1195,7 @@
   multimodal: 'yes'
   multi-fidelity: 'yes'
   source (real-world/artificial): Real-World Application
+<<<<<<< feat/form_to_yaml
   textual description: Treatment planning for internal radiation therapy
   reference: https://www.sciencedirect.com/science/article/pii/S1538472123016781
   other info:
@@ -1082,6 +1205,30 @@
     number of constraints: scalable
     key challenges / characteristics: Multi-objective; aggregated objectives
     limitations: No public source code
+=======
+  implementation: ''
+  textual description: Treatment planning for internal radiation therapy
+  reference: https://www.sciencedirect.com/science/article/pii/S1538472123016781
+  other info:
+    name: null
+    partial evaluations: Present
+    full name: Brachytherapy treatment planning
+    constraint properties: Hard Constraints
+    number of constraints: scalable
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Multi-objective; aggregated objectives
+    scientific motivation: ''
+    limitations: No public source code
+    implementation languages: ''
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: FleetOpt
   suite/generator/single: Single Problem
   variable type: Integer
@@ -1102,8 +1249,31 @@
     can be covered. Moving a vehicle from one base to another to help cover trips
     is OK as long as the original base can still cover its trips. Link to paper with
     more details: https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+<<<<<<< feat/form_to_yaml
   other info:
     partial evaluations: 'yes'
+=======
+  reference: 'https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  other info:
+    name: null
+    partial evaluations: Present
+    full name: ''
+    constraint properties: ''
+    number of constraints: ''
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: ''
+    scientific motivation: ''
+    limitations: ''
+    implementation languages: ''
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: Building spatial design
   suite/generator/single: Single Problem
   variable type: Continuous, Boolean
@@ -1120,6 +1290,7 @@
     consumption for climate control, and minimise the strain on the structure'
   reference: https://hdl.handle.net/1887/81789
   other info:
+<<<<<<< feat/form_to_yaml
     partial evaluations: 'no'
     full name: Building spatial design
     constraint properties: Hard Constraints, Box Constraints, Permutation Constraints
@@ -1128,10 +1299,34 @@
       the solution if these are violated); Mixed-variable search space (continuous
       + binary); Multiple objectives; (Somewhat) expensive solution evaluations
     implementation languages: C++
+=======
+    name: null
+    partial evaluations: Not Present
+    full name: Building spatial design
+    constraint properties: Hard Constraints, Box Constraints, Permutation Constraints
+    number of constraints: 2065 (as example, depends on problem size)
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Many hard constraints (simulator cannot evaluate
+      the solution if these are violated); Mixed-variable search space (continuous
+      + binary); Multiple objectives; (Somewhat) expensive solution evaluations
+    scientific motivation: ''
+    limitations: ''
+    implementation languages: C++
+    links to implementations: https://github.com/TUe-excellent-buildings/BSO-toolbox
+>>>>>>> main
     approximate evaluation time: Roughly 1 second per evaluation for the smallest
       considered design, and roughly 40 seconds for the larger designs we considered.
       (Even the larger designs we considered are still relatively small for the considered
       problem.)
+<<<<<<< feat/form_to_yaml
+=======
+    links to usage examples: ''
+    general: ''
+>>>>>>> main
 - name: Electric Motor Design Optimization
   suite/generator/single: Single Problem
   variable type: Continuous, Integer
@@ -1148,10 +1343,22 @@
     for power steering systems that minimizes costs and satisfies all constraints.
   reference: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf (paper in Slovene)
   other info:
+<<<<<<< feat/form_to_yaml
     partial evaluations: 'no'
     full name: Electric Motor Design Optimization
     constraint properties: Hard Constraints, Soft Constraints, Box Constraints
     number of constraints: '12'
+=======
+    name: null
+    partial evaluations: Not Present
+    full name: Electric Motor Design Optimization
+    constraint properties: Hard Constraints, Soft Constraints, Box Constraints
+    number of constraints: '12'
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+>>>>>>> main
     description of multimodality: Constraints are multimodal
     key challenges / characteristics: Time-consuming solution evaluation, highly-constrained
       problem
@@ -1159,6 +1366,7 @@
     limitations: 'Unavailability, even if available, it wouldn''t be helpful to use
       for benchmarking due taking a long time to evaluate a single solution '
     implementation languages: Python
+<<<<<<< feat/form_to_yaml
     approximate evaluation time: 8 minutes
     general: This is not an available problem, but could be interesting to show to
       researchers which difficulties appear in real-world problems
@@ -1224,11 +1432,66 @@
   variable type: Continuous, Integer, Boolean
   dimensionality: scalable
   objectives: '1'
+=======
+    links to implementations: Implementation not freely available
+    approximate evaluation time: 8 minutes
+    links to usage examples: ''
+    general: This is not an available problem, but could be interesting to show to
+      researchers which difficulties appear in real-world problems
+- name:  RW-GAN-Mario
+  suite/generator/single: suite
+  objectives: 1-2
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1145/3321707.3321805
+  implementation: https://github.com/ttusar/coco-gbea
+  source (real-world/artificial): 'real-world'
+  textual description: 'RW-GAN-Mario is a component of GBEA'
+- name:  TopTrumps
+  suite/generator/single: suite
+  objectives: 1-2
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1145/3321707.3321805
+  implementation: https://github.com/ttusar/coco-gbea
+  source (real-world/artificial): 'real-world'
+  textual description: 'TopTrump is a component of GBEA'
+- name:  AutomotiveCrashworthiness
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: 8–22 (fixed per instance)
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://dl.acm.org/doi/pdf/10.1145/3646554
+  implementation: https://github.com/fx-long/CEOELA
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name: PowertrainAnomalyTimeseries
+  suite/generator/single: suite
+  objectives: 1
+  dimensionality: 1–7 (problem-dependent; fixed per instance)
+  variable type: continuous
+>>>>>>> main
   constraints: 'yes'
   dynamic: 'no'
   noise: 'no'
   multimodal: 'yes'
   multi-fidelity: 'no'
+<<<<<<< feat/form_to_yaml
   source (real-world/artificial): Artificially Generated
   implementation: https://github.com/jfowkes/pycutest
   textual description: The Constrained and Unconstrained Testing Environment with
@@ -1261,3 +1524,23 @@
     full name: Polynomial Unconstrained Binary Optimization
     key challenges / characteristics: Tunable variable importance
     implementation languages: Python, C++
+=======
+  reference: https://www.sciencedirect.com/science/article/pii/S2214579625000681
+  implementation: https://zenodo.org/records/14892756
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name: HPA
+  suite/generator/single: suite
+  objectives: 1–9
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://link.springer.com/chapter/10.1007/978-981-96-3506-1_14
+  implementation: https://github.com/Nobuo-Namura/hpa
+  source (real-world/artificial): 'real-world-inspired'
+  textual description: ''
+>>>>>>> main
