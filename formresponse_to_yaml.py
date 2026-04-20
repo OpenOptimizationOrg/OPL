@@ -1,7 +1,7 @@
 import pandas as pd
 import yaml
 
-csv_file = "OPL_form.csv"
+csv_file = "responses_OPL.csv"
 yaml_file = "problems.yaml"
 
 
@@ -61,11 +61,18 @@ for dict_m, dict_o in zip(dict_main, dict_other):
     for k in list(dict_o.keys()):
         if dict_o[k] is None or dict_o[k] == "":
             dict_o.pop(k)
-        if dict_o[k] == "present":
+        elif dict_o[k] == "Present":
             dict_o[k] = 'yes'
-        if dict_o[k] == "not present":
+        elif dict_o[k] == "Not Present":
             dict_o[k] = 'no'
     dict_o.pop("name")  # Remove duplicate name entry
+    for k in list(dict_m.keys()):
+        if dict_m[k] is None or dict_m[k] == "":
+            dict_m.pop(k)
+        elif dict_m[k] == "Present":
+            dict_m[k] = 'yes'
+        elif dict_m[k] == "Not Present":
+            dict_m[k] = 'no'
     dict_m['other info'] = dict_o
 
 with open(yaml_file) as in_file:
