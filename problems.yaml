@@ -1102,6 +1102,7 @@
     can be covered. Moving a vehicle from one base to another to help cover trips
     is OK as long as the original base can still cover its trips. Link to paper with
     more details: https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  reference: https://dl.acm.org/doi/abs/10.1145/3638530.3664137
   other info:
     partial evaluations: 'yes'
 - name: Building spatial design
