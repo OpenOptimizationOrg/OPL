@@ -47,4 +47,3 @@ python utils/validate_yaml.py utils/new_problem.yaml
   implementation: ''
   source (real-world/artificial): ''
   textual description: 'This is a dummy template'
-```

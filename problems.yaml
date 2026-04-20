@@ -272,12 +272,12 @@
   constraints: 'no'
   dynamic: 'no'
   noise: 'yes'
-  multimodal: 'yes'
+  multimodal: '?'
   multi-fidelity: 'no'
   reference: https://doi.org/10.1145/3321707.3321805
-  implementation: 'https://github.com/ttusar/coco-gbea'
+  implementation: '?'
   source (real-world/artificial): real world
-  textual description: 'expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA'
+  textual description: expensive evaluations 5s-35s
 - name: Car structure
   suite/generator/single: suite
   objectives: '2'
@@ -1270,73 +1270,3 @@
     links to usage examples: ''
     general: This is not an available problem, but could be interesting to show to
       researchers which difficulties appear in real-world problems
-- name:  RW-GAN-Mario
-  suite/generator/single: suite
-  objectives: 1-2
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3321707.3321805
-  implementation: https://github.com/ttusar/coco-gbea
-  source (real-world/artificial): 'real-world'
-  textual description: 'RW-GAN-Mario is a component of GBEA'
-- name:  TopTrumps
-  suite/generator/single: suite
-  objectives: 1-2
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3321707.3321805
-  implementation: https://github.com/ttusar/coco-gbea
-  source (real-world/artificial): 'real-world'
-  textual description: 'TopTrump is a component of GBEA'
-- name:  AutomotiveCrashworthiness
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 8–22 (fixed per instance)
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://dl.acm.org/doi/pdf/10.1145/3646554
-  implementation: https://github.com/fx-long/CEOELA
-  source (real-world/artificial): 'real-world'
-  textual description: ''
-- name: PowertrainAnomalyTimeseries
-  suite/generator/single: suite
-  objectives: 1
-  dimensionality: 1–7 (problem-dependent; fixed per instance)
-  variable type: continuous
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://www.sciencedirect.com/science/article/pii/S2214579625000681
-  implementation: https://zenodo.org/records/14892756
-  source (real-world/artificial): 'real-world'
-  textual description: ''
-- name: HPA
-  suite/generator/single: suite
-  objectives: 1–9
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://link.springer.com/chapter/10.1007/978-981-96-3506-1_14
-  implementation: https://github.com/Nobuo-Namura/hpa
-  source (real-world/artificial): 'real-world-inspired'
-  textual description: ''
