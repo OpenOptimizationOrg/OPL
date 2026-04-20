@@ -1,0 +1,8 @@
+Thoughts:
+
+Task: write the minimum code snippets to call a function from the package/suite. 
+
+1) There are problem generators rather than functions. It cannot be called and directly evaluated by the optimizer
+2) VehicleDynamics is not a problem, only dataset
+3) AMVOP: no Github availabl according to database (haven't double-checked)
+4) 
