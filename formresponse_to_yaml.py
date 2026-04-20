@@ -61,6 +61,10 @@ for dict_m, dict_o in zip(dict_main, dict_other):
     for k in list(dict_o.keys()):
         if dict_o[k] is None or dict_o[k] == "":
             dict_o.pop(k)
+        if dict_o[k] == "present":
+            dict_o[k] = 'yes'
+        if dict_o[k] == "not present":
+            dict_o[k] = 'no'
     dict_o.pop("name")  # Remove duplicate name entry
     dict_m['other info'] = dict_o
 
