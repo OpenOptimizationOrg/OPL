@@ -1045,30 +1045,6 @@
     implementation languages: Julia / JMP
     approximate evaluation time: from minutes to hours
     links to usage examples: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
-- name: MECHBench
-  suite/generator/single: Problem Suite
-  variable type: Continuous, Integer
-  dimensionality: scalable (1-30)
-  objectives: scalable'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: https://github.com/BayesOptApp/MECHBench
-  textual description: A set of models inspired from Computational Mechanics and Engineering
-    Design wherein objectives are not differentiable.
-  other info:
-    partial evaluations: 'no'
-    full name: MECHBench
-    constraint properties: Hard Constraints, Soft Constraints
-    number of constraints: 1 or 2
-    type of dynamicism: It's not dynamic
-    form of noise model: A combination of additive and multiplicative
-    type of noise space: Observational
-    implementation languages: Python
-    approximate evaluation time: 5 to 300 seconds
 - name: ATO
   suite/generator/single: Single Problem
   variable type: Continuous
