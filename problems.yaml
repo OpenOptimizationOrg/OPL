@@ -1340,3 +1340,19 @@
   implementation: https://github.com/Nobuo-Namura/hpa
   source (real-world/artificial): 'real-world-inspired'
   textual description: ''
+- name: Block-Bench
+  suite/generator/single: generator
+  objectives: scalable
+  dimensionality: scalable
+  variable type: discrete
+  constraints: '?'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://arxiv.org/abs/2604.06973
+  implementation: ''
+  source (real-world/artificial): artificial
+  textual description: Framework for constructing discrete optimization benchmark instances
+    from configurable block functions and dependency graphs, enabling controllable
+    problem properties and transparent behavior analysis.
