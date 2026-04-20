@@ -45,7 +45,7 @@ def delete_new_file(file_path: str) -> bool:
 def merge_new_problems(new_problems_yaml_path: str) -> bool:
     # Read and validate new data
     new_data_status, new_data = read_data(new_problems_yaml_path)
-    if new_data_status != 0:
+    if new_data_status != 0 or new_data is None:
         print(
             f"::error::New problems data could not be read from {new_problems_yaml_path}."
         )
@@ -57,7 +57,7 @@ def merge_new_problems(new_problems_yaml_path: str) -> bool:
 
     # Read existing data
     existing_data_status, existing_data = read_data(PROBLEMS_FILE)
-    if existing_data_status != 0:
+    if existing_data_status != 0 or existing_data is None:
         print(
             f"::error::Existing problems data could not be read from {PROBLEMS_FILE}."
         )
