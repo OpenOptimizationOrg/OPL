@@ -1,7 +1,7 @@
 import pandas as pd
 import yaml
 
-csv_file = "responses_OPL.csv"
+csv_file = "OPL_form.csv"
 yaml_file = "problems.yaml"
 
 
@@ -41,7 +41,6 @@ translations_other = {
       "Scientific motivation for the proposed suite / problem / generator" : "scientific motivation",
       "Limitations of  the proposed suite / problem / generator" : "limitations",
       "Implemenation languages" : "implementation languages", 
-      "Links to implementations" : "links to implementations",
       "Approximate time to evaluate a single solution (or times if e.g. multi-fidelity)" : "approximate evaluation time",
       "Links to examples of usage of the proposed suite / problem / generator" : "links to usage examples",
 }
