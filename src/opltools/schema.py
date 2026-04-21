@@ -147,3 +147,14 @@ class Library(RootModel):
                     if self.root[problem_id].type != OPLType.problem:
                         raise ValueError(f"Suite {id} references problem with id '{problem_id}' but id is a {self.root[problem_id].type.name}.")
         return self
+
+__all__ = [
+    "Problem",
+    "Suite",
+    "Generator",
+    "Implementation",
+    "Library",
+    "YesNoSome",
+    "Link",
+    "Reference"
+]
