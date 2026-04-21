@@ -12,7 +12,7 @@ What happens in the background then is:
 
 * On PR creation and commits to the PR, the [validate_yaml.py](validate_yaml.py) script is run to check that the [problems.yaml](../problems.yaml) file is still valid and consistent.
 * Then the PR should be reviewed manually.
-* When the PR is merged into the main branch with changes to problems.yaml, the check are run again.
+* When the PR is merged into the main branch with changes to problems.yaml, the checks are run again.
 
 ## validate_yaml.py
 
@@ -20,7 +20,7 @@ This script checks the new content for the following:
 
 * The YAML syntax is valid and is in expected format
 * The required fields are present.
-* Specific fields are unique across the  set of problems (e.g. name)
+* Specific fields are unique across the set of problems (e.g. name)
 
 :warning: Execute from root of the repository. Tested with python 3.12
 

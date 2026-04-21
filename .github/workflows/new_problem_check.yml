@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths:
-      - "utils/new_problem.yaml"
+      - "problems.yaml"
   pull_request:
     paths:
-      - "utils/new_problem.yaml"
+      - "problems.yaml"
   workflow_dispatch: # allow triggering workflow manually
     inputs:
       reason:
@@ -34,7 +34,6 @@ jobs:
           pip install -r utils/requirements.txt
 
       - name: Run New Problem Check
-        if: ${{ hashFiles('utils/new_problem.yaml') != '' }}
         run: |
-          python utils/validate_yaml.py utils/new_problem.yaml
+          python utils/validate_yaml.py problems.yaml
 
