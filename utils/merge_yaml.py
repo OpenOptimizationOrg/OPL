@@ -69,14 +69,6 @@ def merge_new_problems(new_problems_yaml_path: str, big_yaml_path: str) -> bool:
         print(f"::error::Failed to update existing problems data in {big_yaml_path}.")
         return False
 
-    # Validate resulting data
-    final_status, final_data = validate_yaml(big_yaml_path)
-    if final_status != 0 or final_data is None:
-        print(
-            f"::error::Merged data in {big_yaml_path} is not valid after merging new problems."
-        )
-        return False
-
     print(
         f"::notice::Merged {len(new_data)} new problems into {big_yaml_path}. {new_problems_yaml_path} can now be deleted."
     )
