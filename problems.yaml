@@ -1,4 +1,4 @@
-- name: BBOB
+- name: BBOB_test
   suite/generator/single: suite
   objectives: '1'
   dimensionality: scalable
