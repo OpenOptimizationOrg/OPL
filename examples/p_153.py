@@ -40,12 +40,14 @@ things["cobi_problem"] = Generator(
         )
     ],
     objectives={2},
-    variables=Variables(continuous=ValueRange(min=1, max=100)),  # inf?
+    variables=Variables(continuous=ValueRange(min=1, max=None)),
     implementations=["cobi_impl"],
     can_evaluate_objectives_independently=YesNoSome.no,
     constraints=Constraints(
-        box=1, linear=100, function=100
-    ),  # convex-quadratic or multipeak, one box per variable?
+        box=ValueRange(min=0, max=None),
+        linear=ValueRange(min=0, max=None),
+        function=ValueRange(min=0, max=None),
+    ),
     noise_type={"none"},
     soft_constraints=None,
     dynamic_type=None,
