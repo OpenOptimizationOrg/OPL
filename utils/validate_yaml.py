@@ -2,6 +2,7 @@ import yaml
 
 import sys
 from pathlib import Path
+from typing import List, Dict, Tuple
 
 # Add parent directory to sys.path
 parent = Path(__file__).resolve().parent.parent
@@ -16,7 +17,7 @@ NON_EMPTY_FIELDS = ["name"]
 UNIQUE_WARNING_FIELDS = ["reference", "implementation"]
 
 
-def read_data(filepath):
+def read_data(filepath: str) -> Tuple[int, List[Dict] | None]:
     try:
         with open(filepath, "r") as f:
             data = yaml.safe_load(f)
@@ -29,8 +30,11 @@ def read_data(filepath):
         return 1, None
 
 
-def check_format(data):
+def check_format(data: List[Dict]) -> bool:
     num_problems = len(data)
+    if not isinstance(data, list):
+        print("::error::YAML file should contain a list of entries.")
+        return False
     if len(data) < 1:
         print("::error::YAML file should contain at least one top level entry.")
         return False
@@ -42,14 +46,16 @@ def check_format(data):
             return False
         unique_fields.append({k: v for k, v in entry.items() if k in UNIQUE_FIELDS})
     for k in UNIQUE_FIELDS:
-        values = [entry[k] for entry in unique_fields]
+        values = [
+            entry[k] for entry in unique_fields if k in entry and entry[k] is not None
+        ]
         if len(values) != len(set(values)):
             print(f"::error::Field '{k}' must be unique across all entries.")
             return False
     return True
 
 
-def check_fields(data):
+def check_fields(data: Dict) -> bool:
     missing = [field for field in REQUIRED_FIELDS if field not in data]
     if missing:
         print(f"::error::Missing required fields: {', '.join(missing)}")
@@ -79,7 +85,7 @@ def check_fields(data):
     return True
 
 
-def check_novelty(data, checked_data):
+def check_novelty(data: Dict, checked_data: List[Dict]) -> bool:
     for field in UNIQUE_FIELDS + UNIQUE_WARNING_FIELDS:
         # skip empty fields
         if not data.get(field):
@@ -101,13 +107,10 @@ def check_novelty(data, checked_data):
     return True
 
 
-def validate_yaml(filepath):
-    status, data = read_data(filepath)
-    if status != 0:
-        sys.exit(1)
-    if not check_format(data):
-        sys.exit(1)
+def validate_data(data: List[Dict]) -> bool:
     assert data is not None
+    if not check_format(data):
+        return False
 
     checked_data = []
 
@@ -115,12 +118,24 @@ def validate_yaml(filepath):
         # Check required and unique fields
         if not check_fields(new_data) or not check_novelty(new_data, checked_data):
             print(f"::error::Validation failed for entry {i+1}.")
-            sys.exit(1)
+            return False
         checked_data.append(new_data)  # Add to checked data for novelty checks
 
     # YAML is valid if we reach this point
     print("YAML syntax is valid.")
-    sys.exit(0)
+
+    return True
+
+
+def validate_yaml(filepath: str) -> None:
+    status, data = read_data(filepath)
+    if status != 0 or data is None:
+        sys.exit(1)
+    valid = validate_data(data)
+    if not valid:
+        sys.exit(1)
+    else:
+        sys.exit(0)
 
 
 if __name__ == "__main__":
