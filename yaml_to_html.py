@@ -29,6 +29,7 @@ html_header = f"{html_dir}header.html"
 html_scripts = f"{html_dir}javascript.html"
 html_footer = f"{html_dir}footer.html"
 html_index = f"{html_dir}index.html"
+html_table_template = f"{html_dir}table_template.html"
 
 # Load data
 with open(yaml_file) as yaml_input:
@@ -84,33 +85,18 @@ column_toggles = "".join(
     ]
 )
 
-modern_table_block = f"""
-<section class="table-shell">
-    <div class="table-toolbar">
-        <div class="toolbar-title">Visible columns</div>
-        <div class="toolbar-actions">
-            <button type="button" class="toolbar-btn" id="show-all-columns">Show all</button>
-            <button type="button" class="toolbar-btn" id="hide-all-columns">Hide all</button>
-        </div>
-        <div class="column-controls">
-            {column_toggles}
-        </div>
-    </div>
-    <div class="table-wrap">
-        {final_table}
-    </div>
-</section>
+with open(html_table_template, encoding="utf-8") as template_file:
+    table_template = template_file.read()
 
-<section class="details-shell" id="problem-details" aria-live="polite">
-    <h3 class="details-title">Problem details</h3>
-    <p class="details-hint" id="problem-details-hint">Click a table row to inspect full details.</p>
-    <dl class="details-grid" id="problem-details-content"></dl>
-</section>
-"""
+table_markup = (
+    table_template
+    .replace("__COLUMN_TOGGLES__", column_toggles)
+    .replace("__TABLE__", final_table)
+)
 
 # Write table to file
-with open(html_table, "w") as table_file:
-    table_file.write(modern_table_block)
+with open(html_table, "w", encoding="utf-8") as table_file:
+    table_file.write(table_markup)
 
 # Merge table and scripts into HTML page
 with open(html_index, "wb") as output_file:

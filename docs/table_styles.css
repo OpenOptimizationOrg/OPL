@@ -8,6 +8,7 @@
     --opl-accent-soft: #eaf4fa;
     --opl-heading: "Segoe UI", "Trebuchet MS", sans-serif;
     --opl-body: "Tahoma", "Verdana", sans-serif;
+    --opl-table-font-size: 0.86rem;
 }
 
 * {
@@ -123,6 +124,7 @@ h2 {
     min-width: 980px;
     border-collapse: separate;
     border-spacing: 0;
+    font-size: var(--opl-table-font-size);
 }
 
 #problems thead th {
@@ -136,6 +138,11 @@ h2 {
 #problems td {
     vertical-align: top;
     line-height: 1.4;
+    font-size: inherit;
+}
+
+#problems td * {
+    font-size: inherit;
 }
 
 #problems th:first-child {
@@ -189,6 +196,7 @@ h2 {
     border: 1px solid var(--opl-border);
     background: #fff;
     color: var(--opl-text);
+    font-size: inherit;
 }
 
 .details-shell {
