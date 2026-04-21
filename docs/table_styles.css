@@ -19,8 +19,6 @@ body {
     font-family: var(--opl-body);
     color: var(--opl-text);
     background:
-        radial-gradient(circle at 4% 2%, #e6edf7 0, #e6edf700 34%),
-        radial-gradient(circle at 92% 4%, #ecf3df 0, #ecf3df00 38%),
         var(--opl-bg);
 }
 
