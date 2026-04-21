@@ -1,4 +1,17 @@
-<table class="dataframe display compact display styled-table" id="problems">
+
+<section class="table-shell">
+    <div class="table-toolbar">
+        <div class="toolbar-title">Visible columns</div>
+        <div class="toolbar-actions">
+            <button type="button" class="toolbar-btn" id="show-all-columns">Show all</button>
+            <button type="button" class="toolbar-btn" id="hide-all-columns">Hide all</button>
+        </div>
+        <div class="column-controls">
+            <label class="column-chip"><input class="col-toggle" type="checkbox" data-column="0" checked><span>name</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="1"><span>textual description</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="2" checked><span>suite/generator/single</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="3" checked><span>objectives</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="4" checked><span>dimensionality</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="5" checked><span>variable type</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="6" checked><span>constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="7" checked><span>dynamic</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="8" checked><span>noise</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="9" checked><span>multi-fidelity</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="10" checked><span>source (real-world/artificial)</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="11"><span>reference</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="12"><span>implementation</span></label>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table class="dataframe display compact display styled-table" id="problems">
   <thead>
     <tr style="text-align: right;">
       <th>name</th>
@@ -1189,3 +1202,11 @@
     </tr>
   </tbody>
 <tfoot><tr><th>name</th> <th>textual description</th> <th>suite/generator/single</th> <th>objectives</th> <th>dimensionality</th> <th>variable type</th> <th>constraints</th> <th>dynamic</th> <th>noise</th> <th>multi-fidelity</th> <th>source (real-world/artificial)</th> <th>reference</th> <th>implementation</th></tr> </tfoot></table>
+    </div>
+</section>
+
+<section class="details-shell" id="problem-details" aria-live="polite">
+    <h3 class="details-title">Problem details</h3>
+    <p class="details-hint" id="problem-details-hint">Click a table row to inspect full details.</p>
+    <dl class="details-grid" id="problem-details-content"></dl>
+</section>

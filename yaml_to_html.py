@@ -3,6 +3,7 @@
 import pandas as pd
 import yaml
 import shutil
+from html import escape
 
 import re
 
@@ -30,8 +31,8 @@ html_footer = f"{html_dir}footer.html"
 html_index = f"{html_dir}index.html"
 
 # Load data
-with open(yaml_file) as in_file:
-    data = pd.json_normalize(yaml.safe_load(in_file))
+with open(yaml_file) as yaml_input:
+    data = pd.json_normalize(yaml.safe_load(yaml_input))
 
 # Choose desired columns
 all_columns = False
@@ -68,12 +69,51 @@ table = data.to_html(render_links=False,
 idx = table.index('</table>')
 final_table = table[:idx] + "<tfoot><tr>" + " ".join(["<th>"+ i +"</th>" for i in data.columns])+"</tr> </tfoot>" + table[idx:]
 
+default_hidden_columns = {"textual description", "reference", "implementation"}
+
+column_toggles = "".join(
+    [
+        (
+            f'<label class="column-chip">'
+            f'<input class="col-toggle" type="checkbox" data-column="{i}"'
+            f'{" checked" if col not in default_hidden_columns else ""}>'
+            f'<span>{escape(col)}</span>'
+            f'</label>'
+        )
+        for i, col in enumerate(data.columns)
+    ]
+)
+
+modern_table_block = f"""
+<section class="table-shell">
+    <div class="table-toolbar">
+        <div class="toolbar-title">Visible columns</div>
+        <div class="toolbar-actions">
+            <button type="button" class="toolbar-btn" id="show-all-columns">Show all</button>
+            <button type="button" class="toolbar-btn" id="hide-all-columns">Hide all</button>
+        </div>
+        <div class="column-controls">
+            {column_toggles}
+        </div>
+    </div>
+    <div class="table-wrap">
+        {final_table}
+    </div>
+</section>
+
+<section class="details-shell" id="problem-details" aria-live="polite">
+    <h3 class="details-title">Problem details</h3>
+    <p class="details-hint" id="problem-details-hint">Click a table row to inspect full details.</p>
+    <dl class="details-grid" id="problem-details-content"></dl>
+</section>
+"""
+
 # Write table to file
 with open(html_table, "w") as table_file:
-    table_file.write(final_table)
+    table_file.write(modern_table_block)
 
 # Merge table and scripts into HTML page
 with open(html_index, "wb") as output_file:
-    for in_file in [html_header, html_table, html_scripts, html_footer]:
-        with open(in_file, "rb") as in_file:
-            shutil.copyfileobj(in_file, output_file)
+    for part_path in [html_header, html_table, html_scripts, html_footer]:
+        with open(part_path, "rb") as part_file:
+            shutil.copyfileobj(part_file, output_file)
