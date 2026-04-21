@@ -1,7 +1,6 @@
-from opltools import Suite, Problem, Library, Link, Variables, ValueRange
+from opltools import Library, Link, Variables, ValueRange
 from pydantic_yaml import to_yaml_str
 from opltools.schema import Implementation, YesNoSome, Constraints, Generator, Reference
-import numpy as np
 
 things = {}
 
