@@ -31,6 +31,11 @@ def update_existing_data(
     existing_data: List[Dict], new_data: List[Dict], out_file: str
 ) -> bool:
     existing_data.extend(new_data)
+    # validate merged data before writing
+    valid = validate_data(existing_data)
+    if not valid:
+        print(f"::error::Merged data is not valid, cannot write to {out_file}.")
+        return False
     write_success = write_data(out_file, existing_data)
     return write_success
 
