@@ -1,53 +1,51 @@
 # OPL Code Snippets
 
-A collection of code snippets for evaluating optimization benchmark functions from the OPL library using [uv](https://docs.astral.sh/uv/) as the script runner.
+A collection of minimal, self-contained code snippets for evaluating optimization benchmark functions from the OPL library. Each snippet uses [uv](https://docs.astral.sh/uv/) as the script runner and requires no manual virtual-environment setup.
 
-## Prerequisites
+## Repository Structure
 
-Install **uv** (if not already installed):
+Every benchmark problem has its own repository containing:
 
-```bash
-pip install uv
-```
+- **`call_<problem>.py`** — the evaluation script, with inline dependency metadata ([PEP 723](https://peps.python.org/pep-0723/)) so `uv` resolves everything automatically.
+- **`README.md`** — problem-specific instructions covering any prerequisites (cloning external repos, running setup scripts, downloading executables, etc.) and the usage example.
 
-## Usage
+**Always start by reading the README inside the problem's repository.** Some benchmarks need extra setup steps before the snippet will run.
 
-Each snippet is a self-contained script with inline dependency metadata ([PEP 723](https://peps.python.org/pep-0723/)). No virtual environment setup is needed — `uv` resolves dependencies automatically.
+## Quick Start
 
-Run any snippet with:
-
-```bash
-uv run call_<problem>.py
-```
-
-## Available Snippets
-
-| Script | Benchmark | Description |
-|--------|-----------|-------------|
-| `call_cocoex.py` | [COCO/BBOB](https://github.com/numbbo/coco) | Evaluates function 1 from the BBOB suite (2D) |
-| `call_mf2.py` | [mf2](https://github.com/sjvrijn/mf2) | Evaluates the Branin function at high and low fidelity |
-| All other problems from the OPL Library |
-
-## Example
+1. Install **uv** if you don't have it yet:
 
 ```bash
-# Run the COCO/BBOB snippet
-uv run call_cocoex.py
-
-# Run the multi-fidelity mf2 snippet
-uv run call_mf2.py
+   pip install uv
 ```
 
-## Adding New Snippets
+2. Navigate to the problem's repository and follow its specific README.
 
-1. Create a new file named `call_<problem>.py`.
-2. Add the inline dependency block at the top of the file:
-   ```python
+3. Run the snippet:
+
+```bash
+   uv run call_<problem>.py
+```
+
+## Available Benchmarks
+
+| Repository | Benchmark | Description |
+|------------|-----------|-------------|
+| `cocoex/` | [COCO/BBOB](https://github.com/numbbo/coco) | Evaluates function 1 from the BBOB suite (2-D) |
+| `mf2/` | [mf2](https://github.com/sjvrijn/mf2) | Evaluates the Branin function at high and low fidelity |
+| … | … | See the full list in the [OPL Library](#) |
+
+## Contributing a New Snippet
+
+1. Create a new repository (or folder) named after the problem.
+2. Add a `call_<problem>.py` file with the inline dependency block at the top:
+```python
    # /// script
    # dependencies = [
    #   "your-package",
    # ]
    # ///
-   ```
-3. Write your evaluation code below it.
-4. Run with `uv run call_<problem>.py`.
+```
+3. Write your evaluation code below the dependency block.
+4. Add a `README.md` that documents any setup steps a user must complete before running the script (cloning repos, installing non-Python dependencies, downloading data, etc.).
+5. Update the table above to include your new benchmark.
