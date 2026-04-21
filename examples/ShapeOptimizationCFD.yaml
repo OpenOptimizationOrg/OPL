@@ -1,0 +1,145 @@
+shapoptcfd:
+  name: ShapeOptimisation w CFD
+  long_name: Computationally Expensive Shape Optimisation Problems Using Computational Fluid Dynamics
+  type: suite 
+  variables:
+    binary: 0
+    categorical: 0  
+    continuous: 
+      min: 2
+    integer: 0
+  objectives: 
+  - [1,2]
+  constraints: 
+    function: 
+      min: 1
+    box: 1
+  soft_constraints: null
+  allows_partial_evaluation: no 
+  can_evaluate_objectives_independently: no 
+  code_examples: null
+  description: A Suite of Computationally Expensive Shape Optimisation Problems Using Computational Fluid Dynamics
+  dynamic_type: null 
+  fidelity_levels: 1  
+  modality: null
+  noise_type: null 
+  references: 
+  - title: A Suite of Computationally Expensive Shape Optimisation Problems Using Computational Fluid Dynamics
+    authors: S. Daniels, A. Rahat, R. Everson, G. Tabor and J. Fieldsend.
+    url: https://link.springer.com/chapter/10.1007/978-3-319-99259-4_24
+  source: real-world
+  tags: null
+  problems: 
+  - pitzdaily
+  - kaplandrafttube
+  - heatexchanger 
+  implementations:
+  - shapeopt
+shapeopt: 
+  name: shapeopt
+  description: Original implementation of ShapeOptimisation w CFD
+  link:
+  - type: repository
+    url: https://bitbucket.org/arahat/cfd-test-problem-suite/src/master/
+  language: Python 
+  evaluation_time: 30-1000 seconds
+  requirements: Relies on OpenFOAM 
+pitzdaily:
+  name: PitzDaily
+  long_name: PitzDaily Shape Optimisation Problem
+  type: problem 
+  variables:
+    binary: 0
+    categorical: 0  
+    continuous: 
+      min: 2
+    integer: 0
+  objectives: 
+  - 1
+  constraints: 
+    function: 
+      min: 1
+    box: 1
+  soft_constraints: null
+  allows_partial_evaluation: no 
+  can_evaluate_objectives_independently: no 
+  code_examples: null
+  description: A Computationally Expensive Shape Optimisation Problem Using Computational Fluid Dynamics
+  dynamic_type: null 
+  fidelity_levels: 1  
+  modality: null
+  noise_type: null 
+  references: 
+  - title: A Suite of Computationally Expensive Shape Optimisation Problems Using Computational Fluid Dynamics
+    authors: S. Daniels, A. Rahat, R. Everson, G. Tabor and J. Fieldsend.
+    url: https://link.springer.com/chapter/10.1007/978-3-319-99259-4_24
+  source: real-world
+  tags: null
+  implementations:
+  - shapeopt
+kaplandrafttube:
+  name: Kaplan Draft Tube
+  long_name: Sharp-heeled Kaplan Draft Tube Shape Optimisation Problem
+  type: problem 
+  variables:
+    binary: 0
+    categorical: 0  
+    continuous: 
+      min: 2
+    integer: 0
+  objectives: 
+  - 1
+  constraints: 
+    function: 
+      min: 1
+    box: 1
+  soft_constraints: null
+  allows_partial_evaluation: no 
+  can_evaluate_objectives_independently: no 
+  code_examples: null
+  description: A Computationally Expensive Shape Optimisation Problem Using Computational Fluid Dynamics
+  dynamic_type: null 
+  fidelity_levels: 1  
+  modality: null
+  noise_type: null 
+  references: 
+  - title: A Suite of Computationally Expensive Shape Optimisation Problems Using Computational Fluid Dynamics
+    authors: S. Daniels, A. Rahat, R. Everson, G. Tabor and J. Fieldsend.
+    url: https://link.springer.com/chapter/10.1007/978-3-319-99259-4_24
+  source: real-world
+  tags: null
+  implementations:
+  - shapeopt
+heatexchanger:
+  name: Heat Exchanger
+  long_name: Heat Exchanger Shape Optimisation Problem
+  type: problem 
+  variables:
+    binary: 0
+    categorical: 0  
+    continuous: 
+      min: 2
+    integer: 0
+  objectives: 
+  - 2
+  constraints: 
+    function: 
+      min: 1
+    box: 1
+  soft_constraints: null
+  allows_partial_evaluation: no 
+  can_evaluate_objectives_independently: no 
+  code_examples: null
+  description: A Computationally Expensive Shape Optimisation Problem Using Computational Fluid Dynamics
+  dynamic_type: null 
+  fidelity_levels: 1  
+  modality: null
+  noise_type: null 
+  references: 
+  - title: A Suite of Computationally Expensive Shape Optimisation Problems Using Computational Fluid Dynamics
+    authors: S. Daniels, A. Rahat, R. Everson, G. Tabor and J. Fieldsend.
+    url: https://link.springer.com/chapter/10.1007/978-3-319-99259-4_24
+  source: real-world
+  tags: null
+  implementations:
+  - shapeopt

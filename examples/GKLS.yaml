@@ -1,0 +1,42 @@
+gkls:
+  name: GKLS
+  long_name: GKLS Generator
+  type: generator 
+  variables:
+    binary: 0
+    categorical: 0  
+    continuous: 
+    integer: 0
+  objectives: 
+  - 1
+  constraints: 
+  soft_constraints: 
+    box: 0
+  allows_partial_evaluation: no 
+  can_evaluate_objectives_independently: no 
+  code_examples: null
+  description: a set of test problems is constructed by defining a convex quadratic function which is systematically distorted by polynomials in order to produce local (and one global) minima
+  dynamic_type: null 
+  fidelity_levels: 1  
+  modality: 
+  - unimodal
+  - multimodal
+  noise_type: null 
+  references: 
+  - title: Algorithm 829 Software for Generation ofClasses of Test Functions with Known Localand Global Minima for Global Optimization
+    authors: MARCO GAVIANO, DMITRI E. KVASOV, DANIELA LERA and YAROSLAV D. SERGEYEV
+    url: https://dl.acm.org/doi/epdf/10.1145/962437.962444
+  source: artificial
+  tags: null 
+  implementations:
+  - gkls_c
+gkls_c: 
+  name: GKLS_C
+  description: Original C-implementation of GKLS
+  link:
+  - type: zipfils
+    url: https://netlib.org/toms/829.gz
+  language: C 
+  evaluation_time: null
+  requirements: null 
+
