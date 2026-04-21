@@ -89,6 +89,6 @@ if __name__ == "__main__":
 
     # Merge table and scripts into HTML page
     with open(html_index, "wb") as output_file:
-        for in_file in [html_header, html_table, html_scripts, html_footer]:
-            with open(in_file, "rb") as in_file:
-                shutil.copyfileobj(in_file, output_file)
+        for path in [html_header, html_table, html_scripts, html_footer]:
+            with open(path, "rb") as src:
+                shutil.copyfileobj(src, output_file)
