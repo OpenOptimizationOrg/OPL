@@ -14,7 +14,6 @@ OPTIONAL_FIELDS = ["multimodal"]
 UNIQUE_FIELDS = ["name"]
 NON_EMPTY_FIELDS = ["name"]
 UNIQUE_WARNING_FIELDS = ["reference", "implementation"]
-PROBLEMS_FILE = "problems.yaml"
 
 
 def read_data(filepath):
@@ -80,19 +79,13 @@ def check_fields(data):
     return True
 
 
-def check_novelty(data):
-    # Load existing problems
-    read_status, existing_data = read_data(PROBLEMS_FILE)
-    if read_status != 0:
-        print("::error::Could not read existing problems for novelty check.")
-        return False
-    assert existing_data is not None
+def check_novelty(data, checked_data):
     for field in UNIQUE_FIELDS + UNIQUE_WARNING_FIELDS:
         # skip empty fields
         if not data.get(field):
             continue
         existing_values = {
-            entry.get(field) for entry in existing_data if isinstance(entry, dict)
+            entry.get(field) for entry in checked_data if isinstance(entry, dict)
         }
         if data.get(field) in existing_values:
             if field in UNIQUE_WARNING_FIELDS:
@@ -116,11 +109,14 @@ def validate_yaml(filepath):
         sys.exit(1)
     assert data is not None
 
+    checked_data = []
+
     for i, new_data in enumerate(data):  # Iterate through each top-level entry
         # Check required and unique fields
-        if not check_fields(new_data) or not check_novelty(new_data):
+        if not check_fields(new_data) or not check_novelty(new_data, checked_data):
             print(f"::error::Validation failed for entry {i+1}.")
             sys.exit(1)
+        checked_data.append(new_data)  # Add to checked data for novelty checks
 
     # YAML is valid if we reach this point
     print("YAML syntax is valid.")
