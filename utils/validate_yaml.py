@@ -32,6 +32,9 @@ def read_data(filepath: str) -> Tuple[int, List[Dict] | None]:
 
 def check_format(data: List[Dict]) -> bool:
     num_problems = len(data)
+    if not isinstance(data, list):
+        print("::error::YAML file should contain a list of entries.")
+        return False
     if len(data) < 1:
         print("::error::YAML file should contain at least one top level entry.")
         return False
@@ -43,7 +46,9 @@ def check_format(data: List[Dict]) -> bool:
             return False
         unique_fields.append({k: v for k, v in entry.items() if k in UNIQUE_FIELDS})
     for k in UNIQUE_FIELDS:
-        values = [entry[k] for entry in unique_fields]
+        values = [
+            entry[k] for entry in unique_fields if k in entry and entry[k] is not None
+        ]
         if len(values) != len(set(values)):
             print(f"::error::Field '{k}' must be unique across all entries.")
             return False
@@ -80,7 +85,7 @@ def check_fields(data: Dict) -> bool:
     return True
 
 
-def check_novelty(data:Dict, checked_data:List[Dict]) -> bool:
+def check_novelty(data: Dict, checked_data: List[Dict]) -> bool:
     for field in UNIQUE_FIELDS + UNIQUE_WARNING_FIELDS:
         # skip empty fields
         if not data.get(field):
