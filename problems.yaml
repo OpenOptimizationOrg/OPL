@@ -272,12 +272,12 @@
   constraints: 'no'
   dynamic: 'no'
   noise: 'yes'
-  multimodal: '?'
+  multimodal: 'yes'
   multi-fidelity: 'no'
   reference: https://doi.org/10.1145/3321707.3321805
-  implementation: '?'
+  implementation: 'https://github.com/ttusar/coco-gbea'
   source (real-world/artificial): real world
-  textual description: expensive evaluations 5s-35s
+  textual description: 'expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA'
 - name: Car structure
   suite/generator/single: suite
   objectives: '2'
@@ -900,219 +900,443 @@
   implementation: https://zenodo.org/records/8307853
   source (real-world/artificial): 'real-world'
   textual description: ''
-- &rcm2
-  name: RCM2 - Vibrating platform design
-  suite/generator/single: single
+- name: MECHBench
+  suite/generator/single: Problem Suite
+  variable type: Continuous
+  dimensionality: scalable'
+  objectives: '1'
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  source (real-world/artificial): Real-World Application
+  implementation: https://github.com/BayesOptApp/MECHBench
+  textual description: This is a set of problems with inspiration from Structural
+    Mechanics Design Optimization. The suite comprises three physical models, from
+    which the user may define different kind of problems which impact the final design
+    output.
+  reference: https://arxiv.org/abs/2511.10821
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: MECHBench
+    constraint properties: Hard Constraints
+    number of constraints: 1 or 2
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: Unstructured or non isotropic multimodality
+    key challenges / characteristics: Embeds physical simulations and is flexible
+      and modular
+    scientific motivation: Bridge the black-box optimization techniques to a Mechanical
+      Design Problem which require these kinds of algorithms
+    limitations: The models do not include fracture or damage mechanics, just plasticity.
+    implementation languages: Python
+    links to implementations: https://github.com/BayesOptApp/MECHBench
+    approximate evaluation time: Times -> from 1 minute to 7 minutes
+    links to usage examples: ''
+    general: ''
+- name: EXPObench
+  suite/generator/single: Problem Suite
+  variable type: Continuous, Integer, Categorical, Conditional
+  dimensionality: 10 to 135
+  objectives: '1'
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: Unknown
+  multi-fidelity: 'no'
+  source (real-world/artificial): Real-World Application
+  implementation: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+  textual description: Wind farm layout optimization, gas filter design, pipe shape
+    optimization, hyperparameter tuning, and hospital simulation
+  reference: https://doi.org/10.1016/j.asoc.2023.110744
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: EXPensive Optimization benchmark library
+    constraint properties: Hard Constraints, Soft Constraints, Box Constraints, only
+      box constraints implemented, others appear as penalty in objective
+    number of constraints: 2 per variable (box), other constraints unknown (simulator
+      fails)
+    type of dynamicism: ''
+    form of noise model: real-life (unknown)
+    type of noise space: Observational
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Expensive objectives
+    scientific motivation: Address the lack of real-life expensive benchmarks
+    limitations: single-objective only, constraints are handled naively (penalty in
+      objective), no parallelization
+    implementation languages: Python
+    links to implementations: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+    approximate evaluation time: 2 to 80 seconds
+    links to usage examples: ''
+    general: ''
+- name: Gasoline direct injection engine design
+  suite/generator/single: Single Problem
+  variable type: Continuous, Ordinal
+  dimensionality: '7'
   objectives: '2'
-  dimensionality: 5
-  variable type: ''
   constraints: 'yes'
-  inequality constraints: 5
   dynamic: 'no'
   noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 2 in the RCM suite, 5 inequality constraints.'
-- &rcm3
-  name: RCM3 - Two bar truss design
-  suite/generator/single: single
+  multimodal: Unknown
+  multi-fidelity: 'yes'
+  source (real-world/artificial): Real-World Application
+  implementation: https://doi.org/10.1016/j.ejor.2022.08.032
+  textual description: 'A multi-objective optimization problem seeking to minimize
+    fuel consumption and NOx emissions over a two-minute dynamic duty cycle, subject
+    to five constraints (turbine inlet temperature, number of knock occurrences, peak
+    cylinder pressure, peak cylinder pressure rise, total work). Seven decision variables
+    are defined: four define the hardware choices of cylinder compression ratio, turbo
+    machinery and EGR cooler sizing; three relate to control variables that parameterise
+    the engine control logic.'
+  reference: ''
+  other info:
+    name: null
+    partial evaluations: Unknown
+    full name: ''
+    constraint properties: Hard Constraints, Soft Constraints
+    number of constraints: '5'
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Expensive
+    scientific motivation: ''
+    limitations: Proprietary
+    implementation languages: Matlab Simulink and Wave RT co-simulation
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+- name: BEACON
+  suite/generator/single: Generator
+  variable type: Continuous
+  dimensionality: scalable
   objectives: '2'
-  dimensionality: 3
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 3
+  constraints: 'no'
   dynamic: 'no'
   noise: 'no'
-  multimodal: ''
+  multimodal: 'yes'
   multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 3 in the RCM suite, 3 inequality constraints.'
-- &rcm4
-  name: RCM4 - Welded beam design
-  suite/generator/single: single
+  source (real-world/artificial): Artificially Generated
+  implementation: https://github.com/Stebbet/BEACON/
+  textual description: Generator for bi-objective benchmark problems with explicitly
+    controlled correlations in continuous spaces.
+  reference: https://dl.acm.org/doi/10.1145/3712255.3734303
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: Continuous Bi-objective Benchmark problems with Explicit Adjustable
+      COrrelatioN control
+    constraint properties: Box Constraints
+    number of constraints: '0'
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: Random
+    key challenges / characteristics: Multimodal, different correlations among objectives
+    scientific motivation: Controlled correlation among objectives
+    limitations: No analytical Pareto front, only bi-objective
+    implementation languages: Python
+    links to implementations: https://github.com/Stebbet/BEACON/tree/main
+    approximate evaluation time: Negligible
+    links to usage examples: ''
+    general: ''
+- name: TulipaEnergy
+  suite/generator/single: Problem Suite
+  variable type: Continuous
+  dimensionality: scalable
+  objectives: '1'
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'no'
+  multi-fidelity: 'yes'
+  source (real-world/artificial): Real-World Application
+  implementation: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
+  textual description: Determine the optimal investment and operation decisions  for
+    different types of assets in the energy system (production, consumption, conversion,
+    storage, and transport), while minimizing loss of load.
+  reference: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
+  other info:
+    name: null
+    partial evaluations: Unknown
+    full name: TulipaEnergyModel.jl
+    constraint properties: Hard Constraints, Soft Constraints
+    number of constraints: millions
+    type of dynamicism: none
+    form of noise model: "depends on input \u2014 still working on stochastic inputs"
+    type of noise space: Parameter
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: modeled as a potentially very large linear program,
+      different fidelities possible
+    scientific motivation: new techniques for solving large whitebox linear optimization
+      problems
+    limitations: not yet stochastic
+    implementation languages: Julia / JMP
+    links to implementations: https://github.com/TulipaEnergy/TulipaEnergyModel.jl
+    approximate evaluation time: from minutes to hours
+    links to usage examples: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
+    general: ''
+- name: ATO
+  suite/generator/single: Single Problem
+  variable type: Continuous
+  dimensionality: '10'
   objectives: '2'
-  dimensionality: 4
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 4
+  constraints: 'no'
   dynamic: 'no'
   noise: 'no'
-  multimodal: ''
+  multimodal: 'no'
   multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 4 in the RCM suite, 4 inequality constraints.'
-- &rcm5
-  name: RCM5 - Disc brake design
-  suite/generator/single: single
+  source (real-world/artificial): Real-World Application
+  implementation: '-'
+  textual description: Parameters of the Modules of the Automatic Train Operation
+    should be optimized. The parameters are continuous with different ranges. There
+    are two objectives (minimizing energy consumption, minimizing driving duration.
+  reference: ''
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: ''
+    constraint properties: ''
+    number of constraints: ''
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: ''
+    scientific motivation: ''
+    limitations: ''
+    implementation languages: ''
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+- name: Brachytherapy treatment planning
+  suite/generator/single: Problem Suite
+  variable type: Continuous
+  dimensionality: 100-500
+  objectives: 2-3
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'yes'
+  source (real-world/artificial): Real-World Application
+  implementation: ''
+  textual description: Treatment planning for internal radiation therapy
+  reference: https://www.sciencedirect.com/science/article/pii/S1538472123016781
+  other info:
+    name: null
+    partial evaluations: Present
+    full name: Brachytherapy treatment planning
+    constraint properties: Hard Constraints
+    number of constraints: scalable
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Multi-objective; aggregated objectives
+    scientific motivation: ''
+    limitations: No public source code
+    implementation languages: ''
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+- name: FleetOpt
+  suite/generator/single: Single Problem
+  variable type: Integer
+  dimensionality: 'Upper level: 54; lower level: 13208'
+  objectives: '1'
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: Unknown
+  multi-fidelity: 'no'
+  source (real-world/artificial): Real-World Application
+  implementation: 'Not public: was done for real client with their private data'
+  textual description: 'Healthcare organisation in the UK provided data about their
+    current fleet of vehicles to conduct non-emergency heathcare trips in the Argyll
+    and Bute region of Scotland, UK. They also provided historical data about the
+    trips the vehicles took and about the bases which the vehicles return to. The
+    aim is to reduce the existing fleet of vehicles while still ensuring all trips
+    can be covered. Moving a vehicle from one base to another to help cover trips
+    is OK as long as the original base can still cover its trips. Link to paper with
+    more details: https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  reference: 'https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  other info:
+    name: null
+    partial evaluations: Present
+    full name: ''
+    constraint properties: ''
+    number of constraints: ''
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: ''
+    scientific motivation: ''
+    limitations: ''
+    implementation languages: ''
+    links to implementations: ''
+    approximate evaluation time: ''
+    links to usage examples: ''
+    general: ''
+- name: Building spatial design
+  suite/generator/single: Single Problem
+  variable type: Continuous, Boolean
+  dimensionality: scalable depending on problem size (e.g. 90 for)
   objectives: '2'
-  dimensionality: 4
-  variable type: ''
   constraints: 'yes'
-  inequality constraints: 4
   dynamic: 'no'
   noise: 'no'
-  multimodal: ''
+  multimodal: Unknown
   multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 5 in the RCM suite, 4 inequality constraints.'
-- &rcm10
-  name: RCM10 - Two bar plane truss design
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: 2
-  variable type: ''
+  source (real-world/artificial): Real-World Application
+  implementation: https://github.com/TUe-excellent-buildings/BSO-toolbox
+  textual description: 'Optimise the spatial layout of a building to: minimise energy
+    consumption for climate control, and minimise the strain on the structure'
+  reference: https://hdl.handle.net/1887/81789
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: Building spatial design
+    constraint properties: Hard Constraints, Box Constraints, Permutation Constraints
+    number of constraints: 2065 (as example, depends on problem size)
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: ''
+    key challenges / characteristics: Many hard constraints (simulator cannot evaluate
+      the solution if these are violated); Mixed-variable search space (continuous
+      + binary); Multiple objectives; (Somewhat) expensive solution evaluations
+    scientific motivation: ''
+    limitations: ''
+    implementation languages: C++
+    links to implementations: https://github.com/TUe-excellent-buildings/BSO-toolbox
+    approximate evaluation time: Roughly 1 second per evaluation for the smallest
+      considered design, and roughly 40 seconds for the larger designs we considered.
+      (Even the larger designs we considered are still relatively small for the considered
+      problem.)
+    links to usage examples: ''
+    general: ''
+- name: Electric Motor Design Optimization
+  suite/generator/single: Single Problem
+  variable type: Continuous, Integer
+  dimensionality: '13'
+  objectives: '1'
   constraints: 'yes'
-  inequality constraints: 2
   dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
+  noise: 'yes'
+  multimodal: 'yes'
   multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 10 in the RCM suite, 2 inequality constraints.'
-- &rcm11
-  name: RCM11 - Water resources management
-  suite/generator/single: single
-  objectives: '5'
-  dimensionality: 3
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 7
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 11 in the RCM suite, 7 inequality constraints.'
-- &rcm12
-  name: RCM12 - Simply supported beam design
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: 4
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 1
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 12 in the RCM suite, 1 inequality constraint.'
-- &rcm14
-  name: RCM14 - Multiple disk clutch brake design
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: 5
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 8
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 14 in the RCM suite, 8 inequality constraints.'
-- &rcm16
-  name: RCM16 - Cantilever beam design
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: 2
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 2
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 16 in the RCM suite, 2 inequality constraints.'
-- &rcm18
-  name: RCM18 - Front rail design
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: 3
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 3
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 18 in the RCM suite, 3 inequality constraints.'
-- &rcm20
-  name: RCM20 - Hydro-static thrust bearing design
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: 4
-  variable type: ''
-  constraints: 'yes'
-  inequality constraints: 7
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
-  source (real-world/artificial): 'real-world'
-  textual description: 'Problem 20 in the RCM suite, 7 inequality constraints.'
-- name: RCM / RWCMOP
+  source (real-world/artificial): Real-World Application
+  implementation: Implementation not freely available
+  textual description: The goal is to find a design of a synchronous electric motor
+    for power steering systems that minimizes costs and satisfies all constraints.
+  reference: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf (paper in Slovene)
+  other info:
+    name: null
+    partial evaluations: Not Present
+    full name: Electric Motor Design Optimization
+    constraint properties: Hard Constraints, Soft Constraints, Box Constraints
+    number of constraints: '12'
+    type of dynamicism: ''
+    form of noise model: ''
+    type of noise space: ''
+    other noise properties: ''
+    description of multimodality: Constraints are multimodal
+    key challenges / characteristics: Time-consuming solution evaluation, highly-constrained
+      problem
+    scientific motivation: Challenging to find good solutions in a limited time
+    limitations: 'Unavailability, even if available, it wouldn''t be helpful to use
+      for benchmarking due taking a long time to evaluate a single solution '
+    implementation languages: Python
+    links to implementations: Implementation not freely available
+    approximate evaluation time: 8 minutes
+    links to usage examples: ''
+    general: This is not an available problem, but could be interesting to show to
+      researchers which difficulties appear in real-world problems
+- name:  RW-GAN-Mario
   suite/generator/single: suite
-  objectives: '2,5'
-  dimensionality: 2-34
-  variable type: ''
+  objectives: 1-2
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1145/3321707.3321805
+  implementation: https://github.com/ttusar/coco-gbea
+  source (real-world/artificial): 'real-world'
+  textual description: 'RW-GAN-Mario is a component of GBEA'
+- name:  TopTrumps
+  suite/generator/single: suite
+  objectives: 1-2
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://doi.org/10.1145/3321707.3321805
+  implementation: https://github.com/ttusar/coco-gbea
+  source (real-world/artificial): 'real-world'
+  textual description: 'TopTrump is a component of GBEA'
+- name:  AutomotiveCrashworthiness
+  suite/generator/single: suite
+  objectives: '1'
+  dimensionality: 8–22 (fixed per instance)
+  variable type: continuous
+  constraints: 'no'
+  dynamic: 'no'
+  noise: 'yes'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://dl.acm.org/doi/pdf/10.1145/3646554
+  implementation: https://github.com/fx-long/CEOELA
+  source (real-world/artificial): 'real-world'
+  textual description: ''
+- name: PowertrainAnomalyTimeseries
+  suite/generator/single: suite
+  objectives: 1
+  dimensionality: 1–7 (problem-dependent; fixed per instance)
+  variable type: continuous
   constraints: 'yes'
-  inequality constraints: 0-29
-  equality constraints: 0-26
   dynamic: 'no'
   noise: 'no'
-  multimodal: ''
+  multimodal: 'yes'
   multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2021.100961
-  implementation: 'https://github.com/P-N-Suganthan/2021-RW-MOP'
-  language: matlab
+  reference: https://www.sciencedirect.com/science/article/pii/S2214579625000681
+  implementation: https://zenodo.org/records/14892756
   source (real-world/artificial): 'real-world'
-  textual description: 'A Benchmark-Suite of real-World constrained multi-objective optimization problems. Includes problems with 0-29 inequality constraints, 0-26 euqality constraints, including some with both types.'
-  problems:
-    - <<: *rcm2
-    - <<: *rcm3
-    - <<: *rcm4
-    - <<: *rcm5
-    - <<: *rcm10
-    - <<: *rcm11
-    - <<: *rcm12
-    - <<: *rcm14
-    - <<: *rcm16
-    - <<: *rcm18
-    - <<: *rcm20
+  textual description: ''
+- name: HPA
+  suite/generator/single: suite
+  objectives: 1–9
+  dimensionality: scalable
+  variable type: continuous
+  constraints: 'yes'
+  dynamic: 'no'
+  noise: 'no'
+  multimodal: 'yes'
+  multi-fidelity: 'no'
+  reference: https://link.springer.com/chapter/10.1007/978-981-96-3506-1_14
+  implementation: https://github.com/Nobuo-Namura/hpa
+  source (real-world/artificial): 'real-world-inspired'
+  textual description: ''
