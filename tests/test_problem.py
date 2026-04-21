@@ -1,4 +1,4 @@
-from opltools.schema import Constraints, OPLType, Problem, Variables
+from opltools.schema import OPLType, Problem
 from opltools.utils import ValueRange
 
 
@@ -9,14 +9,14 @@ class TestProblem:
         assert p.name == "P1"
         assert p.instances is None
 
-    def test_with_variables_and_constraints(self):
+    def test_with_tags_and_objectives(self):
         p = Problem(
             name="P1",
-            variables=Variables(continuous=3),
-            constraints=Constraints(linear=2),
+            tags={"convex", "smooth"},
+            objectives={1, 2},
         )
-        assert p.variables.continuous == 3
-        assert p.constraints.linear == 2
+        assert p.tags == {"convex", "smooth"}
+        assert p.objectives == {1, 2}
 
     def test_instances_list(self):
         p = Problem(name="P1", instances=["i1", "i2"])

@@ -20,7 +20,9 @@ def cmd_validate(args):
         return 0
     except ValidationError as e:
         for error in e.errors():
-            loc = " -> ".join(str(p) for p in error["loc"]) if error["loc"] else "(root)"
+            loc = (
+                " -> ".join(str(p) for p in error["loc"]) if error["loc"] else "(root)"
+            )
             print(f"{args.file}: {loc}: {error['msg']}")
         return 1
 
@@ -29,7 +31,9 @@ def main():
     parser = argparse.ArgumentParser(prog="opl", description="OPL tools")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    validate_parser = subparsers.add_parser("validate", help="Validate a YAML file against the Library schema")
+    validate_parser = subparsers.add_parser(
+        "validate", help="Validate a YAML file against the Library schema"
+    )
     validate_parser.add_argument("file", help="YAML file to validate")
 
     args = parser.parse_args()

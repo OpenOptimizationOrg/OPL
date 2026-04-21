@@ -4,13 +4,16 @@ from pydantic import BaseModel, model_validator
 
 class ValueRange(BaseModel):
     min: int | None
-    max: int | None
+    max: int | None = None
 
     @model_validator(mode="after")
     def _check(self) -> Self:
-        if not self.min and not self.max:
+        if self.min is None and self.max is None:
             raise ValueError("Variable range should have at least a min or max value.")
         return self
+
+    def __hash__(self):
+        return hash((self.min, self.max))
 
 
 def _none_min(a, b):
@@ -32,13 +35,12 @@ def _none_max(a, b):
 
 
 def union_range(
-    a: int | set[int] | ValueRange,
-    b: int | set[int] | ValueRange
+    a: int | set[int] | ValueRange, b: int | set[int] | ValueRange
 ) -> int | set[int] | ValueRange:
     if isinstance(a, int):
-        a = { a }
+        a = {a}
     if isinstance(b, int):
-        b = { b }
+        b = {b}
 
     if isinstance(a, set) and isinstance(b, set):
         res = a.union(b)
@@ -55,7 +57,7 @@ def union_range(
                 res.min = min(v, res.min)
         if res.max:
             for v in b:
-                res.max = max(v, res.max)#
+                res.max = max(v, res.max)  #
         return res
 
     raise Exception("BAM")

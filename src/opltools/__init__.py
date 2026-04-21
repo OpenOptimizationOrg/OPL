@@ -1,4 +1,16 @@
-from .schema import Problem, Suite, Generator, Implementation, Library, YesNoSome, Link, Reference, Variables, ValueRange, Constraints
+from .schema import (
+    Problem,
+    Suite,
+    Generator,
+    Implementation,
+    Library,
+    YesNoSome,
+    Link,
+    Reference,
+    Variable,
+    ValueRange,
+    Constraint,
+)
 
 __all__ = [
     "Problem",
@@ -9,7 +21,7 @@ __all__ = [
     "YesNoSome",
     "Link",
     "Reference",
-    "Constraints",
-    "Variables",
-    "ValueRange"
+    "Constraint",
+    "Variable",
+    "ValueRange",
 ]

@@ -1,17 +1,17 @@
-from opltools.schema import Constraints
+from opltools.schema import Constraint, YesNoSome
 
 
-class TestConstraints:
-    def test_defaults(self):
-        c = Constraints()
-        assert c.box == 0
-        assert c.linear == 0
-        assert c.function == 0
+class TestConstraint:
+    def test_default(self):
+        c = Constraint(type="box")
+        assert c.hard is None
+        assert c.equality is None
+        assert c.number is None
 
-    def test_union(self):
-        a = Constraints(box=1, linear=2, function=3)
-        b = Constraints(box=4, linear=5, function=6)
-        a.union(b)
-        assert a.box == {1, 4}
-        assert a.linear == {2, 5}
-        assert a.function == {3, 6}
+    def test_hard(self):
+        c = Constraint(type="box", hard="yes")
+        assert c.hard == YesNoSome.yes
+
+    def test_number(self):
+        c = Constraint(type="linear", number=5)
+        assert c.number == 5

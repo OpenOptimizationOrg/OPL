@@ -12,8 +12,8 @@ from opltools.schema import (
 
 class TestLibrary:
     def test_empty(self):
-        lib = Library(root=None)
-        assert lib.root is None
+        lib = Library(root={})
+        assert lib.root == {}
 
     def test_single_problem(self):
         lib = Library(root={"p1": Problem(name="P1")})
@@ -50,3 +50,33 @@ class TestLibrary:
     def test_suite_with_no_problems_is_valid(self):
         lib = Library(root={"s1": Suite(name="S1")})
         assert lib.root["s1"].problems is None
+
+    def test_fixup_fidelity_populates_from_problems(self):
+        lib = Library(root={
+            "p1": Problem(name="P1", fidelity_levels={1, 2}),
+            "p2": Problem(name="P2", fidelity_levels={2, 3}),
+            "s1": Suite(name="S1", problems={"p1", "p2"}),
+        })
+        assert lib.root["s1"].fidelity_levels == {1, 2, 3}
+
+    def test_fixup_fidelity_extends_existing(self):
+        lib = Library(root={
+            "p1": Problem(name="P1", fidelity_levels={5}),
+            "s1": Suite(name="S1", problems={"p1"}, fidelity_levels={10}),
+        })
+        assert lib.root["s1"].fidelity_levels == {5, 10}
+
+    def test_fixup_fidelity_with_problems_without_levels(self):
+        lib = Library(root={
+            "p1": Problem(name="P1"),
+            "p2": Problem(name="P2", fidelity_levels={7}),
+            "s1": Suite(name="S1", problems={"p1", "p2"}),
+        })
+        assert lib.root["s1"].fidelity_levels == {7}
+
+    def test_fixup_fidelity_all_problems_without_levels(self):
+        lib = Library(root={
+            "p1": Problem(name="P1"),
+            "s1": Suite(name="S1", problems={"p1"}),
+        })
+        assert lib.root["s1"].fidelity_levels == set()
