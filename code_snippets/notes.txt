@@ -8,3 +8,4 @@ Encountered issues:
 2) VehicleDynamics is not a problem, only dataset
 3) AMVOP: no Github available according to database (haven't double-checked)
 4) AutomotiveCrashworthiness: Not integrated. The linked code is not generated aliases of the crashworthiness problems. It's a pipeline that extracts ELA features from generated problems. Problem generator is in a .py file. 
+5) gbea: Not integrated. Needs repository cloning. 
