@@ -2,7 +2,13 @@
 
 Evaluates multi-fidelity benchmark functions from the [mf2](https://github.com/sjvrijn/mf2) library — a collection of analytical multi-fidelity test functions commonly used for benchmarking surrogate-based and multi-fidelity optimization methods.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `mf2` and `setuptools` packages are resolved automatically.
 

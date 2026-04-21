@@ -2,7 +2,13 @@
 
 Evaluates functions from the **GNBG benchmark suite**, a set of structured multimodal optimization problems defined via parameter files (`.mat`) and evaluated through a Python implementation.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The required dependencies are:
 

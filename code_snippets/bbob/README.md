@@ -2,7 +2,13 @@
 
 Evaluates a function from the [COCO](https://github.com/numbbo/coco) **bbob** suite — the core set of 24 noiseless single-objective benchmark functions widely used for comparing continuous optimizers.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `coco-experiment` package is resolved automatically.
 

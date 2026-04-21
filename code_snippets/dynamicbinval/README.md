@@ -2,7 +2,13 @@
 
 Evaluates the **DynamicBinValUniform** problem from the [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter) — a dynamic pseudo-Boolean benchmark where bit weights change over time, used for studying the behavior of discrete optimizers under non-static objective functions.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `ioh` package is resolved automatically.
 

@@ -2,7 +2,13 @@
 
 Evaluates a function from the [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter) **SBOX** problem class(strict box-constrained problems) — a re-implementation of the 24 noiseless real-valued BBOB test functions supported on [-5, 5]^n.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `ioh` package is resolved automatically.
 

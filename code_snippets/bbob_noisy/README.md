@@ -2,7 +2,13 @@
 
 Evaluates a function from the [COCO](https://github.com/numbbo/coco) **bbob-noisy** suite — a set of 30 noisy benchmark functions that add various noise models (Gaussian, uniform, Cauchy) to the base BBOB problems, designed for testing optimizer robustness under noisy evaluations.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `coco-experiment` package is resolved automatically.
 

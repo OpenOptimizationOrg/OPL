@@ -2,7 +2,13 @@
 
 Evaluates a function from the [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter) **CEC2022** benchmark suite — 12 single-objective bound-constrained problems used in the CEC2022 competition on real-parameter optimization.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `ioh` package is resolved automatically.
 

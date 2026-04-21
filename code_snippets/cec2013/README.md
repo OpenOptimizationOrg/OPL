@@ -2,7 +2,13 @@
 
 Evaluates a function from the [IOHexperimenter](https://github.com/IOHprofiler/IOHexperimenter) **CEC2013 niching** benchmark suite — a set of 20 multimodal problems used for testing niching and multi-modal optimization algorithms.
 
-## Prerequisites
+## Quick Start
+
+1. Install [uv](https://docs.astral.sh/uv/) if you don't have it yet:
+
+```bash
+   pip install uv
+```
 
 No extra setup is needed beyond having `uv` installed. The `ioh` package is resolved automatically.
 
