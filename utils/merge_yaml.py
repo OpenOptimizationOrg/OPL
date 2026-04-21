@@ -1,5 +1,4 @@
 import yaml
-import os
 import sys
 from pathlib import Path
 from typing import List, Dict
@@ -8,7 +7,7 @@ from typing import List, Dict
 parent = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(parent))
 
-from utils.validate_yaml import read_data, validate_data
+from utils.validate_yaml import read_data, validate_data, validate_yaml
 
 
 def write_data(filepath: str, data: List[Dict]) -> bool:
@@ -34,17 +33,6 @@ def update_existing_data(
     existing_data.extend(new_data)
     write_success = write_data(out_file, existing_data)
     return write_success
-
-
-def delete_new_file(file_path: str) -> bool:
-    # Delete the new file after merging
-    try:
-        os.remove(file_path)
-        print(f"::notice::Deleted new problem file {file_path}.")
-    except OSError as e:
-        print(f"::error::Error deleting file {file_path}: {e}")
-        return False
-    return True
 
 
 def merge_new_problems(new_problems_yaml_path: str, big_yaml_path: str) -> bool:
@@ -76,15 +64,17 @@ def merge_new_problems(new_problems_yaml_path: str, big_yaml_path: str) -> bool:
         print(f"::error::Failed to update existing problems data in {big_yaml_path}.")
         return False
 
-    # Remove the new file after merging
-    rm_status = delete_new_file(new_problems_yaml_path)
-    if not rm_status:
+    # Validate resulting data
+    final_status, final_data = validate_yaml(big_yaml_path)
+    if final_status != 0 or final_data is None:
         print(
-            f"::warning::Merged data into {big_yaml_path}, but failed to delete "
-            f"new problem file {new_problems_yaml_path}."
+            f"::error::Merged data in {big_yaml_path} is not valid after merging new problems."
         )
+        return False
 
-    print(f"::notice::Merged {len(new_data)} new problems into {big_yaml_path}.")
+    print(
+        f"::notice::Merged {len(new_data)} new problems into {big_yaml_path}. {new_problems_yaml_path} can now be deleted."
+    )
     return True
 
 
