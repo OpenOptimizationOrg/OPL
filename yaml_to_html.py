@@ -21,6 +21,32 @@ def linkify_cell(value):
 
     return URL_RE.sub(repl, value)
 
+
+def to_problem_id(value):
+    if not isinstance(value, str):
+        return ""
+
+    normalized = value.strip().lower().replace("-", "_").replace(" ", "_")
+    normalized = re.sub(r"[^a-z0-9_]", "", normalized)
+    normalized = re.sub(r"_+", "_", normalized).strip("_")
+    return normalized
+
+
+def add_problem_id_row_attributes(table_html, problem_ids):
+    marker = "<tbody>"
+    if marker not in table_html:
+        return table_html
+
+    body_start = table_html.index(marker) + len(marker)
+    prefix = table_html[:body_start]
+    body = table_html[body_start:]
+
+    for problem_id in problem_ids:
+        safe_id = escape(problem_id, quote=True)
+        body = body.replace("<tr>", f'<tr data-problem-id="{safe_id}">', 1)
+
+    return prefix + body
+
 yaml_file = "problems.yaml"
 
 html_dir = "docs/"
@@ -33,7 +59,15 @@ html_table_template = f"{html_dir}table_template.html"
 
 # Load data
 with open(yaml_file) as yaml_input:
-    data = pd.json_normalize(yaml.safe_load(yaml_input))
+    raw_data = pd.json_normalize(yaml.safe_load(yaml_input))
+
+if "problem_id" in raw_data.columns:
+    problem_ids = raw_data["problem_id"].fillna("").map(str)
+else:
+    problem_ids = raw_data["name"].fillna("").map(str).map(to_problem_id)
+
+problem_ids = problem_ids.where(problem_ids.str.len() > 0, raw_data["name"].fillna("").map(str).map(to_problem_id))
+data = raw_data.copy()
 
 # Choose desired columns
 all_columns = False
@@ -65,6 +99,8 @@ table = data.to_html(render_links=False,
                      classes=["display compact", "display", "styled-table"],  # Set display style
                      border=0,
                      na_rep="")  # Leave NaN cells empty
+
+table = add_problem_id_row_attributes(table, problem_ids.tolist())
 
 # Add footer to facilitate individual column search
 idx = table.index('</table>')

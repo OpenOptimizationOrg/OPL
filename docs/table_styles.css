@@ -257,6 +257,103 @@ h2 {
     font-style: italic;
 }
 
+.snippet-shell {
+    margin-top: 0.85rem;
+    border: 1px solid var(--opl-border);
+    border-radius: 10px;
+    background: #f8fbfe;
+    padding: 0.7rem;
+}
+
+.snippet-title {
+    margin: 0;
+    font-size: 0.84rem;
+    color: #23415e;
+}
+
+.snippet-hint {
+    margin: 0.4rem 0 0.55rem;
+    font-size: 0.82rem;
+    color: var(--opl-muted);
+}
+
+.snippet-meta {
+    margin: 0.35rem 0 0.45rem;
+    font-size: 0.82rem;
+}
+
+.snippet-meta a {
+    color: #0a5d74;
+    text-decoration: underline;
+}
+
+.snippet-meta a[aria-disabled="true"] {
+    color: var(--opl-muted);
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.snippet-code {
+    margin: 0;
+    background: #11263b;
+    color: #e9f3ff;
+    border-radius: 8px;
+    padding: 0.7rem;
+    max-height: 320px;
+    overflow: auto;
+}
+
+.snippet-code code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    white-space: pre;
+}
+
+.snippet-readme {
+    margin-top: 0.35rem;
+    background: #ffffff;
+    border: 1px solid var(--opl-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    max-height: 380px;
+    overflow: auto;
+    font-size: 0.83rem;
+    line-height: 1.45;
+}
+
+.snippet-readme h1,
+.snippet-readme h2,
+.snippet-readme h3,
+.snippet-readme h4 {
+    margin: 0.7rem 0 0.45rem;
+    color: #18334e;
+}
+
+.snippet-readme p,
+.snippet-readme ul,
+.snippet-readme ol {
+    margin: 0.45rem 0;
+}
+
+.snippet-readme pre {
+    margin: 0.5rem 0;
+    background: #11263b;
+    color: #e9f3ff;
+    border-radius: 8px;
+    padding: 0.65rem;
+    overflow: auto;
+}
+
+.snippet-readme code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 0.8rem;
+}
+
+.snippet-readme a {
+    color: #0a5d74;
+}
+
 @media (max-width: 900px) {
     body {
         margin: 0.6rem;
