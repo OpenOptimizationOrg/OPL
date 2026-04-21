@@ -24,7 +24,19 @@
 <p>
 Submit problems and corrections on <a target="_blank" href="https://github.com/OpenOptimizationOrg/OPL/">GitHub</a> with pull requests / issues, through the <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSehQp24AuFAH2j9jizDhq8K_BYgNGMKXWTMu6s-2RwEJrK59Q/viewform">Google form</a>, or by email: <a href="mailto:koen.van.der.blom@cwi.nl" itemprop="email">koen.van.der.blom@cwi.nl</a>
 </p>
-<table class="dataframe display compact display styled-table" id="problems">
+<section class="table-shell">
+    <div class="table-toolbar">
+        <div class="toolbar-title">Visible columns</div>
+        <div class="toolbar-actions">
+            <button type="button" class="toolbar-btn" id="show-all-columns">Show all</button>
+            <button type="button" class="toolbar-btn" id="hide-all-columns">Hide all</button>
+        </div>
+        <div class="column-controls">
+            <label class="column-chip"><input class="col-toggle" type="checkbox" data-column="0" checked><span>name</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="1"><span>textual description</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="2" checked><span>suite/generator/single</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="3" checked><span>objectives</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="4" checked><span>dimensionality</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="5" checked><span>variable type</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="6" checked><span>constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="7" checked><span>dynamic</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="8" checked><span>noise</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="9" checked><span>multi-fidelity</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="10" checked><span>source (real-world/artificial)</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="11"><span>reference</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="12"><span>implementation</span></label>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <table class="dataframe display compact display styled-table" id="problems">
   <thead>
     <tr style="text-align: right;">
       <th>name</th>
@@ -1215,46 +1227,161 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
     </tr>
   </tbody>
 <tfoot><tr><th>name</th> <th>textual description</th> <th>suite/generator/single</th> <th>objectives</th> <th>dimensionality</th> <th>variable type</th> <th>constraints</th> <th>dynamic</th> <th>noise</th> <th>multi-fidelity</th> <th>source (real-world/artificial)</th> <th>reference</th> <th>implementation</th></tr> </tfoot></table>
+    </div>
+</section>
+
+<section class="details-shell" id="problem-details" aria-live="polite">
+    <h3 class="details-title">Problem details</h3>
+    <p class="details-hint" id="problem-details-hint">Click a table row to inspect full details.</p>
+    <dl class="details-grid" id="problem-details-content"></dl>
+</section>
+
 
 <script>
-new DataTable('#problems', {
+const table = new DataTable('#problems', {
     layout: {
         topStart: 'search',
         topEnd: null,
         bottomStart: 'info',
         bottom: 'paging',
         bottomEnd: 'pageLength'
-        },
-    lengthMenu: [15, 25, 50, -1],
+    },
+    lengthMenu: [10, 15, 25, 50, -1],
     initComplete: function () {
         this.api()
             .columns()
             .every(function () {
-                let column = this;
-                let title = column.footer().textContent;
- 
-                // Create input element
-                let input = document.createElement('input');
-                input.placeholder = title;
+                const column = this;
+                const title = column.footer().textContent;
+                const input = document.createElement('input');
+                input.placeholder = `Filter ${title}`;
                 column.footer().replaceChildren(input);
- 
-                // Event listener for user input
+
                 input.addEventListener('keyup', () => {
-                    if (column.search() !== this.value) {
+                    if (column.search() !== input.value) {
                         column.search(input.value).draw();
                     }
                 });
 
-                // Stop search boxes from applying sorting
-                input.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                // Prevent sorting when interacting with filter inputs.
+                input.addEventListener('click', (event) => {
+                    event.stopPropagation();
                 });
             });
     }
 });
 
-// Move row with search boxes to second row
-$('#problems tfoot tr').appendTo('#problems thead');
+const footerRow = document.querySelector('#problems tfoot tr');
+const thead = document.querySelector('#problems thead');
+if (footerRow && thead) {
+    thead.appendChild(footerRow);
+}
+
+const detailsHint = document.getElementById('problem-details-hint');
+const detailsContent = document.getElementById('problem-details-content');
+
+const stripHtml = (value) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = value || '';
+    return wrapper.textContent || wrapper.innerText || '';
+};
+
+const escapeHtml = (value) => {
+    const wrapper = document.createElement('div');
+    wrapper.textContent = value || '';
+    return wrapper.innerHTML;
+};
+
+const renderRowDetails = (rowApi) => {
+    const rowData = rowApi.data();
+    if (!rowData || !detailsContent) {
+        return;
+    }
+
+    const headers = table
+        .columns()
+        .header()
+        .toArray()
+        .map((header) => header.textContent.trim());
+
+    const detailsHtml = headers
+        .map((label, index) => {
+            const value = rowData[index] || '<span class="details-empty">n/a</span>';
+            return `<div class="detail-item"><dt>${escapeHtml(label)}</dt><dd>${value}</dd></div>`;
+        })
+        .join('');
+
+    const name = stripHtml(rowData[0]);
+    if (detailsHint) {
+        detailsHint.textContent = name ? `Selected: ${name}` : 'Selected row';
+    }
+
+    detailsContent.innerHTML = detailsHtml;
+};
+
+const applyColumnVisibility = (redraw = true) => {
+    document.querySelectorAll('.col-toggle').forEach((toggle) => {
+        const index = Number(toggle.getAttribute('data-column'));
+        const chip = toggle.closest('.column-chip');
+
+        if (chip) {
+            chip.classList.toggle('is-off', !toggle.checked);
+        }
+
+        table.column(index).visible(toggle.checked, false);
+    });
+
+    table.columns.adjust().draw(redraw);
+};
+
+document.querySelectorAll('.col-toggle').forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+        applyColumnVisibility(false);
+    });
+});
+
+const setAllColumns = (visible) => {
+    document.querySelectorAll('.col-toggle').forEach((toggle) => {
+        toggle.checked = visible;
+    });
+
+    applyColumnVisibility(false);
+};
+
+const showAllButton = document.getElementById('show-all-columns');
+if (showAllButton) {
+    showAllButton.addEventListener('click', () => setAllColumns(true));
+}
+
+const hideAllButton = document.getElementById('hide-all-columns');
+if (hideAllButton) {
+    hideAllButton.addEventListener('click', () => setAllColumns(false));
+}
+
+const tableBody = document.querySelector('#problems tbody');
+if (tableBody) {
+    tableBody.addEventListener('click', (event) => {
+        const targetRow = event.target.closest('tr');
+        if (!targetRow) {
+            return;
+        }
+
+        const rowApi = table.row(targetRow);
+        if (!rowApi || !rowApi.any()) {
+            return;
+        }
+
+        document.querySelectorAll('#problems tbody tr.is-active').forEach((row) => {
+            row.classList.remove('is-active');
+        });
+
+        targetRow.classList.add('is-active');
+        renderRowDetails(rowApi);
+    });
+}
+
+// Honor default checkbox states (some columns start hidden).
+applyColumnVisibility(false);
 
 </script>
 
