@@ -9,7 +9,7 @@ class OPLType(Enum):
     problem = "problem"
     suite = "suite"
     generator = "generator"
-    implementation = 'implementation'
+    implementation = "implementation"
 
 
 class YesNoSome(Enum):
@@ -26,7 +26,7 @@ class Link(BaseModel):
 
 class Thing(BaseModel):
     type: OPLType
-    model_config = ConfigDict(extra='allow')
+    model_config = ConfigDict(extra="allow")
 
 
 class Objectives(RootModel):
@@ -75,7 +75,7 @@ class Usage(BaseModel):
 
 
 class Implementation(Thing):
-    type: OPLType= OPLType.implementation
+    type: OPLType = OPLType.implementation
     name: str
     description: str
     links: list[Link] | None = None
@@ -89,7 +89,7 @@ class ProblemLike(Thing):
     long_name: str | None = None
     description: str | None = None
     tags: set[str] | None = None
-    references: set[Reference] | None = None
+    references: list[Reference] | None = None
     implementations: set[str] | None = None
     objectives: set[int] | None = None
     variables: Variables | None = None
@@ -106,29 +106,31 @@ class ProblemLike(Thing):
 
 
 class Problem(ProblemLike):
-    type:OPLType = OPLType.problem
+    type: OPLType = OPLType.problem
     instances: ValueRange | list[str] | None = None
 
 
 class Suite(ProblemLike):
-    type:OPLType = OPLType.suite
+    type: OPLType = OPLType.suite
     problems: set[str] | None = None
 
 
 class Generator(ProblemLike):
-    type:OPLType = OPLType.generator
+    type: OPLType = OPLType.generator
 
 
 class Library(RootModel):
     root: dict[str, Problem | Generator | Suite | Implementation] | None
 
-    def _check_id_references(self, ids, type:OPLType) -> None:
+    def _check_id_references(self, ids, type: OPLType) -> None:
         if not self.root:
             return
         for id in ids:
             if id in self.root:
                 if self.root[id].type != type:
-                    raise ValueError(f"ID {id} is a {self.root[id].name}, expected a {type.name}")
+                    raise ValueError(
+                        f"ID {id} is a {self.root[id].name}, expected a {type.name}"
+                    )
             else:
                 raise ValueError(f"Missing {type.name} with id '{id}'")
 
@@ -145,10 +147,15 @@ class Library(RootModel):
             if isinstance(thing, Suite) and thing.problems:
                 for problem_id in thing.problems:
                     if problem_id not in self.root:
-                        raise ValueError(f"Suite {id} references problem with undefined id '{problem_id}'.")
+                        raise ValueError(
+                            f"Suite {id} references problem with undefined id '{problem_id}'."
+                        )
                     if self.root[problem_id].type != OPLType.problem:
-                        raise ValueError(f"Suite {id} references problem with id '{problem_id}' but id is a {self.root[problem_id].type.name}.")
+                        raise ValueError(
+                            f"Suite {id} references problem with id '{problem_id}' but id is a {self.root[problem_id].type.name}."
+                        )
         return self
+
 
 __all__ = [
     "Problem",
@@ -158,5 +165,5 @@ __all__ = [
     "Library",
     "YesNoSome",
     "Link",
-    "Reference"
+    "Reference",
 ]

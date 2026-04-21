@@ -33,19 +33,19 @@ things["cobi_problem"] = Generator(
         "multi-peak",
         "convex-quadratic",
     },
-    references={
+    references=[
         Reference(
             title="Pareto Set Characterization in Constrained Multiobjective Optimization and the COBI Problem Generator",
             authors=["Anne Auger", "Dimo Brockhoff", "Luka Opravˇs", "Tea Tuˇsar"],
             link=Link(type="arxiv", url="https://arxiv.org/abs/2604.09131"),
         )
-    },
+    ],
     objectives={2},
-    variables=Variables(continuous=ValueRange(min=1, max=np.inf)),  # inf?
+    variables=Variables(continuous=ValueRange(min=1, max=100)),  # inf?
     implementations=["cobi_impl"],
     can_evaluate_objectives_independently=YesNoSome.no,
     constraints=Constraints(
-        box=1, linear=np.inf, function=np.inf
+        box=1, linear=100, function=100
     ),  # convex-quadratic or multipeak, one box per variable?
     noise_type={"none"},
     soft_constraints=None,
