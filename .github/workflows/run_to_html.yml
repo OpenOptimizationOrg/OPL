@@ -1,18 +1,13 @@
-name: New Problem Check
+name: Update HTML files
 
 on:
   pull_request:
     paths:
       - "problems.yaml"
-  workflow_dispatch: # allow triggering workflow manually
-    inputs:
-      reason:
-        description: "Reason for Running"
-        required: false
-        default: "Manually trigger problem check"
 
 jobs:
   generate_html:
+    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.event.pull_request.head.ref }}
           # Value already defaults to true, but `persist-credentials` is required to push new commits to the repository.
           persist-credentials: true
 
