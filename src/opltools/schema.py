@@ -123,7 +123,8 @@ class Library(RootModel):
     root: dict[str, Problem | Generator | Suite | Implementation] | None
 
     def _check_id_references(self, ids, type:OPLType) -> None:
-        if not self.root: return
+        if not self.root:
+            return
         for id in ids:
             if id in self.root:
                 if self.root[id].type != type:
@@ -136,7 +137,8 @@ class Library(RootModel):
 
     @model_validator(mode="after")
     def validate(self) -> Self:
-        if not self.root: return self
+        if not self.root:
+            return self
 
         # Make sure all problems referenced in suites exists
         for id, thing in self.root.items():
