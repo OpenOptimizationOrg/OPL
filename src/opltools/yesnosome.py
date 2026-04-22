@@ -5,7 +5,7 @@ class YesNoSome(Enum):
     yes = "yes"
     no = "no"
     some = "some"
-    unknown = "?"
+    unknown = "unknown"
 
 
 def union(
