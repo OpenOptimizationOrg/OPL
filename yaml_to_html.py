@@ -51,34 +51,34 @@ default_columns = ["name",
                    "reference",
                    "implementation"]
 
-# Load data
-with open(yaml_file) as yaml_input:
-    data = pd.json_normalize(yaml.safe_load(yaml_input))
-
-
 if __name__ == "__main__":
-  if all_columns is False:
+    # Load data
+    with open(yaml_file) as yaml_input:
+      data = pd.json_normalize(yaml.safe_load(yaml_input))
+    
+    
+    if all_columns is False:
       columns = default_columns
       data = data[columns]
-
-  data = data.map(linkify_cell)
-
-  # Generate plain table
-  table = data.to_html(render_links=False,
+    
+    data = data.map(linkify_cell)
+    
+    # Generate plain table
+    table = data.to_html(render_links=False,
                        escape=False,  # Don't escape HTML in cells (to allow links)
                        index=False,
                        table_id="problems",
                        classes=["display compact", "display", "styled-table"],  # Set display style
                        border=0,
                        na_rep="")  # Leave NaN cells empty
-
-  # Add footer to facilitate individual column search
-  idx = table.index('</table>')
-  final_table = table[:idx] + "<tfoot><tr>" + " ".join(["<th>"+ i +"</th>" for i in data.columns])+"</tr> </tfoot>" + table[idx:]
-
-  default_hidden_columns = {"textual description", "reference", "implementation"}
-
-  column_toggles = "".join(
+    
+    # Add footer to facilitate individual column search
+    idx = table.index('</table>')
+    final_table = table[:idx] + "<tfoot><tr>" + " ".join(["<th>"+ i +"</th>" for i in data.columns])+"</tr> </tfoot>" + table[idx:]
+    
+    default_hidden_columns = {"textual description", "reference", "implementation"}
+    
+    column_toggles = "".join(
       [
           (
               f'<label class="column-chip">'
@@ -89,23 +89,23 @@ if __name__ == "__main__":
           )
           for i, col in enumerate(data.columns)
       ]
-  )
-
-  with open(html_table_template, encoding="utf-8") as template_file:
+    )
+    
+    with open(html_table_template, encoding="utf-8") as template_file:
       table_template = template_file.read()
-
-  table_markup = (
+    
+    table_markup = (
       table_template
       .replace("__COLUMN_TOGGLES__", column_toggles)
       .replace("__TABLE__", final_table)
-  )
-
-  # Write table to file
-  with open(html_table, "w", encoding="utf-8") as table_file:
+    )
+    
+    # Write table to file
+    with open(html_table, "w", encoding="utf-8") as table_file:
       table_file.write(table_markup)
-
-  # Merge table and scripts into HTML page
-  with open(html_index, "wb") as output_file:
+    
+    # Merge table and scripts into HTML page
+    with open(html_index, "wb") as output_file:
       for part_path in [html_header, html_table, html_scripts, html_footer]:
           with open(part_path, "rb") as part_file:
               shutil.copyfileobj(part_file, output_file)
