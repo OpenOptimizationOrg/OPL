@@ -1,7 +1,16 @@
 from enum import Enum
 from typing import Any
 from typing_extensions import Self
-from pydantic import BaseModel, RootModel, ConfigDict, model_validator
+from typing import List, Dict, Set
+from pydantic import (
+    BaseModel,
+    RootModel,
+    ConfigDict,
+    model_validator,
+    Field,
+    ValidationInfo,
+    field_validator,
+)
 
 from .yesnosome import YesNoSome
 from .utils import ValueRange, union_range
@@ -93,6 +102,15 @@ class Usage(BaseModel):
     code: str
 
 
+def forbid_value(field: str, forbidden: str):
+    def validator(cls, v: str):
+        if v == forbidden:
+            raise ValueError(f"{field} cannot be '{forbidden}'")
+        return v
+
+    return field_validator(field)(validator)
+
+
 class Implementation(Thing):
     type: OPLType = OPLType.implementation
     name: str
@@ -101,6 +119,8 @@ class Implementation(Thing):
     language: str | None = None
     evaluation_time: set[str] | None = None
     requirements: str | list[str] | None = None
+
+    _v = forbid_value("name", "template")  # to prevent copy-paste errors
 
 
 class ProblemLike(Thing):
@@ -123,6 +143,8 @@ class ProblemLike(Thing):
     code_examples: set[str] | None = None
     source: set[str] | None = None
 
+    _v = forbid_value("name", "template")  # to prevent copy-paste errors
+
     def __hash__(self):
         return hash((self.type, self.name))
 
@@ -139,6 +161,41 @@ class Suite(ProblemLike):
 
 class Generator(ProblemLike):
     type: OPLType = OPLType.generator
+
+
+def _update_seen(
+    fields: List[str], seen: Dict[str, Set], duplicates: Dict[str, Set], entry: Thing
+):
+    for field in fields:
+        value = getattr(entry, field, None)
+        if value is None:
+            continue
+        seen_value = f"{str(entry.type)}:{value}"
+        if seen_value in seen[field]:
+            duplicates[field].add(seen_value)
+        else:
+            seen[field].add(seen_value)
+    return seen, duplicates
+
+
+def _process_duplicates(
+    duplicates: Dict[str, Set], error_fields: List[str], warning_fields: List[str]
+):
+    duplicate_warnings = {
+        field: list(dups)
+        for field, dups in duplicates.items()
+        if dups and field in warning_fields
+    }
+    if len(duplicate_warnings) > 0:
+        print(f"::warning::Duplication warnings {duplicate_warnings}")
+    duplicate_errors = {
+        field: list(dups)
+        for field, dups in duplicates.items()
+        if dups and field in error_fields
+    }
+    if len(duplicate_errors) > 0:
+        print(f"::error::Duplication errors {duplicate_errors}")
+    return len(duplicate_errors) == 0
 
 
 class Library(RootModel):
@@ -173,13 +230,24 @@ class Library(RootModel):
                 thing_set.update(child_set)
 
     @model_validator(mode="after")
-    def _validate(self) -> Self:
+    def _validate(self, info: ValidationInfo) -> Self:
+        # Check for duplicates and
         # First check and fixup all problems
         for id, thing in self.root.items():
             if isinstance(thing, Problem) and thing.implementations:
                 self._percolate_set(thing, thing.implementations, "evaluation_time")
 
         # Then check and fixup all suites because changes from the problems need to propagate to the suites
+        unique_fields = (
+            info.context.get("unique_error_fields", []) if info.context else []
+        )
+        unique_warning_fields = (
+            info.context.get("unique_warning_fields", []) if info.context else []
+        )
+        fields = list(unique_fields + unique_warning_fields)
+        seen = {field: set() for field in fields}
+        duplicates = {field: set() for field in fields}
+
         for id, thing in self.root.items():
             if isinstance(thing, Suite) and thing.problems:
                 for problem_id in thing.problems:
@@ -197,6 +265,12 @@ class Library(RootModel):
                 self._percolate_set(thing, thing.problems, "constraints")
                 self._percolate_set(thing, thing.problems, "evaluation_time")
 
+            seen, duplicates = _update_seen(fields, seen, duplicates, thing)
+
+        print(f"Seen values: {seen}")
+        print(f"Duplicate values: {duplicates}")
+        if not _process_duplicates(duplicates, unique_fields, unique_warning_fields):
+            raise ValueError(f"Duplicate errors found: {duplicates}")
         return self
 
 
