@@ -658,7 +658,7 @@ things["suite_mmopp"] = Suite(
 things["impl_cfd"] = Implementation(
     name="CFD test problem suite",
     description="Expensive real-world CFD-based test problems",
-    evaluation_time="30s-15m",
+    evaluation_time=["30s", "15m"],
     links=[Link(type="repository", url="https://bitbucket.org/arahat/cfd-test-problem-suite")],
 )
 # FIXME: variable type unknown.
@@ -696,7 +696,7 @@ things["suite_cfd"] = Suite(
 things["impl_gbea"] = Implementation(
     name="coco-gbea",
     description="Game-Benchmark for Evolutionary Algorithms (COCO fork)",
-    evaluation_time="5s-35s",
+    evaluation_time=["5 seconds", "34 seconds"],
     links=[Link(type="repository", url="https://github.com/ttusar/coco-gbea")],
 )
 things["suite_gbea"] = Suite(
@@ -810,7 +810,7 @@ things["suite_emo2017"] = Suite(
 things["impl_jsec2019"] = Implementation(
     name="JSEC 2019 competition",
     description="JPNSEC EC-Symposium 2019 competition problem",
-    evaluation_time="3s",
+    evaluation_time=["3s"],
     links=[
         Link(
             type="website",
@@ -1659,7 +1659,7 @@ things["suite_cec2018_dt"] = Suite(
 things["impl_modact"] = Implementation(
     name="modact",
     description="EPFL-LAMD modact package",
-    evaluation_time="20ms",
+    evaluation_time=["20ms"],
     links=[Link(type="repository", url="https://github.com/epfl-lamd/modact")],
 )
 things["suite_modact"] = Suite(
@@ -2277,7 +2277,7 @@ things["impl_mechbench"] = Implementation(
     name="MECHBench",
     description="Structural mechanics design optimization benchmark",
     language="Python",
-    evaluation_time="1-7 minutes",
+    evaluation_time=["1 minute", "7 minutes"],
     links=[Link(type="repository", url="https://github.com/BayesOptApp/MECHBench")],
 )
 things["suite_mechbench"] = Suite(
@@ -2335,7 +2335,7 @@ things["impl_expobench"] = Implementation(
     name="EXPObench",
     description="EXPensive Optimization benchmark library (wind farm layout, gas filter design, pipe shape, hyperparameter tuning, hospital simulation)",
     language="Python",
-    evaluation_time="2 to 80 seconds",
+    evaluation_time=["2 seconds", "80 seconds"],
     links=[Link(type="repository", url="https://github.com/AlgTUDelft/ExpensiveOptimBenchmark")],
 )
 things["suite_expobench"] = Suite(
@@ -2444,7 +2444,7 @@ things["impl_beacon"] = Implementation(
     name="BEACON",
     description="Continuous Bi-objective Benchmark with Explicit Adjustable COrrelatioN control",
     language="Python",
-    evaluation_time="negligible",
+    evaluation_time=["negligible"],
     links=[Link(type="repository", url="https://github.com/Stebbet/BEACON/")],
 )
 things["gen_beacon"] = Generator(
@@ -2501,7 +2501,7 @@ things["impl_tulipa"] = Implementation(
     name="TulipaEnergyModel.jl",
     description="Large linear program for optimal investment and operation of energy systems",
     language="Julia / JuMP",
-    evaluation_time="minutes to hours",
+    evaluation_time=["minutes", "hours"],
     links=[
         Link(type="website", url="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/"),
         Link(type="example", url="https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy"),
@@ -2660,7 +2660,7 @@ things["impl_bso_toolbox"] = Implementation(
     name="BSO-toolbox",
     description="Building Spatial Design toolbox (TU/e)",
     language="C++",
-    evaluation_time="~1s (smallest) to ~40s (larger)",
+    evaluation_time=["1 second", "40 seconds"],
     links=[Link(type="repository", url="https://github.com/TUe-excellent-buildings/BSO-toolbox")],
 )
 things["fn_building_spatial"] = Problem(
@@ -2719,7 +2719,7 @@ things["impl_emdo"] = Implementation(
     name="Electric Motor Design Optimization",
     description="Not publicly available",
     language="Python",
-    evaluation_time="8 minutes",
+    evaluation_time=["8 minutes"],
 )
 things["fn_emdo"] = Problem(
     name="Electric Motor Design Optimization",
@@ -2824,7 +2824,7 @@ things["impl_randoptgen"] = Implementation(
     name="RandOptGen",
     description="Unified Random Problem Generator for Single- and Multi-Objective Optimization with Mixed-Variable Input Spaces",
     language="Python",
-    evaluation_time="milliseconds",
+    evaluation_time=["milliseconds"],
     links=[
         Link(type="repository", url="https://github.com/MALEO-research-group/RandOptGen"),
         Link(type="example", url="https://doi.org/10.1145/3712256.3726478"),
@@ -2992,4 +2992,5 @@ library = Library(things)
 Library.model_validate(library)
 
 if __name__ == "__main__":
-    print(to_yaml_str(library))
+    with open("problems.yaml", "w") as fd:
+        fd.write(to_yaml_str(library))

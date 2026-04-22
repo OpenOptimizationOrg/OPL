@@ -6,6 +6,7 @@ fn_ato:
   description: 'Parameters of the Modules of the Automatic Train Operation are optimized;
     two objectives: minimizing energy consumption and minimizing driving duration.'
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -32,16 +33,19 @@ fn_building_spatial:
   - equality: null
     hard: yes
     number: null
-    type: box
+    type: unknown
   - equality: null
     hard: yes
     number: null
-    type: unknown
+    type: box
   description: Optimise the spatial layout of a building to minimise energy 
     consumption for climate control and minimise the strain on the structure. 
     Many hard constraints; mixed-variable (continuous+binary); expensive 
     evaluations.
   dynamic_type: null
+  evaluation_time:
+  - 1 second
+  - 40 seconds
   fidelity_levels: null
   implementations:
   - impl_bso_toolbox
@@ -78,6 +82,7 @@ fn_convex_dtlz2:
   constraints: null
   description: Variant of DTLZ2 with a convex Pareto front (instead of concave)
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -133,6 +138,8 @@ fn_emdo:
     \nThis is not an available problem, but could be interesting to show to researchers
     which difficulties appear in real-world problems."
   dynamic_type: null
+  evaluation_time:
+  - 8 minutes
   fidelity_levels: null
   implementations:
   - impl_emdo
@@ -160,9 +167,9 @@ fn_emdo:
   type: problem
   variables:
   - dim: 13
-    type: integer
-  - dim: 13
     type: continuous
+  - dim: 13
+    type: integer
 fn_fleetopt:
   allows_partial_evaluation: yes
   can_evaluate_objectives_independently: null
@@ -176,6 +183,7 @@ fn_fleetopt:
     non-emergency healthcare trip vehicles while still ensuring all trips can be covered.
     Bilevel: upper level 54 vars, lower level 13208 vars.'
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -215,6 +223,7 @@ fn_gasoline:
     cylinder pressure rise, total work). Seven decision variables cover hardware
     choices and engine control parameters.
   dynamic_type: null
+  evaluation_time: []
   fidelity_levels:
   - 1
   - 2
@@ -249,6 +258,7 @@ fn_invdeceptive_deceptive_rotell:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -284,6 +294,7 @@ fn_inverted_dtlz1:
   constraints: null
   description: Variant of DTLZ1 with an inverted Pareto front
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -326,6 +337,8 @@ fn_jsec2019:
     type: unknown
   description: expensive evaluations 3s; 22 constraints
   dynamic_type: null
+  evaluation_time:
+  - 3s
   fidelity_levels: null
   implementations:
   - impl_jsec2019
@@ -361,6 +374,7 @@ fn_onemax_sphere_deceptive_rotell:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -396,6 +410,7 @@ fn_onemax_sphere_zeromax_sphere:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -435,6 +450,7 @@ fn_radar_waveform:
     type: unknown
   description: null
   dynamic_type: null
+  evaluation_time: []
   fidelity_levels: null
   implementations:
   - impl_radar_waveform
@@ -473,6 +489,7 @@ gen_beacon:
     controlled correlations in continuous spaces. Multimodal with random 
     structure.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_beacon
@@ -513,6 +530,7 @@ gen_bono_bench:
     approximations with error guarantees for the hypervolume and exact R2 
     indicators.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_bonobench
@@ -545,6 +563,7 @@ gen_ealain:
   description: Real-world-like, easily extensible to increase complexity
   dynamic_type:
   - optional
+  evaluation_time: null
   fidelity_levels:
   - 1
   - 2
@@ -579,11 +598,11 @@ gen_ealain:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
@@ -595,6 +614,7 @@ gen_gnbg:
   constraints: null
   description: Generator counterpart of GNBG.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_gnbg
@@ -626,10 +646,11 @@ gen_gnbg_ii:
   constraints: null
   description: Generator counterpart of GNBG-II.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohgnbg
   - impl_gnbg_ii
+  - impl_iohgnbg
   long_name: null
   modality: null
   name: GNBG-II
@@ -662,6 +683,7 @@ gen_gpd:
     type: unknown
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -700,6 +722,7 @@ gen_iohclustering:
   constraints: null
   description: Generator counterpart of the IOHClustering suite.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_iohclustering
@@ -730,12 +753,13 @@ gen_ma_bbob:
   can_evaluate_objectives_independently: null
   code_examples: null
   constraints: null
-  description: Generator that creates affine combinations of eBBOB functions
+  description: Generator that creates affine combinations of BBOB functions
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohexperimenter
   - impl_ma_bbob
+  - impl_iohexperimenter
   long_name: null
   modality:
   - multimodal
@@ -766,6 +790,7 @@ gen_mpm2:
   description: nonlinear nonseparable nonsymmetric; scalable in terms of time to
     evaluate the objective function
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_mpm2
@@ -798,13 +823,14 @@ gen_mubqp:
   description: tunable variable and objective dimensions; tunable density and 
     correlation between objectives
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_mocobench
   long_name: null
   modality:
-  - multimodal
   - quadratic
+  - multimodal
   name: mUBQP
   noise_type: null
   objectives:
@@ -840,6 +866,7 @@ gen_puboi:
   description: A benchmark in which variable importance is tunable, based on the
     Walsh function.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_puboi
@@ -873,6 +900,7 @@ gen_randoptgen:
   description: A Unified Random Problem Generator for Single- and 
     Multi-Objective Optimization Problems with Mixed-Variable Input Spaces.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_randoptgen
@@ -901,11 +929,11 @@ gen_randoptgen:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
@@ -918,6 +946,7 @@ gen_rho_mnk_landscapes:
   description: tunable variable and objective dimensions; tunable multimodality 
     and correlation between objectives
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_mocobench
@@ -960,13 +989,14 @@ gen_rho_mtsp:
   description: tunable variable and objective dimensions; tunable instance type 
     (euclidean/random); tunable correlation between objectives
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_mocobench
   long_name: null
   modality:
-  - multimodal
   - quadratic
+  - multimodal
   name: ρmTSP
   noise_type: null
   objectives:
@@ -1002,6 +1032,7 @@ gen_wmodel:
   description: Tunable generator for binary optimization based on several 
     difficulty features
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_wmodel
@@ -1029,7 +1060,8 @@ gen_wmodel:
 impl_beacon:
   description: Continuous Bi-objective Benchmark with Explicit Adjustable 
     COrrelatioN control
-  evaluation_time: negligible
+  evaluation_time:
+  - negligible
   language: Python
   links:
   - type: repository
@@ -1049,7 +1081,9 @@ impl_bonobench:
   type: implementation
 impl_bso_toolbox:
   description: Building Spatial Design toolbox (TU/e)
-  evaluation_time: ~1s (smallest) to ~40s (larger)
+  evaluation_time:
+  - 1 second
+  - 40 seconds
   language: C++
   links:
   - type: repository
@@ -1089,7 +1123,9 @@ impl_cec2022:
   type: implementation
 impl_cfd:
   description: Expensive real-world CFD-based test problems
-  evaluation_time: 30s-15m
+  evaluation_time:
+  - 15m
+  - 30s
   language: null
   links:
   - type: repository
@@ -1131,7 +1167,8 @@ impl_ealain:
   type: implementation
 impl_emdo:
   description: Not publicly available
-  evaluation_time: 8 minutes
+  evaluation_time:
+  - 8 minutes
   language: Python
   links: null
   name: Electric Motor Design Optimization
@@ -1161,7 +1198,9 @@ impl_etmof:
 impl_expobench:
   description: EXPensive Optimization benchmark library (wind farm layout, gas 
     filter design, pipe shape, hyperparameter tuning, hospital simulation)
-  evaluation_time: 2 to 80 seconds
+  evaluation_time:
+  - 80 seconds
+  - 2 seconds
   language: Python
   links:
   - type: repository
@@ -1181,7 +1220,9 @@ impl_gasoline:
   type: implementation
 impl_gbea:
   description: Game-Benchmark for Evolutionary Algorithms (COCO fork)
-  evaluation_time: 5s-35s
+  evaluation_time:
+  - 34 seconds
+  - 5 seconds
   language: null
   links:
   - type: repository
@@ -1241,7 +1282,8 @@ impl_iohgnbg:
   type: implementation
 impl_jsec2019:
   description: JPNSEC EC-Symposium 2019 competition problem
-  evaluation_time: 3s
+  evaluation_time:
+  - 3s
   language: null
   links:
   - type: website
@@ -1263,7 +1305,9 @@ impl_ma_bbob:
   type: implementation
 impl_mechbench:
   description: Structural mechanics design optimization benchmark
-  evaluation_time: 1-7 minutes
+  evaluation_time:
+  - 1 minute
+  - 7 minutes
   language: Python
   links:
   - type: repository
@@ -1303,7 +1347,8 @@ impl_mocobench:
   type: implementation
 impl_modact:
   description: EPFL-LAMD modact package
-  evaluation_time: 20ms
+  evaluation_time:
+  - 20ms
   language: null
   links:
   - type: repository
@@ -1375,7 +1420,8 @@ impl_radar_waveform:
 impl_randoptgen:
   description: Unified Random Problem Generator for Single- and Multi-Objective 
     Optimization with Mixed-Variable Input Spaces
-  evaluation_time: milliseconds
+  evaluation_time:
+  - milliseconds
   language: Python
   links:
   - type: repository
@@ -1409,7 +1455,9 @@ impl_transfer_rf_bbob_rw:
 impl_tulipa:
   description: Large linear program for optimal investment and operation of 
     energy systems
-  evaluation_time: minutes to hours
+  evaluation_time:
+  - hours
+  - minutes
   language: Julia / JuMP
   links:
   - type: website
@@ -1446,6 +1494,7 @@ suite_amvop:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -1485,6 +1534,7 @@ suite_bbob:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco
@@ -1517,6 +1567,7 @@ suite_bbob_biobj:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco
@@ -1549,6 +1600,7 @@ suite_bbob_biobj_mixint:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco
@@ -1589,6 +1641,7 @@ suite_bbob_constrained:
     type: unknown
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco
@@ -1621,6 +1674,7 @@ suite_bbob_largescale:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco
@@ -1653,6 +1707,7 @@ suite_bbob_mixint:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco
@@ -1689,6 +1744,7 @@ suite_bbob_noisy:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_coco_legacy
@@ -1722,6 +1778,7 @@ suite_bp:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -1768,6 +1825,7 @@ suite_brachytherapy:
   description: Treatment planning for internal radiation therapy. 
     Multi-objective with aggregated objectives; no public source code.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels:
   - 1
   - 2
@@ -1807,6 +1865,7 @@ suite_car_structure:
     type: unknown
   description: 54 constraints
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_car_structure
@@ -1844,6 +1903,7 @@ suite_cdmp:
   description: null
   dynamic_type:
   - unknown
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -1883,6 +1943,7 @@ suite_cec2013:
   constraints: null
   description: suite used for cec2013 competition. Also in IOH.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_cec2013
@@ -1921,6 +1982,7 @@ suite_cec2015_dmoo:
   description: null
   dynamic_type:
   - dynamic
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -1952,6 +2014,7 @@ suite_cec2018_dt:
     etc.'
   dynamic_type:
   - dynamic
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_pymoo
@@ -1986,10 +2049,11 @@ suite_cec2022:
   constraints: null
   description: suite used for cec2022 competition. Also in IOH.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohexperimenter
   - impl_cec2022
+  - impl_iohexperimenter
   long_name: null
   modality: null
   name: CEC2022
@@ -2024,6 +2088,7 @@ suite_cfd:
     type: unknown
   description: expensive evaluations 30s-15m
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_cfd
@@ -2061,6 +2126,7 @@ suite_cre:
     type: unknown
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_reproblems
@@ -2090,11 +2156,11 @@ suite_cre:
   - dim:
       max: 7
       min: 3
-    type: integer
+    type: continuous
   - dim:
       max: 7
       min: 3
-    type: continuous
+    type: integer
 suite_cuter:
   allows_partial_evaluation: no
   can_evaluate_objectives_independently: null
@@ -2106,6 +2172,7 @@ suite_cuter:
     type: unknown
   description: A constrained and unconstrained testing environment.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2129,11 +2196,11 @@ suite_cuter:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
@@ -2144,17 +2211,18 @@ suite_cutest:
   code_examples: null
   constraints:
   - equality: null
+    hard: yes
+    number: null
+    type: box
+  - equality: null
     hard: some
     number:
       max: null
       min: 1
     type: unknown
-  - equality: null
-    hard: yes
-    number: null
-    type: box
   description: CUTEst for optimization software
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_pycutest
@@ -2180,11 +2248,11 @@ suite_cutest:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
@@ -2196,6 +2264,7 @@ suite_dtlz:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_pymoo
@@ -2240,6 +2309,7 @@ suite_dynamicbinval:
   description: Four versions of the dynamic binary value problem
   dynamic_type:
   - dynamic
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_iohexperimenter
@@ -2272,6 +2342,7 @@ suite_emo2017:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_emo2017
@@ -2305,6 +2376,7 @@ suite_etmof:
   description: null
   dynamic_type:
   - dynamic
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_etmof
@@ -2393,6 +2465,7 @@ suite_expobench:
   description: Wind farm layout optimization, gas filter design, pipe shape 
     optimization, hyperparameter tuning, and hospital simulation
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_expobench
@@ -2419,11 +2492,11 @@ suite_expobench:
   - dim:
       max: 135
       min: 10
-    type: integer
+    type: categorical
   - dim:
       max: 135
       min: 10
-    type: categorical
+    type: integer
   - dim:
       max: 135
       min: 10
@@ -2436,6 +2509,7 @@ suite_gbea:
   description: expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part
     of GBEA
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_gbea
@@ -2471,6 +2545,7 @@ suite_gnbg:
   constraints: null
   description: Generalized Numerical Benchmark Generator
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_gnbg
@@ -2504,10 +2579,11 @@ suite_gnbg_ii:
   description: Generalized Numerical Benchmark Generator (version 2). Also 
     available in IOH.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohgnbg
   - impl_gnbg_ii
+  - impl_iohgnbg
   long_name: null
   modality: null
   name: GNBG-II
@@ -2538,6 +2614,7 @@ suite_iohclustering:
   description: 'Set of benchmark problems from clustering: optimization task is selecting
     cluster centers for a given set of data.'
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_iohclustering
@@ -2571,6 +2648,7 @@ suite_kinematics_robotarm:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_transfer_rf_bbob_rw
@@ -2602,6 +2680,7 @@ suite_l1_zdt:
   constraints: null
   description: Variant of ZDT with linkages between variables within groups
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2636,6 +2715,7 @@ suite_l2_dtlz:
   constraints: null
   description: Variant of DTLZ2/DTLZ3 with linkages between all variables
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2674,6 +2754,7 @@ suite_l2_zdt:
   constraints: null
   description: Variant of ZDT with linkages between all variables
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2708,6 +2789,7 @@ suite_l3_dtlz:
   constraints: null
   description: Variant of L2-DTLZ with anti-linkage mapping
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2746,6 +2828,7 @@ suite_l3_zdt:
   constraints: null
   description: Variant of L2-ZDT with anti-linkage mapping
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2780,6 +2863,7 @@ suite_maop:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2827,6 +2911,7 @@ suite_mechbench:
     Optimization. Embeds physical simulations (plasticity only, no 
     fracture/damage). Unstructured/non-isotropic multimodality.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_mechbench
@@ -2860,6 +2945,7 @@ suite_mf2:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels:
   - 1
   - 2
@@ -2894,6 +2980,7 @@ suite_minus_dtlz:
   description: Variant of DTLZ that minimises the inverse of the base DTLZ 
     functions
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2933,6 +3020,7 @@ suite_minus_wfg:
   description: Variant of WFG that minimises the inverse of the base WFG 
     functions
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -2975,6 +3063,7 @@ suite_mmopp:
     type: unknown
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_mmopp
@@ -3016,10 +3105,11 @@ suite_modact:
   description: Realistic Constrained Multi-Objective Optimization Benchmark 
     Problems from Design.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_pymoo
   - impl_modact
+  - impl_pymoo
   long_name: multiobjective design of actuators
   modality: null
   name: MODAct
@@ -3057,6 +3147,7 @@ suite_morepo:
   description: null
   dynamic_type:
   - unknown
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_morepo
@@ -3082,6 +3173,7 @@ suite_pbo:
   constraints: null
   description: Suite of 25 binary optimization problems
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_iohexperimenter
@@ -3114,6 +3206,7 @@ suite_porkchop:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_transfer_rf_bbob_rw
@@ -3145,6 +3238,7 @@ suite_re:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_reproblems
@@ -3178,11 +3272,11 @@ suite_re:
   - dim:
       max: 7
       min: 2
-    type: integer
+    type: continuous
   - dim:
       max: 7
       min: 2
-    type: continuous
+    type: integer
 suite_rwmvop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3194,6 +3288,7 @@ suite_rwmvop:
     type: unknown
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -3234,6 +3329,7 @@ suite_sbox_cost:
   description: problems from BBOB but allows instances with the optimum close to
     the boundary
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_iohexperimenter
@@ -3267,6 +3363,7 @@ suite_sdp:
   description: null
   dynamic_type:
   - dynamic
+  evaluation_time: null
   fidelity_levels: null
   implementations: null
   long_name: null
@@ -3307,6 +3404,7 @@ suite_submodular:
   description: set of graph-based submodular optimization problems from 4 
     problem types
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_iohexperimenter
@@ -3338,11 +3436,11 @@ suite_tulipa_energy:
   code_examples: null
   constraints:
   - equality: null
-    hard: some
+    hard: yes
     number: null
     type: unknown
   - equality: null
-    hard: yes
+    hard: some
     number: null
     type: unknown
   description: Determine the optimal investment and operation decisions for 
@@ -3350,6 +3448,7 @@ suite_tulipa_energy:
     storage, transport) while minimizing loss of load. Modelled as a potentially
     very large linear program with multiple fidelity levels.
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels:
   - 1
   - 2
@@ -3387,6 +3486,7 @@ suite_vehicle_dynamics:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_vehicle_dynamics
@@ -3418,6 +3518,7 @@ suite_wfg:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_pymoo
@@ -3462,6 +3563,7 @@ suite_zdt:
   constraints: null
   description: null
   dynamic_type: null
+  evaluation_time: null
   fidelity_levels: null
   implementations:
   - impl_pymoo
@@ -3493,42 +3595,3 @@ suite_zdt:
       max: null
       min: 1
     type: continuous
-suite_zdt2:
-  allows_partial_evaluation: null
-  can_evaluate_objectives_independently: null
-  code_examples: null
-  constraints: null
-  description: null
-  dynamic_type: null
-  fidelity_levels: null
-  implementations:
-  - impl_pymoo
-  long_name: null
-  modality: null
-  name: ZDT
-  noise_type: null
-  objectives:
-  - 2
-  problems: null
-  references:
-  - authors:
-    - Eckart Zitzler
-    - Kalyanmoy Deb
-    - Lothar Thiele
-    link:
-      type: null
-      url: https://doi.org/10.1162/106365600568202
-    title: 'Comparison of multiobjective evolutionary algorithms: empirical results'
-  source: null
-  tags: null
-  type: suite
-  variables:
-  - dim:
-      max: null
-      min: 1
-    type: binary
-  - dim:
-      max: null
-      min: 1
-    type: continuous
-
