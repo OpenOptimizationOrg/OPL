@@ -120,6 +120,10 @@ fn_emdo:
   code_examples: null
   constraints:
   - equality: null
+    hard: some
+    number: null
+    type: unknown
+  - equality: null
     hard: yes
     number: 12
     type: unknown
@@ -127,10 +131,6 @@ fn_emdo:
     hard: yes
     number: null
     type: box
-  - equality: null
-    hard: some
-    number: null
-    type: unknown
   description: "# Goal\nFind a design of a synchronous electric motor for power steering
     systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
     Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
@@ -598,11 +598,11 @@ gen_ealain:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -929,11 +929,11 @@ gen_randoptgen:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -1199,8 +1199,8 @@ impl_expobench:
   description: EXPensive Optimization benchmark library (wind farm layout, gas 
     filter design, pipe shape, hyperparameter tuning, hospital simulation)
   evaluation_time:
-  - 80 seconds
   - 2 seconds
+  - 80 seconds
   language: Python
   links:
   - type: repository
@@ -1306,8 +1306,8 @@ impl_ma_bbob:
 impl_mechbench:
   description: Structural mechanics design optimization benchmark
   evaluation_time:
-  - 1 minute
   - 7 minutes
+  - 1 minute
   language: Python
   links:
   - type: repository
@@ -1518,15 +1518,15 @@ suite_amvop:
   - dim:
       max: null
       min: 1
-    type: categorical
-  - dim:
-      max: null
-      min: 1
     type: integer
   - dim:
       max: null
       min: 1
     type: continuous
+  - dim:
+      max: null
+      min: 1
+    type: categorical
 suite_bbob:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1625,11 +1625,11 @@ suite_bbob_biobj_mixint:
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
 suite_bbob_constrained:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1732,11 +1732,11 @@ suite_bbob_mixint:
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
 suite_bbob_noisy:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1976,7 +1976,7 @@ suite_cec2015_dmoo:
   code_examples: null
   constraints:
   - equality: null
-    hard: '?'
+    hard: unknown
     number: null
     type: unknown
   description: null
@@ -2156,11 +2156,11 @@ suite_cre:
   - dim:
       max: 7
       min: 3
-    type: continuous
+    type: integer
   - dim:
       max: 7
       min: 3
-    type: integer
+    type: continuous
 suite_cuter:
   allows_partial_evaluation: no
   can_evaluate_objectives_independently: null
@@ -2196,11 +2196,11 @@ suite_cuter:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -2248,11 +2248,11 @@ suite_cutest:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -3108,8 +3108,8 @@ suite_modact:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_modact
   - impl_pymoo
+  - impl_modact
   long_name: multiobjective design of actuators
   modality: null
   name: MODAct
@@ -3132,16 +3132,16 @@ suite_modact:
   type: suite
   variables:
   - dim: 20
-    type: continuous
-  - dim: 20
     type: integer
+  - dim: 20
+    type: continuous
 suite_morepo:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
   code_examples: null
   constraints:
   - equality: null
-    hard: '?'
+    hard: unknown
     number: null
     type: unknown
   description: null
@@ -3312,15 +3312,15 @@ suite_rwmvop:
   - dim:
       max: null
       min: 1
-    type: categorical
-  - dim:
-      max: null
-      min: 1
     type: integer
   - dim:
       max: null
       min: 1
     type: continuous
+  - dim:
+      max: null
+      min: 1
+    type: categorical
 suite_sbox_cost:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null

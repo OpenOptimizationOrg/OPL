@@ -308,5 +308,5 @@ For example only some constraints might hard but we don't know the exact number 
 
 ```yaml
 constraints: [{type: box, hard: some}]
-allows_partial_evaluation: "?"
+allows_partial_evaluation: "unknown"
 ```

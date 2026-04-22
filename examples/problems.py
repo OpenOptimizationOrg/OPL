@@ -320,7 +320,7 @@ things["suite_morepo"] = Suite(
     name="MOrepo",
     objectives={2},
     variables=[Variable(type="unknown")],
-    constraints=[Constraint(hard="?")],
+    constraints=[Constraint(hard="unknown")],
     dynamic_type={"unknown"},
     noise_type={"unknown"},
     implementations={"impl_morepo"},
@@ -1187,7 +1187,7 @@ things["suite_cec2015_dmoo"] = Suite(
     name="CEC2015-DMOO",
     objectives={2, 3},
     variables=[Variable(type="continuous")],
-    constraints=[Constraint(hard="?")],
+    constraints=[Constraint(hard="unknown")],
     dynamic_type={"dynamic"},
     references=[
         Reference(
