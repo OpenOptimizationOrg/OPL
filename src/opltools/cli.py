@@ -2,6 +2,7 @@ import sys
 import argparse
 from pydantic import ValidationError
 import yaml
+from pydantic_yaml import parse_yaml_raw_as
 
 from opltools.schema import Library
 
@@ -13,15 +14,8 @@ def cmd_validate(args):
 
     try:
         with open(args.file, "r") as f:
-            lib = yaml.safe_load(f)
-    except FileNotFoundError:
-        print(f"Error: File not found: {args.file}", file=sys.stderr)
-        return 1
-    except yaml.YAMLError as e:
-        print(f"Error: YAML syntax error in {args.file}: {e}", file=sys.stderr)
-        return 1
-
-    try:
+            raw = f.read()
+        lib = parse_yaml_raw_as(Library, raw)
         Library.model_validate(
             lib,
             context={

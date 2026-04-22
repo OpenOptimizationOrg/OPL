@@ -144,10 +144,11 @@ class TestLibraryValidation:
             }
         )
         assert isinstance(lib, Library)
-        Library.model_validate(
-            lib,
-            context={
-                "unique_error_fields": ["name"],
-                "unique_warning_fields": [],
-            },
-        )
+        with pytest.raises(ValidationError):
+            Library.model_validate(
+                lib,
+                context={
+                    "unique_error_fields": ["name"],
+                    "unique_warning_fields": [],
+                },
+            )
