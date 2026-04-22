@@ -3,13 +3,13 @@
 # Instructions:
 # - Give your entry a unique id (e.g., "my_problem"). 
 # - Enter null for fields where the value is unknown.
-# - If there are any properties you want to add, use the 'tags' list to add them.
+# - If there are any additional properties you want to add, use the 'tags' list to add them.
 your_problem_id:
   name: short_problem_name
   long_name: your_full_problem_name
   type: problem # One of problem, suite or generator
-  variables: # For each variable type, enter the number of variables of that type, or a range by specifiying min and/or max
-    binary: 0 # Number of this varialbe type
+  variables: # For each variable type, enter the number of variables of that type, or a range by specifying min and/or max
+    binary: 0 # Number of this variable type
     categorical: [0,5]  # Options for numbers of this variable type (here, the suite has problems with either 0 or 5 categorical variables)
     continuous: # For a range, you can specify the bounds
       max: 80
@@ -18,36 +18,36 @@ your_problem_id:
       max: 5
   objectives: # For objectives, also indicate the number, either as an integer, list or range
   - 1
-  constraints: #constraints refers to hard constrains (violations don't have a true fitness value)
-  #Similar to variables, specify for each type of constraints the number, list, or a range. 
+  constraints: # Constraints refers to hard constrains (violations don't have a true fitness value)
+  # Similar to variables, specify for each type of constraints the number, list, or a range. 
     box: 1
   soft_constraints: 
     linear: 
       max: 5
     function: [5, 10]
-  allows_partial_evaluation: yes / no / some #Whether evaluation of subset(s) of decision variables are possible
+  allows_partial_evaluation: yes / no / some # Whether evaluation of subset(s) of decision variables are possible
   can_evaluate_objectives_independently: yes / no / some # Can objective functions be evaluated independently of each other yes, no or some
-  code_examples: null #Link to a code example in the OPL repository
-  description: lorem ipsum #Textual description of the problem/suite/generator
-  dynamic_type: null #If the problem is dynamic, specify the type of dynamics. If not, enter null.
-  fidelity_levels: 1 #Number of fidelity levels, if applicable. If not, enter 1. 
-  modality: null #list of modalities (e.g. unimodal, multimodal)
-  noise_type: null #type of noise (e.g. additive, multiplicative, heteroscedastic)
-  references: null #list of references or citations
-  source: null #source of the problem/suite/generator
-  tags: null #list of tags or keywords
-  instances: null #For problems, specify the number of instances, or a list of instance ids, or a range of instance ids. For suites, specify the number of problems, or a list of problem ids, or a range of problem ids. For generators, specify the number of problems that can be generated, or a list of problem ids that can be generated, or a range of problem ids that can be generated.
-  problems: null #For suites, optionally specify the problems that are part of the suite. Each problem should then have a unique id, and be another entry in this yaml file. For generators, specify the problems that can be generated. Each problem should have a unique id, and be another entry in this yaml file. For problems, enter null.
+  code_examples: null # Link to a code example in the OPL repository
+  description: lorem ipsum # Textual description of the problem/suite/generator
+  dynamic_type: null # If the problem is dynamic, specify the type of dynamics. If not, enter null.
+  fidelity_levels: 1 # Number of fidelity levels, if applicable. If not, enter 1. 
+  modality: null # List of modalities (e.g. unimodal, multimodal)
+  noise_type: null # Type of noise (e.g. additive, multiplicative, heteroscedastic)
+  references: null # List of references or citations
+  source: null # Source of the problem/suite/generator
+  tags: null # List of tags or keywords
+  instances: null # For problems, specify the number of instances, or a list of instance ids, or a range of instance ids. For suites, specify the number of problems, or a list of problem ids, or a range of problem ids. For generators, specify the number of problems that can be generated, or a list of problem ids that can be generated, or a range of problem ids that can be generated.
+  problems: null # For suites, optionally specify the problems that are part of the suite. Each problem should then have a unique id, and be another entry in this yaml file. For generators, specify the problems that can be generated. Each problem should have a unique id, and be another entry in this yaml file. For problems, enter null.
   implementations:
-  - your_implementation #If available, make an entry for the implementation of the problem/suite/generator as well. You can list multiple implementations if needed
-your_implementation: #implementations should also have unique identifiers
+  - your_implementation # If available, make an entry for the implementation of the problem/suite/generator as well. You can list multiple implementations if needed
+your_implementation: # Implementations should also have unique identifiers
   name: your_implementation
-  description: lorem ipsum #textual description of the implementation
+  description: lorem ipsum # Textual description of the implementation
   link:
   - type: GitHub
     url: github.com/yourproject
   - type: Package
     url: linktoyourpackage
   language: python # language of the implementation
-  evaluation_time: seconds #approximate time for a single full function evaluation
-  requirements: null #any important requirements to be able to run your implemenation
+  evaluation_time: seconds # Approximate time for a single full function evaluation
+  requirements: null # Any important requirements to be able to run your implementation
