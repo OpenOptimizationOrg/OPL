@@ -73,16 +73,18 @@ class Constraint(BaseModel):
 
 
 class Reference(BaseModel):
-    title: str
-    authors: list[str]
+    title: str | None = None
+    authors: list[str] | None = None
     link: Link | None = None
 
+    @model_validator(mode="after")
+    def _validate(self) -> Self:
+        if self.title is None and self.link is None:
+            raise ValueError("References must have either a title or a link.")
+        return self
+
     def __hash__(self):
-        return (
-            hash(self.title)
-            + sum([hash(author) for author in self.authors])
-            + hash(self.link)
-        )
+        return hash(self.title) + hash(self.link)
 
 
 class Usage(BaseModel):

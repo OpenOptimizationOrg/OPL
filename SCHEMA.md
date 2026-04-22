@@ -258,7 +258,7 @@ constraints:
 ### Reference
 
 Bibliographic pointer. 
-Requires a `title` and `authors` and optionally includes a `link` to the material.
+Requires either a `title` or a `link` and optionally a list of  `authors`.
 
 ```yaml
 references:
