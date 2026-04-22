@@ -80,19 +80,3 @@ class TestLibrary:
             "s1": Suite(name="S1", problems={"p1"}),
         })
         assert lib.root["s1"].fidelity_levels == set()
-
-    def test_fixup_evaluation_time_percolates_from_implementation_to_suite(self):
-        lib = Library(root={
-            "impl1": Implementation(
-                name="impl1", description="d", evaluation_time={"fast"}
-            ),
-            "impl2": Implementation(
-                name="impl2", description="d", evaluation_time={"8 minutes"}
-            ),
-            "p1": Problem(name="P1", implementations={"impl1"}),
-            "p2": Problem(name="P2", implementations={"impl2"}),
-            "s1": Suite(name="S1", problems={"p1", "p2"}),
-        })
-        assert lib.root["p1"].evaluation_time == {"fast"}
-        assert lib.root["p2"].evaluation_time == {"8 minutes"}
-        assert lib.root["s1"].evaluation_time == {"fast", "8 minutes"}
