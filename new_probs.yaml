@@ -59,7 +59,7 @@ rcm2:
   name: RCM2 - Vibrating platform design
   objectives: 2
   variables:
-    total: 5
+    - total: 5
   constraints:
     - function: 5
   dynamic_type:
@@ -81,9 +81,9 @@ rcm3:
   name: RCM3 - Two bar truss design
   objectives: 2
   variables:
-    total: 3
+    - total: 3
   constraints:
-    function: 3
+    - function: 3
   dynamic_type:
     - None
   noise_type:
@@ -94,7 +94,7 @@ rcm3:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 3 in the RCM suite, 3 inequality constraints.'
+  description: 'Problem 3 in the RCM suite, 3 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -103,9 +103,9 @@ rcm4:
   name: RCM4 - Welded beam design
   objectives: 2
   variables:
-    total: 4
+    - total: 4
   constraints:
-    function: 4
+    - function: 4
   dynamic_type:
     - None
   noise_type:
@@ -116,7 +116,7 @@ rcm4:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 4 in the RCM suite, 4 inequality constraints.'
+  description: 'Problem 4 in the RCM suite, 4 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -125,9 +125,9 @@ rcm5:
   name: RCM5 - Disc brake design
   objectives: 2
   variables:
-    total: 4
+    - total: 4
   constraints:
-    function: 4
+    - function: 4
   dynamic_type:
     - None
   noise_type:
@@ -138,7 +138,7 @@ rcm5:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 5 in the RCM suite, 4 inequality constraints.'
+  description: 'Problem 5 in the RCM suite, 4 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -147,9 +147,9 @@ rcm10:
   name: RCM10 - Two bar plane truss design
   objectives: 2
   variables:
-    total: 2
+    - total: 2
   constraints:
-    function: 2
+    - function: 2
   dynamic_type:
     - None
   noise_type:
@@ -160,7 +160,7 @@ rcm10:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 10 in the RCM suite, 2 inequality constraints.'
+  description: 'Problem 10 in the RCM suite, 2 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -169,9 +169,9 @@ rcm11:
   name: RCM11 - Water resources management
   objectives: 5
   variables:
-    total: 3
+    - total: 3
   constraints:
-    function: 7
+    - function: 7
   dynamic_type:
     - None
   noise_type:
@@ -182,7 +182,7 @@ rcm11:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 11 in the RCM suite, 7 inequality constraints.'
+  description: 'Problem 11 in the RCM suite, 7 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -191,9 +191,9 @@ rcm12:
   name: RCM12 - Simply supported beam design
   objectives: 2
   variables:
-    total: 4
+    - total: 4
   constraints:
-    function: 1
+    - function: 1
   dynamic_type:
     - None
   noise_type:
@@ -204,7 +204,7 @@ rcm12:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 12 in the RCM suite, 1 inequality constraint.'
+  description: 'Problem 12 in the RCM suite, 1 inequality constraint.'
   tags:
     - "inequality constraints"
 
@@ -213,9 +213,9 @@ rcm14:
   name: RCM14 - Multiple disk clutch brake design
   objectives: 2
   variables:
-    total: 5
+    - total: 5
   constraints:
-    function: 8
+    - function: 8
   dynamic_type:
     - None
   noise_type:
@@ -226,7 +226,7 @@ rcm14:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 14 in the RCM suite, 8 inequality constraints.'
+  description: 'Problem 14 in the RCM suite, 8 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -235,9 +235,9 @@ rcm16:
   name: RCM16 - Cantilever beam design
   objectives: 2
   variables:
-    total: 2
+    - total: 2
   constraints:
-    function: 2
+    - function: 2
   dynamic_type:
     - None
   noise_type:
@@ -248,7 +248,7 @@ rcm16:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 16 in the RCM suite, 2 inequality constraints.'
+  description: 'Problem 16 in the RCM suite, 2 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -257,9 +257,9 @@ rcm18:
   name: RCM18 - Front rail design
   objectives: 2
   variables:
-    total: 3
+    - total: 3
   constraints:
-    function: 3
+    - function: 3
   dynamic_type:
     - None
   noise_type:
@@ -270,7 +270,7 @@ rcm18:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 18 in the RCM suite, 3 inequality constraints.'
+  description: 'Problem 18 in the RCM suite, 3 inequality constraints.'
   tags:
     - "inequality constraints"
 
@@ -279,9 +279,9 @@ rcm20:
   name: RCM20 - Hydro-static thrust bearing design
   objectives: 2
   variables:
-    total: 4
+    - total: 4
   constraints:
-    function: 7
+    - function: 7
   dynamic_type:
     - None
   noise_type:
@@ -292,6 +292,6 @@ rcm20:
   implementations:
     - rw_cmop_suganthan
   source: 'real-world'
-  textual description: 'Problem 20 in the RCM suite, 7 inequality constraints.'
+  description: 'Problem 20 in the RCM suite, 7 inequality constraints.'
   tags:
     - "inequality constraints"
