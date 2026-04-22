@@ -22,6 +22,7 @@ Three design choices shape everything below:
 - [Library](#library) 
 - [Thing types](#thing-types)
   - [Implementation](#implementation)
+  - [Reference](#reference)
   - [ProblemLike](#problemlike) (shared fields)
     - [Problem](#problem)
     - [Suite](#suite)
@@ -29,7 +30,7 @@ Three design choices shape everything below:
 - [Shared building blocks](#shared-building-blocks)
   - [Variable](#variable) / [VariableType](#variabletype)
   - [Constraint](#constraint) / [ConstraintType](#constrainttype)
-  - [Reference](#reference) / [Link](#link)
+  - [Link](#link)
   - [ValueRange](#valuerange)
   - [YesNoSome](#yesnosome)
 
@@ -50,26 +51,33 @@ IDs are free-form but must be unique and the convention is to add a prefix marki
 | Prefix  | Type             |
 |---------|------------------|
 | `impl_` | Implementation   |
+| `ref_`  | Reference        |
 | `fn_`   | Problem          |
 | `suite_`| Suite            |
 | `gen_`  | Generator        |
 
-On load the library validates that every ID referenced by a suite (`problems`) or problem (`implementations`) exists and has the correct type. Suites also have their `fidelity_levels` auto-populated from their problems.
+On load the library validates that every ID referenced by a suite (`problems`), problem (`implementations`), or any [ProblemLike](#problemlike) (`references`) exists and has the correct type. Suites also have their `fidelity_levels` auto-populated from their problems.
 
 ```yaml
 impl_coco:
   type: implementation
   name: COCO
   description: Comparing Continuous Optimisers
+ref_bbob:
+  type: reference
+  title: "Real-Parameter Black-Box Optimization Benchmarking: Experimental Setup"
+  link: {type: url, url: "https://numbbo.github.io/coco/"}
 fn_sphere:
   type: problem
   name: Sphere
   objectives: [1]
   implementations: [impl_coco]
+  references: [ref_bbob]
 suite_bbob:
   type: suite
   name: BBOB
   problems: [fn_sphere]
+  references: [ref_bbob]
 ```
 
 ---
@@ -119,6 +127,32 @@ impl_py_cocoex:
     - {type: package, url: https://pypi.org/project/coco-experiment/}
 ```
 
+### Reference
+
+A bibliographic pointer stored at the top level of the [Library](#library) so that a single reference can be shared by multiple problems, suites, generators, and implementations.
+Requires either a `title` or a `link` and optionally a list of `authors`.
+
+| Field     | Type                   | Notes                                    |
+|-----------|------------------------|------------------------------------------|
+| `title`   | str?                   | required if `link` is not given          |
+| `authors` | list of str?           |                                          |
+| `link`    | [Link](#link)?         | required if `title` is not given         |
+
+```yaml
+ref_honey_badger:
+  type: reference
+  title: "Honey Badger Algorithm: New metaheuristic algorithm for solving optimization problems."
+  authors:
+    - Fatma A. Hashim
+    - Essam H. Houssein
+    - Kashif Hussain
+    - Mai S. Mabrouk
+    - Walid Al-Atabany
+  link: {type: doi, url: "https://doi.org/10.1016/j.matcom.2021.08.013"}
+```
+
+[ProblemLike](#problemlike) entities refer to a reference by its ID in the `references` field.
+
 ### ProblemLike
 
 Fields shared by [Problem](#problem), [Suite](#suite), and [Generator](#generator). 
@@ -130,7 +164,7 @@ The schema deliberately puts most descriptive fields here so suites can be chara
 | `long_name`                              | str?                                           |                                                    |
 | `description`                            | str? (markdown)                                | longer prose                                       |
 | `tags`                                   | set of str?                                    | free-form keywords                                 |
-| `references`                             | set of [Reference](#reference)?                |                                                    |
+| `references`                             | set of IDs?                                    | must resolve to [Reference](#reference)s           |
 | `implementations`                        | set of IDs?                                    | must resolve to [Implementation](#implementation)s |
 | `objectives`                             | set of int?                                    | e.g. `{1}`, `{2, 3}` — **not** a ValueRange        |
 | `variables`                              | set of [Variable](#variable)?                  |                                                    |
@@ -258,23 +292,6 @@ constraints:
 ### ConstraintType
 
 `box | linear | function | unknown`. `function` covers non-linear/black-box constraints.
-
-### Reference
-
-Bibliographic pointer. 
-Requires either a `title` or a `link` and optionally a list of  `authors`.
-
-```yaml
-references:
-  - title: "Honey Badger Algorithm: New metaheuristic algorithm for solving optimization problems."
-    authors: 
-      - Fatma A. Hashim
-      - Essam H. Houssein
-      - Kashif Hussain
-      - Mai S. Mabrouk
-      - Walid Al-Atabany      
-    link: {type: doi, url: "https://doi.org/10.1016/j.matcom.2021.08.013"]
-```
 
 ### Link
 

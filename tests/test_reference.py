@@ -1,12 +1,13 @@
 import pytest
 from pydantic import ValidationError
 
-from opltools.schema import Link, Reference
+from opltools.schema import Link, OPLType, Reference
 
 
 class TestReference:
     def test_only_author(self):
         ref = Reference(title="A paper")
+        assert ref.type is OPLType.reference
         assert ref.title == "A paper"
         assert ref.authors is None
         assert ref.link is None
