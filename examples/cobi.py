@@ -20,6 +20,12 @@ things["cobi_impl"] = Implementation(
     requirements="https://github.com/numbbo/cobi-problem-generator/blob/main/requirements.txt",
 )
 
+things["cobi_ref"] = Reference(
+    title="Pareto Set Characterization in Constrained Multiobjective Optimization and the COBI Problem Generator",
+    authors=["Anne Auger", "Dimo Brockhoff", "Luka Opravš", "Tea Tušar"],
+    link={"type": "arxiv", "url": "https://arxiv.org/abs/2604.09131"},
+)
+
 things["cobi_problem"] = Generator(
     name="COBI Problem",
     description="Generator of COnstrained BI-objective optimization problems",
@@ -32,13 +38,7 @@ things["cobi_problem"] = Generator(
         "multi-peak",
         "convex-quadratic",
     },
-    references=[
-        Reference(
-            title="Pareto Set Characterization in Constrained Multiobjective Optimization and the COBI Problem Generator",
-            authors=["Anne Auger", "Dimo Brockhoff", "Luka Opravš", "Tea Tušar"],
-            link={"type": "arxiv", "url": "https://arxiv.org/abs/2604.09131"},
-        )
-    ],
+    references={"cobi_ref"},
     objectives={2},
     variables=[Variable(type="continuous", dim={"min": 1})],
     implementations={"cobi_impl"},

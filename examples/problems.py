@@ -82,6 +82,271 @@ things["impl_reproblems"] = Implementation(
 
 
 # =====================================================================
+# Shared references (reused by multiple YAML entries).
+# =====================================================================
+
+things["ref_coco_a_platform_for"] = Reference(
+    title="COCO: a platform for comparing continuous optimizers in a black-box setting",
+    link=Link(url="https://doi.org/10.1080/10556788.2020.1808977"),
+)
+things["ref_bbob_bi_objective_test_suite"] = Reference(
+    title="BBOB bi-objective test suite",
+    link=Link(url="https://doi.org/10.48550/arXiv.1604.00359"),
+)
+things["ref_real_parameter_black_box"] = Reference(
+    title="Real-parameter black-box optimization benchmarking: noisy functions definitions",
+    link=Link(url="https://hal.inria.fr/inria-00369466"),
+)
+things["ref_bbob_large_scale_test_suite"] = Reference(
+    title="BBOB large-scale test suite",
+    link=Link(url="https://doi.org/10.48550/arXiv.1903.06396"),
+)
+things["ref_bbob_mixed_integer_test_suite"] = Reference(
+    title="BBOB bi-objective mixed-integer test suite",
+    link=Link(url="https://doi.org/10.1145/3321707.3321868"),
+)
+things["ref_bbob_constrained_documentation"] = Reference(
+    title="bbob-constrained documentation",
+    link=Link(url="http://numbbo.github.io/coco-doc/bbob-constrained/"),
+)
+things["ref_comparison_of_multiobjective_evolutionary"] = Reference(
+    title="Comparison of multiobjective evolutionary algorithms: empirical results",
+    authors=["Eckart Zitzler", "Kalyanmoy Deb", "Lothar Thiele"],
+    link=Link(url="https://doi.org/10.1162/106365600568202"),
+)
+things["ref_scalable_multi_objective_optimization"] = Reference(
+    title="Scalable multi-objective optimization test problems",
+    authors=["Kalyanmoy Deb", "Lothar Thiele", "Marco Laumanns", "Eckart Zitzler"],
+    link=Link(url="https://doi.org/10.1109/CEC.2002.1007032"),
+)
+things["ref_a_review_of_multiobjective"] = Reference(
+    title="A review of multiobjective test problems and a scalable test problem toolkit",
+    authors=["Simon Huband", "Philip Hingston", "Luigi Barone", "Lyndon While"],
+    link=Link(url="https://doi.org/10.1109/TEVC.2005.861417"),
+)
+things["ref_cdmp_benchmark"] = Reference(
+    title="CDMP benchmark",
+    link=Link(url="https://doi.org/10.1145/3321707.3321878"),
+)
+things["ref_sdp_dynamic_multi_objective_benchmark"] = Reference(
+    title="SDP dynamic multi-objective benchmark",
+    link=Link(url="https://doi.org/10.1109/TCYB.2019.2896021"),
+)
+things["ref_maop_benchmark"] = Reference(
+    title="MaOP benchmark",
+    link=Link(url="https://doi.org/10.1016/j.swevo.2019.02.003"),
+)
+things["ref_bp_benchmark"] = Reference(
+    title="BP benchmark",
+    link=Link(url="https://doi.org/10.1109/CEC.2019.8790277"),
+)
+things["ref_gpd_generator"] = Reference(
+    title="GPD generator",
+    link=Link(url="https://doi.org/10.1016/j.asoc.2020.106139"),
+)
+things["ref_evolutionary_many_task_optimization"] = Reference(
+    title="Evolutionary many-task optimization framework",
+    link=Link(url="https://doi.org/10.48550/arXiv.2110.08033"),
+)
+things["ref_mmopp_technical_report"] = Reference(
+    title="MMOPP technical report",
+    link=Link(url="http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412"),
+)
+things["ref_cfd_test_problem_suite"] = Reference(
+    title="CFD test problem suite",
+    link=Link(url="https://doi.org/10.1007/978-3-319-99259-4_24"),
+)
+things["ref_game_benchmark_for_evolutionary"] = Reference(
+    title="Game benchmark for evolutionary algorithms",
+    link=Link(url="https://doi.org/10.1145/3321707.3321805"),
+)
+things["ref_car_structure_design_benchmark"] = Reference(
+    title="Car structure design benchmark",
+    link=Link(url="https://doi.org/10.1145/3205651.3205702"),
+)
+things["ref_bbcomp_emo_2017"] = Reference(
+    title="BBComp EMO 2017",
+    link=Link(url="https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/"),
+)
+things["ref_jpnsec_ec_symposium_2019_competition"] = Reference(
+    title="JPNSEC EC-Symposium 2019 competition",
+    link=Link(url="http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html"),
+)
+things["ref_easy_to_evaluate_real"] = Reference(
+    title="Easy-to-evaluate real-world multi-objective optimization problems",
+    authors=["Ryoji Tanabe", "Hisao Ishibuchi"],
+    link=Link(url="https://doi.org/10.1016/j.asoc.2020.106078"),
+)
+things["ref_radar_waveform_design"] = Reference(
+    title="Radar waveform design",
+    link=Link(url="https://doi.org/10.1007/978-3-540-70928-2_53"),
+)
+things["ref_mf2_a_collection_of"] = Reference(
+    title="mf2: a collection of multi-fidelity benchmark functions in Python",
+    link=Link(url="https://doi.org/10.21105/joss.02049"),
+)
+things["ref_amvop"] = Reference(
+    title="RWMVOP",
+    link=Link(url="https://doi.org/10.1109/TEVC.2013.2281531"),
+)
+things["ref_sbox_cost"] = Reference(
+    title="SBOX-COST",
+    link=Link(url="https://doi.org/10.48550/arXiv.2305.12221"),
+)
+things["ref_on_the_design_of"] = Reference(
+    title="On the design of multi-objective evolutionary algorithms based on NK-landscapes",
+    link=Link(url="https://doi.org/10.1016/j.ejor.2012.12.019"),
+)
+things["ref_mubqp_benchmark"] = Reference(
+    title="mUBQP benchmark",
+    link=Link(url="https://doi.org/10.1016/j.asoc.2013.11.008"),
+)
+things["ref_on_the_impact_of"] = Reference(
+    title="On the impact of multi-objective scalability for the ρmTSP",
+    link=Link(url="https://doi.org/10.1007/978-3-319-45823-6_40"),
+)
+things["ref_benchmark_functions_for_cec"] = Reference(
+    title="Benchmark Functions for CEC 2015 Special Session and Competition on Dynamic Multi-objective Optimization",
+)
+things["ref_ealain"] = Reference(
+    title="Ealain",
+    link=Link(url="https://doi.org/10.1145/3638530.3654299"),
+)
+things["ref_ma_bbob"] = Reference(
+    title="MA-BBOB",
+    link=Link(url="https://doi.org/10.1145/3673908"),
+)
+things["ref_mpm2_technical_report_tr15_01"] = Reference(
+    title="MPM2 technical report TR15-01",
+    link=Link(url="https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf"),
+)
+things["ref_convex_dtlz2"] = Reference(
+    title="Convex DTLZ2",
+    link=Link(url="https://doi.org/10.1109/TEVC.2013.2281535"),
+)
+things["ref_inverted_dtlz1"] = Reference(
+    title="Inverted DTLZ1",
+    link=Link(url="https://doi.org/10.1109/TEVC.2013.2281534"),
+)
+things["ref_minus_dtlz_minus_wfg"] = Reference(
+    title="Minus DTLZ / Minus WFG",
+    link=Link(url="https://doi.org/10.1109/TEVC.2016.2587749"),
+)
+things["ref_linkage_zdt_dtlz_variants"] = Reference(
+    title="Linkage ZDT/DTLZ variants",
+    link=Link(url="https://doi.org/10.1145/1143997.1144179"),
+)
+things["ref_cec2018_dmop_competition_tr"] = Reference(
+    title="CEC2018 DMOP Competition TR",
+    link=Link(url="https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf"),
+)
+things["ref_modact"] = Reference(
+    title="MODAct",
+    link=Link(url="https://doi.org/10.1109/TEVC.2020.3020046"),
+)
+things["ref_iohclustering"] = Reference(
+    title="IOHClustering",
+    link=Link(url="https://arxiv.org/pdf/2505.09233"),
+)
+things["ref_gnbg_ii"] = Reference(
+    title="GNBG-II",
+    link=Link(url="https://dl.acm.org/doi/pdf/10.1145/3712255.3734271"),
+)
+things["ref_gnbg"] = Reference(
+    title="GNBG",
+    link=Link(url="https://arxiv.org/abs/2312.07083"),
+)
+things["ref_dynamicbinval"] = Reference(
+    title="DynamicBinVal",
+    link=Link(url="https://arxiv.org/pdf/2404.15837"),
+)
+things["ref_pbo_benchmarks"] = Reference(
+    title="PBO benchmarks",
+    link=Link(url="https://dl.acm.org/doi/pdf/10.1145/3319619.3326810"),
+)
+things["ref_w_model"] = Reference(
+    title="W-model",
+    link=Link(url="https://dl.acm.org/doi/abs/10.1145/3205651.3208240"),
+)
+things["ref_submodular_optimization_benchmark"] = Reference(
+    title="Submodular optimization benchmark",
+    link=Link(url="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181"),
+)
+things["ref_cec2013_definitions"] = Reference(
+    title="CEC2013 definitions",
+    link=Link(url="https://peerj.com/articles/cs-2671/CEC2013.pdf"),
+)
+things["ref_cec2022_tr"] = Reference(
+    title="CEC2022 TR",
+    link=Link(url="https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf"),
+)
+things["ref_onemax_sphere_zeromax_sphere"] = Reference(
+    title="Mixed-variable multi-objective test problems",
+    link=Link(url="https://doi.org/10.1145/3449726.3459521"),
+)
+things["ref_porkchop_plot_interplanetary_trajectory"] = Reference(
+    title="Porkchop plot interplanetary trajectory benchmark",
+    link=Link(url="https://doi.org/10.1109/CEC65147.2025.11042973"),
+)
+things["ref_kinematics_of_a_robot_arm"] = Reference(
+    title="Kinematics of a robot arm",
+    link=Link(url="https://doi.org/10.1023/A:1013258808932"),
+)
+things["ref_vehicledynamics_benchmark"] = Reference(
+    title="VehicleDynamics benchmark",
+    link=Link(url="https://www.scitepress.org/Papers/2023/121580/121580.pdf"),
+)
+things["ref_mechbench"] = Reference(
+    title="MECHBench",
+    link=Link(url="https://arxiv.org/abs/2511.10821"),
+)
+things["ref_expobench"] = Reference(
+    title="EXPObench",
+    link=Link(url="https://doi.org/10.1016/j.asoc.2023.110744"),
+)
+things["ref_gasoline_direct_injection_engine_design"] = Reference(
+    title="Gasoline direct injection engine design",
+    link=Link(url="https://doi.org/10.1016/j.ejor.2022.08.032"),
+)
+things["ref_beacon"] = Reference(
+    title="BEACON",
+    link=Link(url="https://dl.acm.org/doi/10.1145/3712255.3734303"),
+)
+things["ref_tulipaenergymodel_jl_scientific_references"] = Reference(
+    title="TulipaEnergyModel.jl scientific references",
+    link=Link(url="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references"),
+)
+things["ref_brachytherapy_treatment_planning"] = Reference(
+    title="Brachytherapy treatment planning",
+    link=Link(url="https://www.sciencedirect.com/science/article/pii/S1538472123016781"),
+)
+things["ref_fleetopt"] = Reference(
+    title="FleetOpt",
+    link=Link(url="https://dl.acm.org/doi/abs/10.1145/3638530.3664137"),
+)
+things["ref_building_spatial_design"] = Reference(
+    title="Building spatial design",
+    link=Link(url="https://hdl.handle.net/1887/81789"),
+)
+things["ref_a_multi_step_evaluation"] = Reference(
+    title="A Multi-Step Evaluation Process in Electric Motor Design",
+    authors=["Tea Tušar", "Peter Korošec", "Bogdan Filipič"],
+    link=Link(url="https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf"),
+)
+things["ref_cuter"] = Reference(
+    title="CUTEr",
+    link=Link(url="https://dl.acm.org/doi/10.1145/962437.962439"),
+)
+things["ref_cutest"] = Reference(
+    title="CUTEst",
+    link=Link(url="https://link.springer.com/article/10.1007/s10589-014-9687-3"),
+)
+things["ref_puboi"] = Reference(
+    title="PUBOi",
+    link=Link(url="https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12"),
+)
+
+# =====================================================================
 # Entries
 # =====================================================================
 
@@ -104,13 +369,7 @@ things["suite_bbob"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="COCO: a platform for comparing continuous optimizers in a black-box setting",
-            authors=[],
-            link=Link(url="https://doi.org/10.1080/10556788.2020.1808977"),
-        )
-    ],
+    references={"ref_coco_a_platform_for"},
     implementations={"impl_coco"},
 )
 
@@ -133,13 +392,7 @@ things["suite_bbob_biobj"] = Suite(
     objectives={2},
     variables=[Variable(type="continuous", dim=ValueRange(min=2, max=40))],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="BBOB bi-objective test suite",
-            authors=[],
-            link=Link(url="https://doi.org/10.48550/arXiv.1604.00359"),
-        )
-    ],
+    references={"ref_bbob_bi_objective_test_suite"},
     implementations={"impl_coco"},
 )
 
@@ -163,13 +416,7 @@ things["suite_bbob_noisy"] = Suite(
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
     noise_type={"noisy"},
-    references=[
-        Reference(
-            title="Real-parameter black-box optimization benchmarking: noisy functions definitions",
-            authors=[],
-            link=Link(url="https://hal.inria.fr/inria-00369466"),
-        )
-    ],
+    references={"ref_real_parameter_black_box"},
     implementations={"impl_coco_legacy"},
 )
 
@@ -192,13 +439,7 @@ things["suite_bbob_largescale"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=20, max=640))],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="BBOB large-scale test suite",
-            authors=[],
-            link=Link(url="https://doi.org/10.48550/arXiv.1903.06396"),
-        )
-    ],
+    references={"ref_bbob_large_scale_test_suite"},
     implementations={"impl_coco"},
 )
 
@@ -224,13 +465,7 @@ things["suite_bbob_mixint"] = Suite(
         Variable(type="integer", dim=ValueRange(min=5, max=160)),
     ],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="BBOB mixed-integer test suite",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3321707.3321868"),
-        )
-    ],
+    references={"ref_bbob_mixed_integer_test_suite"},
     implementations={"impl_coco"},
 )
 
@@ -256,13 +491,7 @@ things["suite_bbob_biobj_mixint"] = Suite(
         Variable(type="integer", dim=ValueRange(min=5, max=160)),
     ],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="BBOB bi-objective mixed-integer test suite",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3321707.3321868"),
-        )
-    ],
+    references={"ref_bbob_mixed_integer_test_suite"},
     implementations={"impl_coco"},
 )
 
@@ -286,13 +515,7 @@ things["suite_bbob_constrained"] = Suite(
     variables=[Variable(type="continuous", dim=ValueRange(min=2, max=40))],
     constraints=[Constraint(hard="yes")],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="bbob-constrained documentation",
-            authors=[],
-            link=Link(url="http://numbbo.github.io/coco-doc/bbob-constrained/"),
-        )
-    ],
+    references={"ref_bbob_constrained_documentation"},
     implementations={"impl_coco"},
 )
 
@@ -347,13 +570,7 @@ things["suite_zdt"] = Suite(
         Variable(type="continuous", dim=ValueRange(min=1)),
         Variable(type="binary", dim=ValueRange(min=1)),
     ],
-    references=[
-        Reference(
-            title="Comparison of multiobjective evolutionary algorithms: empirical results",
-            authors=["Eckart Zitzler", "Kalyanmoy Deb", "Lothar Thiele"],
-            link=Link(url="https://doi.org/10.1162/106365600568202"),
-        )
-    ],
+    references={"ref_comparison_of_multiobjective_evolutionary"},
     implementations={"impl_pymoo"},
 )
 
@@ -376,13 +593,7 @@ things["suite_dtlz"] = Suite(
     # FIXME: original "2+" - schema requires set[int]; truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Scalable multi-objective optimization test problems",
-            authors=["Kalyanmoy Deb", "Lothar Thiele", "Marco Laumanns", "Eckart Zitzler"],
-            link=Link(url="https://doi.org/10.1109/CEC.2002.1007032"),
-        )
-    ],
+    references={"ref_scalable_multi_objective_optimization"},
     implementations={"impl_pymoo"},
 )
 
@@ -405,13 +616,7 @@ things["suite_wfg"] = Suite(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="A review of multiobjective test problems and a scalable test problem toolkit",
-            authors=["Simon Huband", "Philip Hingston", "Luigi Barone", "Lyndon While"],
-            link=Link(url="https://doi.org/10.1109/TEVC.2005.861417"),
-        )
-    ],
+    references={"ref_a_review_of_multiobjective"},
     implementations={"impl_pymoo"},
 )
 
@@ -438,13 +643,7 @@ things["suite_cdmp"] = Suite(
     constraints=[Constraint(hard="yes")],
     dynamic_type={"unknown"},
     noise_type={"unknown"},
-    references=[
-        Reference(
-            title="CDMP benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3321707.3321878"),
-        )
-    ],
+    references={"ref_cdmp_benchmark"},
 )
 
 #! - name: SDP
@@ -469,13 +668,7 @@ things["suite_sdp"] = Suite(
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     dynamic_type={"dynamic"},
     noise_type={"unknown"},
-    references=[
-        Reference(
-            title="SDP dynamic multi-objective benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TCYB.2019.2896021"),
-        )
-    ],
+    references={"ref_sdp_dynamic_multi_objective_benchmark"},
 )
 
 #! - name: MaOP
@@ -499,13 +692,7 @@ things["suite_maop"] = Suite(
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     noise_type={"unknown"},
-    references=[
-        Reference(
-            title="MaOP benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1016/j.swevo.2019.02.003"),
-        )
-    ],
+    references={"ref_maop_benchmark"},
 )
 
 #! - name: BP
@@ -529,13 +716,7 @@ things["suite_bp"] = Suite(
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     noise_type={"unknown"},
-    references=[
-        Reference(
-            title="BP benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/CEC.2019.8790277"),
-        )
-    ],
+    references={"ref_bp_benchmark"},
 )
 
 #! - name: GPD
@@ -560,13 +741,7 @@ things["gen_gpd"] = Generator(
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     constraints=[Constraint(hard="some")],
     noise_type={"optional"},
-    references=[
-        Reference(
-            title="GPD generator",
-            authors=[],
-            link=Link(url="https://doi.org/10.1016/j.asoc.2020.106139"),
-        )
-    ],
+    references={"ref_gpd_generator"},
 )
 
 #! - name: ETMOF
@@ -593,13 +768,7 @@ things["suite_etmof"] = Suite(
     objectives=set(range(2, 51)),
     variables=[Variable(type="continuous", dim=ValueRange(min=25, max=10000))],
     dynamic_type={"dynamic"},
-    references=[
-        Reference(
-            title="Evolutionary many-task optimization framework",
-            authors=[],
-            link=Link(url="https://doi.org/10.48550/arXiv.2110.08033"),
-        )
-    ],
+    references={"ref_evolutionary_many_task_optimization"},
     implementations={"impl_etmof"},
 )
 
@@ -629,15 +798,7 @@ things["suite_mmopp"] = Suite(
     variables=[Variable(type="unknown")],
     constraints=[Constraint(hard="yes")],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="MMOPP technical report",
-            authors=[],
-            link=Link(
-                url="http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412"
-            ),
-        )
-    ],
+    references={"ref_mmopp_technical_report"},
     implementations={"impl_mmopp"},
 )
 
@@ -669,13 +830,7 @@ things["suite_cfd"] = Suite(
     variables=[Variable(type="unknown", dim=ValueRange(min=1))],
     constraints=[Constraint(hard="yes")],
     source={"real-world"},
-    references=[
-        Reference(
-            title="CFD test problem suite",
-            authors=[],
-            link=Link(url="https://doi.org/10.1007/978-3-319-99259-4_24"),
-        )
-    ],
+    references={"ref_cfd_test_problem_suite"},
     implementations={"impl_cfd"},
 )
 
@@ -707,13 +862,7 @@ things["suite_gbea"] = Suite(
     noise_type={"noisy"},
     modality={"multimodal"},
     source={"real-world"},
-    references=[
-        Reference(
-            title="Game benchmark for evolutionary algorithms",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3321707.3321805"),
-        )
-    ],
+    references={"ref_game_benchmark_for_evolutionary"},
     implementations={"impl_gbea"},
 )
 
@@ -744,13 +893,7 @@ things["suite_car_structure"] = Suite(
     variables=[Variable(type="integer", dim=ValueRange(min=144, max=222))],
     constraints=[Constraint(hard="yes", number=54)],
     source={"real-world"},
-    references=[
-        Reference(
-            title="Car structure design benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3205651.3205702"),
-        )
-    ],
+    references={"ref_car_structure_design_benchmark"},
     implementations={"impl_car_structure"},
 )
 
@@ -783,13 +926,7 @@ things["suite_emo2017"] = Suite(
     objectives={2},
     variables=[Variable(type="continuous", dim=ValueRange(min=4, max=24))],
     source={"real-world"},
-    references=[
-        Reference(
-            title="BBComp EMO 2017",
-            authors=[],
-            link=Link(url="https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/"),
-        )
-    ],
+    references={"ref_bbcomp_emo_2017"},
     implementations={"impl_emo2017"},
 )
 
@@ -825,15 +962,7 @@ things["fn_jsec2019"] = Problem(
     variables=[Variable(type="continuous", dim=32)],
     constraints=[Constraint(hard="yes", number=22)],
     source={"real-world"},
-    references=[
-        Reference(
-            title="JPNSEC EC-Symposium 2019 competition",
-            authors=[],
-            link=Link(
-                url="http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html"
-            ),
-        )
-    ],
+    references={"ref_jpnsec_ec_symposium_2019_competition"},
     implementations={"impl_jsec2019"},
 )
 
@@ -859,13 +988,7 @@ things["suite_re"] = Suite(
         Variable(type="integer", dim=ValueRange(min=2, max=7)),
     ],
     source={"real-world-like"},
-    references=[
-        Reference(
-            title="Easy-to-evaluate real-world multi-objective optimization problems",
-            authors=["Ryoji Tanabe", "Hisao Ishibuchi"],
-            link=Link(url="https://doi.org/10.1016/j.asoc.2020.106078"),
-        )
-    ],
+    references={"ref_easy_to_evaluate_real"},
     implementations={"impl_reproblems"},
 )
 
@@ -892,13 +1015,7 @@ things["suite_cre"] = Suite(
     ],
     constraints=[Constraint(hard="yes")],
     source={"real-world-like"},
-    references=[
-        Reference(
-            title="Easy-to-evaluate real-world multi-objective optimization problems",
-            authors=["Ryoji Tanabe", "Hisao Ishibuchi"],
-            link=Link(url="https://doi.org/10.1016/j.asoc.2020.106078"),
-        )
-    ],
+    references={"ref_easy_to_evaluate_real"},
     implementations={"impl_reproblems"},
 )
 
@@ -927,13 +1044,7 @@ things["fn_radar_waveform"] = Problem(
     variables=[Variable(type="integer", dim=ValueRange(min=4, max=12))],
     constraints=[Constraint(hard="yes")],
     source={"real-world"},
-    references=[
-        Reference(
-            title="Radar waveform design",
-            authors=[],
-            link=Link(url="https://doi.org/10.1007/978-3-540-70928-2_53"),
-        )
-    ],
+    references={"ref_radar_waveform_design"},
     implementations={"impl_radar_waveform"},
 )
 
@@ -962,13 +1073,7 @@ things["suite_mf2"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     fidelity_levels={1, 2},
-    references=[
-        Reference(
-            title="mf2: a collection of multi-fidelity benchmark functions in Python",
-            authors=[],
-            link=Link(url="https://doi.org/10.21105/joss.02049"),
-        )
-    ],
+    references={"ref_mf2_a_collection_of"},
     implementations={"impl_mf2"},
 )
 
@@ -996,13 +1101,7 @@ things["suite_amvop"] = Suite(
         Variable(type="categorical", dim=ValueRange(min=1)),
     ],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="AMVOP",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2013.2281531"),
-        )
-    ],
+    references={"ref_amvop"},
 )
 
 #! - name: RWMVOP
@@ -1030,13 +1129,7 @@ things["suite_rwmvop"] = Suite(
     ],
     constraints=[Constraint(hard="yes")],
     source={"real-world"},
-    references=[
-        Reference(
-            title="RWMVOP",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2013.2281531"),
-        )
-    ],
+    references={"ref_amvop"},
 )
 
 #! - name: SBOX-COST
@@ -1060,13 +1153,7 @@ things["suite_sbox_cost"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="SBOX-COST",
-            authors=[],
-            link=Link(url="https://doi.org/10.48550/arXiv.2305.12221"),
-        )
-    ],
+    references={"ref_sbox_cost"},
     implementations={"impl_iohexperimenter"},
 )
 
@@ -1092,13 +1179,7 @@ things["gen_rho_mnk_landscapes"] = Generator(
     objectives=set(range(1, 11)),
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="On the design of multi-objective evolutionary algorithms based on NK-landscapes",
-            authors=[],
-            link=Link(url="https://doi.org/10.1016/j.ejor.2012.12.019"),
-        )
-    ],
+    references={"ref_on_the_design_of"},
     implementations={"impl_mocobench"},
 )
 
@@ -1124,13 +1205,7 @@ things["gen_mubqp"] = Generator(
     objectives=set(range(1, 11)),
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     modality={"multimodal", "quadratic"},
-    references=[
-        Reference(
-            title="mUBQP benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1016/j.asoc.2013.11.008"),
-        )
-    ],
+    references={"ref_mubqp_benchmark"},
     implementations={"impl_mocobench"},
 )
 
@@ -1157,13 +1232,7 @@ things["gen_rho_mtsp"] = Generator(
     objectives=set(range(1, 11)),
     variables=[Variable(type="unknown", dim=ValueRange(min=1))],
     modality={"multimodal", "quadratic"},
-    references=[
-        Reference(
-            title="On the impact of multi-objective scalability for the ρmTSP",
-            authors=[],
-            link=Link(url="https://doi.org/10.1007/978-3-319-45823-6_40"),
-        )
-    ],
+    references={"ref_on_the_impact_of"},
     implementations={"impl_mocobench"},
 )
 
@@ -1189,12 +1258,7 @@ things["suite_cec2015_dmoo"] = Suite(
     variables=[Variable(type="continuous")],
     constraints=[Constraint(hard="?")],
     dynamic_type={"dynamic"},
-    references=[
-        Reference(
-            title="Benchmark Functions for CEC 2015 Special Session and Competition on Dynamic Multi-objective Optimization",
-            authors=[],
-        )
-    ],
+    references={"ref_benchmark_functions_for_cec"},
 )
 
 #! - name: Ealain
@@ -1230,13 +1294,7 @@ things["gen_ealain"] = Generator(
     dynamic_type={"optional"},
     fidelity_levels={1, 2},
     source={"real-world-like"},
-    references=[
-        Reference(
-            title="Ealain",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3638530.3654299"),
-        )
-    ],
+    references={"ref_ealain"},
     implementations={"impl_ealain"},
 )
 
@@ -1271,13 +1329,7 @@ things["gen_ma_bbob"] = Generator(
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
     source={"artificial"},
-    references=[
-        Reference(
-            title="MA-BBOB",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3673908"),
-        )
-    ],
+    references={"ref_ma_bbob"},
     implementations={"impl_ma_bbob", "impl_iohexperimenter"},
 )
 
@@ -1313,13 +1365,7 @@ things["gen_mpm2"] = Generator(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
-    references=[
-        Reference(
-            title="MPM2 technical report TR15-01",
-            authors=[],
-            link=Link(url="https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf"),
-        )
-    ],
+    references={"ref_mpm2_technical_report_tr15_01"},
     implementations={"impl_mpm2"},
 )
 
@@ -1344,13 +1390,7 @@ things["fn_convex_dtlz2"] = Problem(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Convex DTLZ2",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2013.2281535"),
-        )
-    ],
+    references={"ref_convex_dtlz2"},
 )
 
 #! - name: Inverted DTLZ1
@@ -1374,13 +1414,7 @@ things["fn_inverted_dtlz1"] = Problem(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Inverted DTLZ1",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2013.2281534"),
-        )
-    ],
+    references={"ref_inverted_dtlz1"},
 )
 
 #! - name: Minus DTLZ
@@ -1404,13 +1438,7 @@ things["suite_minus_dtlz"] = Suite(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Minus DTLZ / Minus WFG",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2016.2587749"),
-        )
-    ],
+    references={"ref_minus_dtlz_minus_wfg"},
 )
 
 #! - name: Minus WFG
@@ -1434,13 +1462,7 @@ things["suite_minus_wfg"] = Suite(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Minus DTLZ / Minus WFG",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2016.2587749"),
-        )
-    ],
+    references={"ref_minus_dtlz_minus_wfg"},
 )
 
 #! - name: L1-ZDT
@@ -1468,13 +1490,7 @@ things["suite_l1_zdt"] = Suite(
         Variable(type="continuous", dim=ValueRange(min=1)),
         Variable(type="binary", dim=ValueRange(min=1)),
     ],
-    references=[
-        Reference(
-            title="Linkage ZDT/DTLZ variants",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/1143997.1144179"),
-        )
-    ],
+    references={"ref_linkage_zdt_dtlz_variants"},
 )
 
 #! - name: L2-ZDT
@@ -1501,13 +1517,7 @@ things["suite_l2_zdt"] = Suite(
         Variable(type="continuous", dim=ValueRange(min=1)),
         Variable(type="binary", dim=ValueRange(min=1)),
     ],
-    references=[
-        Reference(
-            title="Linkage ZDT/DTLZ variants",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/1143997.1144179"),
-        )
-    ],
+    references={"ref_linkage_zdt_dtlz_variants"},
 )
 
 #! - name: L3-ZDT
@@ -1534,13 +1544,7 @@ things["suite_l3_zdt"] = Suite(
         Variable(type="continuous", dim=ValueRange(min=1)),
         Variable(type="binary", dim=ValueRange(min=1)),
     ],
-    references=[
-        Reference(
-            title="Linkage ZDT/DTLZ variants",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/1143997.1144179"),
-        )
-    ],
+    references={"ref_linkage_zdt_dtlz_variants"},
 )
 
 #! - name: L2-DTLZ
@@ -1565,13 +1569,7 @@ things["suite_l2_dtlz"] = Suite(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Linkage ZDT/DTLZ variants",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/1143997.1144179"),
-        )
-    ],
+    references={"ref_linkage_zdt_dtlz_variants"},
 )
 
 #! - name: L3-DTLZ
@@ -1596,13 +1594,7 @@ things["suite_l3_dtlz"] = Suite(
     # FIXME: original "2+" - truncated to 2..10.
     objectives=set(range(2, 11)),
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
-    references=[
-        Reference(
-            title="Linkage ZDT/DTLZ variants",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/1143997.1144179"),
-        )
-    ],
+    references={"ref_linkage_zdt_dtlz_variants"},
 )
 
 #! - name: CEC2018 DT - CEC2018 Competition on Dynamic Multiobjective Optimisation
@@ -1630,13 +1622,7 @@ things["suite_cec2018_dt"] = Suite(
     variables=[Variable(type="unknown", dim=ValueRange(min=1))],
     dynamic_type={"dynamic"},
     source={"artificial"},
-    references=[
-        Reference(
-            title="CEC2018 DMOP Competition TR",
-            authors=[],
-            link=Link(url="https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf"),
-        )
-    ],
+    references={"ref_cec2018_dmop_competition_tr"},
     implementations={"impl_pymoo"},
 )
 
@@ -1673,13 +1659,7 @@ things["suite_modact"] = Suite(
     ],
     constraints=[Constraint(hard="yes")],
     source={"real-world"},
-    references=[
-        Reference(
-            title="MODAct",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/TEVC.2020.3020046"),
-        )
-    ],
+    references={"ref_modact"},
     implementations={"impl_modact", "impl_pymoo"},
 )
 
@@ -1711,13 +1691,7 @@ things["suite_iohclustering"] = Suite(
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
     source={"artificial-from-real-data"},
-    references=[
-        Reference(
-            title="IOHClustering",
-            authors=[],
-            link=Link(url="https://arxiv.org/pdf/2505.09233"),
-        )
-    ],
+    references={"ref_iohclustering"},
     implementations={"impl_iohclustering"},
 )
 things["gen_iohclustering"] = Generator(
@@ -1727,13 +1701,7 @@ things["gen_iohclustering"] = Generator(
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     modality={"multimodal"},
     source={"artificial-from-real-data"},
-    references=[
-        Reference(
-            title="IOHClustering",
-            authors=[],
-            link=Link(url="https://arxiv.org/pdf/2505.09233"),
-        )
-    ],
+    references={"ref_iohclustering"},
     implementations={"impl_iohclustering"},
 )
 
@@ -1767,13 +1735,7 @@ things["suite_gnbg_ii"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="GNBG-II",
-            authors=[],
-            link=Link(url="https://dl.acm.org/doi/pdf/10.1145/3712255.3734271"),
-        )
-    ],
+    references={"ref_gnbg_ii"},
     implementations={"impl_gnbg_ii", "impl_iohgnbg"},
 )
 things["gen_gnbg_ii"] = Generator(
@@ -1782,13 +1744,7 @@ things["gen_gnbg_ii"] = Generator(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="GNBG-II",
-            authors=[],
-            link=Link(url="https://dl.acm.org/doi/pdf/10.1145/3712255.3734271"),
-        )
-    ],
+    references={"ref_gnbg_ii"},
     implementations={"impl_gnbg_ii", "impl_iohgnbg"},
 )
 
@@ -1817,13 +1773,7 @@ things["suite_gnbg"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="GNBG",
-            authors=[],
-            link=Link(url="https://arxiv.org/abs/2312.07083"),
-        )
-    ],
+    references={"ref_gnbg"},
     implementations={"impl_gnbg"},
 )
 things["gen_gnbg"] = Generator(
@@ -1832,13 +1782,7 @@ things["gen_gnbg"] = Generator(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="GNBG",
-            authors=[],
-            link=Link(url="https://arxiv.org/abs/2312.07083"),
-        )
-    ],
+    references={"ref_gnbg"},
     implementations={"impl_gnbg"},
 )
 
@@ -1863,13 +1807,7 @@ things["suite_dynamicbinval"] = Suite(
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     dynamic_type={"dynamic"},
     source={"artificial"},
-    references=[
-        Reference(
-            title="DynamicBinVal",
-            authors=[],
-            link=Link(url="https://arxiv.org/pdf/2404.15837"),
-        )
-    ],
+    references={"ref_dynamicbinval"},
     implementations={"impl_iohexperimenter"},
 )
 
@@ -1893,13 +1831,7 @@ things["suite_pbo"] = Suite(
     objectives={1},
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="PBO benchmarks",
-            authors=[],
-            link=Link(url="https://dl.acm.org/doi/pdf/10.1145/3319619.3326810"),
-        )
-    ],
+    references={"ref_pbo_benchmarks"},
     implementations={"impl_iohexperimenter"},
 )
 
@@ -1929,15 +1861,7 @@ things["gen_wmodel"] = Generator(
     objectives={1},
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="W-model",
-            authors=[],
-            link=Link(
-                url="https://dl.acm.org/doi/abs/10.1145/3205651.3208240"
-            ),
-        )
-    ],
+    references={"ref_w_model"},
     implementations={"impl_wmodel"},
 )
 
@@ -1962,13 +1886,7 @@ things["suite_submodular"] = Suite(
     objectives={1},
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="Submodular optimization benchmark",
-            authors=[],
-            link=Link(url="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181"),
-        )
-    ],
+    references={"ref_submodular_optimization_benchmark"},
     implementations={"impl_iohexperimenter"},
 )
 
@@ -1997,13 +1915,7 @@ things["suite_cec2013"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="CEC2013 definitions",
-            authors=[],
-            link=Link(url="https://peerj.com/articles/cs-2671/CEC2013.pdf"),
-        )
-    ],
+    references={"ref_cec2013_definitions"},
     implementations={"impl_cec2013", "impl_iohexperimenter"},
 )
 
@@ -2032,13 +1944,7 @@ things["suite_cec2022"] = Suite(
     objectives={1},
     variables=[Variable(type="continuous", dim=ValueRange(min=1))],
     source={"artificial"},
-    references=[
-        Reference(
-            title="CEC2022 TR",
-            authors=[],
-            link=Link(url="https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf"),
-        )
-    ],
+    references={"ref_cec2022_tr"},
     implementations={"impl_cec2022", "impl_iohexperimenter"},
 )
 
@@ -2065,13 +1971,7 @@ things["fn_onemax_sphere_zeromax_sphere"] = Problem(
         Variable(type="continuous", dim=ValueRange(min=1)),
     ],
     source={"artificial"},
-    references=[
-        Reference(
-            title="Onemax+Sphere / Zeromax+Sphere",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3449726.3459521"),
-        )
-    ],
+    references={"ref_onemax_sphere_zeromax_sphere"},
 )
 
 #! - name: Onemax+Sphere / DeceptiveTrap+RotatedEllipsoid
@@ -2097,13 +1997,7 @@ things["fn_onemax_sphere_deceptive_rotell"] = Problem(
         Variable(type="continuous", dim=ValueRange(min=1)),
     ],
     source={"artificial"},
-    references=[
-        Reference(
-            title="Mixed-variable multi-objective test problems",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3449726.3459521"),
-        )
-    ],
+    references={"ref_onemax_sphere_zeromax_sphere"},
 )
 
 #! - name: InverseDeceptiveTrap+RotatedEllipsoid / DeceptiveTrap+RotatedEllipsoid
@@ -2129,13 +2023,7 @@ things["fn_invdeceptive_deceptive_rotell"] = Problem(
         Variable(type="continuous", dim=ValueRange(min=1)),
     ],
     source={"artificial"},
-    references=[
-        Reference(
-            title="Mixed-variable multi-objective test problems",
-            authors=[],
-            link=Link(url="https://doi.org/10.1145/3449726.3459521"),
-        )
-    ],
+    references={"ref_onemax_sphere_zeromax_sphere"},
 )
 
 #! - name: PorkchopPlotInterplanetaryTrajectory
@@ -2168,13 +2056,7 @@ things["suite_porkchop"] = Suite(
     variables=[Variable(type="continuous", dim=2)],
     modality={"multimodal"},
     source={"real-world"},
-    references=[
-        Reference(
-            title="Porkchop plot interplanetary trajectory benchmark",
-            authors=[],
-            link=Link(url="https://doi.org/10.1109/CEC65147.2025.11042973"),
-        )
-    ],
+    references={"ref_porkchop_plot_interplanetary_trajectory"},
     implementations={"impl_transfer_rf_bbob_rw"},
 )
 
@@ -2198,13 +2080,7 @@ things["suite_kinematics_robotarm"] = Suite(
     variables=[Variable(type="continuous", dim=21)],
     modality={"unimodal"},
     source={"real-world"},
-    references=[
-        Reference(
-            title="Kinematics of a robot arm",
-            authors=[],
-            link=Link(url="https://doi.org/10.1023/A:1013258808932"),
-        )
-    ],
+    references={"ref_kinematics_of_a_robot_arm"},
     implementations={"impl_transfer_rf_bbob_rw"},
 )
 
@@ -2233,13 +2109,7 @@ things["suite_vehicle_dynamics"] = Suite(
     variables=[Variable(type="continuous", dim=2)],
     modality={"multimodal"},
     source={"real-world"},
-    references=[
-        Reference(
-            title="VehicleDynamics benchmark",
-            authors=[],
-            link=Link(url="https://www.scitepress.org/Papers/2023/121580/121580.pdf"),
-        )
-    ],
+    references={"ref_vehicledynamics_benchmark"},
     implementations={"impl_vehicle_dynamics"},
 )
 
@@ -2290,13 +2160,7 @@ things["suite_mechbench"] = Suite(
     modality={"multimodal"},
     allows_partial_evaluation="no",
     source={"real-world"},
-    references=[
-        Reference(
-            title="MECHBench",
-            authors=[],
-            link=Link(url="https://arxiv.org/abs/2511.10821"),
-        )
-    ],
+    references={"ref_mechbench"},
     implementations={"impl_mechbench"},
 )
 
@@ -2355,13 +2219,7 @@ things["suite_expobench"] = Suite(
     noise_type={"observational", "real-life"},
     allows_partial_evaluation="no",
     source={"real-world"},
-    references=[
-        Reference(
-            title="EXPObench",
-            authors=[],
-            link=Link(url="https://doi.org/10.1016/j.asoc.2023.110744"),
-        )
-    ],
+    references={"ref_expobench"},
     implementations={"impl_expobench"},
 )
 
@@ -2403,13 +2261,7 @@ things["fn_gasoline"] = Problem(
     constraints=[Constraint(hard="yes", number=5)],
     fidelity_levels={1, 2},
     source={"real-world"},
-    references=[
-        Reference(
-            title="Gasoline direct injection engine design",
-            authors=[],
-            link=Link(url="https://doi.org/10.1016/j.ejor.2022.08.032"),
-        )
-    ],
+    references={"ref_gasoline_direct_injection_engine_design"},
     implementations={"impl_gasoline"},
 )
 
@@ -2457,13 +2309,7 @@ things["gen_beacon"] = Generator(
     modality={"multimodal"},
     allows_partial_evaluation="no",
     source={"artificial"},
-    references=[
-        Reference(
-            title="BEACON",
-            authors=[],
-            link=Link(url="https://dl.acm.org/doi/10.1145/3712255.3734303"),
-        )
-    ],
+    references={"ref_beacon"},
     implementations={"impl_beacon"},
 )
 
@@ -2518,15 +2364,7 @@ things["suite_tulipa_energy"] = Suite(
     modality={"unimodal"},
     fidelity_levels={1, 2},
     source={"real-world"},
-    references=[
-        Reference(
-            title="TulipaEnergyModel.jl scientific references",
-            authors=[],
-            link=Link(
-                url="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references"
-            ),
-        )
-    ],
+    references={"ref_tulipaenergymodel_jl_scientific_references"},
     implementations={"impl_tulipa"},
 )
 
@@ -2590,13 +2428,7 @@ things["suite_brachytherapy"] = Suite(
     fidelity_levels={1, 2},
     allows_partial_evaluation="yes",
     source={"real-world"},
-    references=[
-        Reference(
-            title="Brachytherapy treatment planning",
-            authors=[],
-            link=Link(url="https://www.sciencedirect.com/science/article/pii/S1538472123016781"),
-        )
-    ],
+    references={"ref_brachytherapy_treatment_planning"},
 )
 
 #! - name: FleetOpt
@@ -2624,13 +2456,7 @@ things["fn_fleetopt"] = Problem(
     constraints=[Constraint(hard="yes")],
     allows_partial_evaluation="yes",
     source={"real-world"},
-    references=[
-        Reference(
-            title="FleetOpt",
-            authors=[],
-            link=Link(url="https://dl.acm.org/doi/abs/10.1145/3638530.3664137"),
-        )
-    ],
+    references={"ref_fleetopt"},
 )
 
 #! - name: Building spatial design
@@ -2677,13 +2503,7 @@ things["fn_building_spatial"] = Problem(
     ],
     allows_partial_evaluation="no",
     source={"real-world"},
-    references=[
-        Reference(
-            title="Building spatial design",
-            authors=[],
-            link=Link(url="https://hdl.handle.net/1887/81789"),
-        )
-    ],
+    references={"ref_building_spatial_design"},
     implementations={"impl_bso_toolbox"},
 )
 
@@ -2750,13 +2570,7 @@ This is not an available problem, but could be interesting to show to researcher
     modality={"multimodal"},
     allows_partial_evaluation="no",
     source={"real-world"},
-    references=[
-        Reference(
-            title="A Multi-Step Evaluation Process in Electric Motor Design",
-            authors=["Tea Tušar", "Peter Korošec", "Bogdan Filipič"],
-            link=Link(url="https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf"),
-        )
-    ],
+    references={"ref_a_multi_step_evaluation"},
     implementations={"impl_emdo"},
 )
 
@@ -2876,13 +2690,7 @@ things["suite_cuter"] = Suite(
     constraints=[Constraint(hard="yes")],
     allows_partial_evaluation="no",
     source={"artificial"},
-    references=[
-        Reference(
-            title="CUTEr",
-            authors=[],
-            link=Link(url="https://dl.acm.org/doi/10.1145/962437.962439"),
-        )
-    ],
+    references={"ref_cuter"},
 )
 
 #! - name: CUTEst
@@ -2930,13 +2738,7 @@ things["suite_cutest"] = Suite(
     modality={"multimodal"},
     allows_partial_evaluation="no",
     source={"artificial"},
-    references=[
-        Reference(
-            title="CUTEst",
-            authors=[],
-            link=Link(url="https://link.springer.com/article/10.1007/s10589-014-9687-3"),
-        )
-    ],
+    references={"ref_cutest"},
     implementations={"impl_pycutest"},
 )
 
@@ -2975,13 +2777,7 @@ things["gen_puboi"] = Generator(
     variables=[Variable(type="binary", dim=ValueRange(min=1))],
     allows_partial_evaluation="no",
     source={"artificial"},
-    references=[
-        Reference(
-            title="PUBOi",
-            authors=[],
-            link=Link(url="https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12"),
-        )
-    ],
+    references={"ref_puboi"},
     implementations={"impl_puboi"},
 )
 

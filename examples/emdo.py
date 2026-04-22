@@ -1,4 +1,4 @@
-from opltools import Library, Problem, Implementation
+from opltools import Library, Problem, Implementation, Reference
 from pydantic_yaml import to_yaml_str
 
 #! - name: Electric Motor Design Optimization
@@ -39,6 +39,11 @@ library = Library({
         language="python",
         evaluation_time=["8 minutes"]
     ),
+    "ref_emdo": Reference(
+        title="A Multi-Step Evaluation Process in Electric Motor Design",
+        authors=["Tea Tušar", "Peter Korošec", "Bogdan Filipič"],
+        link={"url": "https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf"},
+    ),
     "fn_emdo":  Problem(
         name="Electric Motor Design Optimization",
         description="""# Goal
@@ -67,14 +72,7 @@ This is not an available problem, but could be interesting to show to researcher
         noise_type=["yes"],
         fidelity_levels=[1],
         source=["real-world"],
-        references=[
-            {
-                "title": "A Multi-Step Evaluation Process in Electric Motor Design",
-                "lang": "sj",
-                "authors": ["Tea Tušar", "Peter Korošec", "Bogdan Filipič"],
-                "link": {"url": "https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf"}
-            }
-        ],
+        references={"ref_emdo"},
         implementations=["impl_emdo"]
     )
 })

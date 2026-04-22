@@ -12,6 +12,7 @@ class OPLType(Enum):
     suite = "suite"
     generator = "generator"
     implementation = "implementation"
+    reference = "reference"
 
 
 class Link(BaseModel):
@@ -73,7 +74,8 @@ class Constraint(BaseModel):
         return hash((self.type, self.hard, self.equality, number))
 
 
-class Reference(BaseModel):
+class Reference(Thing):
+    type: OPLType = OPLType.reference
     title: str | None = None
     authors: list[str] | None = None
     link: Link | None = None
@@ -108,7 +110,7 @@ class ProblemLike(Thing):
     long_name: str | None = None
     description: str | None = None
     tags: set[str] | None = None
-    references: set[Reference] | None = None
+    references: set[str] | None = None
     implementations: set[str] | None = None
     objectives: set[int] | None = None
     variables: set[Variable] | None = None
@@ -142,7 +144,7 @@ class Generator(ProblemLike):
 
 
 class Library(RootModel):
-    root: dict[str, Problem | Generator | Suite | Implementation] = {}
+    root: dict[str, Problem | Generator | Suite | Implementation | Reference] = {}
 
     def _check_id_references(self, ids, type: OPLType) -> None:
         for id in ids:
@@ -174,6 +176,19 @@ class Library(RootModel):
 
     @model_validator(mode="after")
     def _validate(self) -> Self:
+        # Check reference ids on all ProblemLike things
+        for id, thing in self.root.items():
+            if isinstance(thing, ProblemLike) and thing.references:
+                for ref_id in thing.references:
+                    if ref_id not in self.root:
+                        raise ValueError(
+                            f"{thing.type.name} {id} references reference with undefined id '{ref_id}'."
+                        )
+                    if self.root[ref_id].type != OPLType.reference:
+                        raise ValueError(
+                            f"{thing.type.name} {id} references reference with id '{ref_id}' but id is a {self.root[ref_id].type.name}."
+                        )
+
         # First check and fixup all problems
         for id, thing in self.root.items():
             if isinstance(thing, Problem) and thing.implementations:

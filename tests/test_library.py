@@ -6,6 +6,7 @@ from opltools.schema import (
     Implementation,
     Library,
     Problem,
+    Reference,
     Suite,
 )
 
@@ -80,6 +81,35 @@ class TestLibrary:
             "s1": Suite(name="S1", problems={"p1"}),
         })
         assert lib.root["s1"].fidelity_levels == set()
+
+    def test_reference_as_top_level_thing(self):
+        lib = Library(root={
+            "ref1": Reference(title="A paper"),
+            "p1": Problem(name="P1", references={"ref1"}),
+        })
+        assert isinstance(lib.root["ref1"], Reference)
+        assert lib.root["p1"].references == {"ref1"}
+
+    def test_problem_references_missing_reference(self):
+        with pytest.raises(ValidationError, match="undefined id"):
+            Library(root={
+                "p1": Problem(name="P1", references={"does-not-exist"}),
+            })
+
+    def test_problem_references_non_reference(self):
+        with pytest.raises(ValidationError, match="but id is a"):
+            Library(root={
+                "p1": Problem(name="P1"),
+                "p2": Problem(name="P2", references={"p1"}),
+            })
+
+    def test_suite_references_a_reference(self):
+        lib = Library(root={
+            "ref1": Reference(title="A paper"),
+            "p1": Problem(name="P1"),
+            "s1": Suite(name="S1", problems={"p1"}, references={"ref1"}),
+        })
+        assert lib.root["s1"].references == {"ref1"}
 
     def test_fixup_evaluation_time_percolates_from_implementation_to_suite(self):
         lib = Library(root={
