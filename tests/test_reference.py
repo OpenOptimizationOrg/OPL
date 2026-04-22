@@ -5,13 +5,17 @@ from opltools.schema import Link, Reference
 
 
 class TestReference:
-    def test_minimal(self):
-        ref = Reference(title="A paper", authors=["Alice", "Bob"])
+    def test_only_author(self):
+        ref = Reference(title="A paper")
         assert ref.title == "A paper"
-        assert ref.authors == ["Alice", "Bob"]
+        assert ref.authors is None
         assert ref.link is None
 
-    def test_with_link(self):
+    def test_only_link(self):
+        ref = Reference(link=Link(url="https://example.org"))
+        assert ref.link.url == "https://example.org"
+
+    def test_full(self):
         ref = Reference(
             title="A paper",
             authors=["Alice"],
@@ -19,6 +23,6 @@ class TestReference:
         )
         assert ref.link.url == "https://example.org"
 
-    def test_requires_authors(self):
+    def test_requires_title_or_link(self):
         with pytest.raises(ValidationError):
-            Reference(title="A paper")
+            Reference(authors=["A paper"])

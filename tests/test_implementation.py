@@ -17,7 +17,7 @@ class TestImplementation:
             description="desc",
             links=[Link(url="https://example.org")],
             language="python",
-            evaluation_time="fast",
+            evaluation_time=["fast"],
             requirements=["numpy", "scipy"],
         )
         assert impl.language == "python"
