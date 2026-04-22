@@ -98,7 +98,7 @@ There are separate files which contain curated usage examples for problems or su
 | `description`     | str                               | required                                     |
 | `language`        | str? (e.g. `Python`, `C`)         |                                              |
 | `links`           | list of [Link](#link)?            | repo, release, docs…                         |
-| `evaluation_time` | str?                              | free-form ("8 minutes", "fast")              |
+| `evaluation_time` | set of str?                       | free-form list ("8 minutes", "fast")         |
 | `requirements`    | str or list of str?               | URL to requirements file or list of packages |
 
 ```yaml
@@ -142,10 +142,14 @@ The schema deliberately puts most descriptive fields here so suites can be chara
 | `modality`                               | set of str?                                    | `{"unimodal"}`, `{"multimodal"}`                   |
 | `fidelity_levels`                        | set of int?                                    | `{1}` = single-fidelity, `{1,2}` = multi-fidelity  |
 | `code_examples`                          | set of str?                                    | paths to example scripts                           |
+| `evaluation_time`                        | set of str?                                    | free-form list ("8 minutes", "fast")         |
 | `source`                                 | set of str?                                    | `{"artificial"}`, `{"real-world"}`                 |
 
 > `objectives` is a set of integers because we don't assume extreme scalability in this property so explicit enumeration is fine.
 > Dimensions of variables on the other hand are ranges because here problems often are scalable over wide ranges.
+
+When no `evaluation_time` is set, it percolates up from any referenced implementations.
+The same is true for the `variables` and `constraints` properties of a suite that has references to problems.
 
 ### Problem
 
