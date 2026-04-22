@@ -5,6 +5,8 @@ const SNIPPET_BASE_URL = 'https://raw.githubusercontent.com/OpenOptimizationOrg/
 const SNIPPET_TREE_BASE_URL = 'https://github.com/OpenOptimizationOrg/OPL/tree/main/code_snippets';
 const snippetCache = new Map();
 let markdownParserPromise = null;
+const rangeFilters = new Map();
+const RANGE_FILTER_COLUMN_NAMES = new Set(['total variables', 'total constraints', 'objectives']);
 
 const table = new DataTable('#problems', {
     layout: {
@@ -26,6 +28,23 @@ const table = new DataTable('#problems', {
                 column.footer().replaceChildren(input);
 
                 input.addEventListener('keyup', () => {
+                    const titleLower = title.trim().toLowerCase();
+                    if (RANGE_FILTER_COLUMN_NAMES.has(titleLower)) {
+                        const value = input.value.trim();
+                        if (value) {
+                            rangeFilters.set(column.index(), value);
+                        } else {
+                            rangeFilters.delete(column.index());
+                        }
+
+                        if (column.search() !== '') {
+                            column.search('');
+                        }
+
+                        table.draw();
+                        return;
+                    }
+
                     if (column.search() !== input.value) {
                         column.search(input.value).draw();
                     }
@@ -54,6 +73,14 @@ const snippetFolderLink = document.getElementById('problem-snippet-folder-link')
 const readmeHint = document.getElementById('problem-readme-hint');
 const readmeContent = document.getElementById('problem-readme-content');
 
+const getHeaderLabels = () => table
+    .columns()
+    .header()
+    .toArray()
+    .map((header) => header.textContent.trim());
+
+const getColumnIndex = (columnName) => getHeaderLabels().findIndex((label) => label === columnName);
+
 const stripHtml = (value) => {
     const wrapper = document.createElement('div');
     wrapper.innerHTML = value || '';
@@ -65,6 +92,128 @@ const escapeHtml = (value) => {
     wrapper.textContent = value || '';
     return wrapper.innerHTML;
 };
+
+const parseNumber = (value) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+};
+
+const extractNumericToken = (value) => {
+    const text = (value || '').trim();
+    if (!text) {
+        return null;
+    }
+
+    const exact = parseNumber(text);
+    if (exact !== null) {
+        return exact;
+    }
+
+    const match = text.match(/[-+]?\d+(?:\.\d+)?/);
+    if (!match) {
+        return null;
+    }
+
+    return parseNumber(match[0]);
+};
+
+const rangeContainsValue = (cellText, target) => {
+    const text = (cellText || '').trim();
+    if (!text) {
+        return false;
+    }
+
+    const compact = text.replace(/\s+/g, '');
+
+    const single = compact.match(/^[-+]?\d+(?:\.\d+)?$/);
+    if (single) {
+        return parseNumber(single[0]) === target;
+    }
+
+    const ge = compact.match(/^>=([-+]?\d+(?:\.\d+)?)$/);
+    if (ge) {
+        const bound = parseNumber(ge[1]);
+        return bound !== null && target >= bound;
+    }
+
+    const le = compact.match(/^<=([-+]?\d+(?:\.\d+)?)$/);
+    if (le) {
+        const bound = parseNumber(le[1]);
+        return bound !== null && target <= bound;
+    }
+
+    const gt = compact.match(/^>([-+]?\d+(?:\.\d+)?)$/);
+    if (gt) {
+        const bound = parseNumber(gt[1]);
+        return bound !== null && target > bound;
+    }
+
+    const lt = compact.match(/^<([-+]?\d+(?:\.\d+)?)$/);
+    if (lt) {
+        const bound = parseNumber(lt[1]);
+        return bound !== null && target < bound;
+    }
+
+    const interval = compact.match(/^([-+]?\d+(?:\.\d+)?)-([-+]?\d+(?:\.\d+)?)$/);
+    if (interval) {
+        const lower = parseNumber(interval[1]);
+        const upper = parseNumber(interval[2]);
+        return lower !== null && upper !== null && target >= lower && target <= upper;
+    }
+
+    if (compact.startsWith('{') && compact.endsWith('}')) {
+        const values = compact.slice(1, -1).split(',').map(parseNumber).filter((value) => value !== null);
+        return values.includes(target);
+    }
+
+    if (compact.startsWith('[') && compact.endsWith(']')) {
+        const values = compact.slice(1, -1).split(',').map(parseNumber).filter((value) => value !== null);
+        return values.includes(target);
+    }
+
+    if (compact.includes('|') || compact.includes(';')) {
+        const parts = compact.split(/\||;/).map((part) => part.trim()).filter(Boolean);
+        return parts.some((part) => rangeContainsValue(part, target));
+    }
+
+    return false;
+};
+
+const matchesRangeAwareFilter = (cellText, rawFilter) => {
+    const filter = (rawFilter || '').trim();
+    if (!filter) {
+        return true;
+    }
+
+    const numericFilter = extractNumericToken(filter);
+    if (numericFilter !== null) {
+        return rangeContainsValue(cellText, numericFilter);
+    }
+
+    return (cellText || '').toLowerCase().includes(filter.toLowerCase());
+};
+
+if (!window.__oplRangeFilterRegistered) {
+    window.__oplRangeFilterRegistered = true;
+    DataTable.ext.search.push((settings, data) => {
+        if (settings.nTable?.id !== 'problems') {
+            return true;
+        }
+
+        for (const [columnIndex, rawFilter] of rangeFilters.entries()) {
+            if (!rawFilter) {
+                continue;
+            }
+
+            const cellText = stripHtml(data[columnIndex] || '');
+            if (!matchesRangeAwareFilter(cellText, rawFilter)) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+}
 
 const ensureMarkdownParser = () => {
     if (window.marked?.parse) {
@@ -120,6 +269,11 @@ const toProblemId = (value) => {
         .replace(/^_+|_+$/g, '');
 };
 
+const toSnippetProblemId = (value) => {
+    const normalized = toProblemId(value);
+    return normalized.replace(/^(fn|gen|suite)_/, '');
+};
+
 const setSnippetState = ({
     path = '',
     hint = '',
@@ -162,7 +316,8 @@ const setSnippetState = ({
 };
 
 const loadSnippet = async (problemId) => {
-    if (!problemId) {
+    const snippetProblemId = toSnippetProblemId(problemId);
+    if (!snippetProblemId) {
         setSnippetState({
             hint: 'No problem id available for this row.',
             code: '',
@@ -172,13 +327,13 @@ const loadSnippet = async (problemId) => {
         return;
     }
 
-    const fileName = `call_${problemId}.py`;
-    const rawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(problemId)}/${encodeURIComponent(fileName)}`;
-    const readmeRawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(problemId)}/README.md`;
-    const folderUrl = `${SNIPPET_TREE_BASE_URL}/${encodeURIComponent(problemId)}`;
+    const fileName = `call_${snippetProblemId}.py`;
+    const rawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(snippetProblemId)}/${encodeURIComponent(fileName)}`;
+    const readmeRawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(snippetProblemId)}/README.md`;
+    const folderUrl = `${SNIPPET_TREE_BASE_URL}/${encodeURIComponent(snippetProblemId)}`;
 
     setSnippetState({
-        path: `${problemId}/${fileName}`,
+        path: `${snippetProblemId}/${fileName}`,
         hint: 'Loading snippet from repository...',
         code: '',
         folderHref: folderUrl,
@@ -186,10 +341,10 @@ const loadSnippet = async (problemId) => {
         readmeHtml: ''
     });
 
-    if (snippetCache.has(problemId)) {
-        const cached = snippetCache.get(problemId);
+    if (snippetCache.has(snippetProblemId)) {
+        const cached = snippetCache.get(snippetProblemId);
         setSnippetState({
-            path: `${problemId}/${fileName}`,
+            path: `${snippetProblemId}/${fileName}`,
             hint: cached.codeHint,
             code: cached.code,
             folderHref: folderUrl,
@@ -229,7 +384,7 @@ const loadSnippet = async (problemId) => {
             readmeHintText = 'README.md loaded from snippet folder.';
         }
 
-        snippetCache.set(problemId, {
+        snippetCache.set(snippetProblemId, {
             code,
             codeHint,
             readmeHint: readmeHintText,
@@ -237,7 +392,7 @@ const loadSnippet = async (problemId) => {
         });
 
         setSnippetState({
-            path: `${problemId}/${fileName}`,
+            path: `${snippetProblemId}/${fileName}`,
             hint: codeHint,
             code,
             folderHref: folderUrl,
@@ -246,7 +401,7 @@ const loadSnippet = async (problemId) => {
         });
     } catch (error) {
         setSnippetState({
-            path: `${problemId}/${fileName}`,
+            path: `${snippetProblemId}/${fileName}`,
             hint: 'Network error while fetching snippet.',
             code: '',
             folderHref: folderUrl,
@@ -262,11 +417,7 @@ const renderRowDetails = (rowApi) => {
         return;
     }
 
-    const headers = table
-        .columns()
-        .header()
-        .toArray()
-        .map((header) => header.textContent.trim());
+    const headers = getHeaderLabels();
 
     const detailsHtml = headers
         .map((label, index) => {
@@ -275,7 +426,9 @@ const renderRowDetails = (rowApi) => {
         })
         .join('');
 
-    const name = stripHtml(rowData[0]);
+    const nameIndex = getColumnIndex('name');
+    const fallbackIndex = getColumnIndex('id');
+    const name = stripHtml(rowData[nameIndex >= 0 ? nameIndex : fallbackIndex >= 0 ? fallbackIndex : 0]);
     if (detailsHint) {
         detailsHint.textContent = name ? `Selected: ${name}` : 'Selected row';
     }
@@ -342,8 +495,11 @@ if (tableBody) {
         targetRow.classList.add('is-active');
         renderRowDetails(rowApi);
 
-        const name = stripHtml(rowApi.data()[0]);
-        const problemId = targetRow.getAttribute('data-problem-id') || toProblemId(name);
+        const headers = getHeaderLabels();
+        const nameIndex = headers.findIndex((label) => label === 'name');
+        const problemIdIndex = headers.findIndex((label) => label === 'id');
+        const name = stripHtml(rowApi.data()[nameIndex >= 0 ? nameIndex : 0]);
+        const problemId = targetRow.getAttribute('data-problem-id') || stripHtml(rowApi.data()[problemIdIndex >= 0 ? problemIdIndex : 0]) || toProblemId(name);
         loadSnippet(problemId);
     });
 }

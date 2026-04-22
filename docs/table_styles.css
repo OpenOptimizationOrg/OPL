@@ -53,6 +53,34 @@ h2 {
     color: var(--opl-muted);
 }
 
+.column-toolbar-disclosure {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.column-toolbar-disclosure > summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.column-toolbar-disclosure > summary::-webkit-details-marker {
+    display: none;
+}
+
+.column-toolbar-disclosure > summary::after {
+    content: "Show";
+    margin-left: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: #355670;
+}
+
+.column-toolbar-disclosure[open] > summary::after {
+    content: "Hide";
+}
+
 .toolbar-actions {
     display: flex;
     flex-wrap: wrap;
