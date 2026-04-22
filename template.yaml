@@ -22,30 +22,51 @@ your_problem_id: # Unique ID for the entry (e.g., "my_problem").
   implementations: # List with implementation IDs, multiple can be listed
     - your_implementation # If the implementation you want to refer to does not exist yet, make an entry for the implementation of the problem/suite/generator as well.
   objectives: # The number of objectives: either as an integer, list or range
-  - 1
-  variables: # For each variable type, enter the number of variables of that type, or a range by specifying min and/or max
-    binary: 0 # Number of this variable type
-    categorical: [0,5]  # Options for numbers of this variable type (here, the suite has problems with either 0 or 5 categorical variables)
-    continuous: # For a range, you can specify the bounds
-      max: 80
-      min: 1
-    integer: # Or specify only one of the bounds, and leave the other as null
-      max: 5
-  constraints: # Constraints refers to hard constrains (violations don't have a true fitness value)
-  # Similar to variables, specify for each type of constraints the number, list, or a range. 
-    box: 1
-  soft_constraints: 
-    linear: 
-      max: 5
-    function: [5, 10]
-  allows_partial_evaluation: yes / no / some # Whether evaluation of subset(s) of decision variables are possible
+    min: 2
+    max: 5
+  variables: # For each variable type
+    - type: continuous # Type of variable, one of: continuous, integer, binary, categorical, unknown
+      dim: # Number of variables as int, list of ints, or range with min and/or max
+        min: 1
+        max: 80
+    - type: integer
+      dim:
+        max: 5 # Or specify only one of the bounds, and leave the other as null
+    - type: binary
+      dim: 100 # A single value
+    - type: categorical
+      dim: [0,5] # List of possible values
+    - type: unknown # If the variable type(s) are unknown, the number of dimensions can still be given
+      dim: 42
+  constraints: # Constraints can be give as a list
+    - type: box # Constraints have a type: box, linear, function, or unknown
+      number: 1 # The number of each type of constraint can be given as int, list of ints, or as range with min and max
+    - type: linear
+      hard: yes # This is a hard constraint, other options are: no, some, ?
+      equality: yes # This is an equality constraint, other options are: no, some, ?
+      number: [2,5] # There can be two or five constraints of this type
+    - type: function # This is a non-linear constraint
+      hard: no # This is a soft constraint
+      equality: no # This is an inequality constraint
+      number: # There can be between 5 and 10 constraints of this type
+        min: 5
+        max: 10
+    - type: unknown # The type of these constraints is unknown
+      number: 3
+  dynamic_type: null # List of the dynamic properties, or null.
+  noise_type: # List of the types of noise, or null, e.g.:
+    - additive
+    - multiplicative
+    - heteroscedastic
+  allows_partial_evaluation: null # Whether evaluation of subset(s) of decision variables are possible. Can be: yes, no, some, ?
   can_evaluate_objectives_independently: yes / no / some # Can objective functions be evaluated independently of each other yes, no or some
+  modality: null # List of modality types (e.g. unimodal, multimodal)
+  fidelity_levels: 1 # Number or list of fidelity levels for multi-fidelity problems. If single fidelity, enter 1.
+  evaluation_time: # Approximate time for a single full function evaluation
+    - seconds
+    - minutes
   code_examples: null # Link to a code example in the OPL repository
-  dynamic_type: null # If the problem is dynamic, specify the type of dynamics. If not, enter null.
-  fidelity_levels: 1 # Number of fidelity levels, if applicable. If not, enter 1. 
-  modality: null # List of modalities (e.g. unimodal, multimodal)
-  noise_type: null # Type of noise (e.g. additive, multiplicative, heteroscedastic)
-  source: null # Source of the problem/suite/generator
+  source: Real-world # Source of the problem(s), e.g., artificial, real-world
   instances: null # For problems, specify the number of instances, or a list of instance ids, or a range of instance ids. For suites, specify the number of problems, or a list of problem ids, or a range of problem ids. For generators, specify the number of problems that can be generated, or a list of problem ids that can be generated, or a range of problem ids that can be generated.
   problems: null # For suites, optionally specify the problems that are part of the suite. Each problem should then have a unique id, and be another entry in this yaml file. For generators, specify the problems that can be generated. Each problem should have a unique id, and be another entry in this yaml file. For problems, enter null.
 
