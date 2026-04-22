@@ -730,7 +730,7 @@ gen_ma_bbob:
   can_evaluate_objectives_independently: null
   code_examples: null
   constraints: null
-  description: Generator that creates affine combinations of BBOB functions
+  description: Generator that creates affine combinations of eBBOB functions
   dynamic_type: null
   fidelity_levels: null
   implementations:
@@ -3456,6 +3456,44 @@ suite_wfg:
       min: 1
     type: continuous
 suite_zdt:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  fidelity_levels: null
+  implementations:
+  - impl_pymoo
+  long_name: null
+  modality: null
+  name: ZDT
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors:
+    - Eckart Zitzler
+    - Kalyanmoy Deb
+    - Lothar Thiele
+    link:
+      type: null
+      url: https://doi.org/10.1162/106365600568202
+    title: 'Comparison of multiobjective evolutionary algorithms: empirical results'
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_zdt2:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
   code_examples: null
