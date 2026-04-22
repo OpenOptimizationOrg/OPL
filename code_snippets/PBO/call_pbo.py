@@ -1,0 +1,18 @@
+# /// script
+# requires-python = "==3.10"
+# dependencies = [
+#   "ioh",
+# ]
+# ///
+ 
+import ioh
+ 
+### evaluation point
+dim = 16
+eval_point = [0]*dim
+ 
+### input
+f = ioh.get_problem(1, instance=1, dimension=dim, problem_class=ioh.ProblemClass.PBO)
+ 
+### print function value for eval_point
+print(f(eval_point))
