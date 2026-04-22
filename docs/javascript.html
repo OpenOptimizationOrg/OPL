@@ -1,6 +1,11 @@
 
 
 <script>
+const SNIPPET_BASE_URL = 'https://raw.githubusercontent.com/OpenOptimizationOrg/OPL/main/code_snippets';
+const SNIPPET_TREE_BASE_URL = 'https://github.com/OpenOptimizationOrg/OPL/tree/main/code_snippets';
+const snippetCache = new Map();
+let markdownParserPromise = null;
+
 const table = new DataTable('#problems', {
     layout: {
         topStart: 'search',
@@ -42,6 +47,12 @@ if (footerRow && thead) {
 
 const detailsHint = document.getElementById('problem-details-hint');
 const detailsContent = document.getElementById('problem-details-content');
+const snippetPath = document.getElementById('problem-snippet-path');
+const snippetHint = document.getElementById('problem-snippet-hint');
+const snippetContent = document.getElementById('problem-snippet-content');
+const snippetFolderLink = document.getElementById('problem-snippet-folder-link');
+const readmeHint = document.getElementById('problem-readme-hint');
+const readmeContent = document.getElementById('problem-readme-content');
 
 const stripHtml = (value) => {
     const wrapper = document.createElement('div');
@@ -53,6 +64,196 @@ const escapeHtml = (value) => {
     const wrapper = document.createElement('div');
     wrapper.textContent = value || '';
     return wrapper.innerHTML;
+};
+
+const ensureMarkdownParser = () => {
+    if (window.marked?.parse) {
+        return Promise.resolve(window.marked.parse);
+    }
+
+    if (markdownParserPromise) {
+        return markdownParserPromise;
+    }
+
+    markdownParserPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+        script.async = true;
+        script.onload = () => {
+            if (window.marked?.parse) {
+                resolve(window.marked.parse);
+            } else {
+                reject(new Error('Marked loaded without parse function'));
+            }
+        };
+        script.onerror = () => reject(new Error('Failed to load marked library'));
+        document.head.appendChild(script);
+    });
+
+    return markdownParserPromise;
+};
+
+const renderMarkdownToHtml = async (markdownText) => {
+    if (!markdownText) {
+        return '';
+    }
+
+    try {
+        const parse = await ensureMarkdownParser();
+        return parse(markdownText);
+    } catch (error) {
+        return `<pre><code>${escapeHtml(markdownText)}</code></pre>`;
+    }
+};
+
+const toProblemId = (value) => {
+    if (!value) {
+        return '';
+    }
+
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/[-\s]+/g, '_')
+        .replace(/[^a-z0-9_]/g, '')
+        .replace(/_+/g, '_')
+        .replace(/^_+|_+$/g, '');
+};
+
+const setSnippetState = ({
+    path = '',
+    hint = '',
+    code = '',
+    folderHref = '',
+    readmeHintText = '',
+    readmeHtml = ''
+}) => {
+    if (snippetPath) {
+        snippetPath.textContent = path || 'call_{problem_id}.py';
+    }
+
+    if (snippetHint) {
+        snippetHint.textContent = hint;
+    }
+
+    if (snippetContent) {
+        snippetContent.textContent = code;
+    }
+
+    if (snippetFolderLink) {
+        if (folderHref) {
+            snippetFolderLink.href = folderHref;
+            snippetFolderLink.textContent = 'Open snippet folder';
+            snippetFolderLink.removeAttribute('aria-disabled');
+        } else {
+            snippetFolderLink.href = '#';
+            snippetFolderLink.textContent = 'Snippet folder unavailable';
+            snippetFolderLink.setAttribute('aria-disabled', 'true');
+        }
+    }
+
+    if (readmeHint) {
+        readmeHint.textContent = readmeHintText;
+    }
+
+    if (readmeContent) {
+        readmeContent.innerHTML = readmeHtml;
+    }
+};
+
+const loadSnippet = async (problemId) => {
+    if (!problemId) {
+        setSnippetState({
+            hint: 'No problem id available for this row.',
+            code: '',
+            readmeHintText: 'README cannot be loaded without a problem id.',
+            readmeHtml: ''
+        });
+        return;
+    }
+
+    const fileName = `call_${problemId}.py`;
+    const rawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(problemId)}/${encodeURIComponent(fileName)}`;
+    const readmeRawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(problemId)}/README.md`;
+    const folderUrl = `${SNIPPET_TREE_BASE_URL}/${encodeURIComponent(problemId)}`;
+
+    setSnippetState({
+        path: `${problemId}/${fileName}`,
+        hint: 'Loading snippet from repository...',
+        code: '',
+        folderHref: folderUrl,
+        readmeHintText: 'Loading README.md from repository...',
+        readmeHtml: ''
+    });
+
+    if (snippetCache.has(problemId)) {
+        const cached = snippetCache.get(problemId);
+        setSnippetState({
+            path: `${problemId}/${fileName}`,
+            hint: cached.codeHint,
+            code: cached.code,
+            folderHref: folderUrl,
+            readmeHintText: cached.readmeHint,
+            readmeHtml: cached.readmeHtml
+        });
+        return;
+    }
+
+    try {
+        const [snippetResponse, readmeResponse] = await Promise.all([
+            fetch(rawUrl),
+            fetch(readmeRawUrl)
+        ]);
+
+        let code = '';
+        let codeHint = '';
+        if (snippetResponse.status === 404) {
+            codeHint = 'No snippet file found for this problem id in the code_snippets branch.';
+        } else if (!snippetResponse.ok) {
+            codeHint = `Unable to fetch snippet (HTTP ${snippetResponse.status}).`;
+        } else {
+            code = await snippetResponse.text();
+            codeHint = 'Snippet found in code_snippets branch.';
+        }
+
+        let readme = '';
+        let readmeHtml = '';
+        let readmeHintText = '';
+        if (readmeResponse.status === 404) {
+            readmeHintText = 'No README.md found in this snippet folder.';
+        } else if (!readmeResponse.ok) {
+            readmeHintText = `Unable to fetch README.md (HTTP ${readmeResponse.status}).`;
+        } else {
+            readme = await readmeResponse.text();
+            readmeHtml = await renderMarkdownToHtml(readme);
+            readmeHintText = 'README.md loaded from snippet folder.';
+        }
+
+        snippetCache.set(problemId, {
+            code,
+            codeHint,
+            readmeHint: readmeHintText,
+            readmeHtml
+        });
+
+        setSnippetState({
+            path: `${problemId}/${fileName}`,
+            hint: codeHint,
+            code,
+            folderHref: folderUrl,
+            readmeHintText,
+            readmeHtml
+        });
+    } catch (error) {
+        setSnippetState({
+            path: `${problemId}/${fileName}`,
+            hint: 'Network error while fetching snippet.',
+            code: '',
+            folderHref: folderUrl,
+            readmeHintText: 'Network error while fetching README.md.',
+            readmeHtml: ''
+        });
+    }
 };
 
 const renderRowDetails = (rowApi) => {
@@ -140,6 +341,10 @@ if (tableBody) {
 
         targetRow.classList.add('is-active');
         renderRowDetails(rowApi);
+
+        const name = stripHtml(rowApi.data()[0]);
+        const problemId = targetRow.getAttribute('data-problem-id') || toProblemId(name);
+        loadSnippet(problemId);
     });
 }
 
