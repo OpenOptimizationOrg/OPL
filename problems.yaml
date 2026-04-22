@@ -1,1264 +1,3597 @@
-- name: BBOB
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1080/10556788.2020.1808977
-  implementation: https://github.com/numbbo/coco
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BBOB-biobj
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: 2-40
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.48550/arXiv.1604.00359
-  implementation: https://github.com/numbbo/coco
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BBOB-noisy
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://hal.inria.fr/inria-00369466
-  implementation: https://web.archive.org/web/20210416065610/https://coco.gforge.inria.fr/doku.php?id=downloads
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BBOB-largescale
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 20-640
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.48550/arXiv.1903.06396
-  implementation: https://github.com/numbbo/coco
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BBOB-mixint
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 5-160
-  variable type: integer;continuous;mixed
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3321707.3321868
-  implementation: https://github.com/numbbo/coco
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BBOB-biobj-mixint
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: 5-160
-  variable type: integer;continuous;mixed
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3321707.3321868
-  implementation: https://github.com/numbbo/coco
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BBOB-constrained
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 2-40
-  variable type: continuous
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: http://numbbo.github.io/coco-doc/bbob-constrained/
-  implementation: https://github.com/numbbo/coco
-  source (real-world/artificial): ''
-  textual description: ''
-- name: MOrepo
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: '?'
-  variable type: combinatorial
-  constraints: '?'
-  dynamic: '?'
-  noise: '?'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: ''
-  implementation: https://github.com/MCDMSociety/MOrepo
-  source (real-world/artificial): ''
-  textual description: ''
-- name: ZDT
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: scalable
-  variable type: continuous;binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1162/106365600568202
-  implementation: https://github.com/anyoptimization/pymoo
-  source (real-world/artificial): ''
-  textual description: ''
-- name: DTLZ
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/CEC.2002.1007032
-  implementation: https://pymoo.org/problems/many/dtlz.html
-  source (real-world/artificial): ''
-  textual description: ''
-- name: WFG
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2005.861417
-  implementation: https://pymoo.org/problems/many/wfg.html
-  source (real-world/artificial): ''
-  textual description: ''
-- name: CDMP
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'yes'
-  dynamic: '?'
-  noise: '?'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3321707.3321878
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: ''
-- name: SDP
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'yes'
-  noise: '?'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TCYB.2019.2896021
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: ''
-- name: MaOP
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: '?'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.swevo.2019.02.003
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: ''
-- name: BP
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: '?'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/CEC.2019.8790277
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: ''
-- name: GPD
-  suite/generator/single: generator
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: optional
-  dynamic: 'no'
-  noise: optional
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.asoc.2020.106139
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: ''
-- name: ETMOF
-  suite/generator/single: suite
-  objectives: 2-50
-  dimensionality: 25-10000
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'yes'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.48550/arXiv.2110.08033
-  implementation: https://github.com/songbai-liu/etmo
-  source (real-world/artificial): ''
-  textual description: ''
-- name: MMOPP
-  suite/generator/single: suite
-  objectives: 2-7
-  dimensionality: '?'
-  variable type: '?'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412
-  implementation: http://www5.zzu.edu.cn/ecilab/info/1036/1251.htm
-  source (real-world/artificial): ''
-  textual description: ''
-- name: CFD
-  suite/generator/single: suite
-  objectives: 1-2
-  dimensionality: scalable
-  variable type: '?'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1007/978-3-319-99259-4_24
-  implementation: https://bitbucket.org/arahat/cfd-test-problem-suite
-  source (real-world/artificial): real world
-  textual description: expensive evaluations 30s-15m
-- name: GBEA
-  suite/generator/single: suite
-  objectives: 1-2
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3321707.3321805
-  implementation: 'https://github.com/ttusar/coco-gbea'
-  source (real-world/artificial): real world
-  textual description: 'expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA'
-- name: Car structure
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: 144-222
-  variable type: discrete
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3205651.3205702
-  implementation: http://ladse.eng.isas.jaxa.jp/benchmark/
-  source (real-world/artificial): real world
-  textual description: 54 constraints
-- name: EMO2017
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: 4-24
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/
-  implementation: https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/downloads/realworld-problems-bbcomp-EMO-2017.zip
-  source (real-world/artificial): real world
-  textual description: ''
-- name: JSEC2019
-  suite/generator/single: single
-  objectives: 1-5
-  dimensionality: '32'
-  variable type: continuous
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html
-  implementation: http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html
-  source (real-world/artificial): real world
-  textual description: expensive evaluations 3s; 22 constraints
-- name: RE
-  suite/generator/single: suite
-  objectives: 2-9
-  dimensionality: 2-7
-  variable type: continuous;integer;mixed
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.asoc.2020.106078
-  implementation: https://github.com/ryojitanabe/reproblems
-  source (real-world/artificial): real world like
-  textual description: ''
-- name: CRE
-  suite/generator/single: suite
-  objectives: 2-5
-  dimensionality: 3-7
-  variable type: continuous;integer;mixed
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.asoc.2020.106078
-  implementation: https://github.com/ryojitanabe/reproblems
-  source (real-world/artificial): real world like
-  textual description: ''
-- name: Radar waveform
-  suite/generator/single: single
-  objectives: '9'
-  dimensionality: 4-12
-  variable type: integer
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1007/978-3-540-70928-2_53
-  implementation: http://code.evanhughes.org/
-  source (real-world/artificial): real world
-  textual description: ''
-- name: MF2
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 1-n
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'yes'
-  reference: https://doi.org/10.21105/joss.02049
-  implementation: https://github.com/sjvrijn/mf2
-  source (real-world/artificial): ''
-  textual description: ''
-- name: AMVOP
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: mixed continuous+ordinal+categorical+both
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2013.2281531
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: ''
-- name: RWMVOP
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous;mixed continuous+ordinal+categorical+both
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2013.2281531
-  implementation: '?'
-  source (real-world/artificial): real world
-  textual description: ''
-- name: SBOX-COST
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.48550/arXiv.2305.12221
-  implementation: https://github.com/IOHprofiler/IOHexperimenter/
-  source (real-world/artificial): ''
-  textual description: problems from BBOB but allows instances with the optimum close to the
-    boundary
-- name: "\u03C1MNK-Landscapes"
-  suite/generator/single: generator
-  objectives: scalable
-  dimensionality: scalable
-  variable type: binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.ejor.2012.12.019
-  implementation: https://gitlab.com/aliefooghe/mocobench/
-  source (real-world/artificial): ''
-  textual description: tunable variable and objective dimensions; tunable multimodality and
+fn_ato:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: 'Parameters of the Modules of the Automatic Train Operation are optimized;
+    two objectives: minimizing energy consumption and minimizing driving duration.'
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality:
+  - unimodal
+  name: ATO
+  noise_type: null
+  objectives:
+  - 2
+  references: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: 10
+    type: continuous
+fn_building_spatial:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  description: Optimise the spatial layout of a building to minimise energy 
+    consumption for climate control and minimise the strain on the structure. 
+    Many hard constraints; mixed-variable (continuous+binary); expensive 
+    evaluations.
+  dynamic_type: null
+  evaluation_time:
+  - 1 second
+  - 40 seconds
+  fidelity_levels: null
+  implementations:
+  - impl_bso_toolbox
+  instances: null
+  long_name: null
+  modality: null
+  name: Building spatial design
+  noise_type: null
+  objectives:
+  - 2
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://hdl.handle.net/1887/81789
+    title: Building spatial design
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+fn_convex_dtlz2:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of DTLZ2 with a convex Pareto front (instead of concave)
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality: null
+  name: Convex DTLZ2
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2013.2281535
+    title: Convex DTLZ2
+  source: null
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+fn_emdo:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: 12
+    type: unknown
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  - equality: null
+    hard: some
+    number: null
+    type: unknown
+  description: "# Goal\nFind a design of a synchronous electric motor for power steering
+    systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
+    Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
+    solution evaluation\n* Highly-constrained problem\n* Constraints are multimodal\n\
+    \nThis is not an available problem, but could be interesting to show to researchers
+    which difficulties appear in real-world problems."
+  dynamic_type: null
+  evaluation_time:
+  - 8 minutes
+  fidelity_levels: null
+  implementations:
+  - impl_emdo
+  instances: null
+  long_name: Electric Motor Design Optimization
+  modality:
+  - multimodal
+  name: Electric Motor Design Optimization
+  noise_type:
+  - noisy
+  objectives:
+  - 1
+  references:
+  - authors:
+    - Tea Tušar
+    - Peter Korošec
+    - Bogdan Filipič
+    link:
+      type: null
+      url: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf
+    title: A Multi-Step Evaluation Process in Electric Motor Design
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: 13
+    type: continuous
+  - dim: 13
+    type: integer
+fn_fleetopt:
+  allows_partial_evaluation: yes
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: 'UK healthcare organisation fleet optimisation: reduce the fleet of
+    non-emergency healthcare trip vehicles while still ensuring all trips can be covered.
+    Bilevel: upper level 54 vars, lower level 13208 vars.'
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality: null
+  name: FleetOpt
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/abs/10.1145/3638530.3664137
+    title: FleetOpt
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim:
+    - 13208
+    - 54
+    type: integer
+fn_gasoline:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: 5
+    type: unknown
+  description: Multi-objective optimization to minimize fuel consumption and NOx
+    emissions over a two-minute dynamic duty cycle, subject to five constraints 
+    (turbine inlet temperature, knock occurrences, peak cylinder pressure, peak 
+    cylinder pressure rise, total work). Seven decision variables cover hardware
+    choices and engine control parameters.
+  dynamic_type: null
+  evaluation_time: []
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_gasoline
+  instances: null
+  long_name: null
+  modality: null
+  name: Gasoline direct injection engine design
+  noise_type: null
+  objectives:
+  - 2
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.ejor.2022.08.032
+    title: Gasoline direct injection engine design
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: 7
+    type: integer
+  - dim: 7
+    type: continuous
+fn_invdeceptive_deceptive_rotell:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality: null
+  name: InverseDeceptiveTrap+RotatedEllipsoid / DeceptiveTrap+RotatedEllipsoid
+  noise_type: null
+  objectives:
+  - 2
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3449726.3459521
+    title: Mixed-variable multi-objective test problems
+  source:
+  - artificial
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+fn_inverted_dtlz1:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of DTLZ1 with an inverted Pareto front
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality: null
+  name: Inverted DTLZ1
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2013.2281534
+    title: Inverted DTLZ1
+  source: null
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+fn_jsec2019:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: 22
+    type: unknown
+  description: expensive evaluations 3s; 22 constraints
+  dynamic_type: null
+  evaluation_time:
+  - 3s
+  fidelity_levels: null
+  implementations:
+  - impl_jsec2019
+  instances: null
+  long_name: null
+  modality: null
+  name: JSEC2019
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  references:
+  - authors: []
+    link:
+      type: null
+      url: 
+        http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html
+    title: JPNSEC EC-Symposium 2019 competition
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: 32
+    type: continuous
+fn_onemax_sphere_deceptive_rotell:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality: null
+  name: Onemax+Sphere / DeceptiveTrap+RotatedEllipsoid
+  noise_type: null
+  objectives:
+  - 2
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3449726.3459521
+    title: Mixed-variable multi-objective test problems
+  source:
+  - artificial
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+fn_onemax_sphere_zeromax_sphere:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  instances: null
+  long_name: null
+  modality: null
+  name: Onemax+Sphere / Zeromax+Sphere
+  noise_type: null
+  objectives:
+  - 2
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3449726.3459521
+    title: Onemax+Sphere / Zeromax+Sphere
+  source:
+  - artificial
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+fn_radar_waveform:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: null
+  dynamic_type: null
+  evaluation_time: []
+  fidelity_levels: null
+  implementations:
+  - impl_radar_waveform
+  instances: null
+  long_name: null
+  modality: null
+  name: Radar waveform
+  noise_type: null
+  objectives:
+  - 9
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1007/978-3-540-70928-2_53
+    title: Radar waveform design
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim:
+      max: 12
+      min: 4
+    type: integer
+gen_beacon:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: 0
+    type: box
+  description: Generator for bi-objective benchmark problems with explicitly 
+    controlled correlations in continuous spaces. Multimodal with random 
+    structure.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_beacon
+  long_name: Continuous Bi-objective Benchmark problems with Explicit Adjustable
+    COrrelatioN control
+  modality:
+  - multimodal
+  name: BEACON
+  noise_type: null
+  objectives:
+  - 2
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/10.1145/3712255.3734303
+    title: BEACON
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_bono_bench:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  description: Bi-objective problem generator and suite with scalable continuous
+    decision space. Features complex problem properties and Pareto front 
+    approximations with error guarantees for the hypervolume and exact R2 
+    indicators.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_bonobench
+  long_name: Bi-objective Numerical Optimization Benchmark
+  modality:
+  - multimodal
+  name: BONO-Bench
+  noise_type: null
+  objectives:
+  - 2
+  references: null
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_ealain:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: some
+    number: null
+    type: unknown
+  description: Real-world-like, easily extensible to increase complexity
+  dynamic_type:
+  - optional
+  evaluation_time: null
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_ealain
+  long_name: null
+  modality: null
+  name: Ealain
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3638530.3654299
+    title: Ealain
+  source:
+  - real-world-like
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: integer
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_gnbg:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Generator counterpart of GNBG.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_gnbg
+  long_name: null
+  modality: null
+  name: GNBG
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/abs/2312.07083
+    title: GNBG
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_gnbg_ii:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Generator counterpart of GNBG-II.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_gnbg_ii
+  - impl_iohgnbg
+  long_name: null
+  modality: null
+  name: GNBG-II
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
+    title: GNBG-II
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_gpd:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: some
+    number: null
+    type: unknown
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: GPD
+  noise_type:
+  - optional
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.asoc.2020.106139
+    title: GPD generator
+  source: null
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_iohclustering:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Generator counterpart of the IOHClustering suite.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_iohclustering
+  long_name: null
+  modality:
+  - multimodal
+  name: IOHClustering
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/pdf/2505.09233
+    title: IOHClustering
+  source:
+  - artificial-from-real-data
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_ma_bbob:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Generator that creates affine combinations of BBOB functions
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_ma_bbob
+  - impl_iohexperimenter
+  long_name: null
+  modality:
+  - multimodal
+  name: MA-BBOB
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3673908
+    title: MA-BBOB
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_mpm2:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: nonlinear nonseparable nonsymmetric; scalable in terms of time to
+    evaluate the objective function
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_mpm2
+  long_name: null
+  modality:
+  - multimodal
+  name: MPM2
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf
+    title: MPM2 technical report TR15-01
+  source: null
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_mubqp:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: tunable variable and objective dimensions; tunable density and 
     correlation between objectives
-- name: mUBQP
-  suite/generator/single: generator
-  objectives: scalable
-  dimensionality: scalable
-  variable type: binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: yes (quadratic)
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1016/j.asoc.2013.11.008
-  implementation: https://gitlab.com/aliefooghe/mocobench/
-  source (real-world/artificial): ''
-  textual description: tunable variable and objective dimensions; tunable density and correlation
-    between objectives
-- name: "\u03C1mTSP"
-  suite/generator/single: generator
-  objectives: scalable
-  dimensionality: scalable
-  variable type: permutations
-  constraints: no (apart from being permutations)
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: yes (quadratic)
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1007/978-3-319-45823-6_40
-  implementation: https://gitlab.com/aliefooghe/mocobench/
-  source (real-world/artificial): ''
-  textual description: tunable variable and objective dimensions; tunable instance type (euclidian/random);
-    tunable correlation between objectives
-- name: CEC2015-DMOO
-  suite/generator/single: suite
-  objectives: 2-3
-  dimensionality: '?'
-  variable type: continuous
-  constraints: '?'
-  dynamic: 'yes'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: Benchmark Functions for CEC 2015 Special Session and Competition on Dynamic
-    Multi-objective Optimization
-  implementation: ''
-  source (real-world/artificial): ''
-  textual description: ''
-- name: Ealain
-  suite/generator/single: generator
-  objectives: 1+
-  dimensionality: scalable
-  variable type: continuous,binary,integer
-  constraints: optional
-  dynamic: optional
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: optional
-  reference: https://doi.org/10.1145/3638530.3654299
-  implementation: https://github.com/qrenau/Ealain
-  source (real-world/artificial): Real-world-like
-  textual description: Real-world-like, easily extensible to increase complexity
-- name: MA-BBOB
-  suite/generator/single: generator
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3673908
-  implementation: https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb
-  source (real-world/artificial): artificial
-  textual description: Generator that creates affine combinations of BBOB functions
-- name: MPM2
-  suite/generator/single: generator
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf
-  implementation: https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py
-  source (real-world/artificial): ''
-  textual description: nonlinear nonseparable nonsymmetric; scalable in terms of time to evaluate
-    the objective function
-- name: Convex DTLZ2
-  suite/generator/single: single
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2013.2281535
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of DTLZ2 with a convex Pareto front (instead of concave)
-- name: Inverted DTLZ1
-  suite/generator/single: single
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2013.2281534
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of DTLZ1 with an inverted Pareto front
-- name: Minus DTLZ
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2016.2587749
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of DTLZ that minimises the inverse of the base DTLZ functions
-- name: Minus WFG
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2016.2587749
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of WFG that minimises the inverse of the base WFG functions
-- name: L1-ZDT
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: scalable
-  variable type: continuous;binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/1143997.1144179
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of ZDT with linkages between variables within one of two groups
-    but not between variables in a different group; Linear recombination operators
-    can potentially take advantage of the problem structure
-- name: L2-ZDT
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: scalable
-  variable type: continuous;binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/1143997.1144179
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of ZDT with linkages between all variables; Linear recombination
-    operators can potentially take advantage of the problem structure
-- name: L3-ZDT
-  suite/generator/single: suite
-  objectives: '2'
-  dimensionality: scalable
-  variable type: continuous;binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/1143997.1144179
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of L2-ZDT using a mapping to prevent linear recombination operators
-    from potentially taking advantage of the problem structure
-- name: L2-DTLZ
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/1143997.1144179
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of DTLZ2 and DTLZ3 with linkages between all variables; Linear
-    recombination operators can potentially take advantage of the problem structure
-- name: L3-DTLZ
-  suite/generator/single: suite
-  objectives: 2+
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/1143997.1144179
-  implementation: '?'
-  source (real-world/artificial): ''
-  textual description: Variant of L2-DTLZ using a mapping to prevent linear recombination operators
-    from potentially taking advantage of the problem structure
-- name: CEC2018 DT - CEC2018 Competition on Dynamic Multiobjective Optimisation
-  suite/generator/single: suite
-  objectives: 2 or 3
-  dimensionality: scalable?
-  variable type: '?'
-  constraints: 'no'
-  dynamic: 'yes'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf
-  implementation: https://pymoo.org/problems/dynamic/df.html
-  source (real-world/artificial): artificial
-  textual description: '14 problems. Time-dependent: Pareto front/Pareto set geometry;
-    irregular Pareto front shapes; variable-linkage; number of disconnected Pareto
-    front segments; etc.'
-- name: MODAct - multiobjective design of actuators
-  suite/generator/single: suite
-  objectives: 2 3 4 or 5
-  dimensionality: '20'
-  variable type: mixed; integer and continuous
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/TEVC.2020.3020046
-  implementation: https://pymoo.org/problems/constrained/modact.html
-  source (real-world/artificial): real-world
-  textual description: Realistic Constrained Multi-Objective Optimization Benchmark
-    Problems from Design. Need the https://github.com/epfl-lamd/modact package installed; evaluation
-    times around 20ms
-- name: IOHClustering
-  suite/generator/single: suite; generator
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no '
-  reference: https://arxiv.org/pdf/2505.09233
-  implementation: https://github.com/IOHprofiler/IOHClustering
-  source (real-world/artificial): artificial, but based on real data
-  textual description: 'Set of benchmark problems from clustering: optimization task
-    is selecting cluster centers for a given set of data, with the number of clusters
-    defining problem dimensionality. Includes both a suite and a generator. Based on ML clustering datasets'
-- name: GNBG-II
-  suite/generator/single: suite; generator
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
-  implementation: https://github.com/rohitsalgotra/GNBG-II
-  source (real-world/artificial): artificial
-  textual description: Generalized Numerical Benchmark Generator (version 2). Also in IOH https://github.com/IOHprofiler/IOHGNBG
-- name: GNBG
-  suite/generator/single: suite; generator
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://arxiv.org/abs/2312.07083
-  implementation: https://github.com/Danial-Yazdani/GNBG-Generator
-  source (real-world/artificial): artificial
-  textual description: Generalized Numerical Benchmark Generator
-- name: DynamicBinVal
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: binary
-  constraints: 'no'
-  dynamic: 'yes'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://arxiv.org/pdf/2404.15837
-  implementation: https://github.com/IOHprofiler/IOHexperimenter
-  source (real-world/artificial): artificial
-  textual description: Four versions of the dynamic binary value problem
-- name: PBO
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://dl.acm.org/doi/pdf/10.1145/3319619.3326810
-  implementation: https://github.com/IOHprofiler/IOHexperimenter
-  source (real-world/artificial): artificial
-  textual description: Suite of 25 binary optimization problems
-- name: W-model
-  suite/generator/single: generator
-  objectives: '1'
-  dimensionality: scalable
-  variable type: binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://dl.acm.org/doi/abs/10.1145/3205651.3208240?casa_token=S4U_Pi9f6MwAAAAA:U9ztNTPwmupT8K3GamWZfBL7-8fqjxPtr_kprv51vdwA-REsp0EyOFGa99BtbANb0XbqyrVg795hIw
-  implementation: https://github.com/thomasWeise/BBDOB_W_Model
-  source (real-world/artificial): artificial
-  textual description: Tunable generator for binary optimization based on several
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_mocobench
+  long_name: null
+  modality:
+  - quadratic
+  - multimodal
+  name: mUBQP
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.asoc.2013.11.008
+    title: mUBQP benchmark
+  source: null
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+gen_puboi:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: A benchmark in which variable importance is tunable, based on the
+    Walsh function.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_puboi
+  long_name: Polynomial Unconstrained Binary Optimization with tunable 
+    importance
+  modality: null
+  name: PUBOi
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12
+    title: PUBOi
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+gen_randoptgen:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: A Unified Random Problem Generator for Single- and 
+    Multi-Objective Optimization Problems with Mixed-Variable Input Spaces.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_randoptgen
+  long_name: RandOptGen
+  modality:
+  - multimodal
+  name: RandOptGen
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references: null
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: integer
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+gen_rho_mnk_landscapes:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: tunable variable and objective dimensions; tunable multimodality 
+    and correlation between objectives
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_mocobench
+  long_name: null
+  modality:
+  - multimodal
+  name: ρMNK-Landscapes
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.ejor.2012.12.019
+    title: On the design of multi-objective evolutionary algorithms based on 
+      NK-landscapes
+  source: null
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+gen_rho_mtsp:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: tunable variable and objective dimensions; tunable instance type 
+    (euclidean/random); tunable correlation between objectives
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_mocobench
+  long_name: null
+  modality:
+  - quadratic
+  - multimodal
+  name: ρmTSP
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1007/978-3-319-45823-6_40
+    title: On the impact of multi-objective scalability for the ρmTSP
+  source: null
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: unknown
+gen_wmodel:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Tunable generator for binary optimization based on several 
     difficulty features
-- name: Submodular Optimitzation
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: binary
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181
-  implementation: https://github.com/IOHprofiler/IOHexperimenter
-  source (real-world/artificial): artificial
-  textual description: set of graph-based submodular optimization problems from 4
-    problem types
-- name: CEC2013
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://peerj.com/articles/cs-2671/CEC2013.pdf
-  implementation: https://github.com/P-N-Suganthan/CEC2013
-  source (real-world/artificial): artificial
-  textual description: suite used for cec2013 competition. Also in IOH https://github.com/IOHprofiler/IOHexperimenter
-- name: CEC2022
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: scalable
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: '?'
-  multi-fidelity: 'no'
-  reference: https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf
-  implementation: https://github.com/P-N-Suganthan/2022-SO-BO
-  source (real-world/artificial): artificial
-  textual description: suite used for cec2022 competition. Also in IOH https://github.com/IOHprofiler/IOHexperimenter
-- name: Onemax+Sphere / Zeromax+Sphere
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: scalable
-  variable type: binary and continuous;mixed;
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3449726.3459521
-  implementation:
-  source (real-world/artificial): 'artificial'
-  textual description: ''
-- name: Onemax+Sphere / DeceptiveTrap+RotatedEllipsoid
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: scalable
-  variable type: binary and continuous;mixed;
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3449726.3459521
-  implementation:
-  source (real-world/artificial): 'artificial'
-  textual description: ''
-- name: InverseDeceptiveTrap+RotatedEllipsoid / DeceptiveTrap+RotatedEllipsoid
-  suite/generator/single: single
-  objectives: '2'
-  dimensionality: scalable
-  variable type: binary and continuous;mixed;
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: ''
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1145/3449726.3459521
-  implementation:
-  source (real-world/artificial): 'artificial'
-  textual description: ''
-- name: PorkchopPlotInterplanetaryTrajectory
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 2
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1109/CEC65147.2025.11042973
-  implementation: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
-  source (real-world/artificial): 'real-world'
-  textual description: ''
-- name: KinematicsRobotArm
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 21
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'no'
-  multi-fidelity: 'no'
-  reference: https://doi.org/10.1023/A:1013258808932
-  implementation: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
-  source (real-world/artificial): 'real-world'
-  textual description: ''
-- name:  VehicleDynamics
-  suite/generator/single: suite
-  objectives: '1'
-  dimensionality: 2
-  variable type: continuous
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  reference: https://www.scitepress.org/Papers/2023/121580/121580.pdf
-  implementation: https://zenodo.org/records/8307853
-  source (real-world/artificial): 'real-world'
-  textual description: ''
-- name: MECHBench
-  suite/generator/single: Problem Suite
-  variable type: Continuous
-  dimensionality: scalable'
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: https://github.com/BayesOptApp/MECHBench
-  textual description: This is a set of problems with inspiration from Structural
-    Mechanics Design Optimization. The suite comprises three physical models, from
-    which the user may define different kind of problems which impact the final design
-    output.
-  reference: https://arxiv.org/abs/2511.10821
-  other info:
-    partial evaluations: 'no'
-    full name: MECHBench
-    constraint properties: Hard Constraints
-    number of constraints: 1 or 2
-    description of multimodality: Unstructured or non isotropic multimodality
-    key challenges / characteristics: Embeds physical simulations and is flexible
-      and modular
-    scientific motivation: Bridge the black-box optimization techniques to a Mechanical
-      Design Problem which require these kinds of algorithms
-    limitations: The models do not include fracture or damage mechanics, just plasticity.
-    implementation languages: Python
-    approximate evaluation time: Times -> from 1 minute to 7 minutes
-- name: EXPObench
-  suite/generator/single: Problem Suite
-  variable type: Continuous, Integer, Categorical, Conditional
-  dimensionality: 10 to 135
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: Unknown
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
-  textual description: Wind farm layout optimization, gas filter design, pipe shape
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_wmodel
+  long_name: null
+  modality: null
+  name: W-model
+  noise_type: null
+  objectives:
+  - 1
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/abs/10.1145/3205651.3208240
+    title: W-model
+  source:
+  - artificial
+  tags: null
+  type: generator
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+impl_beacon:
+  description: Continuous Bi-objective Benchmark with Explicit Adjustable 
+    COrrelatioN control
+  evaluation_time:
+  - negligible
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/Stebbet/BEACON/
+  name: BEACON
+  requirements: null
+  type: implementation
+impl_bonobench:
+  description: Bi-objective Numerical Optimization Benchmark (BONO-Bench)
+  evaluation_time: null
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/schaepermeier/bonobench
+  name: BONO-Bench
+  requirements: null
+  type: implementation
+impl_bso_toolbox:
+  description: Building Spatial Design toolbox (TU/e)
+  evaluation_time:
+  - 1 second
+  - 40 seconds
+  language: C++
+  links:
+  - type: repository
+    url: https://github.com/TUe-excellent-buildings/BSO-toolbox
+  name: BSO-toolbox
+  requirements: null
+  type: implementation
+impl_car_structure:
+  description: JAXA LADSE benchmark problems
+  evaluation_time: null
+  language: null
+  links:
+  - type: website
+    url: http://ladse.eng.isas.jaxa.jp/benchmark/
+  name: Car-structure benchmark
+  requirements: null
+  type: implementation
+impl_cec2013:
+  description: Suganthan's reference implementation
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/P-N-Suganthan/CEC2013
+  name: CEC2013 reference code
+  requirements: null
+  type: implementation
+impl_cec2022:
+  description: Suganthan's reference implementation
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/P-N-Suganthan/2022-SO-BO
+  name: CEC2022 reference code
+  requirements: null
+  type: implementation
+impl_cfd:
+  description: Expensive real-world CFD-based test problems
+  evaluation_time:
+  - 15m
+  - 30s
+  language: null
+  links:
+  - type: repository
+    url: https://bitbucket.org/arahat/cfd-test-problem-suite
+  name: CFD test problem suite
+  requirements: null
+  type: implementation
+impl_coco:
+  description: 'Comparing Continuous Optimizers: black-box optimization benchmarking
+    platform'
+  evaluation_time: null
+  language: C/Python
+  links:
+  - type: repository
+    url: https://github.com/numbbo/coco
+  name: COCO framework
+  requirements: null
+  type: implementation
+impl_coco_legacy:
+  description: Archived COCO download page that hosted the bbob-noisy suite
+  evaluation_time: null
+  language: C/Python
+  links:
+  - type: archive
+    url: 
+      https://web.archive.org/web/20210416065610/https://coco.gforge.inria.fr/doku.php?id=downloads
+  name: COCO legacy (bbob-noisy)
+  requirements: null
+  type: implementation
+impl_ealain:
+  description: Real-world-like extensible benchmark problem generator
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/qrenau/Ealain
+  name: Ealain
+  requirements: null
+  type: implementation
+impl_emdo:
+  description: Not publicly available
+  evaluation_time:
+  - 8 minutes
+  language: Python
+  links: null
+  name: Electric Motor Design Optimization
+  requirements: null
+  type: implementation
+impl_emo2017:
+  description: BBComp EMO-2017 real-world problem archive
+  evaluation_time: null
+  language: null
+  links:
+  - type: download
+    url: 
+      https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/downloads/realworld-problems-bbcomp-EMO-2017.zip
+  name: EMO 2017 real-world problems
+  requirements: null
+  type: implementation
+impl_etmof:
+  description: Evolutionary many-task optimization framework
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/songbai-liu/etmo
+  name: ETMOF
+  requirements: null
+  type: implementation
+impl_expobench:
+  description: EXPensive Optimization benchmark library (wind farm layout, gas 
+    filter design, pipe shape, hyperparameter tuning, hospital simulation)
+  evaluation_time:
+  - 80 seconds
+  - 2 seconds
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+  name: EXPObench
+  requirements: null
+  type: implementation
+impl_gasoline:
+  description: Proprietary Matlab Simulink + Wave RT co-simulation
+  evaluation_time: null
+  language: Matlab Simulink / Wave RT
+  links:
+  - type: paper
+    url: https://doi.org/10.1016/j.ejor.2022.08.032
+  name: Gasoline direct injection engine design
+  requirements: null
+  type: implementation
+impl_gbea:
+  description: Game-Benchmark for Evolutionary Algorithms (COCO fork)
+  evaluation_time:
+  - 34 seconds
+  - 5 seconds
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/ttusar/coco-gbea
+  name: coco-gbea
+  requirements: null
+  type: implementation
+impl_gnbg:
+  description: Generalized Numerical Benchmark Generator
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/Danial-Yazdani/GNBG-Generator
+  name: GNBG Generator
+  requirements: null
+  type: implementation
+impl_gnbg_ii:
+  description: Generalized Numerical Benchmark Generator version 2
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/rohitsalgotra/GNBG-II
+  name: GNBG-II
+  requirements: null
+  type: implementation
+impl_iohclustering:
+  description: Clustering-based optimization benchmark built on ML datasets
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/IOHprofiler/IOHClustering
+  name: IOHClustering
+  requirements: null
+  type: implementation
+impl_iohexperimenter:
+  description: IOHprofiler experimenter framework
+  evaluation_time: null
+  language: C++/Python
+  links:
+  - type: repository
+    url: https://github.com/IOHprofiler/IOHexperimenter
+  name: IOHexperimenter
+  requirements: null
+  type: implementation
+impl_iohgnbg:
+  description: IOHprofiler version of GNBG
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/IOHprofiler/IOHGNBG
+  name: IOHGNBG
+  requirements: null
+  type: implementation
+impl_jsec2019:
+  description: JPNSEC EC-Symposium 2019 competition problem
+  evaluation_time:
+  - 3s
+  language: null
+  links:
+  - type: website
+    url: 
+      http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html
+  name: JSEC 2019 competition
+  requirements: null
+  type: implementation
+impl_ma_bbob:
+  description: Example notebook for MA-BBOB in IOHexperimenter
+  evaluation_time: null
+  language: null
+  links:
+  - type: example
+    url: 
+      https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb
+  name: MA-BBOB (IOHexperimenter)
+  requirements: null
+  type: implementation
+impl_mechbench:
+  description: Structural mechanics design optimization benchmark
+  evaluation_time:
+  - 1 minute
+  - 7 minutes
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/BayesOptApp/MECHBench
+  name: MECHBench
+  requirements: null
+  type: implementation
+impl_mf2:
+  description: Multi-fidelity test function collection
+  evaluation_time: null
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/sjvrijn/mf2
+  name: mf2
+  requirements: null
+  type: implementation
+impl_mmopp:
+  description: ECI lab distribution page for MMOPP
+  evaluation_time: null
+  language: null
+  links:
+  - type: website
+    url: http://www5.zzu.edu.cn/ecilab/info/1036/1251.htm
+  name: MMOPP
+  requirements: null
+  type: implementation
+impl_mocobench:
+  description: Multi-objective combinatorial optimization benchmark
+  evaluation_time: null
+  language: C++
+  links:
+  - type: repository
+    url: https://gitlab.com/aliefooghe/mocobench/
+  name: mocobench
+  requirements: null
+  type: implementation
+impl_modact:
+  description: EPFL-LAMD modact package
+  evaluation_time:
+  - 20ms
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/epfl-lamd/modact
+  name: modact
+  requirements: null
+  type: implementation
+impl_morepo:
+  description: Multi-objective optimisation problem repository
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/MCDMSociety/MOrepo
+  name: MOrepo
+  requirements: null
+  type: implementation
+impl_mpm2:
+  description: Python implementation of MPM2 distributed with smoof
+  evaluation_time: null
+  language: Python
+  links:
+  - type: source
+    url: https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py
+  name: MPM2 (smoof)
+  requirements: null
+  type: implementation
+impl_puboi:
+  description: A benchmark in which variable importance is tunable, based on the
+    Walsh function
+  evaluation_time: null
+  language: Python / C++
+  links:
+  - type: repository
+    url: https://gitlab.com/verel/pubo-importance-benchmark
+  name: PUBO Importance Benchmark
+  requirements: null
+  type: implementation
+impl_pycutest:
+  description: Python interface to CUTEst
+  evaluation_time: null
+  language: Python / C++ / Fortran
+  links:
+  - type: repository
+    url: https://github.com/jfowkes/pycutest
+  name: pycutest
+  requirements: null
+  type: implementation
+impl_pymoo:
+  description: Multi-objective optimization in Python
+  evaluation_time: null
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/anyoptimization/pymoo
+  name: pymoo
+  requirements: null
+  type: implementation
+impl_radar_waveform:
+  description: Radar waveform design reference implementation
+  evaluation_time: null
+  language: null
+  links:
+  - type: website
+    url: http://code.evanhughes.org/
+  name: Evan Hughes radar waveform code
+  requirements: null
+  type: implementation
+impl_randoptgen:
+  description: Unified Random Problem Generator for Single- and Multi-Objective 
+    Optimization with Mixed-Variable Input Spaces
+  evaluation_time:
+  - milliseconds
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/MALEO-research-group/RandOptGen
+  - type: example
+    url: https://doi.org/10.1145/3712256.3726478
+  name: RandOptGen
+  requirements: null
+  type: implementation
+impl_reproblems:
+  description: Real-world inspired multi-objective optimization problem suite
+  evaluation_time: null
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/ryojitanabe/reproblems
+  name: reproblems
+  requirements: null
+  type: implementation
+impl_transfer_rf_bbob_rw:
+  description: Real-world BBOB-like problem implementations (Porkchop, 
+    KinematicsRobotArm)
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
+  name: Transfer Random Forests BBOB Real-world
+  requirements: null
+  type: implementation
+impl_tulipa:
+  description: Large linear program for optimal investment and operation of 
+    energy systems
+  evaluation_time:
+  - hours
+  - minutes
+  language: Julia / JuMP
+  links:
+  - type: website
+    url: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
+  - type: example
+    url: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
+  name: TulipaEnergyModel.jl
+  requirements: null
+  type: implementation
+impl_vehicle_dynamics:
+  description: Zenodo archive for the vehicle dynamics benchmark
+  evaluation_time: null
+  language: null
+  links:
+  - type: archive
+    url: https://zenodo.org/records/8307853
+  name: VehicleDynamics (Zenodo)
+  requirements: null
+  type: implementation
+impl_wmodel:
+  description: Tunable generator for binary optimization
+  evaluation_time: null
+  language: null
+  links:
+  - type: repository
+    url: https://github.com/thomasWeise/BBDOB_W_Model
+  name: BBDOB W-Model
+  requirements: null
+  type: implementation
+suite_amvop:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality:
+  - multimodal
+  name: AMVOP
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2013.2281531
+    title: AMVOP
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: categorical
+  - dim:
+      max: null
+      min: 1
+    type: integer
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_bbob:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1080/10556788.2020.1808977
+    title: 'COCO: a platform for comparing continuous optimizers in a black-box setting'
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_bbob_biobj:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB-biobj
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.48550/arXiv.1604.00359
+    title: BBOB bi-objective test suite
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 40
+      min: 2
+    type: continuous
+suite_bbob_biobj_mixint:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB-biobj-mixint
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3321707.3321868
+    title: BBOB bi-objective mixed-integer test suite
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 160
+      min: 5
+    type: integer
+  - dim:
+      max: 160
+      min: 5
+    type: continuous
+suite_bbob_constrained:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB-constrained
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: http://numbbo.github.io/coco-doc/bbob-constrained/
+    title: bbob-constrained documentation
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 40
+      min: 2
+    type: continuous
+suite_bbob_largescale:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB-largescale
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.48550/arXiv.1903.06396
+    title: BBOB large-scale test suite
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 640
+      min: 20
+    type: continuous
+suite_bbob_mixint:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB-mixint
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3321707.3321868
+    title: BBOB mixed-integer test suite
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 160
+      min: 5
+    type: integer
+  - dim:
+      max: 160
+      min: 5
+    type: continuous
+suite_bbob_noisy:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_coco_legacy
+  long_name: null
+  modality:
+  - multimodal
+  name: BBOB-noisy
+  noise_type:
+  - noisy
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://hal.inria.fr/inria-00369466
+    title: 'Real-parameter black-box optimization benchmarking: noisy functions definitions'
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_bp:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: BP
+  noise_type:
+  - unknown
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/CEC.2019.8790277
+    title: BP benchmark
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_brachytherapy:
+  allows_partial_evaluation: yes
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number:
+      max: null
+      min: 1
+    type: unknown
+  description: Treatment planning for internal radiation therapy. 
+    Multi-objective with aggregated objectives; no public source code.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels:
+  - 1
+  - 2
+  implementations: null
+  long_name: Brachytherapy treatment planning
+  modality:
+  - multimodal
+  name: Brachytherapy treatment planning
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://www.sciencedirect.com/science/article/pii/S1538472123016781
+    title: Brachytherapy treatment planning
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 500
+      min: 100
+    type: continuous
+suite_car_structure:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: 54
+    type: unknown
+  description: 54 constraints
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_car_structure
+  long_name: null
+  modality: null
+  name: Car structure
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3205651.3205702
+    title: Car structure design benchmark
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 222
+      min: 144
+    type: integer
+suite_cdmp:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: null
+  dynamic_type:
+  - unknown
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: CDMP
+  noise_type:
+  - unknown
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3321707.3321878
+    title: CDMP benchmark
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_cec2013:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: suite used for cec2013 competition. Also in IOH.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_cec2013
+  - impl_iohexperimenter
+  long_name: null
+  modality: null
+  name: CEC2013
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://peerj.com/articles/cs-2671/CEC2013.pdf
+    title: CEC2013 definitions
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_cec2015_dmoo:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: '?'
+    number: null
+    type: unknown
+  description: null
+  dynamic_type:
+  - dynamic
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: CEC2015-DMOO
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  problems: null
+  references:
+  - authors: []
+    link: null
+    title: Benchmark Functions for CEC 2015 Special Session and Competition on 
+      Dynamic Multi-objective Optimization
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim: 0
+    type: continuous
+suite_cec2018_dt:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: '14 problems. Time-dependent: Pareto front/Pareto set geometry; irregular
+    Pareto front shapes; variable-linkage; number of disconnected Pareto front segments;
+    etc.'
+  dynamic_type:
+  - dynamic
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_pymoo
+  long_name: CEC2018 Competition on Dynamic Multiobjective Optimisation
+  modality: null
+  name: CEC2018 DT
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: 
+        https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf
+    title: CEC2018 DMOP Competition TR
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: unknown
+suite_cec2022:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: suite used for cec2022 competition. Also in IOH.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_cec2022
+  - impl_iohexperimenter
+  long_name: null
+  modality: null
+  name: CEC2022
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: 
+        https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf
+    title: CEC2022 TR
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_cfd:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: expensive evaluations 30s-15m
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_cfd
+  long_name: null
+  modality: null
+  name: CFD
+  noise_type: null
+  objectives:
+  - 1
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1007/978-3-319-99259-4_24
+    title: CFD test problem suite
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: unknown
+suite_cre:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_reproblems
+  long_name: null
+  modality: null
+  name: CRE
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  problems: null
+  references:
+  - authors:
+    - Ryoji Tanabe
+    - Hisao Ishibuchi
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.asoc.2020.106078
+    title: Easy-to-evaluate real-world multi-objective optimization problems
+  source:
+  - real-world-like
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 7
+      min: 3
+    type: continuous
+  - dim:
+      max: 7
+      min: 3
+    type: integer
+suite_cuter:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: A constrained and unconstrained testing environment.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: CUTEr
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/10.1145/962437.962439
+    title: CUTEr
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: integer
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_cutest:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  - equality: null
+    hard: some
+    number:
+      max: null
+      min: 1
+    type: unknown
+  description: CUTEst for optimization software
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_pycutest
+  long_name: Constrained and Unconstrained Testing Environment with safe threads
+  modality:
+  - multimodal
+  name: CUTEst
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://link.springer.com/article/10.1007/s10589-014-9687-3
+    title: CUTEst
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: integer
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_dtlz:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_pymoo
+  long_name: null
+  modality: null
+  name: DTLZ
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors:
+    - Kalyanmoy Deb
+    - Lothar Thiele
+    - Marco Laumanns
+    - Eckart Zitzler
+    link:
+      type: null
+      url: https://doi.org/10.1109/CEC.2002.1007032
+    title: Scalable multi-objective optimization test problems
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_dynamicbinval:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Four versions of the dynamic binary value problem
+  dynamic_type:
+  - dynamic
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_iohexperimenter
+  long_name: null
+  modality: null
+  name: DynamicBinVal
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/pdf/2404.15837
+    title: DynamicBinVal
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+suite_emo2017:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_emo2017
+  long_name: null
+  modality: null
+  name: EMO2017
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/
+    title: BBComp EMO 2017
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 24
+      min: 4
+    type: continuous
+suite_etmof:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type:
+  - dynamic
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_etmof
+  long_name: null
+  modality: null
+  name: ETMOF
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.48550/arXiv.2110.08033
+    title: Evolutionary many-task optimization framework
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 10000
+      min: 25
+    type: continuous
+suite_expobench:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  - equality: null
+    hard: some
+    number: null
+    type: unknown
+  description: Wind farm layout optimization, gas filter design, pipe shape 
     optimization, hyperparameter tuning, and hospital simulation
-  reference: https://doi.org/10.1016/j.asoc.2023.110744
-  other info:
-    partial evaluations: 'no'
-    full name: EXPensive Optimization benchmark library
-    constraint properties: Hard Constraints, Soft Constraints, Box Constraints, only
-      box constraints implemented, others appear as penalty in objective
-    number of constraints: 2 per variable (box), other constraints unknown (simulator
-      fails)
-    form of noise model: real-life (unknown)
-    type of noise space: Observational
-    key challenges / characteristics: Expensive objectives
-    scientific motivation: Address the lack of real-life expensive benchmarks
-    limitations: single-objective only, constraints are handled naively (penalty in
-      objective), no parallelization
-    implementation languages: Python
-    approximate evaluation time: 2 to 80 seconds
-- name: Gasoline direct injection engine design
-  suite/generator/single: Single Problem
-  variable type: Continuous, Ordinal
-  dimensionality: '7'
-  objectives: '2'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: Unknown
-  multi-fidelity: 'yes'
-  source (real-world/artificial): Real-World Application
-  implementation: https://doi.org/10.1016/j.ejor.2022.08.032
-  textual description: 'A multi-objective optimization problem seeking to minimize
-    fuel consumption and NOx emissions over a two-minute dynamic duty cycle, subject
-    to five constraints (turbine inlet temperature, number of knock occurrences, peak
-    cylinder pressure, peak cylinder pressure rise, total work). Seven decision variables
-    are defined: four define the hardware choices of cylinder compression ratio, turbo
-    machinery and EGR cooler sizing; three relate to control variables that parameterise
-    the engine control logic.'
-  other info:
-    partial evaluations: Unknown
-    constraint properties: Hard Constraints, Soft Constraints
-    number of constraints: '5'
-    key challenges / characteristics: Expensive
-    limitations: Proprietary
-    implementation languages: Matlab Simulink and Wave RT co-simulation
-- name: BEACON
-  suite/generator/single: Generator
-  variable type: Continuous
-  dimensionality: scalable
-  objectives: '2'
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Artificially Generated
-  implementation: https://github.com/Stebbet/BEACON/
-  textual description: Generator for bi-objective benchmark problems with explicitly
-    controlled correlations in continuous spaces.
-  reference: https://dl.acm.org/doi/10.1145/3712255.3734303
-  other info:
-    partial evaluations: 'no'
-    full name: Continuous Bi-objective Benchmark problems with Explicit Adjustable
-      COrrelatioN control
-    constraint properties: Box Constraints
-    number of constraints: '0'
-    description of multimodality: Random
-    key challenges / characteristics: Multimodal, different correlations among objectives
-    scientific motivation: Controlled correlation among objectives
-    limitations: No analytical Pareto front, only bi-objective
-    implementation languages: Python
-    approximate evaluation time: Negligible
-- name: TulipaEnergy
-  suite/generator/single: Problem Suite
-  variable type: Continuous
-  dimensionality: scalable
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'no'
-  multi-fidelity: 'yes'
-  source (real-world/artificial): Real-World Application
-  implementation: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
-  textual description: Determine the optimal investment and operation decisions  for
-    different types of assets in the energy system (production, consumption, conversion,
-    storage, and transport), while minimizing loss of load.
-  reference: See https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
-  other info:
-    partial evaluations: Unknown
-    full name: TulipaEnergyModel.jl
-    constraint properties: Hard Constraints, Soft Constraints
-    number of constraints: millions
-    type of dynamicism: none
-    form of noise model: "depends on input \u2014 still working on stochastic inputs"
-    type of noise space: Parameter
-    key challenges / characteristics: modeled as a potentially very large linear program,
-      different fidelities possible
-    scientific motivation: new techniques for solving large whitebox linear optimization
-      problems
-    limitations: not yet stochastic
-    implementation languages: Julia / JMP
-    approximate evaluation time: from minutes to hours
-    links to usage examples: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
-- name: ATO
-  suite/generator/single: Single Problem
-  variable type: Continuous
-  dimensionality: '10'
-  objectives: '2'
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'no'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: '-'
-  textual description: Parameters of the Modules of the Automatic Train Operation
-    should be optimized. The parameters are continuous with different ranges. There
-    are two objectives (minimizing energy consumption, minimizing driving duration.
-  other info:
-    partial evaluations: 'no'
-- name: Brachytherapy treatment planning
-  suite/generator/single: Problem Suite
-  variable type: Continuous
-  dimensionality: 100-500
-  objectives: 2-3
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'yes'
-  source (real-world/artificial): Real-World Application
-  textual description: Treatment planning for internal radiation therapy
-  reference: https://www.sciencedirect.com/science/article/pii/S1538472123016781
-  other info:
-    partial evaluations: 'yes'
-    full name: Brachytherapy treatment planning
-    constraint properties: Hard Constraints
-    number of constraints: scalable
-    key challenges / characteristics: Multi-objective; aggregated objectives
-    limitations: No public source code
-- name: FleetOpt
-  suite/generator/single: Single Problem
-  variable type: Integer
-  dimensionality: 'Upper level: 54; lower level: 13208'
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: Unknown
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: 'Not public: was done for real client with their private data'
-  textual description: 'Healthcare organisation in the UK provided data about their
-    current fleet of vehicles to conduct non-emergency heathcare trips in the Argyll
-    and Bute region of Scotland, UK. They also provided historical data about the
-    trips the vehicles took and about the bases which the vehicles return to. The
-    aim is to reduce the existing fleet of vehicles while still ensuring all trips
-    can be covered. Moving a vehicle from one base to another to help cover trips
-    is OK as long as the original base can still cover its trips. Link to paper with
-    more details: https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
-  reference: https://dl.acm.org/doi/abs/10.1145/3638530.3664137
-  other info:
-    partial evaluations: 'yes'
-- name: Building spatial design
-  suite/generator/single: Single Problem
-  variable type: Continuous, Boolean
-  dimensionality: scalable depending on problem size (e.g. 90 for)
-  objectives: '2'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: Unknown
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: https://github.com/TUe-excellent-buildings/BSO-toolbox
-  textual description: 'Optimise the spatial layout of a building to: minimise energy
-    consumption for climate control, and minimise the strain on the structure'
-  reference: https://hdl.handle.net/1887/81789
-  other info:
-    partial evaluations: 'no'
-    full name: Building spatial design
-    constraint properties: Hard Constraints, Box Constraints, Permutation Constraints
-    number of constraints: 2065 (as example, depends on problem size)
-    key challenges / characteristics: Many hard constraints (simulator cannot evaluate
-      the solution if these are violated); Mixed-variable search space (continuous
-      + binary); Multiple objectives; (Somewhat) expensive solution evaluations
-    implementation languages: C++
-    approximate evaluation time: Roughly 1 second per evaluation for the smallest
-      considered design, and roughly 40 seconds for the larger designs we considered.
-      (Even the larger designs we considered are still relatively small for the considered
-      problem.)
-- name: Electric Motor Design Optimization
-  suite/generator/single: Single Problem
-  variable type: Continuous, Integer
-  dimensionality: '13'
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'yes'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Real-World Application
-  implementation: Implementation not freely available
-  textual description: The goal is to find a design of a synchronous electric motor
-    for power steering systems that minimizes costs and satisfies all constraints.
-  reference: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf (paper in Slovene)
-  other info:
-    partial evaluations: 'no'
-    full name: Electric Motor Design Optimization
-    constraint properties: Hard Constraints, Soft Constraints, Box Constraints
-    number of constraints: '12'
-    description of multimodality: Constraints are multimodal
-    key challenges / characteristics: Time-consuming solution evaluation, highly-constrained
-      problem
-    scientific motivation: Challenging to find good solutions in a limited time
-    limitations: 'Unavailability, even if available, it wouldn''t be helpful to use
-      for benchmarking due taking a long time to evaluate a single solution '
-    implementation languages: Python
-    approximate evaluation time: 8 minutes
-    general: This is not an available problem, but could be interesting to show to
-      researchers which difficulties appear in real-world problems
-- name: BONO-Bench
-  suite/generator/single: Generator
-  variable type: Continuous
-  dimensionality: scalable
-  objectives: '2'
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Artificially Generated
-  implementation: https://github.com/schaepermeier/bonobench
-  textual description: Bi-objective problem generator and suite with scalable continuous
-    decision space. Features complex problem properties (different types of multimodality
-    and challenges in decision and objective space) as well as Pareto front approximations
-    with error guarantees for the hypervolume and exact R2 indicators.
-  other info:
-    partial evaluations: 'no'
-    full name: Bi-objective Numerical Optimization Benchmark (BONO-Bench)
-    constraint properties: Box Constraints
-    implementation languages: Python
-- name: RandOptGen
-  suite/generator/single: Generator
-  variable type: Continuous, Integer, Boolean
-  dimensionality: scalable
-  objectives: scalable
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Artificially Generated
-  implementation: https://github.com/MALEO-research-group/RandOptGen
-  textual description: 'RandOptGen: A Unified Random Problem Generator for Single-and
-    Multi-Objective Optimization Problems with Mixed-Variable Input Spaces'
-  other info:
-    partial evaluations: 'no'
-    full name: RandOptGen
-    implementation languages: Python
-    approximate evaluation time: milliseconds
-    links to usage examples: https://doi.org/10.1145/3712256.3726478
-- name: CUTEr
-  suite/generator/single: Problem Suite
-  variable type: Continuous, Integer, Boolean
-  dimensionality: scalable
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: Unknown
-  multi-fidelity: 'no'
-  source (real-world/artificial): Artificially Generated
-  implementation: Not Found
-  textual description: A constrained and unconstrained testing environment
-  reference: https://dl.acm.org/doi/10.1145/962437.962439
-  other info:
-    partial evaluations: 'no'
-- name: CUTEst
-  suite/generator/single: Problem Suite
-  variable type: Continuous, Integer, Boolean
-  dimensionality: scalable
-  objectives: '1'
-  constraints: 'yes'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: 'yes'
-  multi-fidelity: 'no'
-  source (real-world/artificial): Artificially Generated
-  implementation: https://github.com/jfowkes/pycutest
-  textual description: The Constrained and Unconstrained Testing Environment with
-    safe threads (CUTEst) for optimization software
-  reference: https://link.springer.com/article/10.1007/s10589-014-9687-3
-  other info:
-    partial evaluations: 'no'
-    full name: 'Constrained and Unconstrained Testing Environment with safe threads '
-    constraint properties: Soft Constraints, Box Constraints
-    number of constraints: scalable
-    implementation languages: Python, C++, Fortran
-    general: 'Python implementation: https://github.com/jfowkes/pycutest'
-- name: PUBOi
-  suite/generator/single: Generator
-  variable type: Boolean
-  dimensionality: scalable
-  objectives: '1'
-  constraints: 'no'
-  dynamic: 'no'
-  noise: 'no'
-  multimodal: Unknown
-  multi-fidelity: 'no'
-  source (real-world/artificial): Artificially Generated
-  implementation: https://gitlab.com/verel/pubo-importance-benchmark
-  textual description: A benchmark in which variable importance is tunable, based
-    on the Walsh function
-  reference: https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12
-  other info:
-    partial evaluations: 'no'
-    full name: Polynomial Unconstrained Binary Optimization
-    key challenges / characteristics: Tunable variable importance
-    implementation languages: Python, C++
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_expobench
+  long_name: EXPensive Optimization benchmark library
+  modality: null
+  name: EXPObench
+  noise_type:
+  - real-life
+  - observational
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.asoc.2023.110744
+    title: EXPObench
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 135
+      min: 10
+    type: categorical
+  - dim:
+      max: 135
+      min: 10
+    type: integer
+  - dim:
+      max: 135
+      min: 10
+    type: continuous
+suite_gbea:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part
+    of GBEA
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_gbea
+  long_name: null
+  modality:
+  - multimodal
+  name: GBEA
+  noise_type:
+  - noisy
+  objectives:
+  - 1
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/3321707.3321805
+    title: Game benchmark for evolutionary algorithms
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_gnbg:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Generalized Numerical Benchmark Generator
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_gnbg
+  long_name: null
+  modality: null
+  name: GNBG
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/abs/2312.07083
+    title: GNBG
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_gnbg_ii:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Generalized Numerical Benchmark Generator (version 2). Also 
+    available in IOH.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_gnbg_ii
+  - impl_iohgnbg
+  long_name: null
+  modality: null
+  name: GNBG-II
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
+    title: GNBG-II
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_iohclustering:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: 'Set of benchmark problems from clustering: optimization task is selecting
+    cluster centers for a given set of data.'
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_iohclustering
+  long_name: null
+  modality:
+  - multimodal
+  name: IOHClustering
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/pdf/2505.09233
+    title: IOHClustering
+  source:
+  - artificial-from-real-data
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_kinematics_robotarm:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_transfer_rf_bbob_rw
+  long_name: null
+  modality:
+  - unimodal
+  name: KinematicsRobotArm
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1023/A:1013258808932
+    title: Kinematics of a robot arm
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: 21
+    type: continuous
+suite_l1_zdt:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of ZDT with linkages between variables within groups
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: L1-ZDT
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/1143997.1144179
+    title: Linkage ZDT/DTLZ variants
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_l2_dtlz:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of DTLZ2/DTLZ3 with linkages between all variables
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: L2-DTLZ
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/1143997.1144179
+    title: Linkage ZDT/DTLZ variants
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_l2_zdt:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of ZDT with linkages between all variables
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: L2-ZDT
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/1143997.1144179
+    title: Linkage ZDT/DTLZ variants
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_l3_dtlz:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of L2-DTLZ with anti-linkage mapping
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: L3-DTLZ
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/1143997.1144179
+    title: Linkage ZDT/DTLZ variants
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_l3_zdt:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of L2-ZDT with anti-linkage mapping
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: L3-ZDT
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1145/1143997.1144179
+    title: Linkage ZDT/DTLZ variants
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_maop:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: MaOP
+  noise_type:
+  - unknown
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.swevo.2019.02.003
+    title: MaOP benchmark
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_mechbench:
+  allows_partial_evaluation: no
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number:
+    - 1
+    - 2
+    type: unknown
+  description: Set of problems inspired by Structural Mechanics Design 
+    Optimization. Embeds physical simulations (plasticity only, no 
+    fracture/damage). Unstructured/non-isotropic multimodality.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_mechbench
+  long_name: MECHBench
+  modality:
+  - multimodal
+  name: MECHBench
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/abs/2511.10821
+    title: MECHBench
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_mf2:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_mf2
+  long_name: null
+  modality: null
+  name: MF2
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.21105/joss.02049
+    title: 'mf2: a collection of multi-fidelity benchmark functions in Python'
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_minus_dtlz:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of DTLZ that minimises the inverse of the base DTLZ 
+    functions
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: Minus DTLZ
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2016.2587749
+    title: Minus DTLZ / Minus WFG
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_minus_wfg:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Variant of WFG that minimises the inverse of the base WFG 
+    functions
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: Minus WFG
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2016.2587749
+    title: Minus DTLZ / Minus WFG
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_mmopp:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_mmopp
+  long_name: null
+  modality:
+  - multimodal
+  name: MMOPP
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: 
+        http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412
+    title: MMOPP technical report
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim: 0
+    type: unknown
+suite_modact:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: Realistic Constrained Multi-Objective Optimization Benchmark 
+    Problems from Design.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_modact
+  - impl_pymoo
+  long_name: multiobjective design of actuators
+  modality: null
+  name: MODAct
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2020.3020046
+    title: MODAct
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: 20
+    type: continuous
+  - dim: 20
+    type: integer
+suite_morepo:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: '?'
+    number: null
+    type: unknown
+  description: null
+  dynamic_type:
+  - unknown
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_morepo
+  long_name: null
+  modality: null
+  name: MOrepo
+  noise_type:
+  - unknown
+  objectives:
+  - 2
+  problems: null
+  references: null
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim: 0
+    type: unknown
+suite_pbo:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: Suite of 25 binary optimization problems
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_iohexperimenter
+  long_name: null
+  modality: null
+  name: PBO
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/pdf/10.1145/3319619.3326810
+    title: PBO benchmarks
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+suite_porkchop:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_transfer_rf_bbob_rw
+  long_name: null
+  modality:
+  - multimodal
+  name: PorkchopPlotInterplanetaryTrajectory
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/CEC65147.2025.11042973
+    title: Porkchop plot interplanetary trajectory benchmark
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: 2
+    type: continuous
+suite_re:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_reproblems
+  long_name: null
+  modality: null
+  name: RE
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  problems: null
+  references:
+  - authors:
+    - Ryoji Tanabe
+    - Hisao Ishibuchi
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.asoc.2020.106078
+    title: Easy-to-evaluate real-world multi-objective optimization problems
+  source:
+  - real-world-like
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: 7
+      min: 2
+    type: continuous
+  - dim:
+      max: 7
+      min: 2
+    type: integer
+suite_rwmvop:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: RWMVOP
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2013.2281531
+    title: RWMVOP
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: categorical
+  - dim:
+      max: null
+      min: 1
+    type: integer
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_sbox_cost:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: problems from BBOB but allows instances with the optimum close to
+    the boundary
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_iohexperimenter
+  long_name: null
+  modality:
+  - multimodal
+  name: SBOX-COST
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.48550/arXiv.2305.12221
+    title: SBOX-COST
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_sdp:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type:
+  - dynamic
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: SDP
+  noise_type:
+  - unknown
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1109/TCYB.2019.2896021
+    title: SDP dynamic multi-objective benchmark
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_submodular:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: set of graph-based submodular optimization problems from 4 
+    problem types
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_iohexperimenter
+  long_name: null
+  modality: null
+  name: Submodular Optimization
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181
+    title: Submodular optimization benchmark
+  source:
+  - artificial
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+suite_tulipa_energy:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: unknown
+  - equality: null
+    hard: some
+    number: null
+    type: unknown
+  description: Determine the optimal investment and operation decisions for 
+    different assets in the energy system (production, consumption, conversion, 
+    storage, transport) while minimizing loss of load. Modelled as a potentially
+    very large linear program with multiple fidelity levels.
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_tulipa
+  long_name: TulipaEnergyModel.jl
+  modality:
+  - unimodal
+  name: TulipaEnergy
+  noise_type:
+  - parameter
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: 
+        https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
+    title: TulipaEnergyModel.jl scientific references
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_vehicle_dynamics:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_vehicle_dynamics
+  long_name: null
+  modality:
+  - multimodal
+  name: VehicleDynamics
+  noise_type: null
+  objectives:
+  - 1
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://www.scitepress.org/Papers/2023/121580/121580.pdf
+    title: VehicleDynamics benchmark
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: 2
+    type: continuous
+suite_wfg:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_pymoo
+  long_name: null
+  modality: null
+  name: WFG
+  noise_type: null
+  objectives:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  problems: null
+  references:
+  - authors:
+    - Simon Huband
+    - Philip Hingston
+    - Luigi Barone
+    - Lyndon While
+    link:
+      type: null
+      url: https://doi.org/10.1109/TEVC.2005.861417
+    title: A review of multiobjective test problems and a scalable test problem 
+      toolkit
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: continuous
+suite_zdt:
+  allows_partial_evaluation: null
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: null
+  description: null
+  dynamic_type: null
+  evaluation_time: null
+  fidelity_levels: null
+  implementations:
+  - impl_pymoo
+  long_name: null
+  modality: null
+  name: ZDT
+  noise_type: null
+  objectives:
+  - 2
+  problems: null
+  references:
+  - authors:
+    - Eckart Zitzler
+    - Kalyanmoy Deb
+    - Lothar Thiele
+    link:
+      type: null
+      url: https://doi.org/10.1162/106365600568202
+    title: 'Comparison of multiobjective evolutionary algorithms: empirical results'
+  source: null
+  tags: null
+  type: suite
+  variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
+    type: continuous
