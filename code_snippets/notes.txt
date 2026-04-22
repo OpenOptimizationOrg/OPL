@@ -11,3 +11,4 @@ Encountered issues:
 5) GBEA: Not integrated. Needs repository cloning and socket server 
 6) GNBG - 404 page not found (gor github repo). GNBG-II done instead.
 7) KinematicsRobotArm: no problems in the repo (just for transfer learning from loaded datasets)
+8) PorkchopPlotInterplanetaryTrajector: no problems in the repo (just for transfer learning from loaded datasets)
