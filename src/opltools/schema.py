@@ -56,13 +56,12 @@ class Variable(BaseModel):
     type: VariableType = VariableType.unknown
     dim: int | set[int] | ValueRange | None = 0
 
-
-def __hash__(self):
-    if isinstance(self.dim, set):
-        dim_hash = hash(frozenset(self.dim))
-    else:
-        dim_hash = hash(self.dim)
-    return hash(self.type) + dim_hash
+    def __hash__(self):
+        if isinstance(self.dim, set):
+            dim_hash = hash(frozenset(self.dim))
+        else:
+            dim_hash = hash(self.dim)
+        return hash(self.type) + dim_hash
 
 
 class ConstraintType(Enum):
@@ -233,7 +232,12 @@ class Library(RootModel):
     @model_validator(mode="after")
     def _validate(self, info: ValidationInfo) -> Self:
         # Check for duplicates and
-        # Make sure all problems referenced in suites exists
+        # First check and fixup all problems
+        for id, thing in self.root.items():
+            if isinstance(thing, Problem) and thing.implementations:
+                self._percolate_set(thing, thing.implementations, "evaluation_time")
+
+        # Then check and fixup all suites because changes from the problems need to propagate to the suites
         unique_fields = (
             info.context.get("unique_error_fields", []) if info.context else []
         )
@@ -271,6 +275,7 @@ class Library(RootModel):
                 self._percolate_set(thing, thing.problems, "constraints")
                 self._percolate_set(thing, thing.problems, "evaluation_time")
 
+            seen, duplicates = _update_seen(fields, seen, duplicates, thing)
         return self
 
 

@@ -120,6 +120,10 @@ fn_emdo:
   code_examples: null
   constraints:
   - equality: null
+    hard: some
+    number: null
+    type: unknown
+  - equality: null
     hard: yes
     number: 12
     type: unknown
@@ -127,10 +131,6 @@ fn_emdo:
     hard: yes
     number: null
     type: box
-  - equality: null
-    hard: some
-    number: null
-    type: unknown
   description: "# Goal\nFind a design of a synchronous electric motor for power steering
     systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
     Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
@@ -167,9 +167,9 @@ fn_emdo:
   type: problem
   variables:
   - dim: 13
-    type: continuous
-  - dim: 13
     type: integer
+  - dim: 13
+    type: continuous
 fn_fleetopt:
   allows_partial_evaluation: yes
   can_evaluate_objectives_independently: null
@@ -282,11 +282,11 @@ fn_invdeceptive_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_inverted_dtlz1:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -398,11 +398,11 @@ fn_onemax_sphere_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_onemax_sphere_zeromax_sphere:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -434,11 +434,11 @@ fn_onemax_sphere_zeromax_sphere:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_radar_waveform:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -598,11 +598,11 @@ gen_ealain:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -758,8 +758,8 @@ gen_ma_bbob:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_ma_bbob
   - impl_iohexperimenter
+  - impl_ma_bbob
   long_name: null
   modality:
   - multimodal
@@ -929,11 +929,11 @@ gen_randoptgen:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -1124,8 +1124,8 @@ impl_cec2022:
 impl_cfd:
   description: Expensive real-world CFD-based test problems
   evaluation_time:
-  - 15m
   - 30s
+  - 15m
   language: null
   links:
   - type: repository
@@ -2052,8 +2052,8 @@ suite_cec2022:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_cec2022
   - impl_iohexperimenter
+  - impl_cec2022
   long_name: null
   modality: null
   name: CEC2022
@@ -2156,11 +2156,11 @@ suite_cre:
   - dim:
       max: 7
       min: 3
-    type: continuous
+    type: integer
   - dim:
       max: 7
       min: 3
-    type: integer
+    type: continuous
 suite_cuter:
   allows_partial_evaluation: no
   can_evaluate_objectives_independently: null
@@ -2196,11 +2196,11 @@ suite_cuter:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -2211,15 +2211,15 @@ suite_cutest:
   code_examples: null
   constraints:
   - equality: null
-    hard: yes
-    number: null
-    type: box
-  - equality: null
     hard: some
     number:
       max: null
       min: 1
     type: unknown
+  - equality: null
+    hard: yes
+    number: null
+    type: box
   description: CUTEst for optimization software
   dynamic_type: null
   evaluation_time: null
@@ -2248,11 +2248,11 @@ suite_cutest:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: integer
   - dim:
       max: null
       min: 1
@@ -2455,13 +2455,13 @@ suite_expobench:
   code_examples: null
   constraints:
   - equality: null
-    hard: yes
-    number: null
-    type: box
-  - equality: null
     hard: some
     number: null
     type: unknown
+  - equality: null
+    hard: yes
+    number: null
+    type: box
   description: Wind farm layout optimization, gas filter design, pipe shape 
     optimization, hyperparameter tuning, and hospital simulation
   dynamic_type: null
@@ -2473,8 +2473,8 @@ suite_expobench:
   modality: null
   name: EXPObench
   noise_type:
-  - real-life
   - observational
+  - real-life
   objectives:
   - 1
   problems: null
@@ -2492,15 +2492,15 @@ suite_expobench:
   - dim:
       max: 135
       min: 10
-    type: categorical
-  - dim:
-      max: 135
-      min: 10
     type: integer
   - dim:
       max: 135
       min: 10
     type: continuous
+  - dim:
+      max: 135
+      min: 10
+    type: categorical
 suite_gbea:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3132,9 +3132,9 @@ suite_modact:
   type: suite
   variables:
   - dim: 20
-    type: continuous
-  - dim: 20
     type: integer
+  - dim: 20
+    type: continuous
 suite_morepo:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3272,11 +3272,11 @@ suite_re:
   - dim:
       max: 7
       min: 2
-    type: continuous
+    type: integer
   - dim:
       max: 7
       min: 2
-    type: integer
+    type: continuous
 suite_rwmvop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3436,11 +3436,11 @@ suite_tulipa_energy:
   code_examples: null
   constraints:
   - equality: null
-    hard: yes
+    hard: some
     number: null
     type: unknown
   - equality: null
-    hard: some
+    hard: yes
     number: null
     type: unknown
   description: Determine the optimal investment and operation decisions for 
