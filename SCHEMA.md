@@ -35,6 +35,13 @@ Three design choices shape everything below:
 
 ---
 
+## Notation / Conventions
+
+- When an attribute is followed by a `?`, it is optional and can be left out.
+- When we refer to a list of unique items, we call them a set. 
+  Technically they are a set in Python, but in the YAML representation they are a list.
+  However, they _must_ be unique (i.e. obey the set property)
+
 ## Library
 
 A `Library` is a dict from ID to a [Thing](#thing-types).
@@ -76,7 +83,7 @@ type: problem  # or: suite | generator | implementation
 ```
 
 We want to have as flat a structure as possible to make exploring and searching OPL as easy as possible. 
-That's one of the reasonst the top level object is a dictionary of dissimilar things.
+That's one of the reasons the top level object is a dictionary of dissimilar things.
 But we need to be able to tell them apart so we have a `type` field to discriminate between them.
 
 ### Implementation
@@ -89,7 +96,7 @@ There are separate files which contain curated usage examples for problems or su
 |-------------------|-----------------------------------|----------------------------------------------|
 | `name`            | str                               | required                                     |
 | `description`     | str                               | required                                     |
-| `language`        | str? (e.g. `python`, `c`)         |                                              |
+| `language`        | str? (e.g. `Python`, `C`)         |                                              |
 | `links`           | list of [Link](#link)?            | repo, release, docs…                         |
 | `evaluation_time` | set of str?                       | free-form list ("8 minutes", "fast")         |
 | `requirements`    | str or list of str?               | URL to requirements file or list of packages |
@@ -301,5 +308,5 @@ For example only some constraints might hard but we don't know the exact number 
 
 ```yaml
 constraints: [{type: box, hard: some}]
-allows_partial_evaluation: "?"
+allows_partial_evaluation: "unknown"
 ```

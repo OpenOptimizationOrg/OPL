@@ -167,9 +167,9 @@ fn_emdo:
   type: problem
   variables:
   - dim: 13
-    type: integer
-  - dim: 13
     type: continuous
+  - dim: 13
+    type: integer
 fn_fleetopt:
   allows_partial_evaluation: yes
   can_evaluate_objectives_independently: null
@@ -282,11 +282,11 @@ fn_invdeceptive_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_inverted_dtlz1:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -398,11 +398,11 @@ fn_onemax_sphere_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_onemax_sphere_zeromax_sphere:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -434,11 +434,11 @@ fn_onemax_sphere_zeromax_sphere:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_radar_waveform:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -758,8 +758,8 @@ gen_ma_bbob:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohexperimenter
   - impl_ma_bbob
+  - impl_iohexperimenter
   long_name: null
   modality:
   - multimodal
@@ -1124,8 +1124,8 @@ impl_cec2022:
 impl_cfd:
   description: Expensive real-world CFD-based test problems
   evaluation_time:
-  - 30s
   - 15m
+  - 30s
   language: null
   links:
   - type: repository
@@ -1199,8 +1199,8 @@ impl_expobench:
   description: EXPensive Optimization benchmark library (wind farm layout, gas 
     filter design, pipe shape, hyperparameter tuning, hospital simulation)
   evaluation_time:
-  - 80 seconds
   - 2 seconds
+  - 80 seconds
   language: Python
   links:
   - type: repository
@@ -1306,8 +1306,8 @@ impl_ma_bbob:
 impl_mechbench:
   description: Structural mechanics design optimization benchmark
   evaluation_time:
-  - 1 minute
   - 7 minutes
+  - 1 minute
   language: Python
   links:
   - type: repository
@@ -1518,15 +1518,15 @@ suite_amvop:
   - dim:
       max: null
       min: 1
-    type: categorical
-  - dim:
-      max: null
-      min: 1
     type: integer
   - dim:
       max: null
       min: 1
     type: continuous
+  - dim:
+      max: null
+      min: 1
+    type: categorical
 suite_bbob:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1625,11 +1625,11 @@ suite_bbob_biobj_mixint:
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
 suite_bbob_constrained:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1732,11 +1732,11 @@ suite_bbob_mixint:
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
 suite_bbob_noisy:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1976,7 +1976,7 @@ suite_cec2015_dmoo:
   code_examples: null
   constraints:
   - equality: null
-    hard: '?'
+    hard: unknown
     number: null
     type: unknown
   description: null
@@ -2052,8 +2052,8 @@ suite_cec2022:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohexperimenter
   - impl_cec2022
+  - impl_iohexperimenter
   long_name: null
   modality: null
   name: CEC2022
@@ -2211,15 +2211,15 @@ suite_cutest:
   code_examples: null
   constraints:
   - equality: null
+    hard: yes
+    number: null
+    type: box
+  - equality: null
     hard: some
     number:
       max: null
       min: 1
     type: unknown
-  - equality: null
-    hard: yes
-    number: null
-    type: box
   description: CUTEst for optimization software
   dynamic_type: null
   evaluation_time: null
@@ -2455,13 +2455,13 @@ suite_expobench:
   code_examples: null
   constraints:
   - equality: null
-    hard: some
-    number: null
-    type: unknown
-  - equality: null
     hard: yes
     number: null
     type: box
+  - equality: null
+    hard: some
+    number: null
+    type: unknown
   description: Wind farm layout optimization, gas filter design, pipe shape 
     optimization, hyperparameter tuning, and hospital simulation
   dynamic_type: null
@@ -2473,8 +2473,8 @@ suite_expobench:
   modality: null
   name: EXPObench
   noise_type:
-  - observational
   - real-life
+  - observational
   objectives:
   - 1
   problems: null
@@ -2492,15 +2492,15 @@ suite_expobench:
   - dim:
       max: 135
       min: 10
+    type: categorical
+  - dim:
+      max: 135
+      min: 10
     type: integer
   - dim:
       max: 135
       min: 10
     type: continuous
-  - dim:
-      max: 135
-      min: 10
-    type: categorical
 suite_gbea:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3108,8 +3108,8 @@ suite_modact:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_modact
   - impl_pymoo
+  - impl_modact
   long_name: multiobjective design of actuators
   modality: null
   name: MODAct
@@ -3141,7 +3141,7 @@ suite_morepo:
   code_examples: null
   constraints:
   - equality: null
-    hard: '?'
+    hard: unknown
     number: null
     type: unknown
   description: null
@@ -3272,11 +3272,11 @@ suite_re:
   - dim:
       max: 7
       min: 2
-    type: integer
+    type: continuous
   - dim:
       max: 7
       min: 2
-    type: continuous
+    type: integer
 suite_rwmvop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3312,15 +3312,15 @@ suite_rwmvop:
   - dim:
       max: null
       min: 1
-    type: categorical
-  - dim:
-      max: null
-      min: 1
     type: integer
   - dim:
       max: null
       min: 1
     type: continuous
+  - dim:
+      max: null
+      min: 1
+    type: categorical
 suite_sbox_cost:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3436,11 +3436,11 @@ suite_tulipa_energy:
   code_examples: null
   constraints:
   - equality: null
-    hard: some
+    hard: yes
     number: null
     type: unknown
   - equality: null
-    hard: yes
+    hard: some
     number: null
     type: unknown
   description: Determine the optimal investment and operation decisions for 
