@@ -37,7 +37,7 @@ library = Library({
         name="Electric Motor Design Optimization",
         description="Not publicly available",
         language="python",
-        evaluation_time="8 minutes"
+        evaluation_time=["8 minutes"]
     ),
     "fn_emdo":  Problem(
         name="Electric Motor Design Optimization",

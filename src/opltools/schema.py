@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Any
 from typing_extensions import Self
 from pydantic import BaseModel, RootModel, ConfigDict, model_validator
 
@@ -73,16 +74,18 @@ class Constraint(BaseModel):
 
 
 class Reference(BaseModel):
-    title: str
-    authors: list[str]
+    title: str | None = None
+    authors: list[str] | None = None
     link: Link | None = None
 
+    @model_validator(mode="after")
+    def _validate(self) -> Self:
+        if self.title is None and self.link is None:
+            raise ValueError("References must have either a title or a link.")
+        return self
+
     def __hash__(self):
-        return (
-            hash(self.title)
-            + sum([hash(author) for author in self.authors])
-            + hash(self.link)
-        )
+        return hash(self.title) + hash(self.link)
 
 
 class Usage(BaseModel):
@@ -96,7 +99,7 @@ class Implementation(Thing):
     description: str
     links: list[Link] | None = None
     language: str | None = None
-    evaluation_time: str | None = None
+    evaluation_time: set[str] | None = None
     requirements: str | list[str] | None = None
 
 
@@ -116,6 +119,7 @@ class ProblemLike(Thing):
     can_evaluate_objectives_independently: YesNoSome | None = None
     modality: set[str] | None = None
     fidelity_levels: set[int] | None = None
+    evaluation_time: set[str] | None = None
     code_examples: set[str] | None = None
     source: set[str] | None = None
 
@@ -150,35 +154,32 @@ class Library(RootModel):
             else:
                 raise ValueError(f"Missing {type.name} with id '{id}'")
 
-    # For a given suite, make sure the fidelty_levels property contains
-    # the fidelity_levels of all problems in the suite.
-    def _fixup_suite_fidelity(self, suite: Suite):
-        if suite.problems:
-            if not suite.fidelity_levels:
-                suite.fidelity_levels = set()
-            for pid in suite.problems:
-                problem = self.root[pid]
-                assert isinstance(problem, Problem)
-                if problem.fidelity_levels:
-                    suite.fidelity_levels.update(problem.fidelity_levels)
+    def _percolate_set(self, thing: Any, children: set | None, property: str):
+        """Propagate some `property` from child objects to the parent by calculating the union of all the child property sets.
 
-        return suite
-
-    def _fixup_suite_variables(self, suite: Suite):
-        if not suite.problems:
+        This is useful to propagate properties like `variables`, `constraints`, etc. from problems up to the suite.
+        """
+        if children is None:
             return
 
-        if suite.variables is None:
-            suite.variables = set()
-        for pid in suite.problems:
-            problem = self.root[pid]
-            assert isinstance(problem, Problem)
-            if problem.variables is not None:
-                suite.variables.update(problem.variables)
+        if getattr(thing, property, None) is None:
+            setattr(thing, property, set())
+        thing_set = getattr(thing, property)
+
+        for child_id in children:
+            child = self.root[child_id]
+            child_set = getattr(child, property, None)
+            if child_set is not None:
+                thing_set.update(child_set)
 
     @model_validator(mode="after")
     def _validate(self) -> Self:
-        # Make sure all problems referenced in suites exists
+        # First check and fixup all problems
+        for id, thing in self.root.items():
+            if isinstance(thing, Problem) and thing.implementations:
+                self._percolate_set(thing, thing.implementations, "evaluation_time")
+
+        # Then check and fixup all suites because changes from the problems need to propagate to the suites
         for id, thing in self.root.items():
             if isinstance(thing, Suite) and thing.problems:
                 for problem_id in thing.problems:
@@ -190,7 +191,12 @@ class Library(RootModel):
                         raise ValueError(
                             f"Suite {id} references problem with id '{problem_id}' but id is a {self.root[problem_id].type.name}."
                         )
-                self._fixup_suite_fidelity(thing)
+
+                self._percolate_set(thing, thing.problems, "fidelity_levels")
+                self._percolate_set(thing, thing.problems, "variables")
+                self._percolate_set(thing, thing.problems, "constraints")
+                self._percolate_set(thing, thing.problems, "evaluation_time")
+
         return self
 
 
