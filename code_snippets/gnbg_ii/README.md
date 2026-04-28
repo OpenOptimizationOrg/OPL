@@ -46,7 +46,7 @@ project/
 ## Usage
 
 ```bash
-uv run call_gnbg.py
+uv run call_gnbg_ii.py
 ```
 
 ## What the Snippet Does
@@ -61,13 +61,13 @@ The script:
 The implementation is split into:
 
 * **`gnbg.py`** — contains the GNBG class and loader (reusable) 
-* **`call_gnbg.py`** — minimal runner script 
+* **`call_gnbg_ii.py`** — minimal runner script 
 
-`call_gnbg.py` depends on `gnbg.py`, so both files must be present in the same directory.
+`call_gnbg_ii.py` depends on `gnbg.py`, so both files must be present in the same directory.
 
 ## Key Parameters
 
-Edit these in `call_gnbg.py`:
+Edit these in `call_gnbg_ii.py`:
 
 * **`problem_index`** — which GNBG function to load (`1`–`24`)
 * **`repo_dir`** — path to the folder containing the `.mat` files

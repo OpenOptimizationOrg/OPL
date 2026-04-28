@@ -19,7 +19,7 @@ No extra setup is needed beyond having `uv` installed. The `ioh` package is reso
 ## Usage
 
 ```bash
-uv run call_manyaffine.py
+uv run call_ma_bbob.py
 ```
 
 ## What the Snippet Does
