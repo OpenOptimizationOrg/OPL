@@ -162,39 +162,63 @@ class Generator(ProblemLike):
     type: OPLType = OPLType.generator
 
 
-def _update_seen(
-    fields: List[str], seen: Dict[str, Set], duplicates: Dict[str, Set], entry: Thing
-):
-    for field in fields:
-        value = getattr(entry, field, None)
-        if value is None:
-            continue
-        seen_value = f"{str(entry.type)}:{value}"
-        if seen_value in seen[field]:
-            duplicates[field].add(seen_value)
-        else:
-            seen[field].add(seen_value)
-    return seen, duplicates
+class ValidationRule:
+    def __init__(
+        self,
+        field_name: str,
+        group: List[OPLType] | None,
+        error_on_duplicate: bool = True,
+    ):
+        self.field_name = field_name
+        self.group = group
+        self.error_on_duplicate = error_on_duplicate
+        self.seen = set()
+        self.duplicates = set()
+
+    def update_seen(self, entry: Thing):
+        if self.group is None or entry.OPLType in self.group:
+            value = getattr(entry, self.field_name, None)
+            if value is None:
+                return
+            if value in self.seen:
+                self.duplicates.add(value)
+            else:
+                self.seen.add(value)
+
+    def _process_duplicates(self):
+        if self.duplicates:
+            if self.error_on_duplicate:
+                print(
+                    f"::error::Duplicate values for field '{self.field_name}': {self.duplicates}"
+                )
+                return False
+            else:
+                print(
+                    f"::warning::Duplicate values for field '{self.field_name}': {self.duplicates}"
+                )
+        return True
 
 
-def _process_duplicates(
-    duplicates: Dict[str, Set], error_fields: List[str], warning_fields: List[str]
-):
-    duplicate_warnings = {
-        field: list(dups)
-        for field, dups in duplicates.items()
-        if dups and field in warning_fields
-    }
-    if len(duplicate_warnings) > 0:
-        print(f"::warning::Duplication warnings {duplicate_warnings}")
-    duplicate_errors = {
-        field: list(dups)
-        for field, dups in duplicates.items()
-        if dups and field in error_fields
-    }
-    if len(duplicate_errors) > 0:
-        print(f"::error::Duplication errors {duplicate_errors}")
-    return len(duplicate_errors) == 0
+class Validator:
+    def __init__(self, duplicate_settings: List[Dict[str, Any]]):
+        rules = []
+        for setting in duplicate_settings:
+            field_name = setting["field_name"]
+            group = setting.get("group", None)
+            error_on_duplicate = setting.get("error_on_duplicate", True)
+            rules.append(ValidationRule(field_name, group, error_on_duplicate))
+        self.rules = rules
+
+    def update_seen(self, entry: Thing):
+        for rule in self.rules:
+            rule.update_seen(entry)
+
+    def process_duplicates(self):
+        all_valid = True
+        for rule in self.rules:
+            if not rule._process_duplicates():
+                all_valid = False
+        return all_valid
 
 
 class Library(RootModel):
@@ -237,24 +261,24 @@ class Library(RootModel):
                 self._percolate_set(thing, thing.implementations, "evaluation_time")
 
         # Then check and fixup all suites because changes from the problems need to propagate to the suites
-        unique_fields = (
-            info.context.get("unique_error_fields", []) if info.context else []
+        duplicate_settings = (
+            info.context.get("duplicate_settings", []) if info.context else []
         )
-        unique_warning_fields = (
-            info.context.get("unique_warning_fields", []) if info.context else []
-        )
-        fields = list(unique_fields + unique_warning_fields)
-        seen = {field: set() for field in fields}
-        duplicates = {field: set() for field in fields}
+        validator = Validator(duplicate_settings)
 
         # First check and fixup all problems
         for id, thing in self.root.items():
-            seen, duplicates = _update_seen(fields, seen, duplicates, thing)
+            validator.update_seen(thing)
             if isinstance(thing, Problem) and thing.implementations:
                 self._percolate_set(thing, thing.implementations, "evaluation_time")
 
-        if not _process_duplicates(duplicates, unique_fields, unique_warning_fields):
-            raise ValueError(f"Duplicate errors found: {duplicates}")
+        if not validator.process_duplicates():
+            raise ValueError(
+                "Duplicate values found in fields: "
+                + ", ".join(
+                    rule.field_name for rule in validator.rules if rule.duplicates
+                )
+            )
 
         # Then check and fixup all suites because changes from the problems need to propagate to the suites
         for id, thing in self.root.items():
