@@ -269,13 +269,11 @@ class Library(RootModel):
                         raise ValueError(
                             f"Suite {id} references problem with id '{problem_id}' but id is a {self.root[problem_id].type.name}."
                         )
-
                 self._percolate_set(thing, thing.problems, "fidelity_levels")
                 self._percolate_set(thing, thing.problems, "variables")
                 self._percolate_set(thing, thing.problems, "constraints")
                 self._percolate_set(thing, thing.problems, "evaluation_time")
 
-            seen, duplicates = _update_seen(fields, seen, duplicates, thing)
         return self
 
 
