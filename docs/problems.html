@@ -184,11 +184,11 @@
       <td>fn_emdo</td>
       <td>Electric Motor Design Optimization</td>
       <td>Problem</td>
-      <td>continuous | integer</td>
+      <td>integer | continuous</td>
       <td>26</td>
       <td>1</td>
       <td>noisy</td>
-      <td>box | unknown</td>
+      <td>unknown | box</td>
       <td>>=14</td>
       <td></td>
       <td>noisy</td>
@@ -635,7 +635,7 @@
       <td>gen_ealain</td>
       <td>Ealain</td>
       <td>Generator</td>
-      <td>integer | continuous | binary</td>
+      <td>continuous | integer | binary</td>
       <td>>=3</td>
       <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
       <td>dynamic | multi-fidelity</td>
@@ -741,11 +741,11 @@
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>IOHGNBG | GNBG-II</td>
+      <td>GNBG-II | IOHGNBG</td>
       <td></td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a> | <a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
-      <td>IOHprofiler version of GNBG | Generalized Numerical Benchmark Generator version 2</td>
+      <td><a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a> | <a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a></td>
+      <td>Generalized Numerical Benchmark Generator version 2 | IOHprofiler version of GNBG</td>
       <td></td>
       <td></td>
       <td></td>
@@ -1004,7 +1004,7 @@
       <td>gen_randoptgen</td>
       <td>RandOptGen</td>
       <td>Generator</td>
-      <td>integer | continuous | binary</td>
+      <td>continuous | integer | binary</td>
       <td>>=3</td>
       <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
       <td></td>
@@ -1168,7 +1168,7 @@
       <td>suite_amvop</td>
       <td>AMVOP</td>
       <td>Suite</td>
-      <td>integer | categorical | continuous</td>
+      <td>continuous | integer | categorical</td>
       <td>>=3</td>
       <td>1</td>
       <td></td>
@@ -1291,7 +1291,7 @@
       <td>suite_bbob_biobj_mixint</td>
       <td>BBOB-biobj-mixint</td>
       <td>Suite</td>
-      <td>integer | continuous</td>
+      <td>continuous | integer</td>
       <td>10-320</td>
       <td>2</td>
       <td></td>
@@ -1414,7 +1414,7 @@
       <td>suite_bbob_mixint</td>
       <td>BBOB-mixint</td>
       <td>Suite</td>
-      <td>integer | continuous</td>
+      <td>continuous | integer</td>
       <td>10-320</td>
       <td>1</td>
       <td></td>
@@ -1684,11 +1684,11 @@
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>IOHexperimenter | CEC2013 reference code</td>
+      <td>CEC2013 reference code | IOHexperimenter</td>
       <td>C++/Python</td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a> | <a href="https://github.com/P-N-Suganthan/CEC2013">https://github.com/P-N-Suganthan/CEC2013</a></td>
-      <td>IOHprofiler experimenter framework | Suganthan's reference implementation</td>
+      <td><a href="https://github.com/P-N-Suganthan/CEC2013">https://github.com/P-N-Suganthan/CEC2013</a> | <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>Suganthan's reference implementation | IOHprofiler experimenter framework</td>
       <td></td>
       <td></td>
       <td></td>
@@ -1865,7 +1865,7 @@
       <td>suite_cre</td>
       <td>CRE</td>
       <td>Suite</td>
-      <td>integer | continuous</td>
+      <td>continuous | integer</td>
       <td>6-14</td>
       <td>[2, 3, 4, 5]</td>
       <td></td>
@@ -1906,7 +1906,7 @@
       <td>suite_cuter</td>
       <td>CUTEr</td>
       <td>Suite</td>
-      <td>integer | continuous | binary</td>
+      <td>continuous | integer | binary</td>
       <td>>=3</td>
       <td>1</td>
       <td></td>
@@ -1947,7 +1947,7 @@
       <td>suite_cutest</td>
       <td>CUTEst</td>
       <td>Suite</td>
-      <td>integer | continuous | binary</td>
+      <td>continuous | integer | binary</td>
       <td>>=3</td>
       <td>1</td>
       <td></td>
@@ -2152,11 +2152,11 @@
       <td>suite_expobench</td>
       <td>EXPObench</td>
       <td>Suite</td>
-      <td>categorical | continuous | integer</td>
+      <td>integer | categorical | continuous</td>
       <td>30-405</td>
       <td>1</td>
       <td>noisy</td>
-      <td>box | unknown</td>
+      <td>unknown | box</td>
       <td>>=2</td>
       <td></td>
       <td>["observational", "real-life"]</td>
@@ -2178,7 +2178,7 @@
       <td>10-135</td>
       <td>EXPObench</td>
       <td>Python</td>
-      <td>{'2 seconds', '80 seconds'}</td>
+      <td>{'80 seconds', '2 seconds'}</td>
       <td><a href="https://github.com/AlgTUDelft/ExpensiveOptimBenchmark">https://github.com/AlgTUDelft/ExpensiveOptimBenchmark</a></td>
       <td>EXPensive Optimization benchmark library (wind farm layout, gas filter design, pipe shape, hyperparameter tuning, hospital simulation)</td>
       <td></td>
@@ -2299,11 +2299,11 @@
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>IOHGNBG | GNBG-II</td>
+      <td>GNBG-II | IOHGNBG</td>
       <td></td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a> | <a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
-      <td>IOHprofiler version of GNBG | Generalized Numerical Benchmark Generator version 2</td>
+      <td><a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a> | <a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a></td>
+      <td>Generalized Numerical Benchmark Generator version 2 | IOHprofiler version of GNBG</td>
       <td></td>
       <td></td>
       <td></td>
@@ -3054,7 +3054,7 @@
       <td>suite_rwmvop</td>
       <td>RWMVOP</td>
       <td>Suite</td>
-      <td>integer | categorical | continuous</td>
+      <td>continuous | integer | categorical</td>
       <td>>=3</td>
       <td>1</td>
       <td></td>
@@ -3244,7 +3244,7 @@
       <td></td>
       <td>TulipaEnergyModel.jl</td>
       <td>Julia / JuMP</td>
-      <td>{'hours', 'minutes'}</td>
+      <td>{'minutes', 'hours'}</td>
       <td><a href="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/">https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/</a> | <a href="https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy">https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy</a></td>
       <td>Large linear program for optimal investment and operation of energy systems</td>
       <td></td>
