@@ -88,11 +88,6 @@ class Reference(BaseModel):
         return hash(self.title) + hash(self.link)
 
 
-class Usage(BaseModel):
-    language: str
-    code: str
-
-
 class Implementation(Thing):
     type: OPLType = OPLType.implementation
     name: str
