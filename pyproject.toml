@@ -1,0 +1,38 @@
+[project]
+name = "opltools"
+version = "0.1.0"
+description = "Tools to manage the Optimization Problem Library"
+readme = "README.md"
+authors = [
+    { name = "Olaf Mersmann", email = "olafm@p-value.net" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.13.3",
+    "pydantic-yaml>=1.6.0",
+    "pyyaml>=6.0.3",
+    "pandas",
+]
+
+[project.scripts]
+opl = "opltools.cli:main"
+
+[project.optional-dependencies]
+cli = [
+    "rich>=15.0.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.11",
+]
+
+[tool.ruff]
+# In addition to the standard set of exclusions, omit all tests, plus a specific file.
+extend-exclude = ["utils/*.py"]

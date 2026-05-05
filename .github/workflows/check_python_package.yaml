@@ -1,0 +1,33 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    runs-on: ${{matrix.runs-on}}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+
+      - name: Lint with ruff
+        run: uv run ruff check --output-format=github .
+
+      - name: Run tests
+        run: uv run pytest --cov=opltools --cov-report=term-missing
