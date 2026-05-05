@@ -1,0 +1,85 @@
+# Please enter the information relevant to your problem/suite/generator/implementation.
+#
+# Instructions:
+# - Enter null for fields where the value is unknown.
+# - If there are any additional properties you want to add, use the 'tags' list to add them.
+
+# Problem / suite / generator example
+your_problem_id: # Unique ID for the entry (e.g., "my_problem").
+  type: problem # One of problem, suite or generator
+  name: short_problem_name # Short problem name / abbreviation
+  long_name: your_full_problem_name # Full problem name
+  description: lorem ipsum # Textual description of the problem/suite/generator
+  tags: # List of tags or keywords not covered by other properties, examples below
+    - Convex Pareto front
+    - Disconnected Pareto front segments
+  references: # List of references or citations
+    - title: Good Work
+      authors:
+        - Author One
+        - Author Two
+      link: https://url.mine
+  implementations: # List with implementation IDs, multiple can be listed
+    - your_implementation # If the implementation you want to refer to does not exist yet, make an entry for the implementation of the problem/suite/generator as well.
+  objectives: # The number of objectives: either as an integer, list or range
+    min: 2
+    max: 5
+  variables: # For each variable type
+    - type: continuous # Type of variable, one of: continuous, integer, binary, categorical, unknown
+      dim: # Number of variables as int, list of ints, or range with min and/or max
+        min: 1
+        max: 80
+    - type: integer
+      dim:
+        max: 5 # Or specify only one of the bounds, and leave the other as null
+    - type: binary
+      dim: 100 # A single value
+    - type: categorical
+      dim: [0,5] # List of possible values
+    - type: unknown # If the variable type(s) are unknown, the number of dimensions can still be given
+      dim: 42
+  constraints: # Constraints can be give as a list
+    - type: box # Constraints have a type: box, linear, function, or unknown
+      number: 1 # The number of each type of constraint can be given as int, list of ints, or as range with min and max
+    - type: linear
+      hard: yes # This is a hard constraint, other options are: no, some, ?
+      equality: yes # This is an equality constraint, other options are: no, some, ?
+      number: [2,5] # There can be two or five constraints of this type
+    - type: function # This is a non-linear constraint
+      hard: no # This is a soft constraint
+      equality: no # This is an inequality constraint
+      number: # There can be between 5 and 10 constraints of this type
+        min: 5
+        max: 10
+    - type: unknown # The type of these constraints is unknown
+      number: 3
+  dynamic_type: null # List of the dynamic properties, or null.
+  noise_type: # List of the types of noise, or null, e.g.:
+    - additive
+    - multiplicative
+    - heteroscedastic
+  allows_partial_evaluation: null # Whether evaluation of subset(s) of decision variables are possible. Can be: yes, no, some, ?
+  can_evaluate_objectives_independently: yes / no / some # Can objective functions be evaluated independently of each other yes, no or some
+  modality: null # List of modality types (e.g. unimodal, multimodal)
+  fidelity_levels: 1 # Number or list of fidelity levels for multi-fidelity problems. If single fidelity, enter 1.
+  evaluation_time: # Approximate time for a single full function evaluation
+    - seconds
+    - minutes
+  code_examples: null # Link to a code example in the OPL repository
+  source: Real-world # Source of the problem(s), e.g., artificial, real-world
+  instances: null # For problems, specify the number of instances, or a list of instance ids, or a range of instance ids. For suites, specify the number of problems, or a list of problem ids, or a range of problem ids. For generators, specify the number of problems that can be generated, or a list of problem ids that can be generated, or a range of problem ids that can be generated.
+  problems: null # For suites, optionally specify the problems that are part of the suite. Each problem should then have a unique id, and be another entry in this yaml file. For generators, specify the problems that can be generated. Each problem should have a unique id, and be another entry in this yaml file. For problems, enter null.
+
+# Implementation example
+your_implementation: # Unique ID for the implementation (e.g., "my_implementation").
+  type: implementation # The type is always implementation here
+  name: your_implementation
+  description: lorem ipsum # Textual description of the implementation
+  links: # A list of links to the implementation sources can be provided
+  - type: GitHub # Optionally specifiy the type of the link
+    url: github.com/yourproject # URL
+  - type: Package
+    url: linktoyourpackage
+  language: Python # Language of the implementation
+  evaluation_time: seconds # Approximate time for a single full function evaluation
+  requirements: null # Any important requirements to be able to run your implementation
