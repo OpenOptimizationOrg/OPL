@@ -44,10 +44,9 @@ things["cobi_problem"] = Generator(
     implementations={"cobi_impl"},
     can_evaluate_objectives_independently="no",
     constraints=[
-        # FIXME: Check
-        Constraint(type="box", hard="yes", number={"min": 1}),
-        Constraint(type="linear", hard="yes", number={"min": 1}),
-        Constraint(type="function", hard="yes", number={"min": 1}),
+        Constraint(type="box", hard="yes", number={"min": 0}),
+        Constraint(type="linear", hard="yes", number={"min": 0}),
+        Constraint(type="function", hard="yes", number={"min": 0}),
     ],
     noise_type={"none"},
     dynamic_type=None,
