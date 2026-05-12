@@ -22,5 +22,19 @@ It is often far easier for the creator of a problem/suite/generator, or someone 
 - A reference to a scientific publication on the problem/suite/generator (if available)
 - A reference to a source code implementation of the problem/suite/generator (if available)
 
+## How to cite 
+
+```
+@misc{opl26,
+  title = {{OPL} – Optimisation problem library},
+  author = {Koen van der Blom and Carola Doerr and Olaf Mersmann and Boris Naujoks and Elena Raponi and Diederick Vermetten and Vanessa Volz and others},
+  year = {2026},
+  note = {\url{https://openoptimizationorg.github.io/OPL/} (last accessed 2026-05-12)}
+}
+```
+
+
 ## Contact
 koen.van.der.blom@cwi.nl
+
+
