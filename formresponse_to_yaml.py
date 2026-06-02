@@ -126,7 +126,7 @@ def parse_yes_no_some(value: Any) -> YesNoSome | None:
         return None
 
     # Normalize common punctuation variants to make matching robust.
-    text = re.sub(r"\s+", " ", text.replace("_", " ").replace("-", " ")).strip()
+    text = re.sub(r"\s+", " ", text.replace("_", " ").replace("-", " ")).strip().lower()
 
     if text in {"not present", "not available", "absent", "no", "n", "false", "none"}:
         return YesNoSome.no
@@ -309,7 +309,7 @@ def parse_modality(simple_value: Any, detail_value: Any) -> set[str] | None:
 def parse_dynamic_type(simple_value: Any, detail_value: Any) -> set[str] | None:
     flag = parse_yes_no_some(simple_value)
     if flag == YesNoSome.no:
-        return None
+        return {"none"}
     if flag == YesNoSome.yes:
         detailed = split_values(detail_value)
         return {d.lower() for d in detailed} or {"dynamic"}
@@ -319,7 +319,7 @@ def parse_dynamic_type(simple_value: Any, detail_value: Any) -> set[str] | None:
 def parse_noise_type(simple_value: Any, model_value: Any, space_value: Any, other_value: Any) -> set[str] | None:
     flag = parse_yes_no_some(simple_value)
     if flag == YesNoSome.no:
-        return None
+        return {"none"}
     if flag != YesNoSome.yes:
         return None
 
@@ -332,7 +332,7 @@ def parse_fidelity_levels(value: Any) -> set[int] | None:
     if flag == YesNoSome.yes:
         return {1, 2}
     if flag == YesNoSome.no:
-        return None
+        return {1}
     return None
 
 
