@@ -1,26 +1,22 @@
 # OPL - Optimisation problem library
-Collection of optimisation problems and benchmark suites with information about high level properties like the type of decision variables, number of objectives, and the presence of constraints. Where available references to papers describing the problem and implementations are included.
+The optimisation problem library aims to make optimsation problems easier to find by collecting problems, benchmark suites and generators, annotated with information about high level properties like the type of decision variables, number of objectives, and the presence of constraints. Where available references to papers describing the problem and implementations are included. All collected problems are available through a searchable [website](https://openoptimizationorg.github.io/OPL/).
 
-## Contributing
-Contributions and corrections are very welcome, through pull requests, issue reporting, or email. 
+## How to add problems
+Contributions and corrections are very welcome, through pull requests, issue reporting, or [email](contact). 
 
-If you want to provide a problem/suite/generator, you can also do so via this [form](https://docs.google.com/forms/d/e/1FAIpQLSehQp24AuFAH2j9jizDhq8K_BYgNGMKXWTMu6s-2RwEJrK59Q/viewform?usp=sharing&ouid=107462254722022409950).
+If you want to provide a problem/suite/generator, you can also do so via this [form](https://docs.google.com/forms/d/e/1FAIpQLSehQp24AuFAH2j9jizDhq8K_BYgNGMKXWTMu6s-2RwEJrK59Q/viewform?usp=sharing&ouid=107462254722022409950). 
 
-### Details to provide
-It is often far easier for the creator of a problem/suite/generator, or someone working with it, to provide details about it than for someone new to it. Currently, the following specific details are being collected:
-- Name of the problem/suite/generator
-- Whether it concerns a suite, generator, or single problem
-- Number of objectives (or available range)
-- Number of variable dimensions (or available range)
-- Type of variables (can be multiple) -- Be as specific as possible (e.g., integer/binary/categorical, rather than 'discrete')
-- Whether the search space is subject to constraints or not (other than boundary constraints)
-- Whether the problem(s) is/are dynamic or not
-- Whether the problem(s) is/are noisy or not
-- Whether the objective space is multimodal	or not
-- Whether objectives can be evaluated for multiple fidelities or not
-- Any other info you feel is important
-- A reference to a scientific publication on the problem/suite/generator (if available)
-- A reference to a source code implementation of the problem/suite/generator (if available)
+## How to contribute to the project
+Want to get involved to make OPL even better? Any help is welcome! 
+
+We need help to 
+- Extending the OPL infrastructure to make it easier to add, find, edit, extend, aggregate problems 
+- Advertise OPL 
+- and, of course, add more problems! 
+
+Finally, you are also very welcome to propose your own ideas to make OPL better, and work on those. 
+
+To get invovled, just send an [email](#contact), or talk to any of us. 
 
 ## How to cite 
 
@@ -32,7 +28,6 @@ It is often far easier for the creator of a problem/suite/generator, or someone 
   note = {\url{https://openoptimizationorg.github.io/OPL/} (last accessed 2026-05-12)}
 }
 ```
-
 
 ## Contact
 koen.van.der.blom@cwi.nl
