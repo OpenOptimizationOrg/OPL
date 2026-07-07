@@ -2,7 +2,7 @@
 The optimisation problem library aims to make optimsation problems easier to find by collecting problems, benchmark suites and generators, annotated with information about high level properties like the type of decision variables, number of objectives, and the presence of constraints. Where available references to papers describing the problem and implementations are included. All collected problems are available through a searchable [website](https://openoptimizationorg.github.io/OPL/).
 
 ## How to add problems
-Contributions and corrections are very welcome, through pull requests, issue reporting, or [email](contact). 
+Contributions and corrections are very welcome, through pull requests, issue reporting, or email (see [contact](contact)). 
 
 If you want to provide a problem/suite/generator, you can also do so via this [form](https://docs.google.com/forms/d/e/1FAIpQLSehQp24AuFAH2j9jizDhq8K_BYgNGMKXWTMu6s-2RwEJrK59Q/viewform?usp=sharing&ouid=107462254722022409950). 
 
@@ -16,7 +16,7 @@ We need help to
 
 Finally, you are also very welcome to propose your own ideas to make OPL better, and work on those. 
 
-To get invovled, just send an [email](#contact), or talk to any of us. 
+To get invovled, just send an email (see [contact](contact)), or talk to any of us. 
 
 ## How to cite 
 
