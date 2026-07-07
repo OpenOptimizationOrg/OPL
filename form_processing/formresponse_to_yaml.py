@@ -610,15 +610,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Convert OPL form CSV rows into schema objects and merge into a YAML library."
     )
-    parser.add_argument("--csv", default="responses_OPL.csv", help="Input CSV file")
+    parser.add_argument("--csv", default="OPL_form.csv", help="Input CSV file")
     parser.add_argument(
         "--existing-yaml",
-        default="problems.yaml",
+        default="../problems.yaml",
         help="Existing OPL library YAML to merge into",
     )
     parser.add_argument(
         "--output-yaml",
-        default="problems.yaml",
+        default="../problems.yaml",
         help="Output YAML path (defaults to updating existing file)",
     )
     parser.add_argument("--dry-run", action="store_true", help="Validate conversion without writing")
