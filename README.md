@@ -1,5 +1,5 @@
 # OPL - Optimisation problem library
-The optimisation problem library aims to make optimsation problems easier to find by collecting problems, benchmark suites and generators, annotated with information about high level properties like the type of decision variables, number of objectives, and the presence of constraints. Where available references to papers describing the problem and implementations are included. All collected problems are available through a searchable [website](https://openoptimizationorg.github.io/OPL/).
+The optimisation problem library aims to make optimisation problems easier to find by collecting problems, benchmark suites and generators, annotated with information about high level properties like the type of decision variables, number of objectives, and the presence of constraints. Where available references to papers describing the problem and implementations are included. All collected problems are available through a searchable [website](https://openoptimizationorg.github.io/OPL/).
 
 ## Other libraries: Algorithms and features
 In addition to the problem collection of OPL, we are also working on libraries for optimisation algorithms and features:
@@ -23,7 +23,7 @@ We need help to
 
 Finally, you are also very welcome to propose your own ideas to make OPL better, and work on those. 
 
-To get invovled, just send an email (see [contact](contact)), or talk to any of us. 
+To get involved, just send an email (see [contact](contact)), or talk to any of us. 
 
 ## How to cite 
 
