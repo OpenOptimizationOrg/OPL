@@ -12,7 +12,7 @@ things["impl_py_cocoex"] = Implementation(
         Link(type="repository", url="https://github.com/numbbo/coco-experiment"),
         Link(type="package", url="https://pypi.org/project/coco-experiment/"),
     ],
-    evaluation_time="sub second",
+    evaluation_time=["sub second"],
 )
 
 for fnr in range(1, 25):
