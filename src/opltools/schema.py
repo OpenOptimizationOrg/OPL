@@ -1,10 +1,64 @@
+import json
 from enum import Enum
 from typing import Any
 from typing_extensions import Self
-from pydantic import BaseModel, RootModel, ConfigDict, model_validator
+from pydantic import (
+    BaseModel,
+    RootModel,
+    ConfigDict,
+    SerializerFunctionWrapHandler,
+    model_serializer,
+    model_validator,
+)
 
 from .yesnosome import YesNoSome
 from .utils import ValueRange, union_range
+
+
+def _sort_key(item: Any) -> Any:
+    """Stable, total-order sort key for an already-serialized set member.
+
+    Scalars (str, int, float, bool) sort by their natural ordering, so e.g.
+    `{2, 10}` sorts numerically rather than as the strings "10" < "2". Dicts
+    and lists (serialized nested models) have no natural ordering, so those
+    fall back to a canonical JSON string.
+    """
+    if isinstance(item, (dict, list)):
+        return json.dumps(item, sort_keys=True, default=str)
+    return item
+
+
+class _CanonicalMixin:
+    """Serialize any `set`-valued field as a sorted list.
+
+    `set` iteration order depends on Python's hash randomization, so two
+    otherwise-identical models can serialize to different YAML on every run
+    unless we impose a fixed order. Rather than hand-listing every `set`
+    field on every model, this inspects each model's actual field values at
+    serialization time and sorts whichever ones happen to be a `set` -
+    including nested models' own sets (each canonicalizes itself the same
+    way) and any `extra="allow"` fields.
+    """
+
+    @model_serializer(mode="wrap")
+    def _canonicalize(self, handler: SerializerFunctionWrapHandler) -> Any:
+        data = handler(self)
+        values = dict(self.__dict__)
+        extra = getattr(self, "__pydantic_extra__", None)
+        if extra:
+            values.update(extra)
+        for name, value in values.items():
+            if isinstance(value, set) and name in data:
+                data[name] = sorted(data[name], key=_sort_key)
+        return data
+
+
+class CanonicalModel(_CanonicalMixin, BaseModel):
+    pass
+
+
+class CanonicalRootModel(_CanonicalMixin, RootModel):
+    pass
 
 
 class OPLType(Enum):
@@ -14,7 +68,7 @@ class OPLType(Enum):
     implementation = "implementation"
 
 
-class Link(BaseModel):
+class Link(CanonicalModel):
     type: str | None = None
     url: str
 
@@ -22,12 +76,12 @@ class Link(BaseModel):
         return hash(self.type) + hash(self.url)
 
 
-class Thing(BaseModel):
+class Thing(CanonicalModel):
     type: OPLType
     model_config = ConfigDict(extra="allow")
 
 
-class Objectives(RootModel):
+class Objectives(CanonicalRootModel):
     root: int | set[int] | ValueRange = 0
 
     def union(self, other: Self) -> Self:
@@ -43,7 +97,7 @@ class VariableType(Enum):
     unknown = "unknown"
 
 
-class Variable(BaseModel):
+class Variable(CanonicalModel):
     type: VariableType = VariableType.unknown
     dim: int | set[int] | ValueRange | None = 0
 
@@ -62,7 +116,7 @@ class ConstraintType(Enum):
     unknown = "unknown"
 
 
-class Constraint(BaseModel):
+class Constraint(CanonicalModel):
     type: ConstraintType = ConstraintType.unknown
     hard: YesNoSome | None = None
     equality: YesNoSome | None = None
@@ -73,7 +127,7 @@ class Constraint(BaseModel):
         return hash((self.type, self.hard, self.equality, number))
 
 
-class Reference(BaseModel):
+class Reference(CanonicalModel):
     title: str | None = None
     authors: list[str] | None = None
     link: Link | None = None
@@ -136,7 +190,7 @@ class Generator(ProblemLike):
     type: OPLType = OPLType.generator
 
 
-class Library(RootModel):
+class Library(CanonicalRootModel):
     root: dict[str, Problem | Generator | Suite | Implementation] = {}
 
     def _check_id_references(self, ids, type: OPLType) -> None:
