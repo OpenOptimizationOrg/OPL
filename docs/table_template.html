@@ -1,0 +1,32 @@
+<section class="table-shell">
+    <div class="table-toolbar">
+        <details class="column-toolbar-disclosure">
+            <summary class="toolbar-title">Toggle Visible Columns</summary>
+            <div class="toolbar-actions">
+                <button type="button" class="toolbar-btn" id="show-all-columns">Show all</button>
+                <button type="button" class="toolbar-btn" id="hide-all-columns">Hide all</button>
+            </div>
+            <div class="column-controls">
+                __COLUMN_TOGGLES__
+            </div>
+        </details>
+    </div>
+    <div class="table-wrap">
+        __TABLE__
+    </div>
+</section>
+
+<section class="details-shell" id="problem-details" aria-live="polite">
+    <h3 class="details-title">Problem details</h3>
+    <p class="details-hint" id="problem-details-hint">Click a table row to inspect full details.</p>
+    <dl class="details-grid" id="problem-details-content"></dl>
+    <div class="snippet-shell" id="problem-snippet-shell">
+        <h4 class="snippet-title">README.md</h4>
+        <p class="snippet-hint" id="problem-readme-hint">README content for this snippet folder will appear here.</p>
+        <div class="snippet-readme markdown-body" id="problem-readme-content"></div>
+        <h4 class="snippet-title">Snippet: <code id="problem-snippet-path">call_{problem_id}.py</code></h4>
+        <p class="snippet-meta"><a id="problem-snippet-folder-link" href="#" target="_blank" rel="noopener noreferrer">Open snippet folder</a></p>
+        <p class="snippet-hint" id="problem-snippet-hint">Select a problem to check for an available code snippet.</p>
+        <pre class="snippet-code"><code id="problem-snippet-content"></code></pre>
+    </div>
+</section>

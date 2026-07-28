@@ -24,1237 +24,3913 @@
 <p>
 Submit problems and corrections on <a target="_blank" href="https://github.com/OpenOptimizationOrg/OPL/">GitHub</a> with pull requests / issues, through the <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSehQp24AuFAH2j9jizDhq8K_BYgNGMKXWTMu6s-2RwEJrK59Q/viewform">Google form</a>, or by email: <a href="mailto:koen.van.der.blom@cwi.nl" itemprop="email">koen.van.der.blom@cwi.nl</a>
 </p>
-<table class="dataframe display compact display styled-table" id="problems">
+<section class="table-shell">
+    <div class="table-toolbar">
+        <details class="column-toolbar-disclosure">
+            <summary class="toolbar-title">Toggle Visible Columns</summary>
+            <div class="toolbar-actions">
+                <button type="button" class="toolbar-btn" id="show-all-columns">Show all</button>
+                <button type="button" class="toolbar-btn" id="hide-all-columns">Hide all</button>
+            </div>
+            <div class="column-controls">
+                <label class="column-chip"><input class="col-toggle" type="checkbox" data-column="0"><span>ID</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="1" checked><span>Name</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="2" checked><span>Type</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="3" checked><span>Variable Types</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="4" checked><span>Total Variables</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="5" checked><span>Objectives</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="6" checked><span>Properties</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="7" checked><span>Constraint Types</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="8" checked><span>Total Constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="9" checked><span>Dynamics</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="10" checked><span>Noise</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="11" checked><span>Partial Evaluations</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="12" checked><span>Independent Objectives</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="13" checked><span>Fidelity Levels</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="14"><span>Full Name</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="15"><span>Description</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="16"><span>Tags</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="17"><span>References</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="18"><span>Implementations</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="19"><span>Modality</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="20"><span>Evaluation Time</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="21"><span>Examples</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="22"><span>Source</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="23"><span>Binary Vars</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="24"><span>Categorical Vars</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="25"><span>Continuous Vars</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="26"><span>Integer Vars</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="27"><span>Implementation Names</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="28"><span>Implementation Languages</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="29"><span>Implementation Evaluation Times</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="30"><span>Implementation Links</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="31"><span>Implementation Descriptions</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="32"><span>Implementation Requirements</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="33"><span>Hard Box Constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="34"><span>Soft Box Constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="35"><span>Hard Linear Constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="36"><span>Soft Linear Constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="37"><span>Hard Function Constraints</span></label><label class="column-chip"><input class="col-toggle" type="checkbox" data-column="38"><span>Soft Function Constraints</span></label>
+            </div>
+        </details>
+    </div>
+    <div class="table-wrap">
+        <table class="dataframe display compact display styled-table" id="problems">
   <thead>
     <tr style="text-align: right;">
-      <th>name</th>
-      <th>textual description</th>
-      <th>suite/generator/single</th>
-      <th>objectives</th>
-      <th>dimensionality</th>
-      <th>variable type</th>
-      <th>constraints</th>
-      <th>dynamic</th>
-      <th>noise</th>
-      <th>multi-fidelity</th>
-      <th>source (real-world/artificial)</th>
-      <th>reference</th>
-      <th>implementation</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Variable Types</th>
+      <th>Total Variables</th>
+      <th>Objectives</th>
+      <th>Properties</th>
+      <th>Constraint Types</th>
+      <th>Total Constraints</th>
+      <th>Dynamics</th>
+      <th>Noise</th>
+      <th>Partial Evaluations</th>
+      <th>Independent Objectives</th>
+      <th>Fidelity Levels</th>
+      <th>Full Name</th>
+      <th>Description</th>
+      <th>Tags</th>
+      <th>References</th>
+      <th>Implementations</th>
+      <th>Modality</th>
+      <th>Evaluation Time</th>
+      <th>Examples</th>
+      <th>Source</th>
+      <th>Binary Vars</th>
+      <th>Categorical Vars</th>
+      <th>Continuous Vars</th>
+      <th>Integer Vars</th>
+      <th>Implementation Names</th>
+      <th>Implementation Languages</th>
+      <th>Implementation Evaluation Times</th>
+      <th>Implementation Links</th>
+      <th>Implementation Descriptions</th>
+      <th>Implementation Requirements</th>
+      <th>Hard Box Constraints</th>
+      <th>Soft Box Constraints</th>
+      <th>Hard Linear Constraints</th>
+      <th>Soft Linear Constraints</th>
+      <th>Hard Function Constraints</th>
+      <th>Soft Function Constraints</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>BBOB</td>
+    <tr data-problem-id="fn_ato">
+      <td>fn_ato</td>
+      <td>ATO</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td>10</td>
+      <td>2</td>
       <td></td>
-      <td>suite</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>no</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Parameters of the Modules of the Automatic Train Operation are optimized; two objectives: minimizing energy consumption and minimizing driving duration.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>unimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_building_spatial">
+      <td>fn_building_spatial</td>
+      <td>Building spatial design</td>
+      <td>Problem</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td>unknown | box</td>
+      <td>>=2</td>
+      <td></td>
+      <td></td>
+      <td>no</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Optimise the spatial layout of a building to minimise energy consumption for climate control and minimise the strain on the structure. Many hard constraints; mixed-variable (continuous+binary); expensive evaluations.</td>
+      <td></td>
+      <td>Building spatial design, <a href="https://hdl.handle.net/1887/81789">https://hdl.handle.net/1887/81789</a></td>
+      <td>impl_bso_toolbox</td>
+      <td></td>
+      <td>["1 second", "40 seconds"]</td>
+      <td></td>
+      <td>real-world</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>BSO-toolbox</td>
+      <td>C++</td>
+      <td>{'40 seconds', '1 second'}</td>
+      <td><a href="https://github.com/TUe-excellent-buildings/BSO-toolbox">https://github.com/TUe-excellent-buildings/BSO-toolbox</a></td>
+      <td>Building Spatial Design toolbox (TU/e)</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_convex_dtlz2">
+      <td>fn_convex_dtlz2</td>
+      <td>Convex DTLZ2</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of DTLZ2 with a convex Pareto front (instead of concave)</td>
+      <td></td>
+      <td>Convex DTLZ2, <a href="https://doi.org/10.1109/TEVC.2013.2281535">https://doi.org/10.1109/TEVC.2013.2281535</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_emdo">
+      <td>fn_emdo</td>
+      <td>Electric Motor Design Optimization</td>
+      <td>Problem</td>
+      <td>integer | continuous</td>
+      <td>26</td>
       <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
+      <td>noisy</td>
+      <td>unknown | box</td>
+      <td>>=14</td>
+      <td></td>
+      <td>noisy</td>
       <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1080/10556788.2020.1808977">https://doi.org/10.1080/10556788.2020.1808977</a></td>
-      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td></td>
+      <td>Electric Motor Design Optimization</td>
+      <td># Goal\nFind a design of a synchronous electric motor for power steering systems that minimizes costs and satisfies all constraints.\n\n# Motivation\nChallenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming solution evaluation\n* Highly-constrained problem\n* Constraints are multimodal\n\nThis is not an available problem, but could be interesting to show to researchers which difficulties appear in real-world problems.</td>
+      <td></td>
+      <td>A Multi-Step Evaluation Process in Electric Motor Design, Tea Tušar; Peter Korošec; Bogdan Filipič, <a href="https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf">https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf</a></td>
+      <td>impl_emdo</td>
+      <td>multimodal</td>
+      <td>8 minutes</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>13</td>
+      <td>13</td>
+      <td>Electric Motor Design Optimization</td>
+      <td>Python</td>
+      <td>{'8 minutes'}</td>
+      <td></td>
+      <td>Not publicly available</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
-      <td>BBOB-biobj</td>
-      <td></td>
-      <td>suite</td>
-      <td>2</td>
-      <td>2-40</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.48550/arXiv.1604.00359">https://doi.org/10.48550/arXiv.1604.00359</a></td>
-      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
-    </tr>
-    <tr>
-      <td>BBOB-noisy</td>
-      <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://hal.inria.fr/inria-00369466">https://hal.inria.fr/inria-00369466</a></td>
-      <td><a href="https://web.archive.org/web/20210416065610/https://coco.gforge.inria.fr/doku.php?id=downloads">https://web.archive.org/web/20210416065610/https://coco.gforge.inria.fr/doku.php?id=downloads</a></td>
-    </tr>
-    <tr>
-      <td>BBOB-largescale</td>
-      <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>20-640</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.48550/arXiv.1903.06396">https://doi.org/10.48550/arXiv.1903.06396</a></td>
-      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
-    </tr>
-    <tr>
-      <td>BBOB-mixint</td>
-      <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>5-160</td>
-      <td>integer;continuous;mixed</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1145/3321707.3321868">https://doi.org/10.1145/3321707.3321868</a></td>
-      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
-    </tr>
-    <tr>
-      <td>BBOB-biobj-mixint</td>
-      <td></td>
-      <td>suite</td>
-      <td>2</td>
-      <td>5-160</td>
-      <td>integer;continuous;mixed</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1145/3321707.3321868">https://doi.org/10.1145/3321707.3321868</a></td>
-      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
-    </tr>
-    <tr>
-      <td>BBOB-constrained</td>
-      <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>2-40</td>
-      <td>continuous</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="http://numbbo.github.io/coco-doc/bbob-constrained/">http://numbbo.github.io/coco-doc/bbob-constrained/</a></td>
-      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
-    </tr>
-    <tr>
-      <td>MOrepo</td>
-      <td></td>
-      <td>suite</td>
-      <td>2</td>
-      <td>?</td>
-      <td>combinatorial</td>
-      <td>?</td>
-      <td>?</td>
-      <td>?</td>
-      <td>no</td>
-      <td></td>
-      <td></td>
-      <td><a href="https://github.com/MCDMSociety/MOrepo">https://github.com/MCDMSociety/MOrepo</a></td>
-    </tr>
-    <tr>
-      <td>ZDT</td>
-      <td></td>
-      <td>suite</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>continuous;binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1162/106365600568202">https://doi.org/10.1162/106365600568202</a></td>
-      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
-    </tr>
-    <tr>
-      <td>DTLZ</td>
-      <td></td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1109/CEC.2002.1007032">https://doi.org/10.1109/CEC.2002.1007032</a></td>
-      <td><a href="https://pymoo.org/problems/many/dtlz.html">https://pymoo.org/problems/many/dtlz.html</a></td>
-    </tr>
-    <tr>
-      <td>WFG</td>
-      <td></td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1109/TEVC.2005.861417">https://doi.org/10.1109/TEVC.2005.861417</a></td>
-      <td><a href="https://pymoo.org/problems/many/wfg.html">https://pymoo.org/problems/many/wfg.html</a></td>
-    </tr>
-    <tr>
-      <td>CDMP</td>
-      <td></td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>yes</td>
-      <td>?</td>
-      <td>?</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1145/3321707.3321878">https://doi.org/10.1145/3321707.3321878</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>SDP</td>
-      <td></td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>?</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1109/TCYB.2019.2896021">https://doi.org/10.1109/TCYB.2019.2896021</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>MaOP</td>
-      <td></td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>?</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1016/j.swevo.2019.02.003">https://doi.org/10.1016/j.swevo.2019.02.003</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>BP</td>
-      <td></td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>?</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1109/CEC.2019.8790277">https://doi.org/10.1109/CEC.2019.8790277</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>GPD</td>
-      <td></td>
-      <td>generator</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>optional</td>
-      <td>no</td>
-      <td>optional</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1016/j.asoc.2020.106139">https://doi.org/10.1016/j.asoc.2020.106139</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>ETMOF</td>
-      <td></td>
-      <td>suite</td>
-      <td>2-50</td>
-      <td>25-10000</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.48550/arXiv.2110.08033">https://doi.org/10.48550/arXiv.2110.08033</a></td>
-      <td><a href="https://github.com/songbai-liu/etmo">https://github.com/songbai-liu/etmo</a></td>
-    </tr>
-    <tr>
-      <td>MMOPP</td>
-      <td></td>
-      <td>suite</td>
-      <td>2-7</td>
-      <td>?</td>
-      <td>?</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412">http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412</a></td>
-      <td><a href="http://www5.zzu.edu.cn/ecilab/info/1036/1251.htm">http://www5.zzu.edu.cn/ecilab/info/1036/1251.htm</a></td>
-    </tr>
-    <tr>
-      <td>CFD</td>
-      <td>expensive evaluations 30s-15m</td>
-      <td>suite</td>
-      <td>1-2</td>
-      <td>scalable</td>
-      <td>?</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="https://doi.org/10.1007/978-3-319-99259-4_24">https://doi.org/10.1007/978-3-319-99259-4_24</a></td>
-      <td><a href="https://bitbucket.org/arahat/cfd-test-problem-suite">https://bitbucket.org/arahat/cfd-test-problem-suite</a></td>
-    </tr>
-    <tr>
-      <td>GBEA</td>
-      <td>expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA</td>
-      <td>suite</td>
-      <td>1-2</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="https://doi.org/10.1145/3321707.3321805">https://doi.org/10.1145/3321707.3321805</a></td>
-      <td><a href="https://github.com/ttusar/coco-gbea">https://github.com/ttusar/coco-gbea</a></td>
-    </tr>
-    <tr>
-      <td>Car structure</td>
-      <td>54 constraints</td>
-      <td>suite</td>
-      <td>2</td>
-      <td>144-222</td>
-      <td>discrete</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="https://doi.org/10.1145/3205651.3205702">https://doi.org/10.1145/3205651.3205702</a></td>
-      <td><a href="http://ladse.eng.isas.jaxa.jp/benchmark/">http://ladse.eng.isas.jaxa.jp/benchmark/</a></td>
-    </tr>
-    <tr>
-      <td>EMO2017</td>
-      <td></td>
-      <td>suite</td>
-      <td>2</td>
-      <td>4-24</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/">https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/</a></td>
-      <td><a href="https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/downloads/realworld-problems-bbcomp-EMO-2017.zip">https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/downloads/realworld-problems-bbcomp-EMO-2017.zip</a></td>
-    </tr>
-    <tr>
-      <td>JSEC2019</td>
-      <td>expensive evaluations 3s; 22 constraints</td>
-      <td>single</td>
-      <td>1-5</td>
-      <td>32</td>
-      <td>continuous</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html">http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html</a></td>
-      <td><a href="http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html">http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html</a></td>
-    </tr>
-    <tr>
-      <td>RE</td>
-      <td></td>
-      <td>suite</td>
-      <td>2-9</td>
-      <td>2-7</td>
-      <td>continuous;integer;mixed</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world like</td>
-      <td><a href="https://doi.org/10.1016/j.asoc.2020.106078">https://doi.org/10.1016/j.asoc.2020.106078</a></td>
-      <td><a href="https://github.com/ryojitanabe/reproblems">https://github.com/ryojitanabe/reproblems</a></td>
-    </tr>
-    <tr>
-      <td>CRE</td>
-      <td></td>
-      <td>suite</td>
-      <td>2-5</td>
-      <td>3-7</td>
-      <td>continuous;integer;mixed</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world like</td>
-      <td><a href="https://doi.org/10.1016/j.asoc.2020.106078">https://doi.org/10.1016/j.asoc.2020.106078</a></td>
-      <td><a href="https://github.com/ryojitanabe/reproblems">https://github.com/ryojitanabe/reproblems</a></td>
-    </tr>
-    <tr>
-      <td>Radar waveform</td>
-      <td></td>
-      <td>single</td>
-      <td>9</td>
-      <td>4-12</td>
+    <tr data-problem-id="fn_fleetopt">
+      <td>fn_fleetopt</td>
+      <td>FleetOpt</td>
+      <td>Problem</td>
       <td>integer</td>
+      <td>{54, 13208}</td>
+      <td>1</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
       <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="https://doi.org/10.1007/978-3-540-70928-2_53">https://doi.org/10.1007/978-3-540-70928-2_53</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>UK healthcare organisation fleet optimisation: reduce the fleet of non-emergency healthcare trip vehicles while still ensuring all trips can be covered. Bilevel: upper level 54 vars, lower level 13208 vars.</td>
+      <td></td>
+      <td>FleetOpt, <a href="https://dl.acm.org/doi/abs/10.1145/3638530.3664137">https://dl.acm.org/doi/abs/10.1145/3638530.3664137</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{54, 13208}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_gasoline">
+      <td>fn_gasoline</td>
+      <td>Gasoline direct injection engine design</td>
+      <td>Problem</td>
+      <td>integer | continuous</td>
+      <td>14</td>
+      <td>2</td>
+      <td>multi-fidelity</td>
+      <td>unknown</td>
+      <td>5</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>Multi-objective optimization to minimize fuel consumption and NOx emissions over a two-minute dynamic duty cycle, subject to five constraints (turbine inlet temperature, knock occurrences, peak cylinder pressure, peak cylinder pressure rise, total work). Seven decision variables cover hardware choices and engine control parameters.</td>
+      <td></td>
+      <td>Gasoline direct injection engine design, <a href="https://doi.org/10.1016/j.ejor.2022.08.032">https://doi.org/10.1016/j.ejor.2022.08.032</a></td>
+      <td>impl_gasoline</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>7</td>
+      <td>7</td>
+      <td>Gasoline direct injection engine design</td>
+      <td>Matlab Simulink / Wave RT</td>
+      <td></td>
+      <td><a href="https://doi.org/10.1016/j.ejor.2022.08.032">https://doi.org/10.1016/j.ejor.2022.08.032</a></td>
+      <td>Proprietary Matlab Simulink + Wave RT co-simulation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_invdeceptive_deceptive_rotell">
+      <td>fn_invdeceptive_deceptive_rotell</td>
+      <td>InverseDeceptiveTrap+RotatedEllipsoid / DeceptiveTrap+RotatedEllipsoid</td>
+      <td>Problem</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Mixed-variable multi-objective test problems, <a href="https://doi.org/10.1145/3449726.3459521">https://doi.org/10.1145/3449726.3459521</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_inverted_dtlz1">
+      <td>fn_inverted_dtlz1</td>
+      <td>Inverted DTLZ1</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of DTLZ1 with an inverted Pareto front</td>
+      <td></td>
+      <td>Inverted DTLZ1, <a href="https://doi.org/10.1109/TEVC.2013.2281534">https://doi.org/10.1109/TEVC.2013.2281534</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_jsec2019">
+      <td>fn_jsec2019</td>
+      <td>JSEC2019</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td>32</td>
+      <td>[1, 2, 3, 4, 5]</td>
+      <td></td>
+      <td>unknown</td>
+      <td>22</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>expensive evaluations 3s; 22 constraints</td>
+      <td></td>
+      <td>JPNSEC EC-Symposium 2019 competition, <a href="http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html">http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html</a></td>
+      <td>impl_jsec2019</td>
+      <td></td>
+      <td>3s</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>32</td>
+      <td></td>
+      <td>JSEC 2019 competition</td>
+      <td></td>
+      <td>{'3s'}</td>
+      <td><a href="http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html">http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html</a></td>
+      <td>JPNSEC EC-Symposium 2019 competition problem</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_onemax_sphere_deceptive_rotell">
+      <td>fn_onemax_sphere_deceptive_rotell</td>
+      <td>Onemax+Sphere / DeceptiveTrap+RotatedEllipsoid</td>
+      <td>Problem</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Mixed-variable multi-objective test problems, <a href="https://doi.org/10.1145/3449726.3459521">https://doi.org/10.1145/3449726.3459521</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_onemax_sphere_zeromax_sphere">
+      <td>fn_onemax_sphere_zeromax_sphere</td>
+      <td>Onemax+Sphere / Zeromax+Sphere</td>
+      <td>Problem</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Onemax+Sphere / Zeromax+Sphere, <a href="https://doi.org/10.1145/3449726.3459521">https://doi.org/10.1145/3449726.3459521</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_radar_waveform">
+      <td>fn_radar_waveform</td>
+      <td>Radar waveform</td>
+      <td>Problem</td>
+      <td>integer</td>
+      <td>4-12</td>
+      <td>9</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Radar waveform design, <a href="https://doi.org/10.1007/978-3-540-70928-2_53">https://doi.org/10.1007/978-3-540-70928-2_53</a></td>
+      <td>impl_radar_waveform</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>4-12</td>
+      <td>Evan Hughes radar waveform code</td>
+      <td></td>
+      <td></td>
       <td><a href="http://code.evanhughes.org/">http://code.evanhughes.org/</a></td>
-    </tr>
-    <tr>
-      <td>MF2</td>
+      <td>Radar waveform design reference implementation</td>
       <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>1-n</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_beacon">
+      <td>gen_beacon</td>
+      <td>BEACON</td>
+      <td>Generator</td>
       <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>yes</td>
+      <td>>=1</td>
+      <td>2</td>
       <td></td>
-      <td><a href="https://doi.org/10.21105/joss.02049">https://doi.org/10.21105/joss.02049</a></td>
-      <td><a href="https://github.com/sjvrijn/mf2">https://github.com/sjvrijn/mf2</a></td>
+      <td>box</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td>no</td>
+      <td></td>
+      <td></td>
+      <td>Continuous Bi-objective Benchmark problems with Explicit Adjustable COrrelatioN control</td>
+      <td>Generator for bi-objective benchmark problems with explicitly controlled correlations in continuous spaces. Multimodal with random structure.</td>
+      <td></td>
+      <td>BEACON, <a href="https://dl.acm.org/doi/10.1145/3712255.3734303">https://dl.acm.org/doi/10.1145/3712255.3734303</a></td>
+      <td>impl_beacon</td>
+      <td>multimodal</td>
+      <td>negligible</td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>BEACON</td>
+      <td>Python</td>
+      <td>{'negligible'}</td>
+      <td><a href="https://github.com/Stebbet/BEACON/">https://github.com/Stebbet/BEACON/</a></td>
+      <td>Continuous Bi-objective Benchmark with Explicit Adjustable COrrelatioN control</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
-      <td>AMVOP</td>
-      <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>mixed continuous+ordinal+categorical+both</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td></td>
-      <td><a href="https://doi.org/10.1109/TEVC.2013.2281531">https://doi.org/10.1109/TEVC.2013.2281531</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>RWMVOP</td>
-      <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous;mixed continuous+ordinal+categorical+both</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real world</td>
-      <td><a href="https://doi.org/10.1109/TEVC.2013.2281531">https://doi.org/10.1109/TEVC.2013.2281531</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>SBOX-COST</td>
-      <td>problems from BBOB but allows instances with the optimum close to the boundary</td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
+    <tr data-problem-id="gen_bono_bench">
+      <td>gen_bono_bench</td>
+      <td>BONO-Bench</td>
+      <td>Generator</td>
       <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
+      <td>>=1</td>
+      <td>2</td>
+      <td></td>
+      <td>box</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
       <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.48550/arXiv.2305.12221">https://doi.org/10.48550/arXiv.2305.12221</a></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter/">https://github.com/IOHprofiler/IOHexperimenter/</a></td>
-    </tr>
-    <tr>
-      <td>ρMNK-Landscapes</td>
-      <td>tunable variable and objective dimensions; tunable multimodality and correlation between objectives</td>
-      <td>generator</td>
-      <td>scalable</td>
-      <td>scalable</td>
-      <td>binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1016/j.ejor.2012.12.019">https://doi.org/10.1016/j.ejor.2012.12.019</a></td>
-      <td><a href="https://gitlab.com/aliefooghe/mocobench/">https://gitlab.com/aliefooghe/mocobench/</a></td>
+      <td>Bi-objective Numerical Optimization Benchmark</td>
+      <td>Bi-objective problem generator and suite with scalable continuous decision space. Features complex problem properties and Pareto front approximations with error guarantees for the hypervolume and exact R2 indicators.</td>
+      <td></td>
+      <td></td>
+      <td>impl_bonobench</td>
+      <td>multimodal</td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>BONO-Bench</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/schaepermeier/bonobench">https://github.com/schaepermeier/bonobench</a></td>
+      <td>Bi-objective Numerical Optimization Benchmark (BONO-Bench)</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
+    <tr data-problem-id="gen_ealain">
+      <td>gen_ealain</td>
+      <td>Ealain</td>
+      <td>Generator</td>
+      <td>binary | continuous | integer</td>
+      <td>>=3</td>
+      <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td>dynamic | multi-fidelity</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>optional</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>Real-world-like, easily extensible to increase complexity</td>
+      <td></td>
+      <td>Ealain, <a href="https://doi.org/10.1145/3638530.3654299">https://doi.org/10.1145/3638530.3654299</a></td>
+      <td>impl_ealain</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>real-world-like</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td>Ealain</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/qrenau/Ealain">https://github.com/qrenau/Ealain</a></td>
+      <td>Real-world-like extensible benchmark problem generator</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_gnbg">
+      <td>gen_gnbg</td>
+      <td>GNBG</td>
+      <td>Generator</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Generator counterpart of GNBG.</td>
+      <td></td>
+      <td>GNBG, <a href="https://arxiv.org/abs/2312.07083">https://arxiv.org/abs/2312.07083</a></td>
+      <td>impl_gnbg</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>GNBG Generator</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/Danial-Yazdani/GNBG-Generator">https://github.com/Danial-Yazdani/GNBG-Generator</a></td>
+      <td>Generalized Numerical Benchmark Generator</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_gnbg_ii">
+      <td>gen_gnbg_ii</td>
+      <td>GNBG-II</td>
+      <td>Generator</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Generator counterpart of GNBG-II.</td>
+      <td></td>
+      <td>GNBG-II, <a href="https://dl.acm.org/doi/pdf/10.1145/3712255.3734271">https://dl.acm.org/doi/pdf/10.1145/3712255.3734271</a></td>
+      <td>["impl_gnbg_ii", "impl_iohgnbg"]</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHGNBG | GNBG-II</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a> | <a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
+      <td>IOHprofiler version of GNBG | Generalized Numerical Benchmark Generator version 2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_gpd">
+      <td>gen_gpd</td>
+      <td>GPD</td>
+      <td>Generator</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td>noisy</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td>optional</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>GPD generator, <a href="https://doi.org/10.1016/j.asoc.2020.106139">https://doi.org/10.1016/j.asoc.2020.106139</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_iohclustering">
+      <td>gen_iohclustering</td>
+      <td>IOHClustering</td>
+      <td>Generator</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Generator counterpart of the IOHClustering suite.</td>
+      <td></td>
+      <td>IOHClustering, <a href="https://arxiv.org/pdf/2505.09233">https://arxiv.org/pdf/2505.09233</a></td>
+      <td>impl_iohclustering</td>
+      <td>multimodal</td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial-from-real-data</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHClustering</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHClustering">https://github.com/IOHprofiler/IOHClustering</a></td>
+      <td>Clustering-based optimization benchmark built on ML datasets</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_ma_bbob">
+      <td>gen_ma_bbob</td>
+      <td>MA-BBOB</td>
+      <td>Generator</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Generator that creates affine combinations of BBOB functions</td>
+      <td></td>
+      <td>MA-BBOB, <a href="https://doi.org/10.1145/3673908">https://doi.org/10.1145/3673908</a></td>
+      <td>["impl_iohexperimenter", "impl_ma_bbob"]</td>
+      <td>multimodal</td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>MA-BBOB (IOHexperimenter) | IOHexperimenter</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb">https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb</a> | <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>Example notebook for MA-BBOB in IOHexperimenter | IOHprofiler experimenter framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_mpm2">
+      <td>gen_mpm2</td>
+      <td>MPM2</td>
+      <td>Generator</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>nonlinear nonseparable nonsymmetric; scalable in terms of time to evaluate the objective function</td>
+      <td></td>
+      <td>MPM2 technical report TR15-01, <a href="https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf">https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf</a></td>
+      <td>impl_mpm2</td>
+      <td>multimodal</td>
+      <td>[]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>MPM2 (smoof)</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py">https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py</a></td>
+      <td>Python implementation of MPM2 distributed with smoof</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_mubqp">
+      <td>gen_mubqp</td>
       <td>mUBQP</td>
-      <td>tunable variable and objective dimensions; tunable density and correlation between objectives</td>
-      <td>generator</td>
-      <td>scalable</td>
-      <td>scalable</td>
+      <td>Generator</td>
       <td>binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
+      <td>>=1</td>
+      <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>tunable variable and objective dimensions; tunable density and correlation between objectives</td>
+      <td></td>
+      <td>mUBQP benchmark, <a href="https://doi.org/10.1016/j.asoc.2013.11.008">https://doi.org/10.1016/j.asoc.2013.11.008</a></td>
+      <td>impl_mocobench</td>
+      <td>["multimodal", "quadratic"]</td>
+      <td>[]</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>mocobench</td>
+      <td>C++</td>
+      <td></td>
+      <td><a href="https://gitlab.com/aliefooghe/mocobench/">https://gitlab.com/aliefooghe/mocobench/</a></td>
+      <td>Multi-objective combinatorial optimization benchmark</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_puboi">
+      <td>gen_puboi</td>
+      <td>PUBOi</td>
+      <td>Generator</td>
+      <td>binary</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1016/j.asoc.2013.11.008">https://doi.org/10.1016/j.asoc.2013.11.008</a></td>
-      <td><a href="https://gitlab.com/aliefooghe/mocobench/">https://gitlab.com/aliefooghe/mocobench/</a></td>
+      <td></td>
+      <td>Polynomial Unconstrained Binary Optimization with tunable importance</td>
+      <td>A benchmark in which variable importance is tunable, based on the Walsh function.</td>
+      <td></td>
+      <td>PUBOi, <a href="https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12">https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12</a></td>
+      <td>impl_puboi</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>PUBO Importance Benchmark</td>
+      <td>Python / C++</td>
+      <td></td>
+      <td><a href="https://gitlab.com/verel/pubo-importance-benchmark">https://gitlab.com/verel/pubo-importance-benchmark</a></td>
+      <td>A benchmark in which variable importance is tunable, based on the Walsh function</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
+    <tr data-problem-id="gen_randoptgen">
+      <td>gen_randoptgen</td>
+      <td>RandOptGen</td>
+      <td>Generator</td>
+      <td>binary | continuous | integer</td>
+      <td>>=3</td>
+      <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>no</td>
+      <td></td>
+      <td></td>
+      <td>RandOptGen</td>
+      <td>A Unified Random Problem Generator for Single- and Multi-Objective Optimization Problems with Mixed-Variable Input Spaces.</td>
+      <td></td>
+      <td></td>
+      <td>impl_randoptgen</td>
+      <td>multimodal</td>
+      <td>milliseconds</td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td>RandOptGen</td>
+      <td>Python</td>
+      <td>{'milliseconds'}</td>
+      <td><a href="https://github.com/MALEO-research-group/RandOptGen">https://github.com/MALEO-research-group/RandOptGen</a> | <a href="https://doi.org/10.1145/3712256.3726478">https://doi.org/10.1145/3712256.3726478</a></td>
+      <td>Unified Random Problem Generator for Single- and Multi-Objective Optimization with Mixed-Variable Input Spaces</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_rho_mnk_landscapes">
+      <td>gen_rho_mnk_landscapes</td>
+      <td>ρMNK-Landscapes</td>
+      <td>Generator</td>
+      <td>binary</td>
+      <td>>=1</td>
+      <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>tunable variable and objective dimensions; tunable multimodality and correlation between objectives</td>
+      <td></td>
+      <td>On the design of multi-objective evolutionary algorithms based on NK-landscapes, <a href="https://doi.org/10.1016/j.ejor.2012.12.019">https://doi.org/10.1016/j.ejor.2012.12.019</a></td>
+      <td>impl_mocobench</td>
+      <td>multimodal</td>
+      <td>[]</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>mocobench</td>
+      <td>C++</td>
+      <td></td>
+      <td><a href="https://gitlab.com/aliefooghe/mocobench/">https://gitlab.com/aliefooghe/mocobench/</a></td>
+      <td>Multi-objective combinatorial optimization benchmark</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_rho_mtsp">
+      <td>gen_rho_mtsp</td>
       <td>ρmTSP</td>
-      <td>tunable variable and objective dimensions; tunable instance type (euclidian/random); tunable correlation between objectives</td>
-      <td>generator</td>
-      <td>scalable</td>
-      <td>scalable</td>
-      <td>permutations</td>
-      <td>no (apart from being permutations)</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
+      <td>Generator</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>[1, 10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
       <td></td>
-      <td><a href="https://doi.org/10.1007/978-3-319-45823-6_40">https://doi.org/10.1007/978-3-319-45823-6_40</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>tunable variable and objective dimensions; tunable instance type (euclidean/random); tunable correlation between objectives</td>
+      <td></td>
+      <td>On the impact of multi-objective scalability for the ρmTSP, <a href="https://doi.org/10.1007/978-3-319-45823-6_40">https://doi.org/10.1007/978-3-319-45823-6_40</a></td>
+      <td>impl_mocobench</td>
+      <td>["multimodal", "quadratic"]</td>
+      <td>[]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>mocobench</td>
+      <td>C++</td>
+      <td></td>
       <td><a href="https://gitlab.com/aliefooghe/mocobench/">https://gitlab.com/aliefooghe/mocobench/</a></td>
-    </tr>
-    <tr>
-      <td>CEC2015-DMOO</td>
+      <td>Multi-objective combinatorial optimization benchmark</td>
       <td></td>
-      <td>suite</td>
-      <td>2-3</td>
-      <td>?</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="gen_wmodel">
+      <td>gen_wmodel</td>
+      <td>W-model</td>
+      <td>Generator</td>
+      <td>binary</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Tunable generator for binary optimization based on several difficulty features</td>
+      <td></td>
+      <td>W-model, <a href="https://dl.acm.org/doi/abs/10.1145/3205651.3208240">https://dl.acm.org/doi/abs/10.1145/3205651.3208240</a></td>
+      <td>impl_wmodel</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BBDOB W-Model</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/thomasWeise/BBDOB_W_Model">https://github.com/thomasWeise/BBDOB_W_Model</a></td>
+      <td>Tunable generator for binary optimization</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_amvop">
+      <td>suite_amvop</td>
+      <td>AMVOP</td>
+      <td>Suite</td>
+      <td>categorical | continuous | integer</td>
+      <td>>=3</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>AMVOP, <a href="https://doi.org/10.1109/TEVC.2013.2281531">https://doi.org/10.1109/TEVC.2013.2281531</a></td>
+      <td></td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob">
+      <td>suite_bbob</td>
+      <td>BBOB</td>
+      <td>Suite</td>
       <td>continuous</td>
-      <td>?</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>COCO: a platform for comparing continuous optimizers in a black-box setting, <a href="https://doi.org/10.1080/10556788.2020.1808977">https://doi.org/10.1080/10556788.2020.1808977</a></td>
+      <td>impl_coco</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>COCO framework</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td>Comparing Continuous Optimizers: black-box optimization benchmarking platform</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob_biobj">
+      <td>suite_bbob_biobj</td>
+      <td>BBOB-biobj</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>2-40</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BBOB bi-objective test suite, <a href="https://doi.org/10.48550/arXiv.1604.00359">https://doi.org/10.48550/arXiv.1604.00359</a></td>
+      <td>impl_coco</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2-40</td>
+      <td></td>
+      <td>COCO framework</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td>Comparing Continuous Optimizers: black-box optimization benchmarking platform</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob_biobj_mixint">
+      <td>suite_bbob_biobj_mixint</td>
+      <td>BBOB-biobj-mixint</td>
+      <td>Suite</td>
+      <td>integer | continuous</td>
+      <td>10-320</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BBOB bi-objective mixed-integer test suite, <a href="https://doi.org/10.1145/3321707.3321868">https://doi.org/10.1145/3321707.3321868</a></td>
+      <td>impl_coco</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>5-160</td>
+      <td>5-160</td>
+      <td>COCO framework</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td>Comparing Continuous Optimizers: black-box optimization benchmarking platform</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob_constrained">
+      <td>suite_bbob_constrained</td>
+      <td>BBOB-constrained</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>2-40</td>
+      <td>1</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>bbob-constrained documentation, <a href="http://numbbo.github.io/coco-doc/bbob-constrained/">http://numbbo.github.io/coco-doc/bbob-constrained/</a></td>
+      <td>impl_coco</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2-40</td>
+      <td></td>
+      <td>COCO framework</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td>Comparing Continuous Optimizers: black-box optimization benchmarking platform</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob_largescale">
+      <td>suite_bbob_largescale</td>
+      <td>BBOB-largescale</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>20-640</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BBOB large-scale test suite, <a href="https://doi.org/10.48550/arXiv.1903.06396">https://doi.org/10.48550/arXiv.1903.06396</a></td>
+      <td>impl_coco</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>20-640</td>
+      <td></td>
+      <td>COCO framework</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td>Comparing Continuous Optimizers: black-box optimization benchmarking platform</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob_mixint">
+      <td>suite_bbob_mixint</td>
+      <td>BBOB-mixint</td>
+      <td>Suite</td>
+      <td>integer | continuous</td>
+      <td>10-320</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BBOB mixed-integer test suite, <a href="https://doi.org/10.1145/3321707.3321868">https://doi.org/10.1145/3321707.3321868</a></td>
+      <td>impl_coco</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>5-160</td>
+      <td>5-160</td>
+      <td>COCO framework</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://github.com/numbbo/coco">https://github.com/numbbo/coco</a></td>
+      <td>Comparing Continuous Optimizers: black-box optimization benchmarking platform</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bbob_noisy">
+      <td>suite_bbob_noisy</td>
+      <td>BBOB-noisy</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td>noisy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>noisy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Real-parameter black-box optimization benchmarking: noisy functions definitions, <a href="https://hal.inria.fr/inria-00369466">https://hal.inria.fr/inria-00369466</a></td>
+      <td>impl_coco_legacy</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>COCO legacy (bbob-noisy)</td>
+      <td>C/Python</td>
+      <td></td>
+      <td><a href="https://web.archive.org/web/20210416065610/https://coco.gforge.inria.fr/doku.php?id=downloads">https://web.archive.org/web/20210416065610/https://coco.gforge.inria.fr/doku.php?id=downloads</a></td>
+      <td>Archived COCO download page that hosted the bbob-noisy suite</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_bp">
+      <td>suite_bp</td>
+      <td>BP</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td>noisy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BP benchmark, <a href="https://doi.org/10.1109/CEC.2019.8790277">https://doi.org/10.1109/CEC.2019.8790277</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_brachytherapy">
+      <td>suite_brachytherapy</td>
+      <td>Brachytherapy treatment planning</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>100-500</td>
+      <td>[2, 3]</td>
+      <td>multi-fidelity</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
       <td>yes</td>
-      <td>no</td>
-      <td>no</td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td>Brachytherapy treatment planning</td>
+      <td>Treatment planning for internal radiation therapy. Multi-objective with aggregated objectives; no public source code.</td>
+      <td></td>
+      <td>Brachytherapy treatment planning, <a href="https://www.sciencedirect.com/science/article/pii/S1538472123016781">https://www.sciencedirect.com/science/article/pii/S1538472123016781</a></td>
+      <td></td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>100-500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_car_structure">
+      <td>suite_car_structure</td>
+      <td>Car structure</td>
+      <td>Suite</td>
+      <td>integer</td>
+      <td>144-222</td>
+      <td>2</td>
+      <td></td>
+      <td>unknown</td>
+      <td>54</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>54 constraints</td>
+      <td></td>
+      <td>Car structure design benchmark, <a href="https://doi.org/10.1145/3205651.3205702">https://doi.org/10.1145/3205651.3205702</a></td>
+      <td>impl_car_structure</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>144-222</td>
+      <td>Car-structure benchmark</td>
+      <td></td>
+      <td></td>
+      <td><a href="http://ladse.eng.isas.jaxa.jp/benchmark/">http://ladse.eng.isas.jaxa.jp/benchmark/</a></td>
+      <td>JAXA LADSE benchmark problems</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_cdmp">
+      <td>suite_cdmp</td>
+      <td>CDMP</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td>dynamic | noisy</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>CDMP benchmark, <a href="https://doi.org/10.1145/3321707.3321878">https://doi.org/10.1145/3321707.3321878</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_cec2013">
+      <td>suite_cec2013</td>
+      <td>CEC2013</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>suite used for cec2013 competition. Also in IOH.</td>
+      <td></td>
+      <td>CEC2013 definitions, <a href="https://peerj.com/articles/cs-2671/CEC2013.pdf">https://peerj.com/articles/cs-2671/CEC2013.pdf</a></td>
+      <td>["impl_cec2013", "impl_iohexperimenter"]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHexperimenter | CEC2013 reference code</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a> | <a href="https://github.com/P-N-Suganthan/CEC2013">https://github.com/P-N-Suganthan/CEC2013</a></td>
+      <td>IOHprofiler experimenter framework | Suganthan's reference implementation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_cec2015_dmoo">
+      <td>suite_cec2015_dmoo</td>
+      <td>CEC2015-DMOO</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>0</td>
+      <td>[2, 3]</td>
+      <td>dynamic</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
       <td>Benchmark Functions for CEC 2015 Special Session and Competition on Dynamic Multi-objective Optimization</td>
       <td></td>
-    </tr>
-    <tr>
-      <td>Ealain</td>
-      <td>Real-world-like, easily extensible to increase complexity</td>
-      <td>generator</td>
-      <td>1+</td>
-      <td>scalable</td>
-      <td>continuous,binary,integer</td>
-      <td>optional</td>
-      <td>optional</td>
-      <td>no</td>
-      <td>optional</td>
-      <td>Real-world-like</td>
-      <td><a href="https://doi.org/10.1145/3638530.3654299">https://doi.org/10.1145/3638530.3654299</a></td>
-      <td><a href="https://github.com/qrenau/Ealain">https://github.com/qrenau/Ealain</a></td>
-    </tr>
-    <tr>
-      <td>MA-BBOB</td>
-      <td>Generator that creates affine combinations of BBOB functions</td>
-      <td>generator</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://doi.org/10.1145/3673908">https://doi.org/10.1145/3673908</a></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb">https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb</a></td>
-    </tr>
-    <tr>
-      <td>MPM2</td>
-      <td>nonlinear nonseparable nonsymmetric; scalable in terms of time to evaluate the objective function</td>
-      <td>generator</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf">https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf</a></td>
-      <td><a href="https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py">https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py</a></td>
-    </tr>
-    <tr>
-      <td>Convex DTLZ2</td>
-      <td>Variant of DTLZ2 with a convex Pareto front (instead of concave)</td>
-      <td>single</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1109/TEVC.2013.2281535">https://doi.org/10.1109/TEVC.2013.2281535</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Inverted DTLZ1</td>
-      <td>Variant of DTLZ1 with an inverted Pareto front</td>
-      <td>single</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1109/TEVC.2013.2281534">https://doi.org/10.1109/TEVC.2013.2281534</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Minus DTLZ</td>
-      <td>Variant of DTLZ that minimises the inverse of the base DTLZ functions</td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1109/TEVC.2016.2587749">https://doi.org/10.1109/TEVC.2016.2587749</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>Minus WFG</td>
-      <td>Variant of WFG that minimises the inverse of the base WFG functions</td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1109/TEVC.2016.2587749">https://doi.org/10.1109/TEVC.2016.2587749</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>L1-ZDT</td>
-      <td>Variant of ZDT with linkages between variables within one of two groups but not between variables in a different group; Linear recombination operators can potentially take advantage of the problem structure</td>
-      <td>suite</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>continuous;binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>L2-ZDT</td>
-      <td>Variant of ZDT with linkages between all variables; Linear recombination operators can potentially take advantage of the problem structure</td>
-      <td>suite</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>continuous;binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
+      <td>0</td>
       <td></td>
-      <td><a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>L3-ZDT</td>
-      <td>Variant of L2-ZDT using a mapping to prevent linear recombination operators from potentially taking advantage of the problem structure</td>
-      <td>suite</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>continuous;binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>L2-DTLZ</td>
-      <td>Variant of DTLZ2 and DTLZ3 with linkages between all variables; Linear recombination operators can potentially take advantage of the problem structure</td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
-      <td>?</td>
-    </tr>
-    <tr>
-      <td>L3-DTLZ</td>
-      <td>Variant of L2-DTLZ using a mapping to prevent linear recombination operators from potentially taking advantage of the problem structure</td>
-      <td>suite</td>
-      <td>2+</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
       <td></td>
-      <td><a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
-      <td>?</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
-      <td>CEC2018 DT - CEC2018 Competition on Dynamic Multiobjective Optimisation</td>
+    <tr data-problem-id="suite_cec2018_dt">
+      <td>suite_cec2018_dt</td>
+      <td>CEC2018 DT</td>
+      <td>Suite</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>[2, 3]</td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>CEC2018 Competition on Dynamic Multiobjective Optimisation</td>
       <td>14 problems. Time-dependent: Pareto front/Pareto set geometry; irregular Pareto front shapes; variable-linkage; number of disconnected Pareto front segments; etc.</td>
-      <td>suite</td>
-      <td>2 or 3</td>
-      <td>scalable?</td>
-      <td>?</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
+      <td></td>
+      <td>CEC2018 DMOP Competition TR, <a href="https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf">https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf</a></td>
+      <td>impl_pymoo</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td>artificial</td>
-      <td><a href="https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf">https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf</a></td>
-      <td><a href="https://pymoo.org/problems/dynamic/df.html">https://pymoo.org/problems/dynamic/df.html</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>pymoo</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
+      <td>Multi-objective optimization in Python</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
-      <td>MODAct - multiobjective design of actuators</td>
-      <td>Realistic Constrained Multi-Objective Optimization Benchmark Problems from Design. Need the <a href="https://github.com/epfl-lamd/modact">https://github.com/epfl-lamd/modact</a> package installed; evaluation times around 20ms</td>
-      <td>suite</td>
-      <td>2 3 4 or 5</td>
-      <td>20</td>
-      <td>mixed; integer and continuous</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real-world</td>
-      <td><a href="https://doi.org/10.1109/TEVC.2020.3020046">https://doi.org/10.1109/TEVC.2020.3020046</a></td>
-      <td><a href="https://pymoo.org/problems/constrained/modact.html">https://pymoo.org/problems/constrained/modact.html</a></td>
-    </tr>
-    <tr>
-      <td>IOHClustering</td>
-      <td>Set of benchmark problems from clustering: optimization task is selecting cluster centers for a given set of data, with the number of clusters defining problem dimensionality. Includes both a suite and a generator. Based on ML clustering datasets</td>
-      <td>suite; generator</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial, but based on real data</td>
-      <td><a href="https://arxiv.org/pdf/2505.09233">https://arxiv.org/pdf/2505.09233</a></td>
-      <td><a href="https://github.com/IOHprofiler/IOHClustering">https://github.com/IOHprofiler/IOHClustering</a></td>
-    </tr>
-    <tr>
-      <td>GNBG-II</td>
-      <td>Generalized Numerical Benchmark Generator (version 2). Also in IOH <a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a></td>
-      <td>suite; generator</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://dl.acm.org/doi/pdf/10.1145/3712255.3734271">https://dl.acm.org/doi/pdf/10.1145/3712255.3734271</a></td>
-      <td><a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
-    </tr>
-    <tr>
-      <td>GNBG</td>
-      <td>Generalized Numerical Benchmark Generator</td>
-      <td>suite; generator</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://arxiv.org/abs/2312.07083">https://arxiv.org/abs/2312.07083</a></td>
-      <td><a href="https://github.com/Danial-Yazdani/GNBG-Generator">https://github.com/Danial-Yazdani/GNBG-Generator</a></td>
-    </tr>
-    <tr>
-      <td>DynamicBinVal</td>
-      <td>Four versions of the dynamic binary value problem</td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>binary</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://arxiv.org/pdf/2404.15837">https://arxiv.org/pdf/2404.15837</a></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-    </tr>
-    <tr>
-      <td>PBO</td>
-      <td>Suite of 25 binary optimization problems</td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://dl.acm.org/doi/pdf/10.1145/3319619.3326810">https://dl.acm.org/doi/pdf/10.1145/3319619.3326810</a></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-    </tr>
-    <tr>
-      <td>W-model</td>
-      <td>Tunable generator for binary optimization based on several difficulty features</td>
-      <td>generator</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://dl.acm.org/doi/abs/10.1145/3205651.3208240?casa_token=S4U_Pi9f6MwAAAAA:U9ztNTPwmupT8K3GamWZfBL7-8fqjxPtr_kprv51vdwA-REsp0EyOFGa99BtbANb0XbqyrVg795hIw">https://dl.acm.org/doi/abs/10.1145/3205651.3208240?casa_token=S4U_Pi9f6MwAAAAA:U9ztNTPwmupT8K3GamWZfBL7-8fqjxPtr_kprv51vdwA-REsp0EyOFGa99BtbANb0XbqyrVg795hIw</a></td>
-      <td><a href="https://github.com/thomasWeise/BBDOB_W_Model">https://github.com/thomasWeise/BBDOB_W_Model</a></td>
-    </tr>
-    <tr>
-      <td>Submodular Optimitzation</td>
-      <td>set of graph-based submodular optimization problems from 4 problem types</td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>binary</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181">https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181</a></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-    </tr>
-    <tr>
-      <td>CEC2013</td>
-      <td>suite used for cec2013 competition. Also in IOH <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://peerj.com/articles/cs-2671/CEC2013.pdf">https://peerj.com/articles/cs-2671/CEC2013.pdf</a></td>
-      <td><a href="https://github.com/P-N-Suganthan/CEC2013">https://github.com/P-N-Suganthan/CEC2013</a></td>
-    </tr>
-    <tr>
+    <tr data-problem-id="suite_cec2022">
+      <td>suite_cec2022</td>
       <td>CEC2022</td>
-      <td>suite used for cec2022 competition. Also in IOH <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>scalable</td>
+      <td>Suite</td>
       <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf">https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf</a></td>
-      <td><a href="https://github.com/P-N-Suganthan/2022-SO-BO">https://github.com/P-N-Suganthan/2022-SO-BO</a></td>
-    </tr>
-    <tr>
-      <td>Onemax+Sphere / Zeromax+Sphere</td>
-      <td></td>
-      <td>single</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>binary and continuous;mixed;</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://doi.org/10.1145/3449726.3459521">https://doi.org/10.1145/3449726.3459521</a></td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>Onemax+Sphere / DeceptiveTrap+RotatedEllipsoid</td>
-      <td></td>
-      <td>single</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>binary and continuous;mixed;</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://doi.org/10.1145/3449726.3459521">https://doi.org/10.1145/3449726.3459521</a></td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>InverseDeceptiveTrap+RotatedEllipsoid / DeceptiveTrap+RotatedEllipsoid</td>
-      <td></td>
-      <td>single</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>binary and continuous;mixed;</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>artificial</td>
-      <td><a href="https://doi.org/10.1145/3449726.3459521">https://doi.org/10.1145/3449726.3459521</a></td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <td>PorkchopPlotInterplanetaryTrajectory</td>
-      <td></td>
-      <td>suite</td>
+      <td>>=1</td>
       <td>1</td>
-      <td>2</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>suite used for cec2022 competition. Also in IOH.</td>
+      <td></td>
+      <td>CEC2022 TR, <a href="https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf">https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf</a></td>
+      <td>["impl_cec2022", "impl_iohexperimenter"]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHexperimenter | CEC2022 reference code</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a> | <a href="https://github.com/P-N-Suganthan/2022-SO-BO">https://github.com/P-N-Suganthan/2022-SO-BO</a></td>
+      <td>IOHprofiler experimenter framework | Suganthan's reference implementation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_cfd">
+      <td>suite_cfd</td>
+      <td>CFD</td>
+      <td>Suite</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>expensive evaluations 30s-15m</td>
+      <td></td>
+      <td>CFD test problem suite, <a href="https://doi.org/10.1007/978-3-319-99259-4_24">https://doi.org/10.1007/978-3-319-99259-4_24</a></td>
+      <td>impl_cfd</td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td>real-world</td>
-      <td><a href="https://doi.org/10.1109/CEC65147.2025.11042973">https://doi.org/10.1109/CEC65147.2025.11042973</a></td>
-      <td><a href="https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world">https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world</a></td>
-    </tr>
-    <tr>
-      <td>KinematicsRobotArm</td>
       <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>21</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real-world</td>
-      <td><a href="https://doi.org/10.1023/A:1013258808932">https://doi.org/10.1023/A:1013258808932</a></td>
-      <td><a href="https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world">https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world</a></td>
-    </tr>
-    <tr>
-      <td>VehicleDynamics</td>
       <td></td>
-      <td>suite</td>
-      <td>1</td>
-      <td>2</td>
-      <td>continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>real-world</td>
-      <td><a href="https://www.scitepress.org/Papers/2023/121580/121580.pdf">https://www.scitepress.org/Papers/2023/121580/121580.pdf</a></td>
-      <td><a href="https://zenodo.org/records/8307853">https://zenodo.org/records/8307853</a></td>
-    </tr>
-    <tr>
-      <td>MECHBench</td>
-      <td>This is a set of problems with inspiration from Structural Mechanics Design Optimization. The suite comprises three physical models, from which the user may define different kind of problems which impact the final design output.</td>
-      <td>Problem Suite</td>
-      <td>1</td>
-      <td>scalable'</td>
-      <td>Continuous</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Real-World Application</td>
-      <td><a href="https://arxiv.org/abs/2511.10821">https://arxiv.org/abs/2511.10821</a></td>
-      <td><a href="https://github.com/BayesOptApp/MECHBench">https://github.com/BayesOptApp/MECHBench</a></td>
-    </tr>
-    <tr>
-      <td>EXPObench</td>
-      <td>Wind farm layout optimization, gas filter design, pipe shape optimization, hyperparameter tuning, and hospital simulation</td>
-      <td>Problem Suite</td>
-      <td>1</td>
-      <td>10 to 135</td>
-      <td>Continuous, Integer, Categorical, Conditional</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>Real-World Application</td>
-      <td><a href="https://doi.org/10.1016/j.asoc.2023.110744">https://doi.org/10.1016/j.asoc.2023.110744</a></td>
-      <td><a href="https://github.com/AlgTUDelft/ExpensiveOptimBenchmark">https://github.com/AlgTUDelft/ExpensiveOptimBenchmark</a></td>
-    </tr>
-    <tr>
-      <td>Gasoline direct injection engine design</td>
-      <td>A multi-objective optimization problem seeking to minimize fuel consumption and NOx emissions over a two-minute dynamic duty cycle, subject to five constraints (turbine inlet temperature, number of knock occurrences, peak cylinder pressure, peak cylinder pressure rise, total work). Seven decision variables are defined: four define the hardware choices of cylinder compression ratio, turbo machinery and EGR cooler sizing; three relate to control variables that parameterise the engine control logic.</td>
-      <td>Single Problem</td>
-      <td>2</td>
-      <td>7</td>
-      <td>Continuous, Ordinal</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>Real-World Application</td>
       <td></td>
-      <td><a href="https://doi.org/10.1016/j.ejor.2022.08.032">https://doi.org/10.1016/j.ejor.2022.08.032</a></td>
-    </tr>
-    <tr>
-      <td>BEACON</td>
-      <td>Generator for bi-objective benchmark problems with explicitly controlled correlations in continuous spaces.</td>
-      <td>Generator</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>Continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Artificially Generated</td>
-      <td><a href="https://dl.acm.org/doi/10.1145/3712255.3734303">https://dl.acm.org/doi/10.1145/3712255.3734303</a></td>
-      <td><a href="https://github.com/Stebbet/BEACON/">https://github.com/Stebbet/BEACON/</a></td>
-    </tr>
-    <tr>
-      <td>TulipaEnergy</td>
-      <td>Determine the optimal investment and operation decisions  for different types of assets in the energy system (production, consumption, conversion, storage, and transport), while minimizing loss of load.</td>
-      <td>Problem Suite</td>
-      <td>1</td>
-      <td>scalable</td>
-      <td>Continuous</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>yes</td>
-      <td>Real-World Application</td>
-      <td>See <a href="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references">https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references</a></td>
-      <td><a href="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/">https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/</a></td>
-    </tr>
-    <tr>
-      <td>ATO</td>
-      <td>Parameters of the Modules of the Automatic Train Operation should be optimized. The parameters are continuous with different ranges. There are two objectives (minimizing energy consumption, minimizing driving duration.</td>
-      <td>Single Problem</td>
-      <td>2</td>
-      <td>10</td>
-      <td>Continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Real-World Application</td>
       <td></td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td>Brachytherapy treatment planning</td>
-      <td>Treatment planning for internal radiation therapy</td>
-      <td>Problem Suite</td>
-      <td>2-3</td>
-      <td>100-500</td>
-      <td>Continuous</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>Real-World Application</td>
-      <td><a href="https://www.sciencedirect.com/science/article/pii/S1538472123016781">https://www.sciencedirect.com/science/article/pii/S1538472123016781</a></td>
+      <td>CFD test problem suite</td>
+      <td></td>
+      <td>{'15m', '30s'}</td>
+      <td><a href="https://bitbucket.org/arahat/cfd-test-problem-suite">https://bitbucket.org/arahat/cfd-test-problem-suite</a></td>
+      <td>Expensive real-world CFD-based test problems</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td></td>
     </tr>
-    <tr>
-      <td>FleetOpt</td>
-      <td>Healthcare organisation in the UK provided data about their current fleet of vehicles to conduct non-emergency heathcare trips in the Argyll and Bute region of Scotland, UK. They also provided historical data about the trips the vehicles took and about the bases which the vehicles return to. The aim is to reduce the existing fleet of vehicles while still ensuring all trips can be covered. Moving a vehicle from one base to another to help cover trips is OK as long as the original base can still cover its trips. Link to paper with more details: <a href="https://dl.acm.org/doi/abs/10.1145/3638530.3664137">https://dl.acm.org/doi/abs/10.1145/3638530.3664137</a></td>
-      <td>Single Problem</td>
-      <td>1</td>
-      <td>Upper level: 54; lower level: 13208</td>
-      <td>Integer</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Real-World Application</td>
-      <td><a href="https://dl.acm.org/doi/abs/10.1145/3638530.3664137">https://dl.acm.org/doi/abs/10.1145/3638530.3664137</a></td>
-      <td>Not public: was done for real client with their private data</td>
-    </tr>
-    <tr>
-      <td>Building spatial design</td>
-      <td>Optimise the spatial layout of a building to: minimise energy consumption for climate control, and minimise the strain on the structure</td>
-      <td>Single Problem</td>
-      <td>2</td>
-      <td>scalable depending on problem size (e.g. 90 for)</td>
-      <td>Continuous, Boolean</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Real-World Application</td>
-      <td><a href="https://hdl.handle.net/1887/81789">https://hdl.handle.net/1887/81789</a></td>
-      <td><a href="https://github.com/TUe-excellent-buildings/BSO-toolbox">https://github.com/TUe-excellent-buildings/BSO-toolbox</a></td>
-    </tr>
-    <tr>
-      <td>Electric Motor Design Optimization</td>
-      <td>The goal is to find a design of a synchronous electric motor for power steering systems that minimizes costs and satisfies all constraints.</td>
-      <td>Single Problem</td>
-      <td>1</td>
-      <td>13</td>
-      <td>Continuous, Integer</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>yes</td>
-      <td>no</td>
-      <td>Real-World Application</td>
-      <td><a href="https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf">https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf</a> (paper in Slovene)</td>
-      <td>Implementation not freely available</td>
-    </tr>
-    <tr>
-      <td>BONO-Bench</td>
-      <td>Bi-objective problem generator and suite with scalable continuous decision space. Features complex problem properties (different types of multimodality and challenges in decision and objective space) as well as Pareto front approximations with error guarantees for the hypervolume and exact R2 indicators.</td>
-      <td>Generator</td>
-      <td>2</td>
-      <td>scalable</td>
-      <td>Continuous</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Artificially Generated</td>
+    <tr data-problem-id="suite_cre">
+      <td>suite_cre</td>
+      <td>CRE</td>
+      <td>Suite</td>
+      <td>integer | continuous</td>
+      <td>6-14</td>
+      <td>[2, 3, 4, 5]</td>
       <td></td>
-      <td><a href="https://github.com/schaepermeier/bonobench">https://github.com/schaepermeier/bonobench</a></td>
-    </tr>
-    <tr>
-      <td>RandOptGen</td>
-      <td>RandOptGen: A Unified Random Problem Generator for Single-and Multi-Objective Optimization Problems with Mixed-Variable Input Spaces</td>
-      <td>Generator</td>
-      <td>scalable</td>
-      <td>scalable</td>
-      <td>Continuous, Integer, Boolean</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Artificially Generated</td>
+      <td>unknown</td>
+      <td>>=1</td>
       <td></td>
-      <td><a href="https://github.com/MALEO-research-group/RandOptGen">https://github.com/MALEO-research-group/RandOptGen</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Easy-to-evaluate real-world multi-objective optimization problems, Ryoji Tanabe; Hisao Ishibuchi, <a href="https://doi.org/10.1016/j.asoc.2020.106078">https://doi.org/10.1016/j.asoc.2020.106078</a></td>
+      <td>impl_reproblems</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world-like</td>
+      <td></td>
+      <td></td>
+      <td>3-7</td>
+      <td>3-7</td>
+      <td>reproblems</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/ryojitanabe/reproblems">https://github.com/ryojitanabe/reproblems</a></td>
+      <td>Real-world inspired multi-objective optimization problem suite</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
+    <tr data-problem-id="suite_cuter">
+      <td>suite_cuter</td>
       <td>CUTEr</td>
-      <td>A constrained and unconstrained testing environment</td>
-      <td>Problem Suite</td>
+      <td>Suite</td>
+      <td>binary | continuous | integer</td>
+      <td>>=3</td>
       <td>1</td>
-      <td>scalable</td>
-      <td>Continuous, Integer, Boolean</td>
-      <td>yes</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
       <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Artificially Generated</td>
-      <td><a href="https://dl.acm.org/doi/10.1145/962437.962439">https://dl.acm.org/doi/10.1145/962437.962439</a></td>
-      <td>Not Found</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>A constrained and unconstrained testing environment.</td>
+      <td></td>
+      <td>CUTEr, <a href="https://dl.acm.org/doi/10.1145/962437.962439">https://dl.acm.org/doi/10.1145/962437.962439</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
+    <tr data-problem-id="suite_cutest">
+      <td>suite_cutest</td>
       <td>CUTEst</td>
-      <td>The Constrained and Unconstrained Testing Environment with safe threads (CUTEst) for optimization software</td>
-      <td>Problem Suite</td>
+      <td>Suite</td>
+      <td>binary | continuous | integer</td>
+      <td>>=3</td>
       <td>1</td>
-      <td>scalable</td>
-      <td>Continuous, Integer, Boolean</td>
-      <td>yes</td>
+      <td></td>
+      <td>unknown | box</td>
+      <td>>=2</td>
+      <td></td>
+      <td></td>
       <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Artificially Generated</td>
-      <td><a href="https://link.springer.com/article/10.1007/s10589-014-9687-3">https://link.springer.com/article/10.1007/s10589-014-9687-3</a></td>
+      <td></td>
+      <td></td>
+      <td>Constrained and Unconstrained Testing Environment with safe threads</td>
+      <td>CUTEst for optimization software</td>
+      <td></td>
+      <td>CUTEst, <a href="https://link.springer.com/article/10.1007/s10589-014-9687-3">https://link.springer.com/article/10.1007/s10589-014-9687-3</a></td>
+      <td>impl_pycutest</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td>pycutest</td>
+      <td>Python / C++ / Fortran</td>
+      <td></td>
       <td><a href="https://github.com/jfowkes/pycutest">https://github.com/jfowkes/pycutest</a></td>
+      <td>Python interface to CUTEst</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
-    <tr>
-      <td>PUBOi</td>
-      <td>A benchmark in which variable importance is tunable, based on the Walsh function</td>
-      <td>Generator</td>
+    <tr data-problem-id="suite_dtlz">
+      <td>suite_dtlz</td>
+      <td>DTLZ</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Scalable multi-objective optimization test problems, Kalyanmoy Deb; Lothar Thiele; Marco Laumanns; Eckart Zitzler, <a href="https://doi.org/10.1109/CEC.2002.1007032">https://doi.org/10.1109/CEC.2002.1007032</a></td>
+      <td>impl_pymoo</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>pymoo</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
+      <td>Multi-objective optimization in Python</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_dynamicbinval">
+      <td>suite_dynamicbinval</td>
+      <td>DynamicBinVal</td>
+      <td>Suite</td>
+      <td>binary</td>
+      <td>>=1</td>
       <td>1</td>
-      <td>scalable</td>
-      <td>Boolean</td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Four versions of the dynamic binary value problem</td>
+      <td></td>
+      <td>DynamicBinVal, <a href="https://arxiv.org/pdf/2404.15837">https://arxiv.org/pdf/2404.15837</a></td>
+      <td>impl_iohexperimenter</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>IOHexperimenter</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>IOHprofiler experimenter framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_emo2017">
+      <td>suite_emo2017</td>
+      <td>EMO2017</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>4-24</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>BBComp EMO 2017, <a href="https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/">https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/</a></td>
+      <td>impl_emo2017</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>4-24</td>
+      <td></td>
+      <td>EMO 2017 real-world problems</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/downloads/realworld-problems-bbcomp-EMO-2017.zip">https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/downloads/realworld-problems-bbcomp-EMO-2017.zip</a></td>
+      <td>BBComp EMO-2017 real-world problem archive</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_etmof">
+      <td>suite_etmof</td>
+      <td>ETMOF</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>25-10000</td>
+      <td>[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 3, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 4, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 5, 50, 6, 7, 8, 9]</td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td>dynamic</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Evolutionary many-task optimization framework, <a href="https://doi.org/10.48550/arXiv.2110.08033">https://doi.org/10.48550/arXiv.2110.08033</a></td>
+      <td>impl_etmof</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>25-10000</td>
+      <td></td>
+      <td>ETMOF</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/songbai-liu/etmo">https://github.com/songbai-liu/etmo</a></td>
+      <td>Evolutionary many-task optimization framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_expobench">
+      <td>suite_expobench</td>
+      <td>EXPObench</td>
+      <td>Suite</td>
+      <td>continuous | categorical | integer</td>
+      <td>30-405</td>
+      <td>1</td>
+      <td>noisy</td>
+      <td>unknown | box</td>
+      <td>>=2</td>
+      <td></td>
+      <td>["observational", "real-life"]</td>
       <td>no</td>
+      <td></td>
+      <td></td>
+      <td>EXPensive Optimization benchmark library</td>
+      <td>Wind farm layout optimization, gas filter design, pipe shape optimization, hyperparameter tuning, and hospital simulation</td>
+      <td></td>
+      <td>EXPObench, <a href="https://doi.org/10.1016/j.asoc.2023.110744">https://doi.org/10.1016/j.asoc.2023.110744</a></td>
+      <td>impl_expobench</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td>10-135</td>
+      <td>10-135</td>
+      <td>10-135</td>
+      <td>EXPObench</td>
+      <td>Python</td>
+      <td>{'2 seconds', '80 seconds'}</td>
+      <td><a href="https://github.com/AlgTUDelft/ExpensiveOptimBenchmark">https://github.com/AlgTUDelft/ExpensiveOptimBenchmark</a></td>
+      <td>EXPensive Optimization benchmark library (wind farm layout, gas filter design, pipe shape, hyperparameter tuning, hospital simulation)</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_gbea">
+      <td>suite_gbea</td>
+      <td>GBEA</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[1, 2]</td>
+      <td>noisy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>noisy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>expensive evaluations 5s-35s, RW-GAN-Mario and TopTrumps are part of GBEA</td>
+      <td></td>
+      <td>Game benchmark for evolutionary algorithms, <a href="https://doi.org/10.1145/3321707.3321805">https://doi.org/10.1145/3321707.3321805</a></td>
+      <td>impl_gbea</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>coco-gbea</td>
+      <td></td>
+      <td>{'34 seconds', '5 seconds'}</td>
+      <td><a href="https://github.com/ttusar/coco-gbea">https://github.com/ttusar/coco-gbea</a></td>
+      <td>Game-Benchmark for Evolutionary Algorithms (COCO fork)</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_gnbg">
+      <td>suite_gnbg</td>
+      <td>GNBG</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Generalized Numerical Benchmark Generator</td>
+      <td></td>
+      <td>GNBG, <a href="https://arxiv.org/abs/2312.07083">https://arxiv.org/abs/2312.07083</a></td>
+      <td>impl_gnbg</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>GNBG Generator</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/Danial-Yazdani/GNBG-Generator">https://github.com/Danial-Yazdani/GNBG-Generator</a></td>
+      <td>Generalized Numerical Benchmark Generator</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_gnbg_ii">
+      <td>suite_gnbg_ii</td>
+      <td>GNBG-II</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Generalized Numerical Benchmark Generator (version 2). Also available in IOH.</td>
+      <td></td>
+      <td>GNBG-II, <a href="https://dl.acm.org/doi/pdf/10.1145/3712255.3734271">https://dl.acm.org/doi/pdf/10.1145/3712255.3734271</a></td>
+      <td>["impl_gnbg_ii", "impl_iohgnbg"]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHGNBG | GNBG-II</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a> | <a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
+      <td>IOHprofiler version of GNBG | Generalized Numerical Benchmark Generator version 2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_iohclustering">
+      <td>suite_iohclustering</td>
+      <td>IOHClustering</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Set of benchmark problems from clustering: optimization task is selecting cluster centers for a given set of data.</td>
+      <td></td>
+      <td>IOHClustering, <a href="https://arxiv.org/pdf/2505.09233">https://arxiv.org/pdf/2505.09233</a></td>
+      <td>impl_iohclustering</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>artificial-from-real-data</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHClustering</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHClustering">https://github.com/IOHprofiler/IOHClustering</a></td>
+      <td>Clustering-based optimization benchmark built on ML datasets</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_kinematics_robotarm">
+      <td>suite_kinematics_robotarm</td>
+      <td>KinematicsRobotArm</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>21</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Kinematics of a robot arm, <a href="https://doi.org/10.1023/A:1013258808932">https://doi.org/10.1023/A:1013258808932</a></td>
+      <td>impl_transfer_rf_bbob_rw</td>
+      <td>unimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>21</td>
+      <td></td>
+      <td>Transfer Random Forests BBOB Real-world</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world">https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world</a></td>
+      <td>Real-world BBOB-like problem implementations (Porkchop, KinematicsRobotArm)</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_l1_zdt">
+      <td>suite_l1_zdt</td>
+      <td>L1-ZDT</td>
+      <td>Suite</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of ZDT with linkages between variables within groups</td>
+      <td></td>
+      <td>Linkage ZDT/DTLZ variants, <a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_l2_dtlz">
+      <td>suite_l2_dtlz</td>
+      <td>L2-DTLZ</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of DTLZ2/DTLZ3 with linkages between all variables</td>
+      <td></td>
+      <td>Linkage ZDT/DTLZ variants, <a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_l2_zdt">
+      <td>suite_l2_zdt</td>
+      <td>L2-ZDT</td>
+      <td>Suite</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of ZDT with linkages between all variables</td>
+      <td></td>
+      <td>Linkage ZDT/DTLZ variants, <a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_l3_dtlz">
+      <td>suite_l3_dtlz</td>
+      <td>L3-DTLZ</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of L2-DTLZ with anti-linkage mapping</td>
+      <td></td>
+      <td>Linkage ZDT/DTLZ variants, <a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_l3_zdt">
+      <td>suite_l3_zdt</td>
+      <td>L3-ZDT</td>
+      <td>Suite</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of L2-ZDT with anti-linkage mapping</td>
+      <td></td>
+      <td>Linkage ZDT/DTLZ variants, <a href="https://doi.org/10.1145/1143997.1144179">https://doi.org/10.1145/1143997.1144179</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_maop">
+      <td>suite_maop</td>
+      <td>MaOP</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td>noisy</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>MaOP benchmark, <a href="https://doi.org/10.1016/j.swevo.2019.02.003">https://doi.org/10.1016/j.swevo.2019.02.003</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_mechbench">
+      <td>suite_mechbench</td>
+      <td>MECHBench</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td>unknown</td>
+      <td>{1, 2}</td>
+      <td></td>
+      <td></td>
       <td>no</td>
-      <td>no</td>
-      <td>no</td>
-      <td>Artificially Generated</td>
-      <td><a href="https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12">https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12</a></td>
-      <td><a href="https://gitlab.com/verel/pubo-importance-benchmark">https://gitlab.com/verel/pubo-importance-benchmark</a></td>
+      <td></td>
+      <td></td>
+      <td>MECHBench</td>
+      <td>Set of problems inspired by Structural Mechanics Design Optimization. Embeds physical simulations (plasticity only, no fracture/damage). Unstructured/non-isotropic multimodality.</td>
+      <td></td>
+      <td>MECHBench, <a href="https://arxiv.org/abs/2511.10821">https://arxiv.org/abs/2511.10821</a></td>
+      <td>impl_mechbench</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>MECHBench</td>
+      <td>Python</td>
+      <td>{'1 minute', '7 minutes'}</td>
+      <td><a href="https://github.com/BayesOptApp/MECHBench">https://github.com/BayesOptApp/MECHBench</a></td>
+      <td>Structural mechanics design optimization benchmark</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_mf2">
+      <td>suite_mf2</td>
+      <td>MF2</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td>multi-fidelity</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>mf2: a collection of multi-fidelity benchmark functions in Python, <a href="https://doi.org/10.21105/joss.02049">https://doi.org/10.21105/joss.02049</a></td>
+      <td>impl_mf2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>mf2</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/sjvrijn/mf2">https://github.com/sjvrijn/mf2</a></td>
+      <td>Multi-fidelity test function collection</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_minus_dtlz">
+      <td>suite_minus_dtlz</td>
+      <td>Minus DTLZ</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of DTLZ that minimises the inverse of the base DTLZ functions</td>
+      <td></td>
+      <td>Minus DTLZ / Minus WFG, <a href="https://doi.org/10.1109/TEVC.2016.2587749">https://doi.org/10.1109/TEVC.2016.2587749</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_minus_wfg">
+      <td>suite_minus_wfg</td>
+      <td>Minus WFG</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Variant of WFG that minimises the inverse of the base WFG functions</td>
+      <td></td>
+      <td>Minus DTLZ / Minus WFG, <a href="https://doi.org/10.1109/TEVC.2016.2587749">https://doi.org/10.1109/TEVC.2016.2587749</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_mmopp">
+      <td>suite_mmopp</td>
+      <td>MMOPP</td>
+      <td>Suite</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>[2, 3, 4, 5, 6, 7]</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>MMOPP technical report, <a href="http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412">http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412</a></td>
+      <td>impl_mmopp</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>MMOPP</td>
+      <td></td>
+      <td></td>
+      <td><a href="http://www5.zzu.edu.cn/ecilab/info/1036/1251.htm">http://www5.zzu.edu.cn/ecilab/info/1036/1251.htm</a></td>
+      <td>ECI lab distribution page for MMOPP</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_modact">
+      <td>suite_modact</td>
+      <td>MODAct</td>
+      <td>Suite</td>
+      <td>continuous | integer</td>
+      <td>40</td>
+      <td>[2, 3, 4, 5]</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>multiobjective design of actuators</td>
+      <td>Realistic Constrained Multi-Objective Optimization Benchmark Problems from Design.</td>
+      <td></td>
+      <td>MODAct, <a href="https://doi.org/10.1109/TEVC.2020.3020046">https://doi.org/10.1109/TEVC.2020.3020046</a></td>
+      <td>["impl_modact", "impl_pymoo"]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>20</td>
+      <td>20</td>
+      <td>pymoo | modact</td>
+      <td>Python</td>
+      <td>{'20ms'}</td>
+      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a> | <a href="https://github.com/epfl-lamd/modact">https://github.com/epfl-lamd/modact</a></td>
+      <td>Multi-objective optimization in Python | EPFL-LAMD modact package</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_morepo">
+      <td>suite_morepo</td>
+      <td>MOrepo</td>
+      <td>Suite</td>
+      <td>unknown</td>
+      <td>0</td>
+      <td>2</td>
+      <td>dynamic | noisy</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>impl_morepo</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>MOrepo</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/MCDMSociety/MOrepo">https://github.com/MCDMSociety/MOrepo</a></td>
+      <td>Multi-objective optimisation problem repository</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_pbo">
+      <td>suite_pbo</td>
+      <td>PBO</td>
+      <td>Suite</td>
+      <td>binary</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Suite of 25 binary optimization problems</td>
+      <td></td>
+      <td>PBO benchmarks, <a href="https://dl.acm.org/doi/pdf/10.1145/3319619.3326810">https://dl.acm.org/doi/pdf/10.1145/3319619.3326810</a></td>
+      <td>impl_iohexperimenter</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>IOHexperimenter</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>IOHprofiler experimenter framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_porkchop">
+      <td>suite_porkchop</td>
+      <td>PorkchopPlotInterplanetaryTrajectory</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>2</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Porkchop plot interplanetary trajectory benchmark, <a href="https://doi.org/10.1109/CEC65147.2025.11042973">https://doi.org/10.1109/CEC65147.2025.11042973</a></td>
+      <td>impl_transfer_rf_bbob_rw</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td></td>
+      <td>Transfer Random Forests BBOB Real-world</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world">https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world</a></td>
+      <td>Real-world BBOB-like problem implementations (Porkchop, KinematicsRobotArm)</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_re">
+      <td>suite_re</td>
+      <td>RE</td>
+      <td>Suite</td>
+      <td>integer | continuous</td>
+      <td>4-14</td>
+      <td>[2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Easy-to-evaluate real-world multi-objective optimization problems, Ryoji Tanabe; Hisao Ishibuchi, <a href="https://doi.org/10.1016/j.asoc.2020.106078">https://doi.org/10.1016/j.asoc.2020.106078</a></td>
+      <td>impl_reproblems</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world-like</td>
+      <td></td>
+      <td></td>
+      <td>2-7</td>
+      <td>2-7</td>
+      <td>reproblems</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/ryojitanabe/reproblems">https://github.com/ryojitanabe/reproblems</a></td>
+      <td>Real-world inspired multi-objective optimization problem suite</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_rwmvop">
+      <td>suite_rwmvop</td>
+      <td>RWMVOP</td>
+      <td>Suite</td>
+      <td>categorical | continuous | integer</td>
+      <td>>=3</td>
+      <td>1</td>
+      <td></td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>RWMVOP, <a href="https://doi.org/10.1109/TEVC.2013.2281531">https://doi.org/10.1109/TEVC.2013.2281531</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_sbox_cost">
+      <td>suite_sbox_cost</td>
+      <td>SBOX-COST</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>problems from BBOB but allows instances with the optimum close to the boundary</td>
+      <td></td>
+      <td>SBOX-COST, <a href="https://doi.org/10.48550/arXiv.2305.12221">https://doi.org/10.48550/arXiv.2305.12221</a></td>
+      <td>impl_iohexperimenter</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>IOHexperimenter</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>IOHprofiler experimenter framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_sdp">
+      <td>suite_sdp</td>
+      <td>SDP</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td>dynamic | noisy</td>
+      <td></td>
+      <td></td>
+      <td>dynamic</td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>SDP dynamic multi-objective benchmark, <a href="https://doi.org/10.1109/TCYB.2019.2896021">https://doi.org/10.1109/TCYB.2019.2896021</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_submodular">
+      <td>suite_submodular</td>
+      <td>Submodular Optimization</td>
+      <td>Suite</td>
+      <td>binary</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>set of graph-based submodular optimization problems from 4 problem types</td>
+      <td></td>
+      <td>Submodular optimization benchmark, <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181">https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181</a></td>
+      <td>impl_iohexperimenter</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>artificial</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>IOHexperimenter</td>
+      <td>C++/Python</td>
+      <td></td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>IOHprofiler experimenter framework</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_tulipa_energy">
+      <td>suite_tulipa_energy</td>
+      <td>TulipaEnergy</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>1</td>
+      <td>noisy | multi-fidelity</td>
+      <td>unknown</td>
+      <td>>=2</td>
+      <td></td>
+      <td>parameter</td>
+      <td></td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td>TulipaEnergyModel.jl</td>
+      <td>Determine the optimal investment and operation decisions for different assets in the energy system (production, consumption, conversion, storage, transport) while minimizing loss of load. Modelled as a potentially very large linear program with multiple fidelity levels.</td>
+      <td></td>
+      <td>TulipaEnergyModel.jl scientific references, <a href="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references">https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references</a></td>
+      <td>impl_tulipa</td>
+      <td>unimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>TulipaEnergyModel.jl</td>
+      <td>Julia / JuMP</td>
+      <td>{'minutes', 'hours'}</td>
+      <td><a href="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/">https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/</a> | <a href="https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy">https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy</a></td>
+      <td>Large linear program for optimal investment and operation of energy systems</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_vehicle_dynamics">
+      <td>suite_vehicle_dynamics</td>
+      <td>VehicleDynamics</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>2</td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>VehicleDynamics benchmark, <a href="https://www.scitepress.org/Papers/2023/121580/121580.pdf">https://www.scitepress.org/Papers/2023/121580/121580.pdf</a></td>
+      <td>impl_vehicle_dynamics</td>
+      <td>multimodal</td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td></td>
+      <td>VehicleDynamics (Zenodo)</td>
+      <td></td>
+      <td></td>
+      <td><a href="https://zenodo.org/records/8307853">https://zenodo.org/records/8307853</a></td>
+      <td>Zenodo archive for the vehicle dynamics benchmark</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_wfg">
+      <td>suite_wfg</td>
+      <td>WFG</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td>>=1</td>
+      <td>[10, 2, 3, 4, 5, 6, 7, 8, 9]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>A review of multiobjective test problems and a scalable test problem toolkit, Simon Huband; Philip Hingston; Luigi Barone; Lyndon While, <a href="https://doi.org/10.1109/TEVC.2005.861417">https://doi.org/10.1109/TEVC.2005.861417</a></td>
+      <td>impl_pymoo</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>pymoo</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
+      <td>Multi-objective optimization in Python</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_zdt">
+      <td>suite_zdt</td>
+      <td>ZDT</td>
+      <td>Suite</td>
+      <td>binary | continuous</td>
+      <td>>=2</td>
+      <td>2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Comparison of multiobjective evolutionary algorithms: empirical results, Eckart Zitzler; Kalyanmoy Deb; Lothar Thiele, <a href="https://doi.org/10.1162/106365600568202">https://doi.org/10.1162/106365600568202</a></td>
+      <td>impl_pymoo</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td>pymoo</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
+      <td>Multi-objective optimization in Python</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
   </tbody>
-<tfoot><tr><th>name</th> <th>textual description</th> <th>suite/generator/single</th> <th>objectives</th> <th>dimensionality</th> <th>variable type</th> <th>constraints</th> <th>dynamic</th> <th>noise</th> <th>multi-fidelity</th> <th>source (real-world/artificial)</th> <th>reference</th> <th>implementation</th></tr> </tfoot></table>
+<tfoot><tr><th>ID</th> <th>Name</th> <th>Type</th> <th>Variable Types</th> <th>Total Variables</th> <th>Objectives</th> <th>Properties</th> <th>Constraint Types</th> <th>Total Constraints</th> <th>Dynamics</th> <th>Noise</th> <th>Partial Evaluations</th> <th>Independent Objectives</th> <th>Fidelity Levels</th> <th>Full Name</th> <th>Description</th> <th>Tags</th> <th>References</th> <th>Implementations</th> <th>Modality</th> <th>Evaluation Time</th> <th>Examples</th> <th>Source</th> <th>Binary Vars</th> <th>Categorical Vars</th> <th>Continuous Vars</th> <th>Integer Vars</th> <th>Implementation Names</th> <th>Implementation Languages</th> <th>Implementation Evaluation Times</th> <th>Implementation Links</th> <th>Implementation Descriptions</th> <th>Implementation Requirements</th> <th>Hard Box Constraints</th> <th>Soft Box Constraints</th> <th>Hard Linear Constraints</th> <th>Soft Linear Constraints</th> <th>Hard Function Constraints</th> <th>Soft Function Constraints</th></tr></tfoot></table>
+    </div>
+</section>
+
+<section class="details-shell" id="problem-details" aria-live="polite">
+    <h3 class="details-title">Problem details</h3>
+    <p class="details-hint" id="problem-details-hint">Click a table row to inspect full details.</p>
+    <dl class="details-grid" id="problem-details-content"></dl>
+    <div class="snippet-shell" id="problem-snippet-shell">
+        <h4 class="snippet-title">README.md</h4>
+        <p class="snippet-hint" id="problem-readme-hint">README content for this snippet folder will appear here.</p>
+        <div class="snippet-readme markdown-body" id="problem-readme-content"></div>
+        <h4 class="snippet-title">Snippet: <code id="problem-snippet-path">call_{problem_id}.py</code></h4>
+        <p class="snippet-meta"><a id="problem-snippet-folder-link" href="#" target="_blank" rel="noopener noreferrer">Open snippet folder</a></p>
+        <p class="snippet-hint" id="problem-snippet-hint">Select a problem to check for an available code snippet.</p>
+        <pre class="snippet-code"><code id="problem-snippet-content"></code></pre>
+    </div>
+</section>
+
 
 <script>
-new DataTable('#problems', {
+const SNIPPET_BASE_URL = 'https://raw.githubusercontent.com/OpenOptimizationOrg/OPL/main/code_snippets';
+const SNIPPET_TREE_BASE_URL = 'https://github.com/OpenOptimizationOrg/OPL/tree/main/code_snippets';
+const snippetCache = new Map();
+let markdownParserPromise = null;
+const rangeFilters = new Map();
+const RANGE_FILTER_COLUMN_NAMES = new Set(['total variables', 'total constraints', 'objectives']);
+
+const table = new DataTable('#problems', {
     layout: {
         topStart: 'search',
         topEnd: null,
         bottomStart: 'info',
         bottom: 'paging',
         bottomEnd: 'pageLength'
-        },
-    lengthMenu: [15, 25, 50, -1],
+    },
+    lengthMenu: [10, 15, 25, 50, -1],
     initComplete: function () {
         this.api()
             .columns()
             .every(function () {
-                let column = this;
-                let title = column.footer().textContent;
- 
-                // Create input element
-                let input = document.createElement('input');
-                input.placeholder = title;
+                const column = this;
+                const title = column.footer().textContent;
+                const input = document.createElement('input');
+                input.placeholder = `Filter ${title}`;
                 column.footer().replaceChildren(input);
- 
-                // Event listener for user input
+
                 input.addEventListener('keyup', () => {
-                    if (column.search() !== this.value) {
+                    const titleLower = title.trim().toLowerCase();
+                    if (RANGE_FILTER_COLUMN_NAMES.has(titleLower)) {
+                        const value = input.value.trim();
+                        if (value) {
+                            rangeFilters.set(column.index(), value);
+                        } else {
+                            rangeFilters.delete(column.index());
+                        }
+
+                        if (column.search() !== '') {
+                            column.search('');
+                        }
+
+                        table.draw();
+                        return;
+                    }
+
+                    if (column.search() !== input.value) {
                         column.search(input.value).draw();
                     }
                 });
 
-                // Stop search boxes from applying sorting
-                input.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                // Prevent sorting when interacting with filter inputs.
+                input.addEventListener('click', (event) => {
+                    event.stopPropagation();
                 });
             });
     }
 });
 
-// Move row with search boxes to second row
-$('#problems tfoot tr').appendTo('#problems thead');
+const footerRow = document.querySelector('#problems tfoot tr');
+const thead = document.querySelector('#problems thead');
+if (footerRow && thead) {
+    thead.appendChild(footerRow);
+}
+
+const detailsHint = document.getElementById('problem-details-hint');
+const detailsContent = document.getElementById('problem-details-content');
+const snippetPath = document.getElementById('problem-snippet-path');
+const snippetHint = document.getElementById('problem-snippet-hint');
+const snippetContent = document.getElementById('problem-snippet-content');
+const snippetFolderLink = document.getElementById('problem-snippet-folder-link');
+const readmeHint = document.getElementById('problem-readme-hint');
+const readmeContent = document.getElementById('problem-readme-content');
+
+const getHeaderLabels = () => table
+    .columns()
+    .header()
+    .toArray()
+    .map((header) => header.textContent.trim());
+
+const getColumnIndex = (columnName) => getHeaderLabels().findIndex((label) => label === columnName);
+
+const stripHtml = (value) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = value || '';
+    return wrapper.textContent || wrapper.innerText || '';
+};
+
+const escapeHtml = (value) => {
+    const wrapper = document.createElement('div');
+    wrapper.textContent = value || '';
+    return wrapper.innerHTML;
+};
+
+const parseNumber = (value) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+};
+
+const extractNumericToken = (value) => {
+    const text = (value || '').trim();
+    if (!text) {
+        return null;
+    }
+
+    const exact = parseNumber(text);
+    if (exact !== null) {
+        return exact;
+    }
+
+    const match = text.match(/[-+]?\d+(?:\.\d+)?/);
+    if (!match) {
+        return null;
+    }
+
+    return parseNumber(match[0]);
+};
+
+const rangeContainsValue = (cellText, target) => {
+    const text = (cellText || '').trim();
+    if (!text) {
+        return false;
+    }
+
+    const compact = text.replace(/\s+/g, '');
+
+    const single = compact.match(/^[-+]?\d+(?:\.\d+)?$/);
+    if (single) {
+        return parseNumber(single[0]) === target;
+    }
+
+    const ge = compact.match(/^>=([-+]?\d+(?:\.\d+)?)$/);
+    if (ge) {
+        const bound = parseNumber(ge[1]);
+        return bound !== null && target >= bound;
+    }
+
+    const le = compact.match(/^<=([-+]?\d+(?:\.\d+)?)$/);
+    if (le) {
+        const bound = parseNumber(le[1]);
+        return bound !== null && target <= bound;
+    }
+
+    const gt = compact.match(/^>([-+]?\d+(?:\.\d+)?)$/);
+    if (gt) {
+        const bound = parseNumber(gt[1]);
+        return bound !== null && target > bound;
+    }
+
+    const lt = compact.match(/^<([-+]?\d+(?:\.\d+)?)$/);
+    if (lt) {
+        const bound = parseNumber(lt[1]);
+        return bound !== null && target < bound;
+    }
+
+    const interval = compact.match(/^([-+]?\d+(?:\.\d+)?)-([-+]?\d+(?:\.\d+)?)$/);
+    if (interval) {
+        const lower = parseNumber(interval[1]);
+        const upper = parseNumber(interval[2]);
+        return lower !== null && upper !== null && target >= lower && target <= upper;
+    }
+
+    if (compact.startsWith('{') && compact.endsWith('}')) {
+        const values = compact.slice(1, -1).split(',').map(parseNumber).filter((value) => value !== null);
+        return values.includes(target);
+    }
+
+    if (compact.startsWith('[') && compact.endsWith(']')) {
+        const values = compact.slice(1, -1).split(',').map(parseNumber).filter((value) => value !== null);
+        return values.includes(target);
+    }
+
+    if (compact.includes('|') || compact.includes(';')) {
+        const parts = compact.split(/\||;/).map((part) => part.trim()).filter(Boolean);
+        return parts.some((part) => rangeContainsValue(part, target));
+    }
+
+    return false;
+};
+
+const matchesRangeAwareFilter = (cellText, rawFilter) => {
+    const filter = (rawFilter || '').trim();
+    if (!filter) {
+        return true;
+    }
+
+    const numericFilter = extractNumericToken(filter);
+    if (numericFilter !== null) {
+        return rangeContainsValue(cellText, numericFilter);
+    }
+
+    return (cellText || '').toLowerCase().includes(filter.toLowerCase());
+};
+
+if (!window.__oplRangeFilterRegistered) {
+    window.__oplRangeFilterRegistered = true;
+    DataTable.ext.search.push((settings, data) => {
+        if (settings.nTable?.id !== 'problems') {
+            return true;
+        }
+
+        for (const [columnIndex, rawFilter] of rangeFilters.entries()) {
+            if (!rawFilter) {
+                continue;
+            }
+
+            const cellText = stripHtml(data[columnIndex] || '');
+            if (!matchesRangeAwareFilter(cellText, rawFilter)) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+}
+
+const ensureMarkdownParser = () => {
+    if (window.marked?.parse) {
+        return Promise.resolve(window.marked.parse);
+    }
+
+    if (markdownParserPromise) {
+        return markdownParserPromise;
+    }
+
+    markdownParserPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+        script.async = true;
+        script.onload = () => {
+            if (window.marked?.parse) {
+                resolve(window.marked.parse);
+            } else {
+                reject(new Error('Marked loaded without parse function'));
+            }
+        };
+        script.onerror = () => reject(new Error('Failed to load marked library'));
+        document.head.appendChild(script);
+    });
+
+    return markdownParserPromise;
+};
+
+const renderMarkdownToHtml = async (markdownText) => {
+    if (!markdownText) {
+        return '';
+    }
+
+    try {
+        const parse = await ensureMarkdownParser();
+        return parse(markdownText);
+    } catch (error) {
+        return `<pre><code>${escapeHtml(markdownText)}</code></pre>`;
+    }
+};
+
+const toProblemId = (value) => {
+    if (!value) {
+        return '';
+    }
+
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/[-\s]+/g, '_')
+        .replace(/[^a-z0-9_]/g, '')
+        .replace(/_+/g, '_')
+        .replace(/^_+|_+$/g, '');
+};
+
+const toSnippetProblemId = (value) => {
+    const normalized = toProblemId(value);
+    return normalized.replace(/^(fn|gen|suite)_/, '');
+};
+
+const setSnippetState = ({
+    path = '',
+    hint = '',
+    code = '',
+    folderHref = '',
+    readmeHintText = '',
+    readmeHtml = ''
+}) => {
+    if (snippetPath) {
+        snippetPath.textContent = path || 'call_{problem_id}.py';
+    }
+
+    if (snippetHint) {
+        snippetHint.textContent = hint;
+    }
+
+    if (snippetContent) {
+        snippetContent.textContent = code;
+    }
+
+    if (snippetFolderLink) {
+        if (folderHref) {
+            snippetFolderLink.href = folderHref;
+            snippetFolderLink.textContent = 'Open snippet folder';
+            snippetFolderLink.removeAttribute('aria-disabled');
+        } else {
+            snippetFolderLink.href = '#';
+            snippetFolderLink.textContent = 'Snippet folder unavailable';
+            snippetFolderLink.setAttribute('aria-disabled', 'true');
+        }
+    }
+
+    if (readmeHint) {
+        readmeHint.textContent = readmeHintText;
+    }
+
+    if (readmeContent) {
+        readmeContent.innerHTML = readmeHtml;
+    }
+};
+
+const loadSnippet = async (problemId) => {
+    const snippetProblemId = toSnippetProblemId(problemId);
+    if (!snippetProblemId) {
+        setSnippetState({
+            hint: 'No problem id available for this row.',
+            code: '',
+            readmeHintText: 'README cannot be loaded without a problem id.',
+            readmeHtml: ''
+        });
+        return;
+    }
+
+    const fileName = `call_${snippetProblemId}.py`;
+    const rawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(snippetProblemId)}/${encodeURIComponent(fileName)}`;
+    const readmeRawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(snippetProblemId)}/README.md`;
+    const folderUrl = `${SNIPPET_TREE_BASE_URL}/${encodeURIComponent(snippetProblemId)}`;
+
+    setSnippetState({
+        path: `${snippetProblemId}/${fileName}`,
+        hint: 'Loading snippet from repository...',
+        code: '',
+        folderHref: folderUrl,
+        readmeHintText: 'Loading README.md from repository...',
+        readmeHtml: ''
+    });
+
+    if (snippetCache.has(snippetProblemId)) {
+        const cached = snippetCache.get(snippetProblemId);
+        setSnippetState({
+            path: `${snippetProblemId}/${fileName}`,
+            hint: cached.codeHint,
+            code: cached.code,
+            folderHref: folderUrl,
+            readmeHintText: cached.readmeHint,
+            readmeHtml: cached.readmeHtml
+        });
+        return;
+    }
+
+    try {
+        const [snippetResponse, readmeResponse] = await Promise.all([
+            fetch(rawUrl),
+            fetch(readmeRawUrl)
+        ]);
+
+        let code = '';
+        let codeHint = '';
+        if (snippetResponse.status === 404) {
+            codeHint = 'No snippet file found for this problem id in the code_snippets branch.';
+        } else if (!snippetResponse.ok) {
+            codeHint = `Unable to fetch snippet (HTTP ${snippetResponse.status}).`;
+        } else {
+            code = await snippetResponse.text();
+            codeHint = 'Snippet found in code_snippets branch.';
+        }
+
+        let readme = '';
+        let readmeHtml = '';
+        let readmeHintText = '';
+        if (readmeResponse.status === 404) {
+            readmeHintText = 'No README.md found in this snippet folder.';
+        } else if (!readmeResponse.ok) {
+            readmeHintText = `Unable to fetch README.md (HTTP ${readmeResponse.status}).`;
+        } else {
+            readme = await readmeResponse.text();
+            readmeHtml = await renderMarkdownToHtml(readme);
+            readmeHintText = 'README.md loaded from snippet folder.';
+        }
+
+        snippetCache.set(snippetProblemId, {
+            code,
+            codeHint,
+            readmeHint: readmeHintText,
+            readmeHtml
+        });
+
+        setSnippetState({
+            path: `${snippetProblemId}/${fileName}`,
+            hint: codeHint,
+            code,
+            folderHref: folderUrl,
+            readmeHintText,
+            readmeHtml
+        });
+    } catch (error) {
+        setSnippetState({
+            path: `${snippetProblemId}/${fileName}`,
+            hint: 'Network error while fetching snippet.',
+            code: '',
+            folderHref: folderUrl,
+            readmeHintText: 'Network error while fetching README.md.',
+            readmeHtml: ''
+        });
+    }
+};
+
+const renderRowDetails = (rowApi) => {
+    const rowData = rowApi.data();
+    if (!rowData || !detailsContent) {
+        return;
+    }
+
+    const headers = getHeaderLabels();
+
+    const detailsHtml = headers
+        .map((label, index) => {
+            const value = rowData[index] || '<span class="details-empty">n/a</span>';
+            return `<div class="detail-item"><dt>${escapeHtml(label)}</dt><dd>${value}</dd></div>`;
+        })
+        .join('');
+
+    const nameIndex = getColumnIndex('name');
+    const fallbackIndex = getColumnIndex('id');
+    const name = stripHtml(rowData[nameIndex >= 0 ? nameIndex : fallbackIndex >= 0 ? fallbackIndex : 0]);
+    if (detailsHint) {
+        detailsHint.textContent = name ? `Selected: ${name}` : 'Selected row';
+    }
+
+    detailsContent.innerHTML = detailsHtml;
+};
+
+const applyColumnVisibility = (redraw = true) => {
+    document.querySelectorAll('.col-toggle').forEach((toggle) => {
+        const index = Number(toggle.getAttribute('data-column'));
+        const chip = toggle.closest('.column-chip');
+
+        if (chip) {
+            chip.classList.toggle('is-off', !toggle.checked);
+        }
+
+        table.column(index).visible(toggle.checked, false);
+    });
+
+    table.columns.adjust().draw(redraw);
+};
+
+document.querySelectorAll('.col-toggle').forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+        applyColumnVisibility(false);
+    });
+});
+
+const setAllColumns = (visible) => {
+    document.querySelectorAll('.col-toggle').forEach((toggle) => {
+        toggle.checked = visible;
+    });
+
+    applyColumnVisibility(false);
+};
+
+const showAllButton = document.getElementById('show-all-columns');
+if (showAllButton) {
+    showAllButton.addEventListener('click', () => setAllColumns(true));
+}
+
+const hideAllButton = document.getElementById('hide-all-columns');
+if (hideAllButton) {
+    hideAllButton.addEventListener('click', () => setAllColumns(false));
+}
+
+const tableBody = document.querySelector('#problems tbody');
+if (tableBody) {
+    tableBody.addEventListener('click', (event) => {
+        const targetRow = event.target.closest('tr');
+        if (!targetRow) {
+            return;
+        }
+
+        const rowApi = table.row(targetRow);
+        if (!rowApi || !rowApi.any()) {
+            return;
+        }
+
+        document.querySelectorAll('#problems tbody tr.is-active').forEach((row) => {
+            row.classList.remove('is-active');
+        });
+
+        targetRow.classList.add('is-active');
+        renderRowDetails(rowApi);
+
+        const headers = getHeaderLabels();
+        const nameIndex = headers.findIndex((label) => label === 'name');
+        const problemIdIndex = headers.findIndex((label) => label === 'id');
+        const name = stripHtml(rowApi.data()[nameIndex >= 0 ? nameIndex : 0]);
+        const problemId = targetRow.getAttribute('data-problem-id') || stripHtml(rowApi.data()[problemIdIndex >= 0 ? problemIdIndex : 0]) || toProblemId(name);
+        loadSnippet(problemId);
+    });
+}
+
+// Honor default checkbox states (some columns start hidden).
+applyColumnVisibility(false);
 
 </script>
 

@@ -96,11 +96,6 @@ class Reference(BaseModel):
         return hash(self.title) + hash(self.link)
 
 
-class Usage(BaseModel):
-    language: str
-    code: str
-
-
 def forbid_value(field: str, forbidden: str):
     def validator(cls, v: str):
         if v == forbidden:

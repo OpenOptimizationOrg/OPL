@@ -1,0 +1,14 @@
+Thoughts:
+
+Task: write the minimum code snippets to call a function from the package/suite. 
+
+Currently working on: single-objective + unconstrained
+
+Encountered issues:
+2) VehicleDynamics is not a problem, only a Zenodo dataset
+3) AMVOP: no Github available according to database (haven't double-checked)
+4) AutomotiveCrashworthiness: Not integrated. The linked code is not generated aliases of the crashworthiness problems. It's a pipeline that extracts ELA features from generated problems. Problem generator is in a .py file. 
+5) GBEA: Not integrated. Needs repository cloning and socket server 
+6) GNBG - 404 page not found (gor github repo). GNBG-II done instead.
+7) KinematicsRobotArm: no problems in the repo (just for transfer learning from loaded datasets)
+8) PorkchopPlotInterplanetaryTrajector: no problems in the repo (just for transfer learning from loaded datasets)

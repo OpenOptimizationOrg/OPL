@@ -151,6 +151,8 @@ The schema deliberately puts most descriptive fields here so suites can be chara
 When no `evaluation_time` is set, it percolates up from any referenced implementations.
 The same is true for the `variables` and `constraints` properties of a suite that has references to problems.
 
+`fidelity_levels` is auto-unioned from member problems at validation time.
+
 ### Problem
 
 One optimization problem (possibly parameterised by instances).
@@ -182,8 +184,6 @@ Adds:
 | Field      | Type         | Notes                                         |
 |------------|--------------|-----------------------------------------------|
 | `problems` | set of IDs?  | must resolve to [Problem](#problem)s          |
-
-`fidelity_levels` is auto-unioned from member problems at validation time.
 
 ```yaml
 suite_bbob:
@@ -266,14 +266,9 @@ Requires either a `title` or a `link` and optionally a list of  `authors`.
 
 ```yaml
 references:
-  - title: "Honey Badger Algorithm: New metaheuristic algorithm for solving optimization problems."
+  - title: "Evolutionsstrategie - Optimisierung technischer Systeme nach Prinzipien der biologischen Evolution"
     authors: 
-      - Fatma A. Hashim
-      - Essam H. Houssein
-      - Kashif Hussain
-      - Mai S. Mabrouk
-      - Walid Al-Atabany      
-    link: {type: doi, url: "https://doi.org/10.1016/j.matcom.2021.08.013"]
+      - Ingo Rechenberg
 ```
 
 ### Link

@@ -1,44 +1,511 @@
 
 
 <script>
-new DataTable('#problems', {
+const SNIPPET_BASE_URL = 'https://raw.githubusercontent.com/OpenOptimizationOrg/OPL/main/code_snippets';
+const SNIPPET_TREE_BASE_URL = 'https://github.com/OpenOptimizationOrg/OPL/tree/main/code_snippets';
+const snippetCache = new Map();
+let markdownParserPromise = null;
+const rangeFilters = new Map();
+const RANGE_FILTER_COLUMN_NAMES = new Set(['total variables', 'total constraints', 'objectives']);
+
+const table = new DataTable('#problems', {
     layout: {
         topStart: 'search',
         topEnd: null,
         bottomStart: 'info',
         bottom: 'paging',
         bottomEnd: 'pageLength'
-        },
-    lengthMenu: [15, 25, 50, -1],
+    },
+    lengthMenu: [10, 15, 25, 50, -1],
     initComplete: function () {
         this.api()
             .columns()
             .every(function () {
-                let column = this;
-                let title = column.footer().textContent;
- 
-                // Create input element
-                let input = document.createElement('input');
-                input.placeholder = title;
+                const column = this;
+                const title = column.footer().textContent;
+                const input = document.createElement('input');
+                input.placeholder = `Filter ${title}`;
                 column.footer().replaceChildren(input);
- 
-                // Event listener for user input
+
                 input.addEventListener('keyup', () => {
-                    if (column.search() !== this.value) {
+                    const titleLower = title.trim().toLowerCase();
+                    if (RANGE_FILTER_COLUMN_NAMES.has(titleLower)) {
+                        const value = input.value.trim();
+                        if (value) {
+                            rangeFilters.set(column.index(), value);
+                        } else {
+                            rangeFilters.delete(column.index());
+                        }
+
+                        if (column.search() !== '') {
+                            column.search('');
+                        }
+
+                        table.draw();
+                        return;
+                    }
+
+                    if (column.search() !== input.value) {
                         column.search(input.value).draw();
                     }
                 });
 
-                // Stop search boxes from applying sorting
-                input.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                // Prevent sorting when interacting with filter inputs.
+                input.addEventListener('click', (event) => {
+                    event.stopPropagation();
                 });
             });
     }
 });
 
-// Move row with search boxes to second row
-$('#problems tfoot tr').appendTo('#problems thead');
+const footerRow = document.querySelector('#problems tfoot tr');
+const thead = document.querySelector('#problems thead');
+if (footerRow && thead) {
+    thead.appendChild(footerRow);
+}
+
+const detailsHint = document.getElementById('problem-details-hint');
+const detailsContent = document.getElementById('problem-details-content');
+const snippetPath = document.getElementById('problem-snippet-path');
+const snippetHint = document.getElementById('problem-snippet-hint');
+const snippetContent = document.getElementById('problem-snippet-content');
+const snippetFolderLink = document.getElementById('problem-snippet-folder-link');
+const readmeHint = document.getElementById('problem-readme-hint');
+const readmeContent = document.getElementById('problem-readme-content');
+
+const getHeaderLabels = () => table
+    .columns()
+    .header()
+    .toArray()
+    .map((header) => header.textContent.trim());
+
+const getColumnIndex = (columnName) => getHeaderLabels().findIndex((label) => label === columnName);
+
+const stripHtml = (value) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = value || '';
+    return wrapper.textContent || wrapper.innerText || '';
+};
+
+const escapeHtml = (value) => {
+    const wrapper = document.createElement('div');
+    wrapper.textContent = value || '';
+    return wrapper.innerHTML;
+};
+
+const parseNumber = (value) => {
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : null;
+};
+
+const extractNumericToken = (value) => {
+    const text = (value || '').trim();
+    if (!text) {
+        return null;
+    }
+
+    const exact = parseNumber(text);
+    if (exact !== null) {
+        return exact;
+    }
+
+    const match = text.match(/[-+]?\d+(?:\.\d+)?/);
+    if (!match) {
+        return null;
+    }
+
+    return parseNumber(match[0]);
+};
+
+const rangeContainsValue = (cellText, target) => {
+    const text = (cellText || '').trim();
+    if (!text) {
+        return false;
+    }
+
+    const compact = text.replace(/\s+/g, '');
+
+    const single = compact.match(/^[-+]?\d+(?:\.\d+)?$/);
+    if (single) {
+        return parseNumber(single[0]) === target;
+    }
+
+    const ge = compact.match(/^>=([-+]?\d+(?:\.\d+)?)$/);
+    if (ge) {
+        const bound = parseNumber(ge[1]);
+        return bound !== null && target >= bound;
+    }
+
+    const le = compact.match(/^<=([-+]?\d+(?:\.\d+)?)$/);
+    if (le) {
+        const bound = parseNumber(le[1]);
+        return bound !== null && target <= bound;
+    }
+
+    const gt = compact.match(/^>([-+]?\d+(?:\.\d+)?)$/);
+    if (gt) {
+        const bound = parseNumber(gt[1]);
+        return bound !== null && target > bound;
+    }
+
+    const lt = compact.match(/^<([-+]?\d+(?:\.\d+)?)$/);
+    if (lt) {
+        const bound = parseNumber(lt[1]);
+        return bound !== null && target < bound;
+    }
+
+    const interval = compact.match(/^([-+]?\d+(?:\.\d+)?)-([-+]?\d+(?:\.\d+)?)$/);
+    if (interval) {
+        const lower = parseNumber(interval[1]);
+        const upper = parseNumber(interval[2]);
+        return lower !== null && upper !== null && target >= lower && target <= upper;
+    }
+
+    if (compact.startsWith('{') && compact.endsWith('}')) {
+        const values = compact.slice(1, -1).split(',').map(parseNumber).filter((value) => value !== null);
+        return values.includes(target);
+    }
+
+    if (compact.startsWith('[') && compact.endsWith(']')) {
+        const values = compact.slice(1, -1).split(',').map(parseNumber).filter((value) => value !== null);
+        return values.includes(target);
+    }
+
+    if (compact.includes('|') || compact.includes(';')) {
+        const parts = compact.split(/\||;/).map((part) => part.trim()).filter(Boolean);
+        return parts.some((part) => rangeContainsValue(part, target));
+    }
+
+    return false;
+};
+
+const matchesRangeAwareFilter = (cellText, rawFilter) => {
+    const filter = (rawFilter || '').trim();
+    if (!filter) {
+        return true;
+    }
+
+    const numericFilter = extractNumericToken(filter);
+    if (numericFilter !== null) {
+        return rangeContainsValue(cellText, numericFilter);
+    }
+
+    return (cellText || '').toLowerCase().includes(filter.toLowerCase());
+};
+
+if (!window.__oplRangeFilterRegistered) {
+    window.__oplRangeFilterRegistered = true;
+    DataTable.ext.search.push((settings, data) => {
+        if (settings.nTable?.id !== 'problems') {
+            return true;
+        }
+
+        for (const [columnIndex, rawFilter] of rangeFilters.entries()) {
+            if (!rawFilter) {
+                continue;
+            }
+
+            const cellText = stripHtml(data[columnIndex] || '');
+            if (!matchesRangeAwareFilter(cellText, rawFilter)) {
+                return false;
+            }
+        }
+
+        return true;
+    });
+}
+
+const ensureMarkdownParser = () => {
+    if (window.marked?.parse) {
+        return Promise.resolve(window.marked.parse);
+    }
+
+    if (markdownParserPromise) {
+        return markdownParserPromise;
+    }
+
+    markdownParserPromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+        script.async = true;
+        script.onload = () => {
+            if (window.marked?.parse) {
+                resolve(window.marked.parse);
+            } else {
+                reject(new Error('Marked loaded without parse function'));
+            }
+        };
+        script.onerror = () => reject(new Error('Failed to load marked library'));
+        document.head.appendChild(script);
+    });
+
+    return markdownParserPromise;
+};
+
+const renderMarkdownToHtml = async (markdownText) => {
+    if (!markdownText) {
+        return '';
+    }
+
+    try {
+        const parse = await ensureMarkdownParser();
+        return parse(markdownText);
+    } catch (error) {
+        return `<pre><code>${escapeHtml(markdownText)}</code></pre>`;
+    }
+};
+
+const toProblemId = (value) => {
+    if (!value) {
+        return '';
+    }
+
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/[-\s]+/g, '_')
+        .replace(/[^a-z0-9_]/g, '')
+        .replace(/_+/g, '_')
+        .replace(/^_+|_+$/g, '');
+};
+
+const toSnippetProblemId = (value) => {
+    const normalized = toProblemId(value);
+    return normalized.replace(/^(fn|gen|suite)_/, '');
+};
+
+const setSnippetState = ({
+    path = '',
+    hint = '',
+    code = '',
+    folderHref = '',
+    readmeHintText = '',
+    readmeHtml = ''
+}) => {
+    if (snippetPath) {
+        snippetPath.textContent = path || 'call_{problem_id}.py';
+    }
+
+    if (snippetHint) {
+        snippetHint.textContent = hint;
+    }
+
+    if (snippetContent) {
+        snippetContent.textContent = code;
+    }
+
+    if (snippetFolderLink) {
+        if (folderHref) {
+            snippetFolderLink.href = folderHref;
+            snippetFolderLink.textContent = 'Open snippet folder';
+            snippetFolderLink.removeAttribute('aria-disabled');
+        } else {
+            snippetFolderLink.href = '#';
+            snippetFolderLink.textContent = 'Snippet folder unavailable';
+            snippetFolderLink.setAttribute('aria-disabled', 'true');
+        }
+    }
+
+    if (readmeHint) {
+        readmeHint.textContent = readmeHintText;
+    }
+
+    if (readmeContent) {
+        readmeContent.innerHTML = readmeHtml;
+    }
+};
+
+const loadSnippet = async (problemId) => {
+    const snippetProblemId = toSnippetProblemId(problemId);
+    if (!snippetProblemId) {
+        setSnippetState({
+            hint: 'No problem id available for this row.',
+            code: '',
+            readmeHintText: 'README cannot be loaded without a problem id.',
+            readmeHtml: ''
+        });
+        return;
+    }
+
+    const fileName = `call_${snippetProblemId}.py`;
+    const rawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(snippetProblemId)}/${encodeURIComponent(fileName)}`;
+    const readmeRawUrl = `${SNIPPET_BASE_URL}/${encodeURIComponent(snippetProblemId)}/README.md`;
+    const folderUrl = `${SNIPPET_TREE_BASE_URL}/${encodeURIComponent(snippetProblemId)}`;
+
+    setSnippetState({
+        path: `${snippetProblemId}/${fileName}`,
+        hint: 'Loading snippet from repository...',
+        code: '',
+        folderHref: folderUrl,
+        readmeHintText: 'Loading README.md from repository...',
+        readmeHtml: ''
+    });
+
+    if (snippetCache.has(snippetProblemId)) {
+        const cached = snippetCache.get(snippetProblemId);
+        setSnippetState({
+            path: `${snippetProblemId}/${fileName}`,
+            hint: cached.codeHint,
+            code: cached.code,
+            folderHref: folderUrl,
+            readmeHintText: cached.readmeHint,
+            readmeHtml: cached.readmeHtml
+        });
+        return;
+    }
+
+    try {
+        const [snippetResponse, readmeResponse] = await Promise.all([
+            fetch(rawUrl),
+            fetch(readmeRawUrl)
+        ]);
+
+        let code = '';
+        let codeHint = '';
+        if (snippetResponse.status === 404) {
+            codeHint = 'No snippet file found for this problem id in the code_snippets branch.';
+        } else if (!snippetResponse.ok) {
+            codeHint = `Unable to fetch snippet (HTTP ${snippetResponse.status}).`;
+        } else {
+            code = await snippetResponse.text();
+            codeHint = 'Snippet found in code_snippets branch.';
+        }
+
+        let readme = '';
+        let readmeHtml = '';
+        let readmeHintText = '';
+        if (readmeResponse.status === 404) {
+            readmeHintText = 'No README.md found in this snippet folder.';
+        } else if (!readmeResponse.ok) {
+            readmeHintText = `Unable to fetch README.md (HTTP ${readmeResponse.status}).`;
+        } else {
+            readme = await readmeResponse.text();
+            readmeHtml = await renderMarkdownToHtml(readme);
+            readmeHintText = 'README.md loaded from snippet folder.';
+        }
+
+        snippetCache.set(snippetProblemId, {
+            code,
+            codeHint,
+            readmeHint: readmeHintText,
+            readmeHtml
+        });
+
+        setSnippetState({
+            path: `${snippetProblemId}/${fileName}`,
+            hint: codeHint,
+            code,
+            folderHref: folderUrl,
+            readmeHintText,
+            readmeHtml
+        });
+    } catch (error) {
+        setSnippetState({
+            path: `${snippetProblemId}/${fileName}`,
+            hint: 'Network error while fetching snippet.',
+            code: '',
+            folderHref: folderUrl,
+            readmeHintText: 'Network error while fetching README.md.',
+            readmeHtml: ''
+        });
+    }
+};
+
+const renderRowDetails = (rowApi) => {
+    const rowData = rowApi.data();
+    if (!rowData || !detailsContent) {
+        return;
+    }
+
+    const headers = getHeaderLabels();
+
+    const detailsHtml = headers
+        .map((label, index) => {
+            const value = rowData[index] || '<span class="details-empty">n/a</span>';
+            return `<div class="detail-item"><dt>${escapeHtml(label)}</dt><dd>${value}</dd></div>`;
+        })
+        .join('');
+
+    const nameIndex = getColumnIndex('name');
+    const fallbackIndex = getColumnIndex('id');
+    const name = stripHtml(rowData[nameIndex >= 0 ? nameIndex : fallbackIndex >= 0 ? fallbackIndex : 0]);
+    if (detailsHint) {
+        detailsHint.textContent = name ? `Selected: ${name}` : 'Selected row';
+    }
+
+    detailsContent.innerHTML = detailsHtml;
+};
+
+const applyColumnVisibility = (redraw = true) => {
+    document.querySelectorAll('.col-toggle').forEach((toggle) => {
+        const index = Number(toggle.getAttribute('data-column'));
+        const chip = toggle.closest('.column-chip');
+
+        if (chip) {
+            chip.classList.toggle('is-off', !toggle.checked);
+        }
+
+        table.column(index).visible(toggle.checked, false);
+    });
+
+    table.columns.adjust().draw(redraw);
+};
+
+document.querySelectorAll('.col-toggle').forEach((toggle) => {
+    toggle.addEventListener('change', () => {
+        applyColumnVisibility(false);
+    });
+});
+
+const setAllColumns = (visible) => {
+    document.querySelectorAll('.col-toggle').forEach((toggle) => {
+        toggle.checked = visible;
+    });
+
+    applyColumnVisibility(false);
+};
+
+const showAllButton = document.getElementById('show-all-columns');
+if (showAllButton) {
+    showAllButton.addEventListener('click', () => setAllColumns(true));
+}
+
+const hideAllButton = document.getElementById('hide-all-columns');
+if (hideAllButton) {
+    hideAllButton.addEventListener('click', () => setAllColumns(false));
+}
+
+const tableBody = document.querySelector('#problems tbody');
+if (tableBody) {
+    tableBody.addEventListener('click', (event) => {
+        const targetRow = event.target.closest('tr');
+        if (!targetRow) {
+            return;
+        }
+
+        const rowApi = table.row(targetRow);
+        if (!rowApi || !rowApi.any()) {
+            return;
+        }
+
+        document.querySelectorAll('#problems tbody tr.is-active').forEach((row) => {
+            row.classList.remove('is-active');
+        });
+
+        targetRow.classList.add('is-active');
+        renderRowDetails(rowApi);
+
+        const headers = getHeaderLabels();
+        const nameIndex = headers.findIndex((label) => label === 'name');
+        const problemIdIndex = headers.findIndex((label) => label === 'id');
+        const name = stripHtml(rowApi.data()[nameIndex >= 0 ? nameIndex : 0]);
+        const problemId = targetRow.getAttribute('data-problem-id') || stripHtml(rowApi.data()[problemIdIndex >= 0 ? problemIdIndex : 0]) || toProblemId(name);
+        loadSnippet(problemId);
+    });
+}
+
+// Honor default checkbox states (some columns start hidden).
+applyColumnVisibility(false);
 
 </script>
 

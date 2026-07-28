@@ -33,19 +33,19 @@ fn_building_spatial:
   - equality: null
     hard: yes
     number: null
-    type: unknown
+    type: box
   - equality: null
     hard: yes
     number: null
-    type: box
+    type: unknown
   description: Optimise the spatial layout of a building to minimise energy 
     consumption for climate control and minimise the strain on the structure. 
     Many hard constraints; mixed-variable (continuous+binary); expensive 
     evaluations.
   dynamic_type: null
   evaluation_time:
-  - 1 second
   - 40 seconds
+  - 1 second
   fidelity_levels: null
   implementations:
   - impl_bso_toolbox
@@ -70,11 +70,11 @@ fn_building_spatial:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_convex_dtlz2:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -120,6 +120,10 @@ fn_emdo:
   code_examples: null
   constraints:
   - equality: null
+    hard: yes
+    number: null
+    type: box
+  - equality: null
     hard: some
     number: null
     type: unknown
@@ -127,10 +131,6 @@ fn_emdo:
     hard: yes
     number: 12
     type: unknown
-  - equality: null
-    hard: yes
-    number: null
-    type: box
   description: "# Goal\nFind a design of a synchronous electric motor for power steering
     systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
     Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
@@ -248,9 +248,9 @@ fn_gasoline:
   type: problem
   variables:
   - dim: 7
-    type: integer
-  - dim: 7
     type: continuous
+  - dim: 7
+    type: integer
 fn_invdeceptive_deceptive_rotell:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -282,11 +282,11 @@ fn_invdeceptive_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_inverted_dtlz1:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -398,11 +398,11 @@ fn_onemax_sphere_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_onemax_sphere_zeromax_sphere:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -434,11 +434,11 @@ fn_onemax_sphere_zeromax_sphere:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 fn_radar_waveform:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -598,15 +598,15 @@ gen_ealain:
   - dim:
       max: null
       min: 1
+    type: continuous
+  - dim:
+      max: null
+      min: 1
     type: binary
   - dim:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: continuous
 gen_gnbg:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -758,8 +758,8 @@ gen_ma_bbob:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_ma_bbob
   - impl_iohexperimenter
+  - impl_ma_bbob
   long_name: null
   modality:
   - multimodal
@@ -829,8 +829,8 @@ gen_mubqp:
   - impl_mocobench
   long_name: null
   modality:
-  - quadratic
   - multimodal
+  - quadratic
   name: mUBQP
   noise_type: null
   objectives:
@@ -929,15 +929,15 @@ gen_randoptgen:
   - dim:
       max: null
       min: 1
+    type: continuous
+  - dim:
+      max: null
+      min: 1
     type: binary
   - dim:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: continuous
 gen_rho_mnk_landscapes:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -995,8 +995,8 @@ gen_rho_mtsp:
   - impl_mocobench
   long_name: null
   modality:
-  - quadratic
   - multimodal
+  - quadratic
   name: ρmTSP
   noise_type: null
   objectives:
@@ -1082,8 +1082,8 @@ impl_bonobench:
 impl_bso_toolbox:
   description: Building Spatial Design toolbox (TU/e)
   evaluation_time:
-  - 1 second
   - 40 seconds
+  - 1 second
   language: C++
   links:
   - type: repository
@@ -1221,8 +1221,8 @@ impl_gasoline:
 impl_gbea:
   description: Game-Benchmark for Evolutionary Algorithms (COCO fork)
   evaluation_time:
-  - 34 seconds
   - 5 seconds
+  - 34 seconds
   language: null
   links:
   - type: repository
@@ -1518,11 +1518,11 @@ suite_amvop:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: integer
   - dim:
       max: null
       min: 1
@@ -1625,11 +1625,11 @@ suite_bbob_biobj_mixint:
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
 suite_bbob_constrained:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1732,11 +1732,11 @@ suite_bbob_mixint:
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
 suite_bbob_noisy:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1946,8 +1946,8 @@ suite_cec2013:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_cec2013
   - impl_iohexperimenter
+  - impl_cec2013
   long_name: null
   modality: null
   name: CEC2013
@@ -2052,8 +2052,8 @@ suite_cec2022:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_cec2022
   - impl_iohexperimenter
+  - impl_cec2022
   long_name: null
   modality: null
   name: CEC2022
@@ -2156,11 +2156,11 @@ suite_cre:
   - dim:
       max: 7
       min: 3
-    type: integer
+    type: continuous
   - dim:
       max: 7
       min: 3
-    type: continuous
+    type: integer
 suite_cuter:
   allows_partial_evaluation: no
   can_evaluate_objectives_independently: null
@@ -2196,15 +2196,15 @@ suite_cuter:
   - dim:
       max: null
       min: 1
+    type: continuous
+  - dim:
+      max: null
+      min: 1
     type: binary
   - dim:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: continuous
 suite_cutest:
   allows_partial_evaluation: no
   can_evaluate_objectives_independently: null
@@ -2248,15 +2248,15 @@ suite_cutest:
   - dim:
       max: null
       min: 1
+    type: continuous
+  - dim:
+      max: null
+      min: 1
     type: binary
   - dim:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: continuous
 suite_dtlz:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2492,11 +2492,11 @@ suite_expobench:
   - dim:
       max: 135
       min: 10
-    type: categorical
+    type: integer
   - dim:
       max: 135
       min: 10
-    type: integer
+    type: categorical
   - dim:
       max: 135
       min: 10
@@ -2703,11 +2703,11 @@ suite_l1_zdt:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 suite_l2_dtlz:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2777,11 +2777,11 @@ suite_l2_zdt:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 suite_l3_dtlz:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2851,11 +2851,11 @@ suite_l3_zdt:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
 suite_maop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3108,8 +3108,8 @@ suite_modact:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_pymoo
   - impl_modact
+  - impl_pymoo
   long_name: multiobjective design of actuators
   modality: null
   name: MODAct
@@ -3272,11 +3272,11 @@ suite_re:
   - dim:
       max: 7
       min: 2
-    type: continuous
+    type: integer
   - dim:
       max: 7
       min: 2
-    type: integer
+    type: continuous
 suite_rwmvop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3312,11 +3312,11 @@ suite_rwmvop:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: integer
   - dim:
       max: null
       min: 1
@@ -3436,11 +3436,11 @@ suite_tulipa_energy:
   code_examples: null
   constraints:
   - equality: null
-    hard: yes
+    hard: some
     number: null
     type: unknown
   - equality: null
-    hard: some
+    hard: yes
     number: null
     type: unknown
   description: Determine the optimal investment and operation decisions for 
@@ -3590,8 +3590,9 @@ suite_zdt:
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
+
