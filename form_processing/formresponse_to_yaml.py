@@ -555,12 +555,20 @@ def dump_library(path: Path, root: dict[str, Problem | Suite | Generator | Imple
         yaml.safe_dump(serializable, out_file, sort_keys=False, allow_unicode=False)
 
 
-def convert(csv_path: Path, existing_yaml_path: Path, output_yaml_path: Path, dry_run: bool) -> tuple[int, int, int]:
+def convert(
+    csv_path: Path,
+    existing_yaml_path: Path,
+    output_yaml_path: Path,
+    dry_run: bool,
+    override: bool,
+) -> tuple[int, int, int]:
     df = pd.read_csv(csv_path).fillna("")
     existing_root = load_existing_library(existing_yaml_path)
 
     used_ids = set(existing_root)
-    existing_names = {thing.name.casefold() for thing in existing_root.values()}
+    existing_names_to_ids: dict[str, set[str]] = {}
+    for existing_id, existing_thing in existing_root.items():
+        existing_names_to_ids.setdefault(existing_thing.name.casefold(), set()).add(existing_id)
     new_names: set[str] = set()
 
     added_things = 0
@@ -578,7 +586,29 @@ def convert(csv_path: Path, existing_yaml_path: Path, output_yaml_path: Path, dr
             continue
 
         key_name = name.casefold()
-        if key_name in existing_names or key_name in new_names:
+        if key_name in existing_names_to_ids:
+            if not override:
+                skipped_rows += 1
+                continue
+
+            # Remove previously stored entries with the same name so this row can replace them.
+            ids_to_remove = list(existing_names_to_ids[key_name])
+            for existing_id in ids_to_remove:
+                existing_thing = existing_root.pop(existing_id, None)
+                used_ids.discard(existing_id)
+                if existing_thing is None:
+                    continue
+
+                # Remove old linked implementations so references stay clean when replacing.
+                implementations = getattr(existing_thing, "implementations", None)
+                if implementations:
+                    for impl_id in list(implementations):
+                        existing_root.pop(impl_id, None)
+                        used_ids.discard(impl_id)
+
+            existing_names_to_ids.pop(key_name, None)
+            new_names.discard(key_name)
+        elif key_name in new_names:
             skipped_rows += 1
             continue
 
@@ -589,12 +619,14 @@ def convert(csv_path: Path, existing_yaml_path: Path, output_yaml_path: Path, dr
 
         thing_id, thing, impl_data = result
         existing_root[thing_id] = thing
+        existing_names_to_ids.setdefault(key_name, set()).add(thing_id)
         added_things += 1
         new_names.add(key_name)
 
         if impl_data:
             impl_id, impl = impl_data
             existing_root[impl_id] = impl
+            existing_names_to_ids.setdefault(key_name, set()).add(impl_id)
             added_impls += 1
 
     # Validate merged result before writing.
@@ -621,6 +653,11 @@ def main() -> int:
         default="../problems.yaml",
         help="Output YAML path (defaults to updating existing file)",
     )
+    parser.add_argument(
+        "--override",
+        action="store_true",
+        help="Override existing YAML entries with same name using form data rows",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Validate conversion without writing")
     args = parser.parse_args()
 
@@ -629,6 +666,7 @@ def main() -> int:
         existing_yaml_path=Path(args.existing_yaml),
         output_yaml_path=Path(args.output_yaml),
         dry_run=args.dry_run,
+        override=args.override,
     )
 
     print(f"Added entities: {added_things}")

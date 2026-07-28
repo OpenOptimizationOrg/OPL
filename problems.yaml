@@ -1,75 +1,3 @@
-fn_ato:
-  type: problem
-  name: ATO
-  long_name: null
-  description: 'Parameters of the Modules of the Automatic Train Operation are optimized;
-    two objectives: minimizing energy consumption and minimizing driving duration.'
-  tags: null
-  references: null
-  implementations: null
-  objectives:
-  - 2
-  variables:
-  - type: continuous
-    dim: 10
-  constraints: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - unimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - real-world
-  instances: null
-fn_building_spatial:
-  type: problem
-  name: Building spatial design
-  long_name: null
-  description: Optimise the spatial layout of a building to minimise energy consumption
-    for climate control and minimise the strain on the structure. Many hard constraints;
-    mixed-variable (continuous+binary); expensive evaluations.
-  tags: null
-  references:
-  - title: Building spatial design
-    authors: []
-    link:
-      type: null
-      url: https://hdl.handle.net/1887/81789
-  implementations:
-  - impl_bso_toolbox
-  objectives:
-  - 2
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  - type: binary
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: null
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality: null
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - real-world
-  instances: null
 fn_convex_dtlz2:
   type: problem
   name: Convex DTLZ2
@@ -107,155 +35,6 @@ fn_convex_dtlz2:
   fidelity_levels: null
   code_examples: null
   source: null
-  instances: null
-fn_emdo:
-  type: problem
-  name: Electric Motor Design Optimization
-  long_name: Electric Motor Design Optimization
-  description: '# Goal
-
-    Find a design of a synchronous electric motor for power steering systems that
-    minimizes costs and satisfies all constraints.
-
-
-    # Motivation
-
-    Challenging to find good solutions in a limited time.
-
-
-    # Key Challenges
-
-    * Time-consuming solution evaluation
-
-    * Highly-constrained problem
-
-    * Constraints are multimodal
-
-
-    This is not an available problem, but could be interesting to show to researchers
-    which difficulties appear in real-world problems.'
-  tags: null
-  references:
-  - title: A Multi-Step Evaluation Process in Electric Motor Design
-    authors:
-    - "Tea Tu\u0161ar"
-    - "Peter Koro\u0161ec"
-    - "Bogdan Filipi\u010D"
-    link:
-      type: null
-      url: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf
-  implementations:
-  - impl_emdo
-  objectives:
-  - 1
-  variables:
-  - type: integer
-    dim: 13
-  - type: continuous
-    dim: 13
-  constraints:
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: 12
-  - type: unknown
-    hard: some
-    equality: null
-    number: null
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type:
-  - noisy
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - real-world
-  instances: null
-fn_fleetopt:
-  type: problem
-  name: FleetOpt
-  long_name: null
-  description: 'UK healthcare organisation fleet optimisation: reduce the fleet of
-    non-emergency healthcare trip vehicles while still ensuring all trips can be covered.
-    Bilevel: upper level 54 vars, lower level 13208 vars.'
-  tags: null
-  references:
-  - title: FleetOpt
-    authors: []
-    link:
-      type: null
-      url: https://dl.acm.org/doi/abs/10.1145/3638530.3664137
-  implementations: null
-  objectives:
-  - 1
-  variables:
-  - type: integer
-    dim:
-    - 13208
-    - 54
-  constraints:
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'yes'
-  can_evaluate_objectives_independently: null
-  modality: null
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - real-world
-  instances: null
-fn_gasoline:
-  type: problem
-  name: Gasoline direct injection engine design
-  long_name: null
-  description: Multi-objective optimization to minimize fuel consumption and NOx emissions
-    over a two-minute dynamic duty cycle, subject to five constraints (turbine inlet
-    temperature, knock occurrences, peak cylinder pressure, peak cylinder pressure
-    rise, total work). Seven decision variables cover hardware choices and engine
-    control parameters.
-  tags: null
-  references:
-  - title: Gasoline direct injection engine design
-    authors: []
-    link:
-      type: null
-      url: https://doi.org/10.1016/j.ejor.2022.08.032
-  implementations:
-  - impl_gasoline
-  objectives:
-  - 2
-  variables:
-  - type: integer
-    dim: 7
-  - type: continuous
-    dim: 7
-  constraints:
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: 5
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: null
-  can_evaluate_objectives_independently: null
-  modality: null
-  fidelity_levels:
-  - 1
-  - 2
-  code_examples: null
-  source:
-  - real-world
   instances: null
 fn_invdeceptive_deceptive_rotell:
   type: problem
@@ -474,79 +253,6 @@ fn_radar_waveform:
   source:
   - real-world
   instances: null
-gen_beacon:
-  type: generator
-  name: BEACON
-  long_name: Continuous Bi-objective Benchmark problems with Explicit Adjustable COrrelatioN
-    control
-  description: Generator for bi-objective benchmark problems with explicitly controlled
-    correlations in continuous spaces. Multimodal with random structure.
-  tags: null
-  references:
-  - title: BEACON
-    authors: []
-    link:
-      type: null
-      url: https://dl.acm.org/doi/10.1145/3712255.3734303
-  implementations:
-  - impl_beacon
-  objectives:
-  - 2
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: 0
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - artificial
-  instances: null
-gen_bono_bench:
-  type: generator
-  name: BONO-Bench
-  long_name: Bi-objective Numerical Optimization Benchmark
-  description: Bi-objective problem generator and suite with scalable continuous decision
-    space. Features complex problem properties and Pareto front approximations with
-    error guarantees for the hypervolume and exact R2 indicators.
-  tags: null
-  references: null
-  implementations:
-  - impl_bonobench
-  objectives:
-  - 2
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - artificial
-  instances: null
 gen_ealain:
   type: generator
   name: Ealain
@@ -577,11 +283,11 @@ gen_ealain:
     dim:
       min: 1
       max: null
-  - type: binary
+  - type: integer
     dim:
       min: 1
       max: null
-  - type: integer
+  - type: binary
     dim:
       min: 1
       max: null
@@ -757,8 +463,8 @@ gen_ma_bbob:
       type: null
       url: https://doi.org/10.1145/3673908
   implementations:
-  - impl_ma_bbob
   - impl_iohexperimenter
+  - impl_ma_bbob
   objectives:
   - 1
   variables:
@@ -853,85 +559,6 @@ gen_mubqp:
   fidelity_levels: null
   code_examples: null
   source: null
-  instances: null
-gen_puboi:
-  type: generator
-  name: PUBOi
-  long_name: Polynomial Unconstrained Binary Optimization with tunable importance
-  description: A benchmark in which variable importance is tunable, based on the Walsh
-    function.
-  tags: null
-  references:
-  - title: PUBOi
-    authors: []
-    link:
-      type: null
-      url: https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12
-  implementations:
-  - impl_puboi
-  objectives:
-  - 1
-  variables:
-  - type: binary
-    dim:
-      min: 1
-      max: null
-  constraints: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality: null
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - artificial
-  instances: null
-gen_randoptgen:
-  type: generator
-  name: RandOptGen
-  long_name: RandOptGen
-  description: A Unified Random Problem Generator for Single- and Multi-Objective
-    Optimization Problems with Mixed-Variable Input Spaces.
-  tags: null
-  references: null
-  implementations:
-  - impl_randoptgen
-  objectives:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  - type: binary
-    dim:
-      min: 1
-      max: null
-  - type: integer
-    dim:
-      min: 1
-      max: null
-  constraints: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - artificial
   instances: null
 gen_rho_mnk_landscapes:
   type: generator
@@ -1051,37 +678,6 @@ gen_wmodel:
   source:
   - artificial
   instances: null
-impl_beacon:
-  type: implementation
-  name: BEACON
-  description: Continuous Bi-objective Benchmark with Explicit Adjustable COrrelatioN
-    control
-  links:
-  - type: repository
-    url: https://github.com/Stebbet/BEACON/
-  language: Python
-  evaluation_time: negligible
-  requirements: null
-impl_bonobench:
-  type: implementation
-  name: BONO-Bench
-  description: Bi-objective Numerical Optimization Benchmark (BONO-Bench)
-  links:
-  - type: repository
-    url: https://github.com/schaepermeier/bonobench
-  language: Python
-  evaluation_time: null
-  requirements: null
-impl_bso_toolbox:
-  type: implementation
-  name: BSO-toolbox
-  description: Building Spatial Design toolbox (TU/e)
-  links:
-  - type: repository
-    url: https://github.com/TUe-excellent-buildings/BSO-toolbox
-  language: C++
-  evaluation_time: ~1s (smallest) to ~40s (larger)
-  requirements: null
 impl_car_structure:
   type: implementation
   name: Car-structure benchmark
@@ -1153,14 +749,6 @@ impl_ealain:
   language: null
   evaluation_time: null
   requirements: null
-impl_emdo:
-  type: implementation
-  name: Electric Motor Design Optimization
-  description: Not publicly available
-  links: null
-  language: Python
-  evaluation_time: 8 minutes
-  requirements: null
 impl_emo2017:
   type: implementation
   name: EMO 2017 real-world problems
@@ -1179,27 +767,6 @@ impl_etmof:
   - type: repository
     url: https://github.com/songbai-liu/etmo
   language: null
-  evaluation_time: null
-  requirements: null
-impl_expobench:
-  type: implementation
-  name: EXPObench
-  description: EXPensive Optimization benchmark library (wind farm layout, gas filter
-    design, pipe shape, hyperparameter tuning, hospital simulation)
-  links:
-  - type: repository
-    url: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
-  language: Python
-  evaluation_time: 2 to 80 seconds
-  requirements: null
-impl_gasoline:
-  type: implementation
-  name: Gasoline direct injection engine design
-  description: Proprietary Matlab Simulink + Wave RT co-simulation
-  links:
-  - type: paper
-    url: https://doi.org/10.1016/j.ejor.2022.08.032
-  language: Matlab Simulink / Wave RT
   evaluation_time: null
   requirements: null
 impl_gbea:
@@ -1282,16 +849,6 @@ impl_ma_bbob:
   language: null
   evaluation_time: null
   requirements: null
-impl_mechbench:
-  type: implementation
-  name: MECHBench
-  description: Structural mechanics design optimization benchmark
-  links:
-  - type: repository
-    url: https://github.com/BayesOptApp/MECHBench
-  language: Python
-  evaluation_time: 1-7 minutes
-  requirements: null
 impl_mf2:
   type: implementation
   name: mf2
@@ -1352,27 +909,6 @@ impl_mpm2:
   language: Python
   evaluation_time: null
   requirements: null
-impl_puboi:
-  type: implementation
-  name: PUBO Importance Benchmark
-  description: A benchmark in which variable importance is tunable, based on the Walsh
-    function
-  links:
-  - type: repository
-    url: https://gitlab.com/verel/pubo-importance-benchmark
-  language: Python / C++
-  evaluation_time: null
-  requirements: null
-impl_pycutest:
-  type: implementation
-  name: pycutest
-  description: Python interface to CUTEst
-  links:
-  - type: repository
-    url: https://github.com/jfowkes/pycutest
-  language: Python / C++ / Fortran
-  evaluation_time: null
-  requirements: null
 impl_pymoo:
   type: implementation
   name: pymoo
@@ -1393,19 +929,6 @@ impl_radar_waveform:
   language: null
   evaluation_time: null
   requirements: null
-impl_randoptgen:
-  type: implementation
-  name: RandOptGen
-  description: Unified Random Problem Generator for Single- and Multi-Objective Optimization
-    with Mixed-Variable Input Spaces
-  links:
-  - type: repository
-    url: https://github.com/MALEO-research-group/RandOptGen
-  - type: example
-    url: https://doi.org/10.1145/3712256.3726478
-  language: Python
-  evaluation_time: milliseconds
-  requirements: null
 impl_reproblems:
   type: implementation
   name: reproblems
@@ -1425,19 +948,6 @@ impl_transfer_rf_bbob_rw:
     url: https://github.com/ShuaiqunPan/Transfer_Random_forests_BBOB_Real_world
   language: null
   evaluation_time: null
-  requirements: null
-impl_tulipa:
-  type: implementation
-  name: TulipaEnergyModel.jl
-  description: Large linear program for optimal investment and operation of energy
-    systems
-  links:
-  - type: website
-    url: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
-  - type: example
-    url: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
-  language: Julia / JuMP
-  evaluation_time: minutes to hours
   requirements: null
 impl_vehicle_dynamics:
   type: implementation
@@ -1579,11 +1089,11 @@ suite_bbob_biobj_mixint:
   objectives:
   - 2
   variables:
-  - type: integer
+  - type: continuous
     dim:
       min: 5
       max: 160
-  - type: continuous
+  - type: integer
     dim:
       min: 5
       max: 160
@@ -1683,11 +1193,11 @@ suite_bbob_mixint:
   objectives:
   - 1
   variables:
-  - type: integer
+  - type: continuous
     dim:
       min: 5
       max: 160
-  - type: continuous
+  - type: integer
     dim:
       min: 5
       max: 160
@@ -1773,48 +1283,6 @@ suite_bp:
   fidelity_levels: null
   code_examples: null
   source: null
-  problems: null
-suite_brachytherapy:
-  type: suite
-  name: Brachytherapy treatment planning
-  long_name: Brachytherapy treatment planning
-  description: Treatment planning for internal radiation therapy. Multi-objective
-    with aggregated objectives; no public source code.
-  tags: null
-  references:
-  - title: Brachytherapy treatment planning
-    authors: []
-    link:
-      type: null
-      url: https://www.sciencedirect.com/science/article/pii/S1538472123016781
-  implementations: null
-  objectives:
-  - 2
-  - 3
-  variables:
-  - type: continuous
-    dim:
-      min: 100
-      max: 500
-  constraints:
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number:
-      min: 1
-      max: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'yes'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels:
-  - 1
-  - 2
-  code_examples: null
-  source:
-  - real-world
   problems: null
 suite_car_structure:
   type: suite
@@ -2090,11 +1558,11 @@ suite_cre:
   - 4
   - 5
   variables:
-  - type: integer
+  - type: continuous
     dim:
       min: 3
       max: 7
-  - type: continuous
+  - type: integer
     dim:
       min: 3
       max: 7
@@ -2112,100 +1580,6 @@ suite_cre:
   code_examples: null
   source:
   - real-world-like
-  problems: null
-suite_cuter:
-  type: suite
-  name: CUTEr
-  long_name: null
-  description: A constrained and unconstrained testing environment.
-  tags: null
-  references:
-  - title: CUTEr
-    authors: []
-    link:
-      type: null
-      url: https://dl.acm.org/doi/10.1145/962437.962439
-  implementations: null
-  objectives:
-  - 1
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  - type: binary
-    dim:
-      min: 1
-      max: null
-  - type: integer
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality: null
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - artificial
-  problems: null
-suite_cutest:
-  type: suite
-  name: CUTEst
-  long_name: Constrained and Unconstrained Testing Environment with safe threads
-  description: CUTEst for optimization software
-  tags: null
-  references:
-  - title: CUTEst
-    authors: []
-    link:
-      type: null
-      url: https://link.springer.com/article/10.1007/s10589-014-9687-3
-  implementations:
-  - impl_pycutest
-  objectives:
-  - 1
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  - type: binary
-    dim:
-      min: 1
-      max: null
-  - type: integer
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: unknown
-    hard: some
-    equality: null
-    number:
-      min: 1
-      max: null
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - artificial
   problems: null
 suite_dtlz:
   type: suite
@@ -2394,57 +1768,6 @@ suite_etmof:
   fidelity_levels: null
   code_examples: null
   source: null
-  problems: null
-suite_expobench:
-  type: suite
-  name: EXPObench
-  long_name: EXPensive Optimization benchmark library
-  description: Wind farm layout optimization, gas filter design, pipe shape optimization,
-    hyperparameter tuning, and hospital simulation
-  tags: null
-  references:
-  - title: EXPObench
-    authors: []
-    link:
-      type: null
-      url: https://doi.org/10.1016/j.asoc.2023.110744
-  implementations:
-  - impl_expobench
-  objectives:
-  - 1
-  variables:
-  - type: categorical
-    dim:
-      min: 10
-      max: 135
-  - type: continuous
-    dim:
-      min: 10
-      max: 135
-  - type: integer
-    dim:
-      min: 10
-      max: 135
-  constraints:
-  - type: unknown
-    hard: some
-    equality: null
-    number: null
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type:
-  - real-life
-  - observational
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality: null
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - real-world
   problems: null
 suite_gbea:
   type: suite
@@ -2830,47 +2153,6 @@ suite_maop:
   code_examples: null
   source: null
   problems: null
-suite_mechbench:
-  type: suite
-  name: MECHBench
-  long_name: MECHBench
-  description: Set of problems inspired by Structural Mechanics Design Optimization.
-    Embeds physical simulations (plasticity only, no fracture/damage). Unstructured/non-isotropic
-    multimodality.
-  tags: null
-  references:
-  - title: MECHBench
-    authors: []
-    link:
-      type: null
-      url: https://arxiv.org/abs/2511.10821
-  implementations:
-  - impl_mechbench
-  objectives:
-  - 1
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number:
-    - 1
-    - 2
-  dynamic_type: null
-  noise_type: null
-  allows_partial_evaluation: 'no'
-  can_evaluate_objectives_independently: null
-  modality:
-  - multimodal
-  fidelity_levels: null
-  code_examples: null
-  source:
-  - real-world
-  problems: null
 suite_mf2:
   type: suite
   name: MF2
@@ -3033,17 +2315,17 @@ suite_modact:
       type: null
       url: https://doi.org/10.1109/TEVC.2020.3020046
   implementations:
-  - impl_pymoo
   - impl_modact
+  - impl_pymoo
   objectives:
   - 2
   - 3
   - 4
   - 5
   variables:
-  - type: integer
-    dim: 20
   - type: continuous
+    dim: 20
+  - type: integer
     dim: 20
   constraints:
   - type: unknown
@@ -3063,8 +2345,8 @@ suite_modact:
 suite_morepo:
   type: suite
   name: MOrepo
-  long_name: null
-  description: null
+  long_name: Multi-Objective Optimisation Problem Repository
+  description: Multi-objective optimisation problem repository
   tags: null
   references: null
   implementations:
@@ -3179,11 +2461,11 @@ suite_re:
   - 8
   - 9
   variables:
-  - type: integer
+  - type: continuous
     dim:
       min: 2
       max: 7
-  - type: continuous
+  - type: integer
     dim:
       min: 2
       max: 7
@@ -3347,53 +2629,6 @@ suite_submodular:
   source:
   - artificial
   problems: null
-suite_tulipa_energy:
-  type: suite
-  name: TulipaEnergy
-  long_name: TulipaEnergyModel.jl
-  description: Determine the optimal investment and operation decisions for different
-    assets in the energy system (production, consumption, conversion, storage, transport)
-    while minimizing loss of load. Modelled as a potentially very large linear program
-    with multiple fidelity levels.
-  tags: null
-  references:
-  - title: TulipaEnergyModel.jl scientific references
-    authors: []
-    link:
-      type: null
-      url: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
-  implementations:
-  - impl_tulipa
-  objectives:
-  - 1
-  variables:
-  - type: continuous
-    dim:
-      min: 1
-      max: null
-  constraints:
-  - type: unknown
-    hard: some
-    equality: null
-    number: null
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: null
-  dynamic_type: null
-  noise_type:
-  - parameter
-  allows_partial_evaluation: null
-  can_evaluate_objectives_independently: null
-  modality:
-  - unimodal
-  fidelity_levels:
-  - 1
-  - 2
-  code_examples: null
-  source:
-  - real-world
-  problems: null
 suite_vehicle_dynamics:
   type: suite
   name: VehicleDynamics
@@ -3506,3 +2741,813 @@ suite_zdt:
   code_examples: null
   source: null
   problems: null
+suite_expobench:
+  type: suite
+  name: EXPObench
+  long_name: EXPensive Optimization benchmark library
+  description: Wind farm layout optimization, gas filter design, pipe shape optimization,
+    hyperparameter tuning, and hospital simulation
+  tags: null
+  references:
+  - title: EXPObench
+    authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1016/j.asoc.2023.110744
+  implementations:
+  - impl_expobench
+  objectives:
+  - 1
+  variables:
+  - type: continuous
+    dim:
+      min: 10
+      max: 135
+  - type: integer
+    dim:
+      min: 10
+      max: 135
+  - type: unknown
+    dim:
+      min: 10
+      max: 135
+  - type: categorical
+    dim:
+      min: 10
+      max: 135
+  constraints:
+  - type: unknown
+    hard: some
+    equality: null
+    number: 2
+  - type: box
+    hard: some
+    equality: null
+    number: 2
+  dynamic_type:
+  - none
+  noise_type:
+  - real-life (unknown)
+  - observational
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality: null
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - real-world
+  problems: null
+  evaluation_time:
+  - 2 to 80 seconds
+impl_expobench:
+  type: implementation
+  name: EXPObench
+  description: Wind farm layout optimization, gas filter design, pipe shape optimization,
+    hyperparameter tuning, and hospital simulation
+  links:
+  - type: repository
+    url: https://github.com/AlgTUDelft/ExpensiveOptimBenchmark
+  language: Python
+  evaluation_time: 2 to 80 seconds
+  requirements: null
+fn_gasoline_direct_injection_engine_design:
+  type: problem
+  name: Gasoline direct injection engine design
+  long_name: null
+  description: 'A multi-objective optimization problem seeking to minimize fuel consumption
+    and NOx emissions over a two-minute dynamic duty cycle, subject to five constraints
+    (turbine inlet temperature, number of knock occurrences, peak cylinder pressure,
+    peak cylinder pressure rise, total work). Seven decision variables are defined:
+    four define the hardware choices of cylinder compression ratio, turbo machinery
+    and EGR cooler sizing; three relate to control variables that parameterise the
+    engine control logic.'
+  tags: null
+  references: null
+  implementations:
+  - impl_gasoline_direct_injection_engine_design
+  objectives:
+  - 2
+  variables:
+  - type: continuous
+    dim: 7
+  - type: integer
+    dim: 7
+  constraints:
+  - type: unknown
+    hard: some
+    equality: null
+    number: 5
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: '?'
+  can_evaluate_objectives_independently: null
+  modality: null
+  fidelity_levels:
+  - 1
+  - 2
+  code_examples: null
+  source:
+  - real-world
+  instances: null
+  evaluation_time: null
+impl_gasoline_direct_injection_engine_design:
+  type: implementation
+  name: Gasoline direct injection engine design
+  description: 'A multi-objective optimization problem seeking to minimize fuel consumption
+    and NOx emissions over a two-minute dynamic duty cycle, subject to five constraints
+    (turbine inlet temperature, number of knock occurrences, peak cylinder pressure,
+    peak cylinder pressure rise, total work). Seven decision variables are defined:
+    four define the hardware choices of cylinder compression ratio, turbo machinery
+    and EGR cooler sizing; three relate to control variables that parameterise the
+    engine control logic.'
+  links:
+  - type: repository
+    url: https://doi.org/10.1016/j.ejor.2022.08.032
+  language: Matlab Simulink and Wave RT co-simulation
+  evaluation_time: null
+  requirements: null
+gen_beacon:
+  type: generator
+  name: BEACON
+  long_name: Continuous Bi-objective Benchmark problems with Explicit Adjustable COrrelatioN
+    control
+  description: Generator for bi-objective benchmark problems with explicitly controlled
+    correlations in continuous spaces.
+  tags: null
+  references:
+  - title: BEACON
+    authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/10.1145/3712255.3734303
+  implementations:
+  - impl_beacon
+  objectives:
+  - 2
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
+  constraints: []
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - random
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - artificial
+  evaluation_time:
+  - Negligible
+impl_beacon:
+  type: implementation
+  name: BEACON
+  description: Generator for bi-objective benchmark problems with explicitly controlled
+    correlations in continuous spaces.
+  links:
+  - type: repository
+    url: https://github.com/Stebbet/BEACON/
+  - type: repository
+    url: https://github.com/Stebbet/BEACON/tree/main
+  language: Python
+  evaluation_time: Negligible
+  requirements: null
+suite_tulipaenergy:
+  type: suite
+  name: TulipaEnergy
+  long_name: TulipaEnergyModel.jl
+  description: Determine the optimal investment and operation decisions  for different
+    types of assets in the energy system (production, consumption, conversion, storage,
+    and transport), while minimizing loss of load.
+  tags: null
+  references:
+  - title: TulipaEnergy
+    authors: []
+    link:
+      type: null
+      url: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
+  implementations:
+  - impl_tulipaenergy
+  objectives:
+  - 1
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
+  constraints:
+  - type: unknown
+    hard: some
+    equality: null
+    number: null
+  dynamic_type:
+  - none
+  noise_type:
+  - "depends on input \u2014 still working on stochastic inputs"
+  - parameter
+  allows_partial_evaluation: '?'
+  can_evaluate_objectives_independently: null
+  modality:
+  - unimodal
+  fidelity_levels:
+  - 1
+  - 2
+  code_examples: null
+  source:
+  - real-world
+  problems: null
+  evaluation_time:
+  - from minutes to hours
+impl_tulipaenergy:
+  type: implementation
+  name: TulipaEnergy
+  description: Determine the optimal investment and operation decisions  for different
+    types of assets in the energy system (production, consumption, conversion, storage,
+    and transport), while minimizing loss of load.
+  links:
+  - type: repository
+    url: https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/
+  - type: repository
+    url: https://github.com/TulipaEnergy/TulipaEnergyModel.jl
+  language: Julia / JMP
+  evaluation_time: from minutes to hours
+  requirements: null
+suite_mechbench:
+  type: suite
+  name: MECHBench
+  long_name: MECHBench
+  description: A set of models inspired from Computational Mechanics and Engineering
+    Design wherein objectives are not differentiable.
+  tags: null
+  references: null
+  implementations:
+  - impl_mechbench
+  objectives: null
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: 30
+  - type: integer
+    dim:
+      min: 1
+      max: 30
+  constraints:
+  - type: unknown
+    hard: some
+    equality: null
+    number:
+    - 1
+    - 2
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - multimodal
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - real-world
+  problems: null
+  evaluation_time:
+  - 5 to 300 seconds
+impl_mechbench:
+  type: implementation
+  name: MECHBench
+  description: A set of models inspired from Computational Mechanics and Engineering
+    Design wherein objectives are not differentiable.
+  links:
+  - type: repository
+    url: https://github.com/BayesOptApp/MECHBench
+  language: Python
+  evaluation_time: 5 to 300 seconds
+  requirements: null
+fn_ato:
+  type: problem
+  name: ATO
+  long_name: null
+  description: Parameters of the Modules of the Automatic Train Operation should be
+    optimized. The parameters are continuous with different ranges. There are two
+    objectives (minimizing energy consumption, minimizing driving duration.
+  tags: null
+  references: null
+  implementations: null
+  objectives:
+  - 2
+  variables:
+  - type: continuous
+    dim: 10
+  constraints: []
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - unimodal
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - real-world
+  instances: null
+  evaluation_time: null
+suite_brachytherapy_treatment_planning:
+  type: suite
+  name: Brachytherapy treatment planning
+  long_name: Brachytherapy treatment planning
+  description: Treatment planning for internal radiation therapy
+  tags: null
+  references:
+  - title: Brachytherapy treatment planning
+    authors: []
+    link:
+      type: null
+      url: https://www.sciencedirect.com/science/article/pii/S1538472123016781
+  implementations: null
+  objectives:
+  - 2
+  - 3
+  variables:
+  - type: continuous
+    dim:
+      min: 100
+      max: 500
+  constraints:
+  - type: unknown
+    hard: 'yes'
+    equality: null
+    number:
+      min: 1
+      max: null
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'yes'
+  can_evaluate_objectives_independently: null
+  modality:
+  - multimodal
+  fidelity_levels:
+  - 1
+  - 2
+  code_examples: null
+  source:
+  - real-world
+  problems: null
+  evaluation_time: null
+fn_fleetopt:
+  type: problem
+  name: FleetOpt
+  long_name: null
+  description: 'Healthcare organisation in the UK provided data about their current
+    fleet of vehicles to conduct non-emergency heathcare trips in the Argyll and Bute
+    region of Scotland, UK. They also provided historical data about the trips the
+    vehicles took and about the bases which the vehicles return to. The aim is to
+    reduce the existing fleet of vehicles while still ensuring all trips can be covered.
+    Moving a vehicle from one base to another to help cover trips is OK as long as
+    the original base can still cover its trips. Link to paper with more details:
+    https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  tags: null
+  references: null
+  implementations:
+  - impl_fleetopt
+  objectives:
+  - 1
+  variables:
+  - type: integer
+    dim:
+    - 13208
+    - 54
+  constraints:
+  - type: unknown
+    hard: null
+    equality: null
+    number: null
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'yes'
+  can_evaluate_objectives_independently: null
+  modality: null
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - real-world
+  instances: null
+  evaluation_time: null
+impl_fleetopt:
+  type: implementation
+  name: FleetOpt
+  description: 'Healthcare organisation in the UK provided data about their current
+    fleet of vehicles to conduct non-emergency heathcare trips in the Argyll and Bute
+    region of Scotland, UK. They also provided historical data about the trips the
+    vehicles took and about the bases which the vehicles return to. The aim is to
+    reduce the existing fleet of vehicles while still ensuring all trips can be covered.
+    Moving a vehicle from one base to another to help cover trips is OK as long as
+    the original base can still cover its trips. Link to paper with more details:
+    https://dl.acm.org/doi/abs/10.1145/3638530.3664137'
+  links: null
+  language: null
+  evaluation_time: null
+  requirements: 'Not public: was done for real client with their private data'
+fn_building_spatial_design:
+  type: problem
+  name: Building spatial design
+  long_name: Building spatial design
+  description: 'Optimise the spatial layout of a building to: minimise energy consumption
+    for climate control, and minimise the strain on the structure'
+  tags: null
+  references:
+  - title: Building spatial design
+    authors: []
+    link:
+      type: null
+      url: https://hdl.handle.net/1887/81789
+  implementations:
+  - impl_building_spatial_design
+  objectives:
+  - 2
+  variables:
+  - type: binary
+    dim:
+      min: 90
+      max: null
+  - type: continuous
+    dim:
+      min: 90
+      max: null
+  constraints:
+  - type: box
+    hard: 'yes'
+    equality: null
+    number: 2065
+  - type: unknown
+    hard: 'yes'
+    equality: null
+    number: 2065
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality: null
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - real-world
+  instances: null
+  evaluation_time:
+  - and roughly 40 seconds for the larger designs we considered. (Even the larger
+    designs we considered are still relatively small for the considered problem.)
+  - Roughly 1 second per evaluation for the smallest considered design
+impl_building_spatial_design:
+  type: implementation
+  name: Building spatial design
+  description: 'Optimise the spatial layout of a building to: minimise energy consumption
+    for climate control, and minimise the strain on the structure'
+  links:
+  - type: repository
+    url: https://github.com/TUe-excellent-buildings/BSO-toolbox
+  language: C++
+  evaluation_time: Roughly 1 second per evaluation for the smallest considered design;
+    and roughly 40 seconds for the larger designs we considered. (Even the larger
+    designs we considered are still relatively small for the considered problem.)
+  requirements: null
+fn_electric_motor_design_optimization:
+  type: problem
+  name: Electric Motor Design Optimization
+  long_name: Electric Motor Design Optimization
+  description: The goal is to find a design of a synchronous electric motor for power
+    steering systems that minimizes costs and satisfies all constraints.
+  tags:
+  - form-submission
+  references:
+  - title: Electric Motor Design Optimization
+    authors: []
+    link:
+      type: null
+      url: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf
+  implementations:
+  - impl_electric_motor_design_optimization
+  objectives:
+  - 1
+  variables:
+  - type: continuous
+    dim: 13
+  - type: integer
+    dim: 13
+  constraints:
+  - type: unknown
+    hard: some
+    equality: null
+    number: 12
+  - type: box
+    hard: some
+    equality: null
+    number: 12
+  dynamic_type:
+  - none
+  noise_type:
+  - noisy
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - constraints are multimodal
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - real-world
+  instances: null
+  evaluation_time:
+  - 8 minutes
+impl_electric_motor_design_optimization:
+  type: implementation
+  name: Electric Motor Design Optimization
+  description: The goal is to find a design of a synchronous electric motor for power
+    steering systems that minimizes costs and satisfies all constraints.
+  links: null
+  language: Python
+  evaluation_time: 8 minutes
+  requirements: null
+gen_bono_bench:
+  type: generator
+  name: BONO-Bench
+  long_name: Bi-objective Numerical Optimization Benchmark (BONO-Bench)
+  description: Bi-objective problem generator and suite with scalable continuous decision
+    space. Features complex problem properties (different types of multimodality and
+    challenges in decision and objective space) as well as Pareto front approximations
+    with error guarantees for the hypervolume and exact R2 indicators.
+  tags: null
+  references: null
+  implementations:
+  - impl_bono_bench
+  objectives:
+  - 2
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
+  constraints: []
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - multimodal
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - artificial
+  evaluation_time: null
+impl_bono_bench:
+  type: implementation
+  name: BONO-Bench
+  description: Bi-objective problem generator and suite with scalable continuous decision
+    space. Features complex problem properties (different types of multimodality and
+    challenges in decision and objective space) as well as Pareto front approximations
+    with error guarantees for the hypervolume and exact R2 indicators.
+  links:
+  - type: repository
+    url: https://github.com/schaepermeier/bonobench
+  language: Python
+  evaluation_time: null
+  requirements: null
+gen_randoptgen:
+  type: generator
+  name: RandOptGen
+  long_name: RandOptGen
+  description: 'RandOptGen: A Unified Random Problem Generator for Single-and Multi-Objective
+    Optimization Problems with Mixed-Variable Input Spaces'
+  tags: null
+  references: null
+  implementations:
+  - impl_randoptgen
+  objectives: null
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
+  - type: integer
+    dim:
+      min: 1
+      max: null
+  - type: binary
+    dim:
+      min: 1
+      max: null
+  constraints: []
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - multimodal
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - artificial
+  evaluation_time:
+  - milliseconds
+impl_randoptgen:
+  type: implementation
+  name: RandOptGen
+  description: 'RandOptGen: A Unified Random Problem Generator for Single-and Multi-Objective
+    Optimization Problems with Mixed-Variable Input Spaces'
+  links:
+  - type: repository
+    url: https://github.com/MALEO-research-group/RandOptGen
+  language: Python
+  evaluation_time: milliseconds
+  requirements: null
+suite_cuter:
+  type: suite
+  name: CUTEr
+  long_name: null
+  description: A constrained and unconstrained testing environment
+  tags: null
+  references:
+  - title: CUTEr
+    authors: []
+    link:
+      type: null
+      url: https://dl.acm.org/doi/10.1145/962437.962439
+  implementations: null
+  objectives:
+  - 1
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
+  - type: integer
+    dim:
+      min: 1
+      max: null
+  - type: binary
+    dim:
+      min: 1
+      max: null
+  constraints:
+  - type: unknown
+    hard: null
+    equality: null
+    number: null
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality: null
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - artificial
+  problems: null
+  evaluation_time: null
+suite_cutest:
+  type: suite
+  name: CUTEst
+  long_name: Constrained and Unconstrained Testing Environment with safe threads
+  description: The Constrained and Unconstrained Testing Environment with safe threads
+    (CUTEst) for optimization software
+  tags:
+  - form-submission
+  references:
+  - title: CUTEst
+    authors: []
+    link:
+      type: null
+      url: https://link.springer.com/article/10.1007/s10589-014-9687-3
+  implementations:
+  - impl_cutest
+  objectives:
+  - 1
+  variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
+  - type: integer
+    dim:
+      min: 1
+      max: null
+  - type: binary
+    dim:
+      min: 1
+      max: null
+  constraints:
+  - type: unknown
+    hard: 'no'
+    equality: null
+    number:
+      min: 1
+      max: null
+  - type: box
+    hard: 'no'
+    equality: null
+    number:
+      min: 1
+      max: null
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality:
+  - multimodal
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - artificial
+  problems: null
+  evaluation_time: null
+impl_cutest:
+  type: implementation
+  name: CUTEst
+  description: The Constrained and Unconstrained Testing Environment with safe threads
+    (CUTEst) for optimization software
+  links:
+  - type: repository
+    url: https://github.com/jfowkes/pycutest
+  language: Python, C++, Fortran
+  evaluation_time: null
+  requirements: null
+gen_puboi:
+  type: generator
+  name: PUBOi
+  long_name: Polynomial Unconstrained Binary Optimization
+  description: A benchmark in which variable importance is tunable, based on the Walsh
+    function
+  tags: null
+  references:
+  - title: PUBOi
+    authors: []
+    link:
+      type: null
+      url: https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12
+  implementations:
+  - impl_puboi
+  objectives:
+  - 1
+  variables:
+  - type: binary
+    dim:
+      min: 1
+      max: null
+  constraints: []
+  dynamic_type:
+  - none
+  noise_type:
+  - none
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  modality: null
+  fidelity_levels:
+  - 1
+  code_examples: null
+  source:
+  - artificial
+  evaluation_time: null
+impl_puboi:
+  type: implementation
+  name: PUBOi
+  description: A benchmark in which variable importance is tunable, based on the Walsh
+    function
+  links:
+  - type: repository
+    url: https://gitlab.com/verel/pubo-importance-benchmark
+  language: Python, C++
+  evaluation_time: null
+  requirements: null
