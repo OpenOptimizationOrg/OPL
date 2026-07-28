@@ -43,11 +43,11 @@ fn_building_spatial:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -149,11 +149,15 @@ fn_emdo:
   objectives:
   - 1
   variables:
-  - type: continuous
-    dim: 13
   - type: integer
     dim: 13
+  - type: continuous
+    dim: 13
   constraints:
+  - type: unknown
+    hard: 'yes'
+    equality: null
+    number: 12
   - type: unknown
     hard: some
     equality: null
@@ -162,10 +166,6 @@ fn_emdo:
     hard: 'yes'
     equality: null
     number: null
-  - type: unknown
-    hard: 'yes'
-    equality: null
-    number: 12
   dynamic_type: null
   noise_type:
   - noisy
@@ -236,9 +236,9 @@ fn_gasoline:
   objectives:
   - 2
   variables:
-  - type: continuous
-    dim: 7
   - type: integer
+    dim: 7
+  - type: continuous
     dim: 7
   constraints:
   - type: unknown
@@ -273,11 +273,11 @@ fn_invdeceptive_deceptive_rotell:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -384,11 +384,11 @@ fn_onemax_sphere_deceptive_rotell:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -419,11 +419,11 @@ fn_onemax_sphere_zeromax_sphere:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -573,15 +573,15 @@ gen_ealain:
   - 9
   - 10
   variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
   - type: binary
     dim:
       min: 1
       max: null
   - type: integer
-    dim:
-      min: 1
-      max: null
-  - type: continuous
     dim:
       min: 1
       max: null
@@ -648,8 +648,8 @@ gen_gnbg_ii:
       type: null
       url: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
   implementations:
-  - impl_gnbg_ii
   - impl_iohgnbg
+  - impl_gnbg_ii
   objectives:
   - 1
   variables:
@@ -757,8 +757,8 @@ gen_ma_bbob:
       type: null
       url: https://doi.org/10.1145/3673908
   implementations:
-  - impl_iohexperimenter
   - impl_ma_bbob
+  - impl_iohexperimenter
   objectives:
   - 1
   variables:
@@ -848,8 +848,8 @@ gen_mubqp:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
   modality:
-  - quadratic
   - multimodal
+  - quadratic
   fidelity_levels: null
   code_examples: null
   source: null
@@ -909,15 +909,15 @@ gen_randoptgen:
   - 9
   - 10
   variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
   - type: binary
     dim:
       min: 1
       max: null
   - type: integer
-    dim:
-      min: 1
-      max: null
-  - type: continuous
     dim:
       min: 1
       max: null
@@ -1012,8 +1012,8 @@ gen_rho_mtsp:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
   modality:
-  - quadratic
   - multimodal
+  - quadratic
   fidelity_levels: null
   code_examples: null
   source: null
@@ -1475,15 +1475,15 @@ suite_amvop:
   objectives:
   - 1
   variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
   - type: categorical
     dim:
       min: 1
       max: null
   - type: integer
-    dim:
-      min: 1
-      max: null
-  - type: continuous
     dim:
       min: 1
       max: null
@@ -1909,8 +1909,8 @@ suite_cec2013:
       type: null
       url: https://peerj.com/articles/cs-2671/CEC2013.pdf
   implementations:
-  - impl_iohexperimenter
   - impl_cec2013
+  - impl_iohexperimenter
   objectives:
   - 1
   variables:
@@ -2011,8 +2011,8 @@ suite_cec2022:
       type: null
       url: https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf
   implementations:
-  - impl_iohexperimenter
   - impl_cec2022
+  - impl_iohexperimenter
   objectives:
   - 1
   variables:
@@ -2129,15 +2129,15 @@ suite_cuter:
   objectives:
   - 1
   variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
   - type: binary
     dim:
       min: 1
       max: null
   - type: integer
-    dim:
-      min: 1
-      max: null
-  - type: continuous
     dim:
       min: 1
       max: null
@@ -2173,6 +2173,10 @@ suite_cutest:
   objectives:
   - 1
   variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
   - type: binary
     dim:
       min: 1
@@ -2181,21 +2185,17 @@ suite_cutest:
     dim:
       min: 1
       max: null
-  - type: continuous
-    dim:
-      min: 1
-      max: null
   constraints:
-  - type: box
-    hard: 'yes'
-    equality: null
-    number: null
   - type: unknown
     hard: some
     equality: null
     number:
       min: 1
       max: null
+  - type: box
+    hard: 'yes'
+    equality: null
+    number: null
   dynamic_type: null
   noise_type: null
   allows_partial_evaluation: 'no'
@@ -2413,7 +2413,7 @@ suite_expobench:
   objectives:
   - 1
   variables:
-  - type: integer
+  - type: categorical
     dim:
       min: 10
       max: 135
@@ -2421,7 +2421,7 @@ suite_expobench:
     dim:
       min: 10
       max: 135
-  - type: categorical
+  - type: integer
     dim:
       min: 10
       max: 135
@@ -2528,8 +2528,8 @@ suite_gnbg_ii:
       type: null
       url: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
   implementations:
-  - impl_gnbg_ii
   - impl_iohgnbg
+  - impl_gnbg_ii
   objectives:
   - 1
   variables:
@@ -2629,11 +2629,11 @@ suite_l1_zdt:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -2701,11 +2701,11 @@ suite_l2_zdt:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -2773,11 +2773,11 @@ suite_l3_zdt:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
@@ -3033,17 +3033,17 @@ suite_modact:
       type: null
       url: https://doi.org/10.1109/TEVC.2020.3020046
   implementations:
-  - impl_modact
   - impl_pymoo
+  - impl_modact
   objectives:
   - 2
   - 3
   - 4
   - 5
   variables:
-  - type: continuous
-    dim: 20
   - type: integer
+    dim: 20
+  - type: continuous
     dim: 20
   constraints:
   - type: unknown
@@ -3179,11 +3179,11 @@ suite_re:
   - 8
   - 9
   variables:
-  - type: continuous
+  - type: integer
     dim:
       min: 2
       max: 7
-  - type: integer
+  - type: continuous
     dim:
       min: 2
       max: 7
@@ -3214,15 +3214,15 @@ suite_rwmvop:
   objectives:
   - 1
   variables:
+  - type: continuous
+    dim:
+      min: 1
+      max: null
   - type: categorical
     dim:
       min: 1
       max: null
   - type: integer
-    dim:
-      min: 1
-      max: null
-  - type: continuous
     dim:
       min: 1
       max: null
@@ -3488,11 +3488,11 @@ suite_zdt:
   objectives:
   - 2
   variables:
-  - type: binary
+  - type: continuous
     dim:
       min: 1
       max: null
-  - type: continuous
+  - type: binary
     dim:
       min: 1
       max: null
