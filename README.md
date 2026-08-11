@@ -9,7 +9,7 @@ In addition to the problem collection of OPL, we are also working on libraries f
 Finally, an overview of the different projects is available [here](https://openoptimizationorg.github.io/Overview/).
 
 ## How to add problems
-Contributions and corrections are very welcome, through pull requests, issue reporting, or email (see [contact](contact)). 
+Contributions and corrections are very welcome, through pull requests, issue reporting, or email (see [contact](#contact)). 
 
 If you want to provide a problem/suite/generator, you can also do so via this [form](https://docs.google.com/forms/d/e/1FAIpQLSehQp24AuFAH2j9jizDhq8K_BYgNGMKXWTMu6s-2RwEJrK59Q/viewform?usp=sharing&ouid=107462254722022409950). 
 
@@ -23,7 +23,7 @@ We need help to
 
 Finally, you are also very welcome to propose your own ideas to make OPL better, and work on those. 
 
-To get involved, just send an email (see [contact](contact)), or talk to any of us. 
+To get involved, just send an email (see [contact](#contact)), or talk to any of us. 
 
 ## How to cite 
 
