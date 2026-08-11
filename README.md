@@ -17,7 +17,7 @@ If you want to provide a problem/suite/generator, you can also do so via this [f
 Want to get involved to make OPL even better? Any help is welcome! 
 
 We need help to 
-- Extending the OPL infrastructure to make it easier to add, find, edit, extend, aggregate problems 
+- Extend the OPL infrastructure to make it easier to add, find, edit, extend, aggregate problems 
 - Advertise OPL 
 - and, of course, add more problems! 
 
