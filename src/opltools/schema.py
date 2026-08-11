@@ -73,10 +73,17 @@ class Constraint(BaseModel):
         return hash((self.type, self.hard, self.equality, number))
 
 
+class ReferenceType(Enum):
+    definition = "definition"
+    use = "use"
+    critique = "critique"
+
+
 class Reference(BaseModel):
     title: str | None = None
     authors: list[str] | None = None
     link: Link | None = None
+    type: ReferenceType | None = None
 
     @model_validator(mode="after")
     def _validate(self) -> Self:
