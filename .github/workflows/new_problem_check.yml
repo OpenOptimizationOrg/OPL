@@ -21,10 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v6
         with:
           python-version: '3.x'
 
@@ -35,5 +35,5 @@ jobs:
 
       - name: Run New Problem Check
         run: |
-          python utils/validate_yaml.py problems.yaml
+          uv run utils/validate_yaml.py problems.yaml
 
