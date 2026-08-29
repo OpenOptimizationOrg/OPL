@@ -1,7 +1,15 @@
 from enum import Enum
 from typing import Any
 from typing_extensions import Self
-from pydantic import BaseModel, RootModel, ConfigDict, model_validator
+from typing import List, Dict, Set
+from pydantic import (
+    BaseModel,
+    RootModel,
+    ConfigDict,
+    model_validator,
+    ValidationInfo,
+    field_validator,
+)
 
 from .yesnosome import YesNoSome
 from .utils import ValueRange, union_range
@@ -88,6 +96,15 @@ class Reference(BaseModel):
         return hash(self.title) + hash(self.link)
 
 
+def forbid_value(field: str, forbidden: str):
+    def validator(cls, v: str):
+        if v == forbidden:
+            raise ValueError(f"{field} cannot be '{forbidden}'")
+        return v
+
+    return field_validator(field)(validator)
+
+
 class Implementation(Thing):
     type: OPLType = OPLType.implementation
     name: str
@@ -96,6 +113,8 @@ class Implementation(Thing):
     language: str | None = None
     evaluation_time: set[str] | None = None
     requirements: str | list[str] | None = None
+
+    _v = forbid_value("name", "template")  # to prevent copy-paste errors
 
 
 class ProblemLike(Thing):
@@ -118,6 +137,8 @@ class ProblemLike(Thing):
     code_examples: set[str] | None = None
     source: set[str] | None = None
 
+    _v = forbid_value("name", "template")  # to prevent copy-paste errors
+
     def __hash__(self):
         return hash((self.type, self.name))
 
@@ -134,6 +155,65 @@ class Suite(ProblemLike):
 
 class Generator(ProblemLike):
     type: OPLType = OPLType.generator
+
+
+class ValidationRule:
+    def __init__(
+        self,
+        field_name: str,
+        group: List[OPLType] | None,
+        error_on_duplicate: bool = True,
+    ):
+        self.field_name = field_name
+        self.group = group
+        self.error_on_duplicate = error_on_duplicate
+        self.seen = set()
+        self.duplicates = set()
+
+    def update_seen(self, entry: Thing):
+        if self.group is None or entry.OPLType in self.group:
+            value = getattr(entry, self.field_name, None)
+            if value is None:
+                return
+            if value in self.seen:
+                self.duplicates.add(value)
+            else:
+                self.seen.add(value)
+
+    def _process_duplicates(self):
+        if self.duplicates:
+            if self.error_on_duplicate:
+                print(
+                    f"::error::Duplicate values for field '{self.field_name}': {self.duplicates}"
+                )
+                return False
+            else:
+                print(
+                    f"::warning::Duplicate values for field '{self.field_name}': {self.duplicates}"
+                )
+        return True
+
+
+class Validator:
+    def __init__(self, duplicate_settings: List[Dict[str, Any]]):
+        rules = []
+        for setting in duplicate_settings:
+            field_name = setting["field_name"]
+            group = setting.get("group", None)
+            error_on_duplicate = setting.get("error_on_duplicate", True)
+            rules.append(ValidationRule(field_name, group, error_on_duplicate))
+        self.rules = rules
+
+    def update_seen(self, entry: Thing):
+        for rule in self.rules:
+            rule.update_seen(entry)
+
+    def process_duplicates(self):
+        all_valid = True
+        for rule in self.rules:
+            if not rule._process_duplicates():
+                all_valid = False
+        return all_valid
 
 
 class Library(RootModel):
@@ -168,11 +248,32 @@ class Library(RootModel):
                 thing_set.update(child_set)
 
     @model_validator(mode="after")
-    def _validate(self) -> Self:
+    def _validate(self, info: ValidationInfo) -> Self:
+        # Check for duplicates and
         # First check and fixup all problems
         for id, thing in self.root.items():
             if isinstance(thing, Problem) and thing.implementations:
                 self._percolate_set(thing, thing.implementations, "evaluation_time")
+
+        # Then check and fixup all suites because changes from the problems need to propagate to the suites
+        duplicate_settings = (
+            info.context.get("duplicate_settings", []) if info.context else []
+        )
+        validator = Validator(duplicate_settings)
+
+        # First check and fixup all problems
+        for id, thing in self.root.items():
+            validator.update_seen(thing)
+            if isinstance(thing, Problem) and thing.implementations:
+                self._percolate_set(thing, thing.implementations, "evaluation_time")
+
+        if not validator.process_duplicates():
+            raise ValueError(
+                "Duplicate values found in fields: "
+                + ", ".join(
+                    rule.field_name for rule in validator.rules if rule.duplicates
+                )
+            )
 
         # Then check and fixup all suites because changes from the problems need to propagate to the suites
         for id, thing in self.root.items():
@@ -186,7 +287,6 @@ class Library(RootModel):
                         raise ValueError(
                             f"Suite {id} references problem with id '{problem_id}' but id is a {self.root[problem_id].type.name}."
                         )
-
                 self._percolate_set(thing, thing.problems, "fidelity_levels")
                 self._percolate_set(thing, thing.problems, "variables")
                 self._percolate_set(thing, thing.problems, "constraints")
