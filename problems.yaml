@@ -2,11 +2,13 @@ fn_ato:
   allows_partial_evaluation: no
   can_evaluate_objectives_independently: null
   code_examples: null
-  constraints: null
-  description: 'Parameters of the Modules of the Automatic Train Operation are optimized;
-    two objectives: minimizing energy consumption and minimizing driving duration.'
+  constraints:
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  description: 'Parameters of the modules of the Automatic Train Operation are optimized; Parameters for the trajectory planning (first module) are maximum velocity (v_max), weighting of objectives (energy, time, comfort) in planning (lambda_e, lambda_s, lambda_t), step width (ds), maximum lateral acceleration (aq_max); as control module a PID controller is implemented, where the ki and kp parameters are optimized. The objectives are minimizing travel time and energy consumption. The evaluation takes several minutes, because the pipeline includes also a simulation.'
   dynamic_type: null
-  evaluation_time: null
   fidelity_levels: null
   implementations: null
   instances: null
@@ -17,7 +19,12 @@ fn_ato:
   noise_type: null
   objectives:
   - 2
-  references: null
+  references:
+  - authors: ["Carolin Mensendiek", "Henrik Zeipel", "Oliver Ludger Preuß", "Moritz Vinzent Seiler", "Walter Sextro", "Heike Trautmann"]
+    link:
+      type: null
+      url: https://doi.org/10.1145/3795101.3805368
+  - title: "Multi-Objective Pipeline Optimisation and Configuration of Automatic Train Operation Trajectories"
   source:
   - real-world
   tags: null
@@ -1057,6 +1064,13 @@ gen_wmodel:
       max: null
       min: 1
     type: binary
+impl_ato:
+  description: Non-public implementation
+  evaluation_time:
+    - "several minutes"
+  language: Python
+  name: Automatic Train Operation Pipeline
+  type: implementation
 impl_beacon:
   description: Continuous Bi-objective Benchmark with Explicit Adjustable 
     COrrelatioN control
