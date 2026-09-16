@@ -91,17 +91,17 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>10</td>
       <td>2</td>
       <td></td>
-      <td></td>
-      <td></td>
+      <td>box</td>
+      <td>>=1</td>
       <td></td>
       <td></td>
       <td>no</td>
       <td></td>
       <td></td>
       <td></td>
-      <td>Parameters of the Modules of the Automatic Train Operation are optimized; two objectives: minimizing energy consumption and minimizing driving duration.</td>
+      <td>Parameters of the modules of the Automatic Train Operation are optimized; Parameters for the trajectory planning (first module) are maximum velocity (v_max), weighting of objectives (energy, time, comfort) in planning (lambda_e, lambda_s, lambda_t), step width (ds), maximum lateral acceleration (aq_max); as control module a PID controller is implemented, where the ki and kp parameters are optimized. The objectives are minimizing travel time and energy consumption. The evaluation takes several minutes, because the pipeline includes also a simulation.</td>
       <td></td>
-      <td></td>
+      <td>Multi-Objective Pipeline Optimisation and Configuration of Automatic Train Operation Trajectories | Carolin Mensendiek; Henrik Zeipel; Oliver Ludger Preuß; Moritz Vinzent Seiler; Walter Sextro; Heike Trautmann, <a href="https://doi.org/10.1145/3795101.3805368">https://doi.org/10.1145/3795101.3805368</a></td>
       <td></td>
       <td>unimodal</td>
       <td></td>
@@ -117,7 +117,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
       <td></td>
-      <td></td>
+      <td>>=1</td>
       <td></td>
       <td></td>
       <td></td>
@@ -214,7 +214,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>26</td>
       <td>1</td>
       <td>noisy</td>
-      <td>box | unknown</td>
+      <td>unknown | box</td>
       <td>>=14</td>
       <td></td>
       <td>noisy</td>
@@ -292,7 +292,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>fn_gasoline</td>
       <td>Gasoline direct injection engine design</td>
       <td>Problem</td>
-      <td>integer | continuous</td>
+      <td>continuous | integer</td>
       <td>14</td>
       <td>2</td>
       <td>multi-fidelity</td>
@@ -1710,11 +1710,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>IOHexperimenter | CEC2013 reference code</td>
+      <td>CEC2013 reference code | IOHexperimenter</td>
       <td>C++/Python</td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a> | <a href="https://github.com/P-N-Suganthan/CEC2013">https://github.com/P-N-Suganthan/CEC2013</a></td>
-      <td>IOHprofiler experimenter framework | Suganthan's reference implementation</td>
+      <td><a href="https://github.com/P-N-Suganthan/CEC2013">https://github.com/P-N-Suganthan/CEC2013</a> | <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
+      <td>Suganthan's reference implementation | IOHprofiler experimenter framework</td>
       <td></td>
       <td></td>
       <td></td>
@@ -2178,11 +2178,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>suite_expobench</td>
       <td>EXPObench</td>
       <td>Suite</td>
-      <td>categorical | integer | continuous</td>
+      <td>categorical | continuous | integer</td>
       <td>30-405</td>
       <td>1</td>
       <td>noisy</td>
-      <td>box | unknown</td>
+      <td>unknown | box</td>
       <td>>=2</td>
       <td></td>
       <td>["observational", "real-life"]</td>
@@ -2245,7 +2245,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>coco-gbea</td>
       <td></td>
-      <td>{'34 seconds', '5 seconds'}</td>
+      <td>{'5 seconds', '34 seconds'}</td>
       <td><a href="https://github.com/ttusar/coco-gbea">https://github.com/ttusar/coco-gbea</a></td>
       <td>Game-Benchmark for Evolutionary Algorithms (COCO fork)</td>
       <td></td>
@@ -2696,7 +2696,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>MECHBench</td>
       <td>Python</td>
-      <td>{'7 minutes', '1 minute'}</td>
+      <td>{'1 minute', '7 minutes'}</td>
       <td><a href="https://github.com/BayesOptApp/MECHBench">https://github.com/BayesOptApp/MECHBench</a></td>
       <td>Structural mechanics design optimization benchmark</td>
       <td></td>
@@ -2899,11 +2899,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>20</td>
       <td>20</td>
-      <td>pymoo | modact</td>
+      <td>modact | pymoo</td>
       <td>Python</td>
       <td>{'20ms'}</td>
-      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a> | <a href="https://github.com/epfl-lamd/modact">https://github.com/epfl-lamd/modact</a></td>
-      <td>Multi-objective optimization in Python | EPFL-LAMD modact package</td>
+      <td><a href="https://github.com/epfl-lamd/modact">https://github.com/epfl-lamd/modact</a> | <a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
+      <td>EPFL-LAMD modact package | Multi-objective optimization in Python</td>
       <td></td>
       <td></td>
       <td></td>
@@ -3039,7 +3039,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>suite_re</td>
       <td>RE</td>
       <td>Suite</td>
-      <td>integer | continuous</td>
+      <td>continuous | integer</td>
       <td>4-14</td>
       <td>[2, 3, 4, 5, 6, 7, 8, 9]</td>
       <td></td>
