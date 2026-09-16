@@ -69,6 +69,7 @@ fn_building_spatial:
       type: null
       url: https://hdl.handle.net/1887/81789
     title: Building spatial design
+    type: null
   source:
   - real-world
   tags: null
@@ -113,6 +114,7 @@ fn_convex_dtlz2:
       type: null
       url: https://doi.org/10.1109/TEVC.2013.2281535
     title: Convex DTLZ2
+    type: null
   source: null
   tags: null
   type: problem
@@ -128,16 +130,16 @@ fn_emdo:
   constraints:
   - equality: null
     hard: yes
-    number: null
-    type: box
+    number: 12
+    type: unknown
   - equality: null
     hard: some
     number: null
     type: unknown
   - equality: null
     hard: yes
-    number: 12
-    type: unknown
+    number: null
+    type: box
   description: "# Goal\nFind a design of a synchronous electric motor for power steering
     systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
     Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
@@ -168,15 +170,16 @@ fn_emdo:
       type: null
       url: https://dis.ijs.si/tea/Publications/Tusar23Multistep.pdf
     title: A Multi-Step Evaluation Process in Electric Motor Design
+    type: null
   source:
   - real-world
   tags: null
   type: problem
   variables:
   - dim: 13
-    type: continuous
-  - dim: 13
     type: integer
+  - dim: 13
+    type: continuous
 fn_fleetopt:
   allows_partial_evaluation: yes
   can_evaluate_objectives_independently: null
@@ -206,6 +209,7 @@ fn_fleetopt:
       type: null
       url: https://dl.acm.org/doi/abs/10.1145/3638530.3664137
     title: FleetOpt
+    type: null
   source:
   - real-world
   tags: null
@@ -249,15 +253,16 @@ fn_gasoline:
       type: null
       url: https://doi.org/10.1016/j.ejor.2022.08.032
     title: Gasoline direct injection engine design
+    type: null
   source:
   - real-world
   tags: null
   type: problem
   variables:
   - dim: 7
-    type: continuous
-  - dim: 7
     type: integer
+  - dim: 7
+    type: continuous
 fn_invdeceptive_deceptive_rotell:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -281,6 +286,7 @@ fn_invdeceptive_deceptive_rotell:
       type: null
       url: https://doi.org/10.1145/3449726.3459521
     title: Mixed-variable multi-objective test problems
+    type: null
   source:
   - artificial
   tags: null
@@ -325,6 +331,7 @@ fn_inverted_dtlz1:
       type: null
       url: https://doi.org/10.1109/TEVC.2013.2281534
     title: Inverted DTLZ1
+    type: null
   source: null
   tags: null
   type: problem
@@ -367,6 +374,7 @@ fn_jsec2019:
       url: 
         http://www.jpnsec.org/files/competition2019/EC-Symposium-2019-Competition-English.html
     title: JPNSEC EC-Symposium 2019 competition
+    type: null
   source:
   - real-world
   tags: null
@@ -397,6 +405,7 @@ fn_onemax_sphere_deceptive_rotell:
       type: null
       url: https://doi.org/10.1145/3449726.3459521
     title: Mixed-variable multi-objective test problems
+    type: null
   source:
   - artificial
   tags: null
@@ -433,6 +442,7 @@ fn_onemax_sphere_zeromax_sphere:
       type: null
       url: https://doi.org/10.1145/3449726.3459521
     title: Onemax+Sphere / Zeromax+Sphere
+    type: null
   source:
   - artificial
   tags: null
@@ -474,6 +484,7 @@ fn_radar_waveform:
       type: null
       url: https://doi.org/10.1007/978-3-540-70928-2_53
     title: Radar waveform design
+    type: null
   source:
   - real-world
   tags: null
@@ -514,6 +525,7 @@ gen_beacon:
       type: null
       url: https://dl.acm.org/doi/10.1145/3712255.3734303
     title: BEACON
+    type: null
   source:
   - artificial
   tags: null
@@ -597,6 +609,7 @@ gen_ealain:
       type: null
       url: https://doi.org/10.1145/3638530.3654299
     title: Ealain
+    type: null
   source:
   - real-world-like
   tags: null
@@ -637,6 +650,7 @@ gen_gnbg:
       type: null
       url: https://arxiv.org/abs/2312.07083
     title: GNBG
+    type: null
   source:
   - artificial
   tags: null
@@ -670,6 +684,7 @@ gen_gnbg_ii:
       type: null
       url: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
     title: GNBG-II
+    type: null
   source:
   - artificial
   tags: null
@@ -714,6 +729,7 @@ gen_gpd:
       type: null
       url: https://doi.org/10.1016/j.asoc.2020.106139
     title: GPD generator
+    type: null
   source: null
   tags: null
   type: generator
@@ -746,6 +762,7 @@ gen_iohclustering:
       type: null
       url: https://arxiv.org/pdf/2505.09233
     title: IOHClustering
+    type: null
   source:
   - artificial-from-real-data
   tags: null
@@ -780,6 +797,7 @@ gen_ma_bbob:
       type: null
       url: https://doi.org/10.1145/3673908
     title: MA-BBOB
+    type: null
   source:
   - artificial
   tags: null
@@ -814,6 +832,7 @@ gen_mpm2:
       type: null
       url: https://ls11-www.cs.tu-dortmund.de/_media/techreports/tr15-01.pdf
     title: MPM2 technical report TR15-01
+    type: null
   source: null
   tags: null
   type: generator
@@ -836,8 +855,8 @@ gen_mubqp:
   - impl_mocobench
   long_name: null
   modality:
-  - multimodal
   - quadratic
+  - multimodal
   name: mUBQP
   noise_type: null
   objectives:
@@ -857,6 +876,7 @@ gen_mubqp:
       type: null
       url: https://doi.org/10.1016/j.asoc.2013.11.008
     title: mUBQP benchmark
+    type: null
   source: null
   tags: null
   type: generator
@@ -890,6 +910,7 @@ gen_puboi:
       type: null
       url: https://link.springer.com/chapter/10.1007/978-3-031-04148-8_12
     title: PUBOi
+    type: null
   source:
   - artificial
   tags: null
@@ -980,6 +1001,7 @@ gen_rho_mnk_landscapes:
       url: https://doi.org/10.1016/j.ejor.2012.12.019
     title: On the design of multi-objective evolutionary algorithms based on 
       NK-landscapes
+    type: null
   source: null
   tags: null
   type: generator
@@ -1002,8 +1024,8 @@ gen_rho_mtsp:
   - impl_mocobench
   long_name: null
   modality:
-  - multimodal
   - quadratic
+  - multimodal
   name: ρmTSP
   noise_type: null
   objectives:
@@ -1023,6 +1045,7 @@ gen_rho_mtsp:
       type: null
       url: https://doi.org/10.1007/978-3-319-45823-6_40
     title: On the impact of multi-objective scalability for the ρmTSP
+    type: null
   source: null
   tags: null
   type: generator
@@ -1055,6 +1078,7 @@ gen_wmodel:
       type: null
       url: https://dl.acm.org/doi/abs/10.1145/3205651.3208240
     title: W-model
+    type: null
   source:
   - artificial
   tags: null
@@ -1138,8 +1162,8 @@ impl_cec2022:
 impl_cfd:
   description: Expensive real-world CFD-based test problems
   evaluation_time:
-  - 15m
   - 30s
+  - 15m
   language: null
   links:
   - type: repository
@@ -1320,8 +1344,8 @@ impl_ma_bbob:
 impl_mechbench:
   description: Structural mechanics design optimization benchmark
   evaluation_time:
-  - 7 minutes
   - 1 minute
+  - 7 minutes
   language: Python
   links:
   - type: repository
@@ -1525,6 +1549,7 @@ suite_amvop:
       type: null
       url: https://doi.org/10.1109/TEVC.2013.2281531
     title: AMVOP
+    type: null
   source: null
   tags: null
   type: suite
@@ -1536,11 +1561,11 @@ suite_amvop:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: categorical
   - dim:
       max: null
       min: 1
-    type: categorical
+    type: integer
 suite_bbob:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1566,6 +1591,7 @@ suite_bbob:
       type: null
       url: https://doi.org/10.1080/10556788.2020.1808977
     title: 'COCO: a platform for comparing continuous optimizers in a black-box setting'
+    type: null
   source: null
   tags: null
   type: suite
@@ -1599,6 +1625,7 @@ suite_bbob_biobj:
       type: null
       url: https://doi.org/10.48550/arXiv.1604.00359
     title: BBOB bi-objective test suite
+    type: null
   source: null
   tags: null
   type: suite
@@ -1632,6 +1659,7 @@ suite_bbob_biobj_mixint:
       type: null
       url: https://doi.org/10.1145/3321707.3321868
     title: BBOB bi-objective mixed-integer test suite
+    type: null
   source: null
   tags: null
   type: suite
@@ -1639,11 +1667,11 @@ suite_bbob_biobj_mixint:
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
 suite_bbob_constrained:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1673,6 +1701,7 @@ suite_bbob_constrained:
       type: null
       url: http://numbbo.github.io/coco-doc/bbob-constrained/
     title: bbob-constrained documentation
+    type: null
   source: null
   tags: null
   type: suite
@@ -1706,6 +1735,7 @@ suite_bbob_largescale:
       type: null
       url: https://doi.org/10.48550/arXiv.1903.06396
     title: BBOB large-scale test suite
+    type: null
   source: null
   tags: null
   type: suite
@@ -1739,6 +1769,7 @@ suite_bbob_mixint:
       type: null
       url: https://doi.org/10.1145/3321707.3321868
     title: BBOB mixed-integer test suite
+    type: null
   source: null
   tags: null
   type: suite
@@ -1746,11 +1777,11 @@ suite_bbob_mixint:
   - dim:
       max: 160
       min: 5
-    type: integer
+    type: continuous
   - dim:
       max: 160
       min: 5
-    type: continuous
+    type: integer
 suite_bbob_noisy:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1777,6 +1808,7 @@ suite_bbob_noisy:
       type: null
       url: https://hal.inria.fr/inria-00369466
     title: 'Real-parameter black-box optimization benchmarking: noisy functions definitions'
+    type: null
   source: null
   tags: null
   type: suite
@@ -1817,6 +1849,7 @@ suite_bp:
       type: null
       url: https://doi.org/10.1109/CEC.2019.8790277
     title: BP benchmark
+    type: null
   source: null
   tags: null
   type: suite
@@ -1859,6 +1892,7 @@ suite_brachytherapy:
       type: null
       url: https://www.sciencedirect.com/science/article/pii/S1538472123016781
     title: Brachytherapy treatment planning
+    type: null
   source:
   - real-world
   tags: null
@@ -1896,6 +1930,7 @@ suite_car_structure:
       type: null
       url: https://doi.org/10.1145/3205651.3205702
     title: Car structure design benchmark
+    type: null
   source:
   - real-world
   tags: null
@@ -1942,6 +1977,7 @@ suite_cdmp:
       type: null
       url: https://doi.org/10.1145/3321707.3321878
     title: CDMP benchmark
+    type: null
   source: null
   tags: null
   type: suite
@@ -1975,6 +2011,7 @@ suite_cec2013:
       type: null
       url: https://peerj.com/articles/cs-2671/CEC2013.pdf
     title: CEC2013 definitions
+    type: null
   source:
   - artificial
   tags: null
@@ -2012,6 +2049,7 @@ suite_cec2015_dmoo:
     link: null
     title: Benchmark Functions for CEC 2015 Special Session and Competition on 
       Dynamic Multi-objective Optimization
+    type: null
   source: null
   tags: null
   type: suite
@@ -2047,6 +2085,7 @@ suite_cec2018_dt:
       url: 
         https://www.academia.edu/download/94499025/TR-CEC2018-DMOP-Competition.pdf
     title: CEC2018 DMOP Competition TR
+    type: null
   source:
   - artificial
   tags: null
@@ -2082,6 +2121,7 @@ suite_cec2022:
       url: 
         https://github.com/P-N-Suganthan/2022-SO-BO/blob/main/CEC2022%20TR.pdf
     title: CEC2022 TR
+    type: null
   source:
   - artificial
   tags: null
@@ -2120,6 +2160,7 @@ suite_cfd:
       type: null
       url: https://doi.org/10.1007/978-3-319-99259-4_24
     title: CFD test problem suite
+    type: null
   source:
   - real-world
   tags: null
@@ -2162,6 +2203,7 @@ suite_cre:
       type: null
       url: https://doi.org/10.1016/j.asoc.2020.106078
     title: Easy-to-evaluate real-world multi-objective optimization problems
+    type: null
   source:
   - real-world-like
   tags: null
@@ -2202,6 +2244,7 @@ suite_cuter:
       type: null
       url: https://dl.acm.org/doi/10.1145/962437.962439
     title: CUTEr
+    type: null
   source:
   - artificial
   tags: null
@@ -2254,6 +2297,7 @@ suite_cutest:
       type: null
       url: https://link.springer.com/article/10.1007/s10589-014-9687-3
     title: CUTEst
+    type: null
   source:
   - artificial
   tags: null
@@ -2307,6 +2351,7 @@ suite_dtlz:
       type: null
       url: https://doi.org/10.1109/CEC.2002.1007032
     title: Scalable multi-objective optimization test problems
+    type: null
   source: null
   tags: null
   type: suite
@@ -2340,6 +2385,7 @@ suite_dynamicbinval:
       type: null
       url: https://arxiv.org/pdf/2404.15837
     title: DynamicBinVal
+    type: null
   source:
   - artificial
   tags: null
@@ -2373,6 +2419,7 @@ suite_emo2017:
       type: null
       url: https://www.ini.rub.de/PEOPLE/glasmtbl/projects/bbcomp/
     title: BBComp EMO 2017
+    type: null
   source:
   - real-world
   tags: null
@@ -2455,6 +2502,7 @@ suite_etmof:
       type: null
       url: https://doi.org/10.48550/arXiv.2110.08033
     title: Evolutionary many-task optimization framework
+    type: null
   source: null
   tags: null
   type: suite
@@ -2469,13 +2517,13 @@ suite_expobench:
   code_examples: null
   constraints:
   - equality: null
-    hard: yes
-    number: null
-    type: box
-  - equality: null
     hard: some
     number: null
     type: unknown
+  - equality: null
+    hard: yes
+    number: null
+    type: box
   description: Wind farm layout optimization, gas filter design, pipe shape 
     optimization, hyperparameter tuning, and hospital simulation
   dynamic_type: null
@@ -2487,8 +2535,8 @@ suite_expobench:
   modality: null
   name: EXPObench
   noise_type:
-  - real-life
   - observational
+  - real-life
   objectives:
   - 1
   problems: null
@@ -2498,6 +2546,7 @@ suite_expobench:
       type: null
       url: https://doi.org/10.1016/j.asoc.2023.110744
     title: EXPObench
+    type: null
   source:
   - real-world
   tags: null
@@ -2510,11 +2559,11 @@ suite_expobench:
   - dim:
       max: 135
       min: 10
-    type: categorical
+    type: continuous
   - dim:
       max: 135
       min: 10
-    type: continuous
+    type: categorical
 suite_gbea:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2543,6 +2592,7 @@ suite_gbea:
       type: null
       url: https://doi.org/10.1145/3321707.3321805
     title: Game benchmark for evolutionary algorithms
+    type: null
   source:
   - real-world
   tags: null
@@ -2576,6 +2626,7 @@ suite_gnbg:
       type: null
       url: https://arxiv.org/abs/2312.07083
     title: GNBG
+    type: null
   source:
   - artificial
   tags: null
@@ -2611,6 +2662,7 @@ suite_gnbg_ii:
       type: null
       url: https://dl.acm.org/doi/pdf/10.1145/3712255.3734271
     title: GNBG-II
+    type: null
   source:
   - artificial
   tags: null
@@ -2646,6 +2698,7 @@ suite_iohclustering:
       type: null
       url: https://arxiv.org/pdf/2505.09233
     title: IOHClustering
+    type: null
   source:
   - artificial-from-real-data
   tags: null
@@ -2680,6 +2733,7 @@ suite_kinematics_robotarm:
       type: null
       url: https://doi.org/10.1023/A:1013258808932
     title: Kinematics of a robot arm
+    type: null
   source:
   - real-world
   tags: null
@@ -2710,6 +2764,7 @@ suite_l1_zdt:
       type: null
       url: https://doi.org/10.1145/1143997.1144179
     title: Linkage ZDT/DTLZ variants
+    type: null
   source: null
   tags: null
   type: suite
@@ -2753,6 +2808,7 @@ suite_l2_dtlz:
       type: null
       url: https://doi.org/10.1145/1143997.1144179
     title: Linkage ZDT/DTLZ variants
+    type: null
   source: null
   tags: null
   type: suite
@@ -2784,6 +2840,7 @@ suite_l2_zdt:
       type: null
       url: https://doi.org/10.1145/1143997.1144179
     title: Linkage ZDT/DTLZ variants
+    type: null
   source: null
   tags: null
   type: suite
@@ -2827,6 +2884,7 @@ suite_l3_dtlz:
       type: null
       url: https://doi.org/10.1145/1143997.1144179
     title: Linkage ZDT/DTLZ variants
+    type: null
   source: null
   tags: null
   type: suite
@@ -2858,6 +2916,7 @@ suite_l3_zdt:
       type: null
       url: https://doi.org/10.1145/1143997.1144179
     title: Linkage ZDT/DTLZ variants
+    type: null
   source: null
   tags: null
   type: suite
@@ -2902,6 +2961,7 @@ suite_maop:
       type: null
       url: https://doi.org/10.1016/j.swevo.2019.02.003
     title: MaOP benchmark
+    type: null
   source: null
   tags: null
   type: suite
@@ -2943,6 +3003,7 @@ suite_mechbench:
       type: null
       url: https://arxiv.org/abs/2511.10821
     title: MECHBench
+    type: null
   source:
   - real-world
   tags: null
@@ -2978,6 +3039,7 @@ suite_mf2:
       type: null
       url: https://doi.org/10.21105/joss.02049
     title: 'mf2: a collection of multi-fidelity benchmark functions in Python'
+    type: null
   source: null
   tags: null
   type: suite
@@ -3018,6 +3080,7 @@ suite_minus_dtlz:
       type: null
       url: https://doi.org/10.1109/TEVC.2016.2587749
     title: Minus DTLZ / Minus WFG
+    type: null
   source: null
   tags: null
   type: suite
@@ -3058,6 +3121,7 @@ suite_minus_wfg:
       type: null
       url: https://doi.org/10.1109/TEVC.2016.2587749
     title: Minus DTLZ / Minus WFG
+    type: null
   source: null
   tags: null
   type: suite
@@ -3101,6 +3165,7 @@ suite_mmopp:
       url: 
         http://www5.zzu.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1327567121&wbfileid=4764412
     title: MMOPP technical report
+    type: null
   source: null
   tags: null
   type: suite
@@ -3122,8 +3187,8 @@ suite_modact:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_modact
   - impl_pymoo
+  - impl_modact
   long_name: multiobjective design of actuators
   modality: null
   name: MODAct
@@ -3140,6 +3205,7 @@ suite_modact:
       type: null
       url: https://doi.org/10.1109/TEVC.2020.3020046
     title: MODAct
+    type: null
   source:
   - real-world
   tags: null
@@ -3204,6 +3270,7 @@ suite_pbo:
       type: null
       url: https://dl.acm.org/doi/pdf/10.1145/3319619.3326810
     title: PBO benchmarks
+    type: null
   source:
   - artificial
   tags: null
@@ -3238,6 +3305,7 @@ suite_porkchop:
       type: null
       url: https://doi.org/10.1109/CEC65147.2025.11042973
     title: Porkchop plot interplanetary trajectory benchmark
+    type: null
   source:
   - real-world
   tags: null
@@ -3278,6 +3346,7 @@ suite_re:
       type: null
       url: https://doi.org/10.1016/j.asoc.2020.106078
     title: Easy-to-evaluate real-world multi-objective optimization problems
+    type: null
   source:
   - real-world-like
   tags: null
@@ -3286,11 +3355,11 @@ suite_re:
   - dim:
       max: 7
       min: 2
-    type: integer
+    type: continuous
   - dim:
       max: 7
       min: 2
-    type: continuous
+    type: integer
 suite_rwmvop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3318,6 +3387,7 @@ suite_rwmvop:
       type: null
       url: https://doi.org/10.1109/TEVC.2013.2281531
     title: RWMVOP
+    type: null
   source:
   - real-world
   tags: null
@@ -3330,11 +3400,11 @@ suite_rwmvop:
   - dim:
       max: null
       min: 1
-    type: integer
+    type: categorical
   - dim:
       max: null
       min: 1
-    type: categorical
+    type: integer
 suite_sbox_cost:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3361,6 +3431,7 @@ suite_sbox_cost:
       type: null
       url: https://doi.org/10.48550/arXiv.2305.12221
     title: SBOX-COST
+    type: null
   source: null
   tags: null
   type: suite
@@ -3402,6 +3473,7 @@ suite_sdp:
       type: null
       url: https://doi.org/10.1109/TCYB.2019.2896021
     title: SDP dynamic multi-objective benchmark
+    type: null
   source: null
   tags: null
   type: suite
@@ -3435,6 +3507,7 @@ suite_submodular:
       type: null
       url: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10254181
     title: Submodular optimization benchmark
+    type: null
   source:
   - artificial
   tags: null
@@ -3484,6 +3557,7 @@ suite_tulipa_energy:
       url: 
         https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/40-scientific-foundation/45-scientific-references
     title: TulipaEnergyModel.jl scientific references
+    type: null
   source:
   - real-world
   tags: null
@@ -3518,6 +3592,7 @@ suite_vehicle_dynamics:
       type: null
       url: https://www.scitepress.org/Papers/2023/121580/121580.pdf
     title: VehicleDynamics benchmark
+    type: null
   source:
   - real-world
   tags: null
@@ -3562,6 +3637,7 @@ suite_wfg:
       url: https://doi.org/10.1109/TEVC.2005.861417
     title: A review of multiobjective test problems and a scalable test problem 
       toolkit
+    type: null
   source: null
   tags: null
   type: suite
@@ -3597,6 +3673,7 @@ suite_zdt:
       type: null
       url: https://doi.org/10.1162/106365600568202
     title: 'Comparison of multiobjective evolutionary algorithms: empirical results'
+    type: null
   source: null
   tags: null
   type: suite
