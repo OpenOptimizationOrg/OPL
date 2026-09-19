@@ -1,0 +1,62 @@
+# Please enter the information relevant to your problem/suite/generator.
+#
+# Instructions:
+# - Fields that are not relevant can be removed (delete the whole line), or left empty.
+# - Enter 'unknown' for fields where the value is unknown.
+# - If multiple suggested values are relevant, include all those that fit.
+# - Suggested values for fields are recommendations. If they are not a good fit, feel free to add something else (and ideally, explain why).
+# - If some property is present, it does not have to apply to all problems/variables.
+- name:
+    short: BBOB # Short name or abbreviation
+    full: Real-Parameter Black-Box Optimization Benchmarking # Full name
+  suite/generator/single: suite # Whether this is a single problem, a problem suite, or problem generator
+  objectives:
+    number: '1' # (list of) fixed numbers, or ranges (5-11,19,85), scalable if it can be any value
+  variables: # Information about the input variables
+    types: continuous # Can be one or more of (continuous, integer, binary, categorical, mixed) in case of mixed, describe which mixes are possible
+    conditional: 'no' # Whether there are conditional dependencies between variables (some variables are only active when others meet certain conditions), 'yes' or 'no'
+    dimensionality:
+      number: '2-40' # (list of) fixed numbers, or ranges (5-11,19,85), or 'any' if it can be any value
+      scalable: 'yes' # Is the dimensionality scalable yes or no (problems can be generated for varying dimensionalities)
+  constraints: # List of constraints, if any. Add a new entry for each additional constraint type.
+    - type: 'box' # Type of constraint, e.g., box, permutation, linear, nonlinear, equality, inequality, etc. Add a new line for each additional type.
+      hard: no # Whether the constraint is hard (violations don't have a true fitness value) yes, no or mixed
+      number: '1' # number of constraints of this type, or ranges (5-11,19,85) or scalable if it can be arbitrarily changed
+  dynamic: # Dynamic properties, e.g., changing objective functions
+    present: 'no' # Enter, yes, no, or optional
+    types: '' # Types of dynamic behaviour that are present
+  noise: # Noise on the objective function(s)
+    present: 'no' # Enter, yes, no, or optional
+    types: '' # Types of noise that are present
+  modality:
+    types: 'unimodal, multimodal' # Enter all that are present
+  evaluations:
+    multi-fidelity: 'no' # Whether evaluations can be performed at multiple fidelities, yes, no, or optional
+    partial possible: 'no' # Whether evaluation of subset(s) of decision variables are possible
+    independent objectives: 'no' # Can objective functions be evaluated independently of each other yes, no or some
+  reference:
+    links:
+      - https://doi.org/10.1080/10556788.2020.1808977 # URL to source or closely related research article, preferably DOI based. Add a new line below for each additional article.
+    authors: 'Nikolaus Hansen, Anne Auger, Raymond Ros, Olaf Mersmann, Tea Tušar, Dimo Brockhoff'
+  contact person: '' # If available, a contact person for questions about the problem/suite/generator, e.g., the maintainer or author
+  implementations:
+    - name: COCO # Name of the tool/library/package
+      link: https://github.com/numbbo/coco
+      languages: # Programming languages the implementation can be used with
+       - 'C/C++'
+       - 'Python'
+       - 'Java'
+       - 'Matlab/Octave' 
+      evaluation time: 'less than a second' # Time for a single (full) evaluation. Choose: 'less than a second', 'seconds', 'minutes', 'hours', 'days'
+      specific requirements: 'no' # Can be things like memory/GPU requirements, or the need for a specific simulator. Enter 'no' if none.
+  source:
+    origin: 'artificial' # Is the problem artificial, real-world, or real-world-like
+    domain: '' # In case it is real-world (like) E.g., automotive
+    open/closed: '' # Is the problem open source yes or no
+  textual description:
+    general info: ''
+    motivation: 'evaluate algorithm performance for typical difficulties that occur in continuous problems'
+    challenge/key characteristics: ''
+    limitations: ''
+    example links: '' # URLs to examples where it was used (e.g., scientific articles) - Note: URLs to where it was proposed should go under the 'reference' field.
+  other info: ''
