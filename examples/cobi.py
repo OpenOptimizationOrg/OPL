@@ -37,6 +37,7 @@ things["cobi_problem"] = Generator(
             title="Pareto Set Characterization in Constrained Multiobjective Optimization and the COBI Problem Generator",
             authors=["Anne Auger", "Dimo Brockhoff", "Luka Opravš", "Tea Tušar"],
             link={"type": "arxiv", "url": "https://arxiv.org/abs/2604.09131"},
+            type="definition"
         )
     ],
     objectives={2},
