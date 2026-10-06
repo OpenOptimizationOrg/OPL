@@ -262,13 +262,18 @@ constraints:
 ### Reference
 
 Bibliographic pointer. 
-Requires either a `title` or a `link` and optionally a list of  `authors`.
+Requires either a `title` or a `link` and optionally a list of  `authors` and the `type` of reference.
+`type` can be one of
+- **`"definition"`**: Defines or introduces a new thing (problem, algorithm, features, ...)
+- **`"use"`**: Uses a problem 
+- **`"critique"`**: Discussed the suitability of a problem for some task or field
 
 ```yaml
 references:
   - title: "Evolutionsstrategie - Optimisierung technischer Systeme nach Prinzipien der biologischen Evolution"
-    authors: 
+    authors:
       - Ingo Rechenberg
+    type: definition
 ```
 
 ### Link

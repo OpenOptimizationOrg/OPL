@@ -1,14 +1,6 @@
 name: New Problem Check
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "problems.yaml"
-  pull_request:
-    paths:
-      - "problems.yaml"
   workflow_dispatch: # allow triggering workflow manually
     inputs:
       reason:
