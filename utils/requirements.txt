@@ -1,2 +1,3 @@
 pyyaml
 pandas
+pydantic_yaml
