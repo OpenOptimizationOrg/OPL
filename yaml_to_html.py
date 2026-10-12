@@ -320,8 +320,8 @@ def format_variables_by_type(variables):
         if domain is not None:
             domains.append(domain)
 
-    for variable_type in values:
-        values[variable_type] = " | ".join(values[variable_type])
+    for variable_type in sorted(list(values.keys())):
+        values[variable_type] = " | ".join(sorted(values[variable_type]))
 
     return values, combine_domains_for_total(domains)
 
@@ -356,7 +356,7 @@ def list_variable_types(variables):
     types = [v for v in unique_preserve_order(types) if v]
     if not types:
         return ""
-    return " | ".join(types)
+    return " | ".join(sorted(types))
 
 
 def list_constraint_types(constraints):
@@ -373,7 +373,7 @@ def list_constraint_types(constraints):
     types = [c for c in unique_preserve_order(types) if c]
     if not types:
         return ""
-    return " | ".join(types)
+    return " | ".join(sorted(types))
 
 
 def has_nonzero_info(value, yes_only=False):
@@ -381,7 +381,10 @@ def has_nonzero_info(value, yes_only=False):
         return False
 
     if isinstance(value, (set, list, tuple, dict)):
-        return len(value) > 0
+        if len(value) == 1:
+            return has_nonzero_info(next(iter(value)), yes_only=yes_only)
+        else:
+            return len(value) > 0
 
     text = str(value).strip().lower()
     if not text:
@@ -404,10 +407,11 @@ def build_properties(item):
     if has_nonzero_info(getattr(item, "can_evaluate_objectives_independently", None), yes_only=True):
         properties.append("independent objective evaluations")
     if has_nonzero_info(getattr(item, "fidelity_levels", None)):
-        properties.append("multi-fidelity")
+        if getattr(item, "fidelity_levels", None) != {1}:
+            properties.append("multi-fidelity")
     if not properties:
         return ""
-    return " | ".join(properties)
+    return " | ".join(sorted(properties))
 
 
 def format_implementation_links(links):
@@ -552,8 +556,8 @@ def format_constraints_by_type(constraints, constraint_types):
                 soft_domains.append(count_domain)
 
     for constraint_type in constraint_types:
-        hard_values[constraint_type] = " | ".join(hard_values[constraint_type])
-        soft_values[constraint_type] = " | ".join(soft_values[constraint_type])
+        hard_values[constraint_type] = " | ".join(sorted(hard_values[constraint_type]))
+        soft_values[constraint_type] = " | ".join(sorted(soft_values[constraint_type]))
 
     hard_total = combine_domains_for_total(hard_domains)
     soft_total = combine_domains_for_total(soft_domains)

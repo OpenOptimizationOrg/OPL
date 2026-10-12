@@ -9,7 +9,7 @@ parent = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(parent))
 
 # Now you can import normally
-from yaml_to_html import default_columns as REQUIRED_FIELDS
+from yaml_to_html import DEFAULT_VISIBLE_COLUMNS as REQUIRED_FIELDS
 
 OPTIONAL_FIELDS = ["multimodal"]
 UNIQUE_FIELDS = ["name"]
