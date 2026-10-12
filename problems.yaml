@@ -27,11 +27,6 @@ fn_ato:
   objectives:
   - 2
   references:
-  - authors: null
-    link: null
-    title: Multi-Objective Pipeline Optimisation and Configuration of Automatic Train
-      Operation Trajectories
-    type: null
   - authors:
     - Carolin Mensendiek
     - Henrik Zeipel
@@ -42,7 +37,7 @@ fn_ato:
     link:
       type: null
       url: https://doi.org/10.1145/3795101.3805368
-    title: null
+    title: Multi-Objective Pipeline Optimisation and Configuration of Automatic Train Operation Trajectories
     type: null
   source:
   - real-world
