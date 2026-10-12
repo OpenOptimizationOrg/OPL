@@ -552,7 +552,7 @@ def dump_library(path: Path, root: dict[str, Problem | Suite | Generator | Imple
     # model_dump(mode="json") converts enums and nested pydantic models to plain YAML-safe values.
     serializable = {key: value.model_dump(mode="json") for key, value in root.items()}
     with path.open("w", encoding="utf-8") as out_file:
-        yaml.safe_dump(serializable, out_file, sort_keys=True, allow_unicode=False)
+        yaml.safe_dump(serializable, out_file, sort_keys=True, allow_unicode=True)
 
 
 def convert(
