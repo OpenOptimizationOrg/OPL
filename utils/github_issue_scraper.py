@@ -1,3 +1,5 @@
+# pip install requests bs4
+
 import requests
 import re
 from urllib.parse import urlparse
