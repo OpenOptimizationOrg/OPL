@@ -302,7 +302,7 @@ Used by `Variable.dim`, `Constraint.number`, `Problem.instances`.
 
 ### YesNoSome
 
-Three-valued flag: `yes | no | some | ?` (the last serialises as the literal `'?'` string, meaning unknown).
+Three-valued flag: `yes | no | some | unknown`.
 `some` captures the common case where *part* of something has some property.
 For example only some constraints might hard but we don't know the exact number of hard and soft constraints, only the total number.
 
