@@ -165,6 +165,47 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
     </tr>
+    <tr data-problem-id="fn_cfd_based_non_premixed_burner_design">
+      <td>fn_cfd_based_non_premixed_burner_design</td>
+      <td>CFD-Based Non-Premixed Burner Design</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity</td>
+      <td>box | unknown</td>
+      <td>2</td>
+      <td>none</td>
+      <td>none</td>
+      <td>no</td>
+      <td>no</td>
+      <td>[1, 2]</td>
+      <td>CFD-Based Non-Premixed Burner Design</td>
+      <td>Change the length and width of a combustor optimizing the combustion efficiency but keeping NOx emissions constrained.</td>
+      <td></td>
+      <td>P. S. Lima, P. R. S. dos Reis, A. Á. B. Santos, E. A. del R. Chanona, and I. B. dos R. Nogueira, “Multi-fidelity Bayesian Optimization Framework for CFD-Based Non-Premixed Burner Design,” Nov. 28, 2025, arXiv: arXiv:2511.23140. doi: 10.48550/arXiv.2511.23140.</td>
+      <td>impl_cfd_based_non_premixed_burner_design</td>
+      <td></td>
+      <td>35-40 minutes</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>CFD-Based Non-Premixed Burner Design</td>
+      <td>Python, Authors disclose using optimizer in Python, but the physical model happens in a simulation pipeline in FLUENT</td>
+      <td>{'35-40 minutes'}</td>
+      <td></td>
+      <td>Change the length and width of a combustor optimizing the combustion efficiency but keeping NOx emissions constrained.</td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
     <tr data-problem-id="fn_convex_dtlz2">
       <td>fn_convex_dtlz2</td>
       <td>Convex DTLZ2</td>
@@ -452,6 +493,129 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
     </tr>
+    <tr data-problem-id="fn_layout_of_wind_farms">
+      <td>fn_layout_of_wind_farms</td>
+      <td>Layout of Wind Farms</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity</td>
+      <td>box | unknown</td>
+      <td>>=2</td>
+      <td>none</td>
+      <td>none</td>
+      <td>yes</td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>Optimizing a Wind Farm Layout: Input variables are coordinates of the turbines (box-constraints). Constraint that they don't overlap (hard constraint). Optimize the overall power output from all wind turbines and with different wind states. Use a simulation to evaluate a layout. It is expensive approx. 70 CPU hours.</td>
+      <td></td>
+      <td>Layout of Wind Farms, <a href="https://arxiv.org/abs/2302.01071">https://arxiv.org/abs/2302.01071</a></td>
+      <td>impl_layout_of_wind_farms</td>
+      <td>multimodal</td>
+      <td>70 CPU hours</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Layout of Wind Farms</td>
+      <td></td>
+      <td>{'70 CPU hours'}</td>
+      <td></td>
+      <td>Optimizing a Wind Farm Layout: Input variables are coordinates of the turbines (box-constraints). Constraint that they don't overlap (hard constraint). Optimize the overall power output from all wind turbines and with different wind states. Use a simulation to evaluate a layout. It is expensive approx. 70 CPU hours.</td>
+      <td></td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_materials_design">
+      <td>fn_materials_design</td>
+      <td>Materials Design</td>
+      <td>Problem</td>
+      <td>categorical | continuous</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>none</td>
+      <td>unknown</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td></td>
+      <td>Materials Design Optimization: Select appropriate material and microstructure optimization for optimizing the light absorbing of a quasi-random solar cell. Maximize light absorption by balancing the competing processes of light reflection and scattering.Choose from 5 materials. Another material design problem can be found here: <a href="https://github.com/clancyLab/NCM2018">https://github.com/clancyLab/NCM2018</a></td>
+      <td></td>
+      <td>Materials Design, <a href="https://www.nature.com/articles/s41598-020-60652-9">https://www.nature.com/articles/s41598-020-60652-9</a></td>
+      <td>impl_materials_design</td>
+      <td></td>
+      <td>expensive simulation</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Materials Design</td>
+      <td></td>
+      <td>{'expensive simulation'}</td>
+      <td></td>
+      <td>Materials Design Optimization: Select appropriate material and microstructure optimization for optimizing the light absorbing of a quasi-random solar cell. Maximize light absorption by balancing the competing processes of light reflection and scattering.Choose from 5 materials. Another material design problem can be found here: <a href="https://github.com/clancyLab/NCM2018">https://github.com/clancyLab/NCM2018</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_miprowa_millireactor_geometry_optimization">
+      <td>fn_miprowa_millireactor_geometry_optimization</td>
+      <td>Miprowa millireactor geometry optimization</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>box</td>
+      <td>>=1</td>
+      <td>none</td>
+      <td></td>
+      <td>no</td>
+      <td>unknown</td>
+      <td></td>
+      <td>Miprowa millireactor design optimization</td>
+      <td>Optimizing the design of the mulireactor to achieve minimal stagnating flow and mixing variance</td>
+      <td></td>
+      <td>Begall, M. J., Schweidtmann, A. M., Mhamdi, A., & Mitsos, A. (2023). Geometry optimization of a continuous millireactor via CFD and Bayesian optimization. Computers & chemical engineering, 171, 108140.</td>
+      <td>impl_miprowa_millireactor_geometry_optimization</td>
+      <td></td>
+      <td>6.5 hours</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Miprowa millireactor geometry optimization</td>
+      <td></td>
+      <td>{'6.5 hours'}</td>
+      <td></td>
+      <td>Optimizing the design of the mulireactor to achieve minimal stagnating flow and mixing variance</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
     <tr data-problem-id="fn_onemax_sphere_deceptive_rotell">
       <td>fn_onemax_sphere_deceptive_rotell</td>
       <td>Onemax+Sphere / DeceptiveTrap+RotatedEllipsoid</td>
@@ -534,6 +698,88 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
     </tr>
+    <tr data-problem-id="fn_optimal_sensor_placement_concrete_frame">
+      <td>fn_optimal_sensor_placement_concrete_frame</td>
+      <td>Optimal Sensor Placement - concrete frame</td>
+      <td>Problem</td>
+      <td>binary</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>unknown</td>
+      <td>1</td>
+      <td>none</td>
+      <td></td>
+      <td>no</td>
+      <td>no</td>
+      <td>1</td>
+      <td>Optimal sensor placement for structural damage segmentation</td>
+      <td>Select sensor locations from a set of options. Here, the goal is to optimize structural damage prediction (but can be arbitrary)</td>
+      <td>form-submission</td>
+      <td>Sajedi, S., & Liang, X. (2022). Deep generative Bayesian optimization for sensor placement in structural health monitoring. Computer‐Aided Civil and Infrastructure Engineering, 37(9), 1109-1127.</td>
+      <td>impl_optimal_sensor_placement_concrete_frame</td>
+      <td></td>
+      <td>minutes to hours</td>
+      <td></td>
+      <td>artificial</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Optimal Sensor Placement - concrete frame</td>
+      <td></td>
+      <td>{'minutes to hours'}</td>
+      <td></td>
+      <td>Select sensor locations from a set of options. Here, the goal is to optimize structural damage prediction (but can be arbitrary)</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_optimization_of_milireactor">
+      <td>fn_optimization_of_milireactor</td>
+      <td>Optimization of milireactor</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>none</td>
+      <td>none</td>
+      <td>no</td>
+      <td>no</td>
+      <td></td>
+      <td>Optimization of milireactor</td>
+      <td>Polymerization processes in the (specialty) chemical industry increasingly rely on continuous flow processing. Continuous polymerization reactors are promising, because their large surface to volume ratio allows for faster heat removal and better temperature control than batch reactors. Furthermore, this ratio can be kept constant during scaleup, reducing the need for pilot stages making it easier to go from lab- to production scale. However, continuous polymerization reactors, especially milli-scale reactors with internal mixing elements, can be highly complex devices, which can be difficult to characterize experimentally, as many of their properties are not readily available via measurements. Additionally, their small size renders them especially prone to fouling</td>
+      <td></td>
+      <td>M. J. Begall, A. M. Schweidtmann, A. Mhamdi, and A. Mitsos, “Geometry optimization of a continuous millireactor via CFD and Bayesian optimization,” Computers & Chemical Engineering, vol. 171, p. 108140, Mar. 2023, doi: 10.1016/j.compchemeng.2023.108140.</td>
+      <td>impl_optimization_of_milireactor</td>
+      <td></td>
+      <td>6.6 hours</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Optimization of milireactor</td>
+      <td>COMSOL (It's suspected the authors used MATLAB)</td>
+      <td>{'6.6 hours'}</td>
+      <td></td>
+      <td>Polymerization processes in the (specialty) chemical industry increasingly rely on continuous flow processing. Continuous polymerization reactors are promising, because their large surface to volume ratio allows for faster heat removal and better temperature control than batch reactors. Furthermore, this ratio can be kept constant during scaleup, reducing the need for pilot stages making it easier to go from lab- to production scale. However, continuous polymerization reactors, especially milli-scale reactors with internal mixing elements, can be highly complex devices, which can be difficult to characterize experimentally, as many of their properties are not readily available via measurements. Additionally, their small size renders them especially prone to fouling</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
     <tr data-problem-id="fn_radar_waveform">
       <td>fn_radar_waveform</td>
       <td>Radar waveform</td>
@@ -569,6 +815,129 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>Radar waveform design reference implementation</td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_shape_optimization_of_a_lid_driven_cavity">
+      <td>fn_shape_optimization_of_a_lid_driven_cavity</td>
+      <td>Shape optimization of a lid-driven cavity</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity | noisy</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td>none</td>
+      <td>["none", "though potentially one shall revise the meshing algorithm."]</td>
+      <td>no</td>
+      <td>no</td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>"Consider an incompressible two-dimensional cavity flow, where all walls are at rest except the upper wall (lid) which moves with the constant velocity U0 in the positive horizontal direction, x. The aim is to optimize the shape of the left and right walls so that the energy dissipation is either minimized or maximized with the constraint of keeping the total volume of the fluid confined in the cavity fixed and also retain the length and position of the upper and lower walls. Therefore, the objective is to find the wall shape which either minimizes or maximizes"</td>
+      <td>form-submission</td>
+      <td></td>
+      <td>impl_shape_optimization_of_a_lid_driven_cavity</td>
+      <td></td>
+      <td>[]</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Shape optimization of a lid-driven cavity</td>
+      <td>Physical Model: Nek500; CFD Solver: OpenFOAM (Not disclosed the coupling, but could be Python)</td>
+      <td></td>
+      <td></td>
+      <td>"Consider an incompressible two-dimensional cavity flow, where all walls are at rest except the upper wall (lid) which moves with the constant velocity U0 in the positive horizontal direction, x. The aim is to optimize the shape of the left and right walls so that the energy dissipation is either minimized or maximized with the constraint of keeping the total volume of the fluid confined in the cavity fixed and also retain the length and position of the upper and lower walls. Therefore, the objective is to find the wall shape which either minimizes or maximizes"</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_simulation_driven_antenna_design">
+      <td>fn_simulation_driven_antenna_design</td>
+      <td>Simulation-Driven Antenna Design</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>box</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>1</td>
+      <td></td>
+      <td>Simulation-Driven Antenna Design Optimization: One scalar merit function encoding the design specifications (gain, voltage standing wave ratio,..) calculated by using a high-fidelity EM simulator of the antenna under design. The decision variables are designable parameters like geometry parameters and they are box-constrained.</td>
+      <td></td>
+      <td>Simulation-Driven Antenna Design, <a href="https://ieeexplore.ieee.org/abstract/document/9298949">https://ieeexplore.ieee.org/abstract/document/9298949</a></td>
+      <td>impl_simulation_driven_antenna_design</td>
+      <td></td>
+      <td>expensive</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Simulation-Driven Antenna Design</td>
+      <td></td>
+      <td>{'expensive'}</td>
+      <td></td>
+      <td>Simulation-Driven Antenna Design Optimization: One scalar merit function encoding the design specifications (gain, voltage standing wave ratio,..) calculated by using a high-fidelity EM simulator of the antenna under design. The decision variables are designable parameters like geometry parameters and they are box-constrained.</td>
+      <td></td>
+      <td>>=1</td>
+      <td>>=1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="fn_transverse_bending_under_pole_impact">
+      <td>fn_transverse_bending_under_pole_impact</td>
+      <td>Transverse bending under pole impact</td>
+      <td>Problem</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>box | unknown</td>
+      <td>2</td>
+      <td>none</td>
+      <td>none</td>
+      <td>no</td>
+      <td></td>
+      <td>1</td>
+      <td></td>
+      <td>A beam, simply supported at both ends, is struck laterally by a rigid pole, mimicking side-pole crash tests. The objective is to minimize intrusion, defined as the maximal dynamic displacement of the impactor before rebound, subject to a volume constraint of at most 50% of the design domain. The design is parameterized by a level-set function with 15 variables, mapped onto an LS-Dyna mesh of 1,600 eight-node solid elements with piecewise linear plasticity. Void elements are deleted from the mesh, and the out-of-plane (z) direction is fixed.</td>
+      <td></td>
+      <td>Transverse bending under pole impact, <a href="http://www.sciencedirect.com/science/article/pii/S0045782519300726">http://www.sciencedirect.com/science/article/pii/S0045782519300726</a></td>
+      <td>impl_transverse_bending_under_pole_impact</td>
+      <td></td>
+      <td>2 minutes</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Transverse bending under pole impact</td>
+      <td>Python</td>
+      <td>{'2 minutes'}</td>
+      <td></td>
+      <td>A beam, simply supported at both ends, is struck laterally by a rigid pole, mimicking side-pole crash tests. The objective is to minimize intrusion, defined as the maximal dynamic displacement of the impactor before rebound, subject to a volume constraint of at most 50% of the design domain. The design is parameterized by a level-set function with 15 variables, mapped onto an LS-Dyna mesh of 1,600 eight-node solid elements with piecewise linear plasticity. Void elements are deleted from the mesh, and the out-of-plane (z) direction is fixed.</td>
+      <td></td>
+      <td>1</td>
       <td></td>
       <td></td>
       <td></td>
@@ -767,11 +1136,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>IOHGNBG | GNBG-II</td>
+      <td>GNBG-II | IOHGNBG</td>
       <td></td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a> | <a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
-      <td>IOHprofiler version of GNBG | Generalized Numerical Benchmark Generator version 2</td>
+      <td><a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a> | <a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a></td>
+      <td>Generalized Numerical Benchmark Generator version 2 | IOHprofiler version of GNBG</td>
       <td></td>
       <td></td>
       <td></td>
@@ -890,11 +1259,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>MA-BBOB (IOHexperimenter) | IOHexperimenter</td>
+      <td>IOHexperimenter | MA-BBOB (IOHexperimenter)</td>
       <td>C++/Python</td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb">https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb</a> | <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-      <td>Example notebook for MA-BBOB in IOHexperimenter | IOHprofiler experimenter framework</td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a> | <a href="https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb">https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb</a></td>
+      <td>IOHprofiler experimenter framework | Example notebook for MA-BBOB in IOHexperimenter</td>
       <td></td>
       <td></td>
       <td></td>
@@ -1518,6 +1887,47 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
     </tr>
+    <tr data-problem-id="suite_biological_sequence_design">
+      <td>suite_biological_sequence_design</td>
+      <td>Biological sequence design</td>
+      <td>Suite</td>
+      <td>categorical</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity | noisy</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>none</td>
+      <td>observational</td>
+      <td>no</td>
+      <td>unknown</td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>Biological sequence design</td>
+      <td>form-submission</td>
+      <td>Biological sequence design, <a href="https://arxiv.org/pdf/2203.12742">https://arxiv.org/pdf/2203.12742</a></td>
+      <td>impl_biological_sequence_design</td>
+      <td>multimodal</td>
+      <td>expensive</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Biological sequence design</td>
+      <td>Python</td>
+      <td>{'expensive'}</td>
+      <td><a href="https://github.com/samuelstanton/lambo">https://github.com/samuelstanton/lambo</a></td>
+      <td>Biological sequence design</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
     <tr data-problem-id="suite_bp">
       <td>suite_bp</td>
       <td>BP</td>
@@ -1833,11 +2243,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>CEC2022 reference code | IOHexperimenter</td>
+      <td>IOHexperimenter | CEC2022 reference code</td>
       <td>C++/Python</td>
       <td></td>
-      <td><a href="https://github.com/P-N-Suganthan/2022-SO-BO">https://github.com/P-N-Suganthan/2022-SO-BO</a> | <a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a></td>
-      <td>Suganthan's reference implementation | IOHprofiler experimenter framework</td>
+      <td><a href="https://github.com/IOHprofiler/IOHexperimenter">https://github.com/IOHprofiler/IOHexperimenter</a> | <a href="https://github.com/P-N-Suganthan/2022-SO-BO">https://github.com/P-N-Suganthan/2022-SO-BO</a></td>
+      <td>IOHprofiler experimenter framework | Suganthan's reference implementation</td>
       <td></td>
       <td></td>
       <td></td>
@@ -1876,7 +2286,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>CFD test problem suite</td>
       <td></td>
-      <td>{'30s', '15m'}</td>
+      <td>{'15m', '30s'}</td>
       <td><a href="https://bitbucket.org/arahat/cfd-test-problem-suite">https://bitbucket.org/arahat/cfd-test-problem-suite</a></td>
       <td>Expensive real-world CFD-based test problems</td>
       <td></td>
@@ -2245,7 +2655,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>coco-gbea</td>
       <td></td>
-      <td>{'5 seconds', '34 seconds'}</td>
+      <td>{'34 seconds', '5 seconds'}</td>
       <td><a href="https://github.com/ttusar/coco-gbea">https://github.com/ttusar/coco-gbea</a></td>
       <td>Game-Benchmark for Evolutionary Algorithms (COCO fork)</td>
       <td></td>
@@ -2325,11 +2735,52 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>>=1</td>
       <td></td>
-      <td>IOHGNBG | GNBG-II</td>
+      <td>GNBG-II | IOHGNBG</td>
       <td></td>
       <td></td>
-      <td><a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a> | <a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a></td>
-      <td>IOHprofiler version of GNBG | Generalized Numerical Benchmark Generator version 2</td>
+      <td><a href="https://github.com/rohitsalgotra/GNBG-II">https://github.com/rohitsalgotra/GNBG-II</a> | <a href="https://github.com/IOHprofiler/IOHGNBG">https://github.com/IOHprofiler/IOHGNBG</a></td>
+      <td>Generalized Numerical Benchmark Generator version 2 | IOHprofiler version of GNBG</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_guacamol">
+      <td>suite_guacamol</td>
+      <td>GuacaMol</td>
+      <td>Suite</td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>none</td>
+      <td>none</td>
+      <td>unknown</td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td>GuacaMol: Benchmarking Models for de Novo Molecular Design</td>
+      <td>De novo molecular design is a computational technique to generate novel compounds with desirable property profiles from scratch. It complements virtual screening, where large virtual compound libraries are pregenerated, stored, and then subsequently ranked on demand. Virtual screening is particularly useful when the virtual compounds are readily available (commercially, or in in-house screening collections), or easy to synthesize. Data sets sized on the order of 10^13 can be routinely screened under current computational constraints. However, this is only a tiny fraction of drug-like chemical space, which has an estimated size anywhere between 10^24 and 10^60 possible structures. This number might be even larger considering new modalities such as PROTACs. Efficient approaches to query larger combinatorial spaces without full enumeration via similarity to given structures have been reported. However, it is not straightforward to perform more complex, multiobjective queries without enumerating substantial parts of the space.\n\nIn contrast, in de novo design, only a relatively small number of molecules is explicitly generated, and chemical space is explored via search or optimization procedures. Thus, by focusing on the most relevant areas of chemical space for the current multiobjective query, de novo design algorithms can in principle explore the full chemical space, given any ranking or scoring function.</td>
+      <td></td>
+      <td>GuacaMol, <a href="https://doi.org/10.1021/acs.jcim.8b00839">https://doi.org/10.1021/acs.jcim.8b00839</a></td>
+      <td>impl_guacamol</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>GuacaMol</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/BenevolentAI/guacamol">https://github.com/BenevolentAI/guacamol</a></td>
+      <td>De novo molecular design is a computational technique to generate novel compounds with desirable property profiles from scratch. It complements virtual screening, where large virtual compound libraries are pregenerated, stored, and then subsequently ranked on demand. Virtual screening is particularly useful when the virtual compounds are readily available (commercially, or in in-house screening collections), or easy to synthesize. Data sets sized on the order of 10^13 can be routinely screened under current computational constraints. However, this is only a tiny fraction of drug-like chemical space, which has an estimated size anywhere between 10^24 and 10^60 possible structures. This number might be even larger considering new modalities such as PROTACs. Efficient approaches to query larger combinatorial spaces without full enumeration via similarity to given structures have been reported. However, it is not straightforward to perform more complex, multiobjective queries without enumerating substantial parts of the space.\n\nIn contrast, in de novo design, only a relatively small number of molecules is explicitly generated, and chemical space is explored via search or optimization procedures. Thus, by focusing on the most relevant areas of chemical space for the current multiobjective query, de novo design algorithms can in principle explore the full chemical space, given any ranking or scoring function.</td>
       <td></td>
       <td></td>
       <td></td>
@@ -2696,7 +3147,7 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>MECHBench</td>
       <td>Python</td>
-      <td>{'7 minutes', '1 minute'}</td>
+      <td>{'1 minute', '7 minutes'}</td>
       <td><a href="https://github.com/BayesOptApp/MECHBench">https://github.com/BayesOptApp/MECHBench</a></td>
       <td>Structural mechanics design optimization benchmark</td>
       <td></td>
@@ -2899,11 +3350,11 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td>20</td>
       <td>20</td>
-      <td>pymoo | modact</td>
+      <td>modact | pymoo</td>
       <td>Python</td>
       <td>{'20ms'}</td>
-      <td><a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a> | <a href="https://github.com/epfl-lamd/modact">https://github.com/epfl-lamd/modact</a></td>
-      <td>Multi-objective optimization in Python | EPFL-LAMD modact package</td>
+      <td><a href="https://github.com/epfl-lamd/modact">https://github.com/epfl-lamd/modact</a> | <a href="https://github.com/anyoptimization/pymoo">https://github.com/anyoptimization/pymoo</a></td>
+      <td>EPFL-LAMD modact package | Multi-objective optimization in Python</td>
       <td></td>
       <td></td>
       <td></td>
@@ -2948,6 +3399,47 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_optimization_of_a_spoiler_ice_airfoil_model">
+      <td>suite_optimization_of_a_spoiler_ice_airfoil_model</td>
+      <td>Optimization of a spoiler-ice airfoil model</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity</td>
+      <td>box</td>
+      <td>2</td>
+      <td>none</td>
+      <td>none</td>
+      <td>no</td>
+      <td>no</td>
+      <td>[1, 2]</td>
+      <td>Optimization of a spoiler-ice airfoil model</td>
+      <td>When operating in cold climate, the performance of the wind turbines can be reduced by icing. In an extreme condition, heavy icing can even lead to a complete stop of the turbine. Icing is also a risky condition for airplane wings since it may induce flow separation at a small angles of attack, which then might lead to stall and consequently loss of lift. Ice accretion is a complex process which depends on both aerodynamics and thermodynamics. The process is affected by many parameters, for instance, ambient temperature, surface properties, relative speed of the airfoil, and the time span over which the icing event takes place. As a result, numerous possibilities for an ice profile exist. Bragg et al. categorized the leading-edge ice on the airfoils into four types: roughness, horn, streamwise, and spanwise-ridge ice. The main characteristic of the horn ice is the presence of the large protuberances which induce a large flow separation downstream of the ice, and hence dramatically affect the aerodynamic performance, including the lift, drag and moment coefficients. On the other hand, streamwise ice is smoothly formed along the streamlines and is less dangerous in the sense of having adverse effects on the aerodynamic performance.</td>
+      <td></td>
+      <td>Y. Morita, S. Rezaeiravesh, N. Tabatabaei, R. Vinuesa, K. Fukagata, and P. Schlatter, “Applying Bayesian Optimization with Gaussian Process Regression to Computational Fluid Dynamics Problems,” Journal of Computational Physics, vol. 449, p. 110788, Jan. 2022, doi: 10.1016/j.jcp.2021.110788.</td>
+      <td>impl_optimization_of_a_spoiler_ice_airfoil_model</td>
+      <td></td>
+      <td>The authors disclose it takes 1 hour.</td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Optimization of a spoiler-ice airfoil model</td>
+      <td>Besides Python (as the authors use GPy) for optimizing the problem, there is the need of a commercial mesher (ANSYS ICEM)</td>
+      <td>{'The authors disclose it takes 1 hour.'}</td>
+      <td></td>
+      <td>When operating in cold climate, the performance of the wind turbines can be reduced by icing. In an extreme condition, heavy icing can even lead to a complete stop of the turbine. Icing is also a risky condition for airplane wings since it may induce flow separation at a small angles of attack, which then might lead to stall and consequently loss of lift. Ice accretion is a complex process which depends on both aerodynamics and thermodynamics. The process is affected by many parameters, for instance, ambient temperature, surface properties, relative speed of the airfoil, and the time span over which the icing event takes place. As a result, numerous possibilities for an ice profile exist. Bragg et al. categorized the leading-edge ice on the airfoils into four types: roughness, horn, streamwise, and spanwise-ridge ice. The main characteristic of the horn ice is the presence of the large protuberances which induce a large flow separation downstream of the ice, and hence dramatically affect the aerodynamic performance, including the lift, drag and moment coefficients. On the other hand, streamwise ice is smoothly formed along the streamlines and is less dangerous in the sense of having adverse effects on the aerodynamic performance.</td>
+      <td></td>
+      <td>2</td>
+      <td>2</td>
       <td></td>
       <td></td>
       <td></td>
@@ -3199,6 +3691,47 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td></td>
       <td></td>
     </tr>
+    <tr data-problem-id="suite_shape_optimization_of_a_diverging_channel">
+      <td>suite_shape_optimization_of_a_diverging_channel</td>
+      <td>Shape optimization of a diverging channel</td>
+      <td>Suite</td>
+      <td>continuous</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>none</td>
+      <td></td>
+      <td>no</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>The objective of this section is to efficiently obtain the optimal shape of the upper wall of a channel so that a target β along the edge of the Turbulent Boundary Layer over the lower wall is achieved.</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
     <tr data-problem-id="suite_submodular">
       <td>suite_submodular</td>
       <td>Submodular Optimization</td>
@@ -3273,6 +3806,47 @@ Submit problems and corrections on <a target="_blank" href="https://github.com/O
       <td>{'hours', 'minutes'}</td>
       <td><a href="https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/">https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/</a> | <a href="https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy">https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy</a></td>
       <td>Large linear program for optimal investment and operation of energy systems</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr data-problem-id="suite_vae_molecule_generation">
+      <td>suite_vae_molecule_generation</td>
+      <td>VAE Molecule Generation</td>
+      <td>Suite</td>
+      <td>unknown</td>
+      <td></td>
+      <td></td>
+      <td>multi-fidelity</td>
+      <td>unknown</td>
+      <td>>=1</td>
+      <td>none</td>
+      <td>none</td>
+      <td>unknown</td>
+      <td></td>
+      <td>[1, 2]</td>
+      <td></td>
+      <td>The goal of drug and material design is to identify novel molecules that have certain desirable properties. We view this as an optimization problem, in which we are searching for the molecules that maximize our quantitative desiderata.\n\nMaking and testing new compounds are costly and time-consuming, and the number of potential candidates is overwhelming. Only about 10^8 substances have ever been synthesized, whereas the range of potential drug-like molecules is estimated to be between 10^23 and 10^60. Virtual screening can be used to speed up this search. Virtual libraries containing thousands to hundreds of millions of candidates can be assayed with first-principles simulations or statistical predictions based on learned proxy models, and only\nthe most promising leads are selected and tested experimentally.\n\nWays to assess the generated molecules are the water−octanol partition coefficient (logP), the synthetic accessibility score (SAS), and Quantitative Estimation of Drug-likeness (QED), which ranges in value between 0 and 1, with higher values indicating that the molecule is more drug-like.</td>
+      <td>form-submission</td>
+      <td>VAE Molecule Generation, <a href="https://doi.org/10.1039/c9sc04026a">https://doi.org/10.1039/c9sc04026a</a></td>
+      <td>impl_vae_molecule_generation</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>real-world</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>VAE Molecule Generation</td>
+      <td>Python</td>
+      <td></td>
+      <td><a href="https://github.com/Ryan-Rhys/Constrained-Bayesian-Optimisation-for-Automatic-Chemical-Design">https://github.com/Ryan-Rhys/Constrained-Bayesian-Optimisation-for-Automatic-Chemical-Design</a></td>
+      <td>The goal of drug and material design is to identify novel molecules that have certain desirable properties. We view this as an optimization problem, in which we are searching for the molecules that maximize our quantitative desiderata.\n\nMaking and testing new compounds are costly and time-consuming, and the number of potential candidates is overwhelming. Only about 10^8 substances have ever been synthesized, whereas the range of potential drug-like molecules is estimated to be between 10^23 and 10^60. Virtual screening can be used to speed up this search. Virtual libraries containing thousands to hundreds of millions of candidates can be assayed with first-principles simulations or statistical predictions based on learned proxy models, and only\nthe most promising leads are selected and tested experimentally.\n\nWays to assess the generated molecules are the water−octanol partition coefficient (logP), the synthetic accessibility score (SAS), and Quantitative Estimation of Drug-likeness (QED), which ranges in value between 0 and 1, with higher values indicating that the molecule is more drug-like.</td>
       <td></td>
       <td></td>
       <td></td>
