@@ -60,6 +60,32 @@ def extract_links(text: str) -> list[str]:
     return [link.rstrip(".,;:!?") for link in links]
 
 
+def extract_emails(text: str) -> list[str]:
+    if not text:
+        return []
+    mails = EMAIL_RE.findall(text)
+    return [mail.rstrip(".,;:!?") for mail in mails]
+
+
+def arxiv_email(arxiv_link: str):
+    # Identify arxiv id from link (could be pdf format or /abs format)
+    arxiv_id = None
+    if "/abs/" in arxiv_link:
+        arxiv_id = arxiv_link.split("/abs/")[-1]
+    elif "/pdf/" in arxiv_link:
+        arxiv_id = arxiv_link.split("/pdf/")[-1].replace(".pdf", "")
+    html_url = f"https://arxiv.org/html/{arxiv_id}"
+
+    response = requests.get(html_url, timeout=15)
+    if response.status_code != 200:
+        return []
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
+    text = soup.get_text(" ", strip=True)
+    emails = extract_emails(text)
+    return emails
+
+
 def find_paper(citation: str):
     if not citation:
         return None
@@ -79,31 +105,13 @@ def find_paper(citation: str):
         return None
 
     # Verify that the result matches enough
+    print(results)
     res = results[0]
     print(res["relevance_score"])
     if res["relevance_score"] < 0.5:
         return None
-    corresponding_authors = [
-        author["author"]
-        for author in res["authorships"]
-        if author.get("is_corresponding", False)
-    ]
-    # if no corresponding authors, take the first author
-    if not corresponding_authors:
-        corresponding_authors = [
-            author["author"]
-            for author in res["authorships"]
-            if author.get("author_position", "") == "first"
-        ]
-    print(corresponding_authors)
-
-
-def get_author_profile(openalex_author_id: str):
-    """Get author metadata from OpenAlex."""
-    url = f"https://api.openalex.org/authors/{openalex_author_id}"
-    response = requests.get(url, timeout=30)
-    response.raise_for_status()
-    return response.json()
+    else:
+        print(res)
 
 
 def find_public_email(author_name: str, institution: str | None = None):
@@ -211,17 +219,26 @@ def find_public_email(author_name: str, institution: str | None = None):
     return None
 
 
-issues = get_issues(
-    repo=REPO,
-    label=LABEL,
-)
+if __name__ == "__main__":
+    # find_public_email("Vanessa Volz", "Centrum Wiskunde & Informatica (CWI)")
+    # find_public_email("Vanessa Volz", "TU Dortmund University")
 
+    arxiv_link = "https://arxiv.org/abs/2512.00288"
+    print(arxiv_email(arxiv_link))
+    """
+    issues = get_issues(
+        repo=REPO,
+        label=LABEL,
+    )
 
-"""
-for issue in issues:
-    links = extract_links(issue.get("body", ""))
-    if not links:
-        paper = find_paper(issue.get("body", ""))
-    print(issue["number"], issue["title"])
-    print(links)
-"""
+    for issue in issues:
+        links = extract_links(issue.get("body", ""))
+        for l in links:
+            if "arxiv.org" in l:
+                arxiv_emails = arxiv_email(l)
+                print("Arxiv emails:", arxiv_emails)
+        # if not links:
+        #    paper = find_paper(issue.get("body", ""))
+        print(issue["number"], issue["title"])
+        print(links)
+    """
