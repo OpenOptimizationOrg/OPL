@@ -91,11 +91,11 @@ fn_building_spatial:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_convex_dtlz2:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -142,7 +142,7 @@ fn_emdo:
   code_examples: null
   constraints:
   - equality: null
-    hard: 'yes'
+    hard: yes
     number: null
     type: box
   - equality: null
@@ -153,28 +153,16 @@ fn_emdo:
     hard: 'yes'
     number: 12
     type: unknown
-  description: '# Goal
-
-    Find a design of a synchronous electric motor for power steering systems that
-    minimizes costs and satisfies all constraints.
-
-
-    # Motivation
-
-    Challenging to find good solutions in a limited time.
-
-
-    # Key Challenges
-
-    * Time-consuming solution evaluation
-
-    * Highly-constrained problem
-
-    * Constraints are multimodal
-
-
-    This is not an available problem, but could be interesting to show to researchers
-    which difficulties appear in real-world problems.'
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  description: "# Goal\nFind a design of a synchronous electric motor for power steering
+    systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
+    Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
+    solution evaluation\n* Highly-constrained problem\n* Constraints are multimodal\n\
+    \nThis is not an available problem, but could be interesting to show to researchers
+    which difficulties appear in real-world problems."
   dynamic_type: null
   evaluation_time:
   - 8 minutes
@@ -245,8 +233,8 @@ fn_fleetopt:
   type: problem
   variables:
   - dim:
-    - 13208
     - 54
+    - 13208
     type: integer
 fn_gasoline:
   allows_partial_evaluation: null
@@ -324,11 +312,11 @@ fn_invdeceptive_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_inverted_dtlz1:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -442,11 +430,11 @@ fn_onemax_sphere_deceptive_rotell:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_onemax_sphere_zeromax_sphere:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -479,11 +467,11 @@ fn_onemax_sphere_zeromax_sphere:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 fn_radar_waveform:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -645,6 +633,10 @@ gen_ealain:
   tags: null
   type: generator
   variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
   - dim:
       max: null
       min: 1
@@ -993,6 +985,10 @@ gen_randoptgen:
   tags: null
   type: generator
   variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
   - dim:
       max: null
       min: 1
@@ -1595,15 +1591,15 @@ suite_amvop:
   - dim:
       max: null
       min: 1
+    type: categorical
+  - dim:
+      max: null
+      min: 1
     type: continuous
   - dim:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: categorical
 suite_bbob:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2289,6 +2285,10 @@ suite_cuter:
   - dim:
       max: null
       min: 1
+    type: binary
+  - dim:
+      max: null
+      min: 1
     type: continuous
   - dim:
       max: null
@@ -2313,6 +2313,10 @@ suite_cutest:
       max: null
       min: 1
     type: unknown
+  - equality: null
+    hard: yes
+    number: null
+    type: box
   description: CUTEst for optimization software
   dynamic_type: null
   evaluation_time: null
@@ -2339,6 +2343,10 @@ suite_cutest:
   tags: null
   type: suite
   variables:
+  - dim:
+      max: null
+      min: 1
+    type: binary
   - dim:
       max: null
       min: 1
@@ -2560,8 +2568,12 @@ suite_expobench:
     hard: some
     number: null
     type: unknown
-  description: Wind farm layout optimization, gas filter design, pipe shape optimization,
-    hyperparameter tuning, and hospital simulation
+  - equality: null
+    hard: yes
+    number: null
+    type: box
+  description: Wind farm layout optimization, gas filter design, pipe shape 
+    optimization, hyperparameter tuning, and hospital simulation
   dynamic_type: null
   evaluation_time: null
   fidelity_levels: null
@@ -2571,8 +2583,8 @@ suite_expobench:
   modality: null
   name: EXPObench
   noise_type:
-  - real-life
   - observational
+  - real-life
   objectives:
   - 1
   problems: null
@@ -2591,15 +2603,15 @@ suite_expobench:
   - dim:
       max: 135
       min: 10
-    type: integer
-  - dim:
-      max: 135
-      min: 10
     type: categorical
   - dim:
       max: 135
       min: 10
     type: continuous
+  - dim:
+      max: 135
+      min: 10
+    type: integer
 suite_gbea:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2808,11 +2820,11 @@ suite_l1_zdt:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 suite_l2_dtlz:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2884,11 +2896,11 @@ suite_l2_zdt:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 suite_l3_dtlz:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2960,11 +2972,11 @@ suite_l3_zdt:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
 suite_maop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3245,9 +3257,9 @@ suite_modact:
   type: suite
   variables:
   - dim: 20
-    type: integer
-  - dim: 20
     type: continuous
+  - dim: 20
+    type: integer
 suite_morepo:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3388,11 +3400,11 @@ suite_re:
   - dim:
       max: 7
       min: 2
-    type: integer
+    type: continuous
   - dim:
       max: 7
       min: 2
-    type: continuous
+    type: integer
 suite_rwmvop:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3429,15 +3441,15 @@ suite_rwmvop:
   - dim:
       max: null
       min: 1
+    type: categorical
+  - dim:
+      max: null
+      min: 1
     type: continuous
   - dim:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: categorical
 suite_sbox_cost:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3712,8 +3724,8 @@ suite_zdt:
   - dim:
       max: null
       min: 1
-    type: continuous
+    type: binary
   - dim:
       max: null
       min: 1
-    type: binary
+    type: continuous
