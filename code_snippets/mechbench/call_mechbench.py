@@ -4,6 +4,7 @@
 #   "MECHBench @ git+https://github.com/BayesOptApp/MECHBench.git",
 # ]
 # ///
+# Note: This script should be run from the MECHBench directory. It will not work if run from a different location.
 
 import sys
 import os

@@ -104,7 +104,7 @@ class MultiplePeaksModel2:
         previousNumberOptima = currentNumberOptima
         while currentNumberOptima < numberOptima:
             tries = 0
-            height = random.uniform(*heightRange)
+            # height = random.uniform(*heightRange)
             while currentNumberOptima != previousNumberOptima + 1:
                 # generate list of 1 random new peak
                 if topology == "random":
@@ -241,8 +241,8 @@ class MultiplePeaksModel2:
 
     def getLocalOptima(self):
         # shortcuts
-        minLimits = self.minLimits
-        maxLimits = self.maxLimits
+        # minLimits = self.minLimits
+        # maxLimits = self.maxLimits
         getActivePeak = self.getActivePeak
         # test peaks
         localOptima = []
@@ -255,8 +255,8 @@ class MultiplePeaksModel2:
 
     def getOptimalSolutions(self):
         # shortcuts
-        minLimits = self.minLimits
-        maxLimits = self.maxLimits
+        # minLimits = self.minLimits
+        # maxLimits = self.maxLimits
         # test peaks
         opts = []
         maxHeight = -1.0

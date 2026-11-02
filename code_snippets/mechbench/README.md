@@ -22,8 +22,9 @@ git clone https://github.com/BayesOptApp/MECHBench.git
 Your directory should look like:
 
 ```
-├── call_mechbench.py
+├── README.md
 └── MECHBench/
+    ├── call_mechbench.py
     ├── main.py
     ├── src/
     │   └── sob/
@@ -34,6 +35,8 @@ Your directory should look like:
 ## Usage
 
 ```bash
+mv call_mechbench.py MECHBench/call_mechbench.py
+cd MECHBench
 uv run call_mechbench.py
 ```
 
