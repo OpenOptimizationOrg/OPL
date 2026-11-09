@@ -979,7 +979,15 @@ gen_randoptgen:
   - 8
   - 9
   - 10
-  references: null
+  references:
+    - authors:
+      - Moritz Vinzent Seiler
+      - Oliver Ludger Preuß
+      - Heike Trautmann
+      link:
+        type: doi
+        url: https://doi.org/10.1145/3712256.3726478
+      title: 'RandOptGen: A Unified Random Problem Generator for Single- and Multi-Objective Optimization Problems with Mixed-Variable Input Spaces'
   source:
   - artificial
   tags: null
@@ -1499,8 +1507,6 @@ impl_randoptgen:
   links:
   - type: repository
     url: https://github.com/MALEO-research-group/RandOptGen
-  - type: example
-    url: https://doi.org/10.1145/3712256.3726478
   name: RandOptGen
   requirements: null
   type: implementation
