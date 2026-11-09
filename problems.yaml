@@ -37,7 +37,8 @@ fn_ato:
     link:
       type: null
       url: https://doi.org/10.1145/3795101.3805368
-    title: Multi-Objective Pipeline Optimisation and Configuration of Automatic Train Operation Trajectories
+    title: Multi-Objective Pipeline Optimisation and Configuration of Automatic Train
+      Operation Trajectories
     type: null
   source:
   - real-world
@@ -54,11 +55,11 @@ fn_building_spatial:
   - equality: null
     hard: 'yes'
     number: null
-    type: unknown
+    type: box
   - equality: null
     hard: 'yes'
     number: null
-    type: box
+    type: unknown
   description: Optimise the spatial layout of a building to minimise energy consumption
     for climate control and minimise the strain on the structure. Many hard constraints;
     mixed-variable (continuous+binary); expensive evaluations.
@@ -95,6 +96,52 @@ fn_building_spatial:
   - dim:
       max: null
       min: 1
+    type: continuous
+fn_cfd_based_non_premixed_burner_design:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: 'no'
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'no'
+    number: 1
+    type: box
+  - equality: null
+    hard: 'no'
+    number: 1
+    type: unknown
+  description: Change the length and width of a combustor optimizing the combustion
+    efficiency but keeping NOx emissions constrained.
+  dynamic_type:
+  - none
+  evaluation_time:
+  - 35-40 minutes
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_cfd_based_non_premixed_burner_design
+  instances: null
+  long_name: CFD-Based Non-Premixed Burner Design
+  modality: null
+  name: CFD-Based Non-Premixed Burner Design
+  noise_type:
+  - none
+  objectives: null
+  references:
+  - authors: []
+    link: null
+    title: 'P. S. Lima, P. R. S. dos Reis, A. Á. B. Santos, E. A. del R. Chanona,
+      and I. B. dos R. Nogueira, “Multi-fidelity Bayesian Optimization Framework for
+      CFD-Based Non-Premixed Burner Design,” Nov. 28, 2025, arXiv: arXiv:2511.23140.
+      doi: 10.48550/arXiv.2511.23140.'
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
     type: continuous
 fn_convex_dtlz2:
   allows_partial_evaluation: null
@@ -142,10 +189,6 @@ fn_emdo:
   code_examples: null
   constraints:
   - equality: null
-    hard: yes
-    number: null
-    type: box
-  - equality: null
     hard: some
     number: null
     type: unknown
@@ -154,15 +197,31 @@ fn_emdo:
     number: 12
     type: unknown
   - equality: null
-    hard: yes
+    hard: 'yes'
     number: null
     type: box
-  description: "# Goal\nFind a design of a synchronous electric motor for power steering
-    systems that minimizes costs and satisfies all constraints.\n\n# Motivation\n\
-    Challenging to find good solutions in a limited time.\n\n# Key Challenges\n* Time-consuming
-    solution evaluation\n* Highly-constrained problem\n* Constraints are multimodal\n\
-    \nThis is not an available problem, but could be interesting to show to researchers
-    which difficulties appear in real-world problems."
+  description: '# Goal
+
+    Find a design of a synchronous electric motor for power steering systems that
+    minimizes costs and satisfies all constraints.
+
+
+    # Motivation
+
+    Challenging to find good solutions in a limited time.
+
+
+    # Key Challenges
+
+    * Time-consuming solution evaluation
+
+    * Highly-constrained problem
+
+    * Constraints are multimodal
+
+
+    This is not an available problem, but could be interesting to show to researchers
+    which difficulties appear in real-world problems.'
   dynamic_type: null
   evaluation_time:
   - 8 minutes
@@ -398,6 +457,133 @@ fn_jsec2019:
   variables:
   - dim: 32
     type: continuous
+fn_layout_of_wind_farms:
+  allows_partial_evaluation: 'yes'
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'yes'
+    number: null
+    type: box
+  - equality: null
+    hard: 'yes'
+    number: null
+    type: unknown
+  description: 'Optimizing a Wind Farm Layout: Input variables are coordinates of
+    the turbines (box-constraints). Constraint that they don''t overlap (hard constraint).
+    Optimize the overall power output from all wind turbines and with different wind
+    states. Use a simulation to evaluate a layout. It is expensive approx. 70 CPU
+    hours.'
+  dynamic_type:
+  - none
+  evaluation_time:
+  - 70 CPU hours
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_layout_of_wind_farms
+  instances: null
+  long_name: null
+  modality:
+  - multimodal
+  name: Layout of Wind Farms
+  noise_type:
+  - none
+  objectives: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/abs/2302.01071
+    title: Layout of Wind Farms
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
+    type: continuous
+fn_materials_design:
+  allows_partial_evaluation: unknown
+  can_evaluate_objectives_independently: unknown
+  code_examples: null
+  constraints: []
+  description: 'Materials Design Optimization: Select appropriate material and microstructure
+    optimization for optimizing the light absorbing of a quasi-random solar cell.
+    Maximize light absorption by balancing the competing processes of light reflection
+    and scattering.Choose from 5 materials. Another material design problem can be
+    found here: https://github.com/clancyLab/NCM2018'
+  dynamic_type: null
+  evaluation_time:
+  - expensive simulation
+  fidelity_levels:
+  - 1
+  implementations:
+  - impl_materials_design
+  instances: null
+  long_name: null
+  modality: null
+  name: Materials Design
+  noise_type:
+  - none
+  objectives: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://www.nature.com/articles/s41598-020-60652-9
+    title: Materials Design
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
+    type: categorical
+  - dim: null
+    type: continuous
+fn_miprowa_millireactor_geometry_optimization:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: unknown
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: null
+    number: null
+    type: box
+  description: Optimizing the design of the mulireactor to achieve minimal stagnating
+    flow and mixing variance
+  dynamic_type:
+  - none
+  evaluation_time:
+  - 6.5 hours
+  fidelity_levels: null
+  implementations:
+  - impl_miprowa_millireactor_geometry_optimization
+  instances: null
+  long_name: Miprowa millireactor design optimization
+  modality: null
+  name: Miprowa millireactor geometry optimization
+  noise_type: null
+  objectives: null
+  references:
+  - authors: []
+    link: null
+    title: Begall, M. J., Schweidtmann, A. M., Mhamdi, A., & Mitsos, A. (2023). Geometry
+      optimization of a continuous millireactor via CFD and Bayesian optimization.
+      Computers & chemical engineering, 171, 108140.
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
+    type: continuous
 fn_onemax_sphere_deceptive_rotell:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -472,6 +658,89 @@ fn_onemax_sphere_zeromax_sphere:
       max: null
       min: 1
     type: continuous
+fn_optimal_sensor_placement_concrete_frame:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: 'no'
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'yes'
+    number: 1
+    type: unknown
+  description: Select sensor locations from a set of options. Here, the goal is to
+    optimize structural damage prediction (but can be arbitrary)
+  dynamic_type:
+  - none
+  evaluation_time:
+  - minutes to hours
+  fidelity_levels:
+  - 1
+  implementations:
+  - impl_optimal_sensor_placement_concrete_frame
+  instances: null
+  long_name: Optimal sensor placement for structural damage segmentation
+  modality: null
+  name: Optimal Sensor Placement - concrete frame
+  noise_type: null
+  objectives: null
+  references:
+  - authors: []
+    link: null
+    title: Sajedi, S., & Liang, X. (2022). Deep generative Bayesian optimization for
+      sensor placement in structural health monitoring. Computer‐Aided Civil and Infrastructure
+      Engineering, 37(9), 1109-1127.
+    type: null
+  source:
+  - artificial
+  tags:
+  - form-submission
+  type: problem
+  variables:
+  - dim: null
+    type: binary
+fn_optimization_of_milireactor:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: 'no'
+  code_examples: null
+  constraints: []
+  description: Polymerization processes in the (specialty) chemical industry increasingly
+    rely on continuous flow processing. Continuous polymerization reactors are promising,
+    because their large surface to volume ratio allows for faster heat removal and
+    better temperature control than batch reactors. Furthermore, this ratio can be
+    kept constant during scaleup, reducing the need for pilot stages making it easier
+    to go from lab- to production scale. However, continuous polymerization reactors,
+    especially milli-scale reactors with internal mixing elements, can be highly complex
+    devices, which can be difficult to characterize experimentally, as many of their
+    properties are not readily available via measurements. Additionally, their small
+    size renders them especially prone to fouling
+  dynamic_type:
+  - none
+  evaluation_time:
+  - 6.6 hours
+  fidelity_levels: null
+  implementations:
+  - impl_optimization_of_milireactor
+  instances: null
+  long_name: Optimization of milireactor
+  modality: null
+  name: Optimization of milireactor
+  noise_type:
+  - none
+  objectives: null
+  references:
+  - authors: []
+    link: null
+    title: 'M. J. Begall, A. M. Schweidtmann, A. Mhamdi, and A. Mitsos, “Geometry
+      optimization of a continuous millireactor via CFD and Bayesian optimization,”
+      Computers & Chemical Engineering, vol. 171, p. 108140, Mar. 2023, doi: 10.1016/j.compchemeng.2023.108140.'
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
+    type: continuous
 fn_radar_waveform:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -510,6 +779,137 @@ fn_radar_waveform:
       max: 12
       min: 4
     type: integer
+fn_shape_optimization_of_a_lid_driven_cavity:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: 'no'
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'yes'
+    number: 1
+    type: unknown
+  description: '"Consider an incompressible two-dimensional cavity flow, where all
+    walls are at rest except the upper wall (lid) which moves with the constant velocity
+    U0 in the positive horizontal direction, x. The aim is to optimize the shape of
+    the left and right walls so that the energy dissipation is either minimized or
+    maximized with the constraint of keeping the total volume of the fluid confined
+    in the cavity fixed and also retain the length and position of the upper and lower
+    walls. Therefore, the objective is to find the wall shape which either minimizes
+    or maximizes"'
+  dynamic_type:
+  - none
+  evaluation_time: []
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_shape_optimization_of_a_lid_driven_cavity
+  instances: null
+  long_name: null
+  modality: null
+  name: Shape optimization of a lid-driven cavity
+  noise_type:
+  - none
+  - though potentially one shall revise the meshing algorithm.
+  objectives: null
+  references: null
+  source:
+  - real-world
+  tags:
+  - form-submission
+  type: problem
+  variables:
+  - dim: null
+    type: continuous
+fn_simulation_driven_antenna_design:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: unknown
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: null
+    number: null
+    type: box
+  description: 'Simulation-Driven Antenna Design Optimization: One scalar merit function
+    encoding the design specifications (gain, voltage standing wave ratio,..) calculated
+    by using a high-fidelity EM simulator of the antenna under design. The decision
+    variables are designable parameters like geometry parameters and they are box-constrained.'
+  dynamic_type: null
+  evaluation_time:
+  - expensive
+  fidelity_levels:
+  - 1
+  implementations:
+  - impl_simulation_driven_antenna_design
+  instances: null
+  long_name: null
+  modality: null
+  name: Simulation-Driven Antenna Design
+  noise_type: null
+  objectives: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://ieeexplore.ieee.org/abstract/document/9298949
+    title: Simulation-Driven Antenna Design
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
+    type: continuous
+fn_transverse_bending_under_pole_impact:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'yes'
+    number: 1
+    type: box
+  - equality: null
+    hard: 'yes'
+    number: 1
+    type: unknown
+  description: A beam, simply supported at both ends, is struck laterally by a rigid
+    pole, mimicking side-pole crash tests. The objective is to minimize intrusion,
+    defined as the maximal dynamic displacement of the impactor before rebound, subject
+    to a volume constraint of at most 50% of the design domain. The design is parameterized
+    by a level-set function with 15 variables, mapped onto an LS-Dyna mesh of 1,600
+    eight-node solid elements with piecewise linear plasticity. Void elements are
+    deleted from the mesh, and the out-of-plane (z) direction is fixed.
+  dynamic_type:
+  - none
+  evaluation_time:
+  - 2 minutes
+  fidelity_levels:
+  - 1
+  implementations:
+  - impl_transverse_bending_under_pole_impact
+  instances: null
+  long_name: null
+  modality: null
+  name: Transverse bending under pole impact
+  noise_type:
+  - none
+  objectives: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: http://www.sciencedirect.com/science/article/pii/S0045782519300726
+    title: Transverse bending under pole impact
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: problem
+  variables:
+  - dim: null
+    type: continuous
 gen_beacon:
   allows_partial_evaluation: 'no'
   can_evaluate_objectives_independently: null
@@ -645,10 +1045,6 @@ gen_ealain:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: binary
 gen_gnbg:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -693,8 +1089,8 @@ gen_gnbg_ii:
   evaluation_time: []
   fidelity_levels: null
   implementations:
-  - impl_iohgnbg
   - impl_gnbg_ii
+  - impl_iohgnbg
   instances: null
   long_name: null
   modality: null
@@ -808,8 +1204,8 @@ gen_ma_bbob:
   evaluation_time: []
   fidelity_levels: null
   implementations:
-  - impl_ma_bbob
   - impl_iohexperimenter
+  - impl_ma_bbob
   instances: null
   long_name: null
   modality:
@@ -884,8 +1280,8 @@ gen_mubqp:
   instances: null
   long_name: null
   modality:
-  - quadratic
   - multimodal
+  - quadratic
   name: mUBQP
   noise_type: null
   objectives:
@@ -997,10 +1393,6 @@ gen_randoptgen:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: binary
 gen_rho_mnk_landscapes:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -1060,8 +1452,8 @@ gen_rho_mtsp:
   instances: null
   long_name: null
   modality:
-  - quadratic
   - multimodal
+  - quadratic
   name: ρmTSP
   noise_type: null
   objectives:
@@ -1146,6 +1538,17 @@ impl_beacon:
   name: BEACON
   requirements: null
   type: implementation
+impl_biological_sequence_design:
+  description: Biological sequence design
+  evaluation_time:
+  - expensive
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/samuelstanton/lambo
+  name: Biological sequence design
+  requirements: null
+  type: implementation
 impl_bonobench:
   description: Bi-objective Numerical Optimization Benchmark (BONO-Bench)
   evaluation_time: null
@@ -1201,13 +1604,24 @@ impl_cec2022:
 impl_cfd:
   description: Expensive real-world CFD-based test problems
   evaluation_time:
-  - 30s
   - 15m
+  - 30s
   language: null
   links:
   - type: repository
     url: https://bitbucket.org/arahat/cfd-test-problem-suite
   name: CFD test problem suite
+  requirements: null
+  type: implementation
+impl_cfd_based_non_premixed_burner_design:
+  description: Change the length and width of a combustor optimizing the combustion
+    efficiency but keeping NOx emissions constrained.
+  evaluation_time:
+  - 35-40 minutes
+  language: Python, Authors disclose using optimizer in Python, but the physical model
+    happens in a simulation pipeline in FLUENT
+  links: null
+  name: CFD-Based Non-Premixed Burner Design
   requirements: null
   type: implementation
 impl_coco:
@@ -1325,6 +1739,35 @@ impl_gnbg_ii:
   name: GNBG-II
   requirements: null
   type: implementation
+impl_guacamol:
+  description: 'De novo molecular design is a computational technique to generate
+    novel compounds with desirable property profiles from scratch. It complements
+    virtual screening, where large virtual compound libraries are pregenerated, stored,
+    and then subsequently ranked on demand. Virtual screening is particularly useful
+    when the virtual compounds are readily available (commercially, or in in-house
+    screening collections), or easy to synthesize. Data sets sized on the order of
+    10^13 can be routinely screened under current computational constraints. However,
+    this is only a tiny fraction of drug-like chemical space, which has an estimated
+    size anywhere between 10^24 and 10^60 possible structures. This number might be
+    even larger considering new modalities such as PROTACs. Efficient approaches to
+    query larger combinatorial spaces without full enumeration via similarity to given
+    structures have been reported. However, it is not straightforward to perform more
+    complex, multiobjective queries without enumerating substantial parts of the space.
+
+
+    In contrast, in de novo design, only a relatively small number of molecules is
+    explicitly generated, and chemical space is explored via search or optimization
+    procedures. Thus, by focusing on the most relevant areas of chemical space for
+    the current multiobjective query, de novo design algorithms can in principle explore
+    the full chemical space, given any ranking or scoring function.'
+  evaluation_time: null
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/BenevolentAI/guacamol
+  name: GuacaMol
+  requirements: null
+  type: implementation
 impl_iohclustering:
   description: Clustering-based optimization benchmark built on ML datasets
   evaluation_time: null
@@ -1366,6 +1809,19 @@ impl_jsec2019:
   name: JSEC 2019 competition
   requirements: null
   type: implementation
+impl_layout_of_wind_farms:
+  description: 'Optimizing a Wind Farm Layout: Input variables are coordinates of
+    the turbines (box-constraints). Constraint that they don''t overlap (hard constraint).
+    Optimize the overall power output from all wind turbines and with different wind
+    states. Use a simulation to evaluate a layout. It is expensive approx. 70 CPU
+    hours.'
+  evaluation_time:
+  - 70 CPU hours
+  language: null
+  links: null
+  name: Layout of Wind Farms
+  requirements: null
+  type: implementation
 impl_ma_bbob:
   description: Example notebook for MA-BBOB in IOHexperimenter
   evaluation_time: null
@@ -1374,6 +1830,19 @@ impl_ma_bbob:
   - type: example
     url: https://github.com/IOHprofiler/IOHexperimenter/blob/master/example/Competitions/MA-BBOB/Example_MABBOB.ipynb
   name: MA-BBOB (IOHexperimenter)
+  requirements: null
+  type: implementation
+impl_materials_design:
+  description: 'Materials Design Optimization: Select appropriate material and microstructure
+    optimization for optimizing the light absorbing of a quasi-random solar cell.
+    Maximize light absorption by balancing the competing processes of light reflection
+    and scattering.Choose from 5 materials. Another material design problem can be
+    found here: https://github.com/clancyLab/NCM2018'
+  evaluation_time:
+  - expensive simulation
+  language: null
+  links: null
+  name: Materials Design
   requirements: null
   type: implementation
 impl_mechbench:
@@ -1396,6 +1865,16 @@ impl_mf2:
   - type: repository
     url: https://github.com/sjvrijn/mf2
   name: mf2
+  requirements: null
+  type: implementation
+impl_miprowa_millireactor_geometry_optimization:
+  description: Optimizing the design of the mulireactor to achieve minimal stagnating
+    flow and mixing variance
+  evaluation_time:
+  - 6.5 hours
+  language: null
+  links: null
+  name: Miprowa millireactor geometry optimization
   requirements: null
   type: implementation
 impl_mmopp:
@@ -1447,6 +1926,59 @@ impl_mpm2:
   - type: source
     url: https://github.com/jakobbossek/smoof/blob/master/inst/mpm2.py
   name: MPM2 (smoof)
+  requirements: null
+  type: implementation
+impl_optimal_sensor_placement_concrete_frame:
+  description: Select sensor locations from a set of options. Here, the goal is to
+    optimize structural damage prediction (but can be arbitrary)
+  evaluation_time:
+  - minutes to hours
+  language: null
+  links: null
+  name: Optimal Sensor Placement - concrete frame
+  requirements: null
+  type: implementation
+impl_optimization_of_a_spoiler_ice_airfoil_model:
+  description: 'When operating in cold climate, the performance of the wind turbines
+    can be reduced by icing. In an extreme condition, heavy icing can even lead to
+    a complete stop of the turbine. Icing is also a risky condition for airplane wings
+    since it may induce flow separation at a small angles of attack, which then might
+    lead to stall and consequently loss of lift. Ice accretion is a complex process
+    which depends on both aerodynamics and thermodynamics. The process is affected
+    by many parameters, for instance, ambient temperature, surface properties, relative
+    speed of the airfoil, and the time span over which the icing event takes place.
+    As a result, numerous possibilities for an ice profile exist. Bragg et al. categorized
+    the leading-edge ice on the airfoils into four types: roughness, horn, streamwise,
+    and spanwise-ridge ice. The main characteristic of the horn ice is the presence
+    of the large protuberances which induce a large flow separation downstream of
+    the ice, and hence dramatically affect the aerodynamic performance, including
+    the lift, drag and moment coefficients. On the other hand, streamwise ice is smoothly
+    formed along the streamlines and is less dangerous in the sense of having adverse
+    effects on the aerodynamic performance.'
+  evaluation_time:
+  - The authors disclose it takes 1 hour.
+  language: Besides Python (as the authors use GPy) for optimizing the problem, there
+    is the need of a commercial mesher (ANSYS ICEM)
+  links: null
+  name: Optimization of a spoiler-ice airfoil model
+  requirements: null
+  type: implementation
+impl_optimization_of_milireactor:
+  description: Polymerization processes in the (specialty) chemical industry increasingly
+    rely on continuous flow processing. Continuous polymerization reactors are promising,
+    because their large surface to volume ratio allows for faster heat removal and
+    better temperature control than batch reactors. Furthermore, this ratio can be
+    kept constant during scaleup, reducing the need for pilot stages making it easier
+    to go from lab- to production scale. However, continuous polymerization reactors,
+    especially milli-scale reactors with internal mixing elements, can be highly complex
+    devices, which can be difficult to characterize experimentally, as many of their
+    properties are not readily available via measurements. Additionally, their small
+    size renders them especially prone to fouling
+  evaluation_time:
+  - 6.6 hours
+  language: COMSOL (It's suspected the authors used MATLAB)
+  links: null
+  name: Optimization of milireactor
   requirements: null
   type: implementation
 impl_puboi:
@@ -1514,6 +2046,34 @@ impl_reproblems:
   name: reproblems
   requirements: null
   type: implementation
+impl_shape_optimization_of_a_lid_driven_cavity:
+  description: '"Consider an incompressible two-dimensional cavity flow, where all
+    walls are at rest except the upper wall (lid) which moves with the constant velocity
+    U0 in the positive horizontal direction, x. The aim is to optimize the shape of
+    the left and right walls so that the energy dissipation is either minimized or
+    maximized with the constraint of keeping the total volume of the fluid confined
+    in the cavity fixed and also retain the length and position of the upper and lower
+    walls. Therefore, the objective is to find the wall shape which either minimizes
+    or maximizes"'
+  evaluation_time: null
+  language: 'Physical Model: Nek500; CFD Solver: OpenFOAM (Not disclosed the coupling,
+    but could be Python)'
+  links: null
+  name: Shape optimization of a lid-driven cavity
+  requirements: null
+  type: implementation
+impl_simulation_driven_antenna_design:
+  description: 'Simulation-Driven Antenna Design Optimization: One scalar merit function
+    encoding the design specifications (gain, voltage standing wave ratio,..) calculated
+    by using a high-fidelity EM simulator of the antenna under design. The decision
+    variables are designable parameters like geometry parameters and they are box-constrained.'
+  evaluation_time:
+  - expensive
+  language: null
+  links: null
+  name: Simulation-Driven Antenna Design
+  requirements: null
+  type: implementation
 impl_transfer_rf_bbob_rw:
   description: Real-world BBOB-like problem implementations (Porkchop, KinematicsRobotArm)
   evaluation_time: null
@@ -1524,12 +2084,27 @@ impl_transfer_rf_bbob_rw:
   name: Transfer Random Forests BBOB Real-world
   requirements: null
   type: implementation
+impl_transverse_bending_under_pole_impact:
+  description: A beam, simply supported at both ends, is struck laterally by a rigid
+    pole, mimicking side-pole crash tests. The objective is to minimize intrusion,
+    defined as the maximal dynamic displacement of the impactor before rebound, subject
+    to a volume constraint of at most 50% of the design domain. The design is parameterized
+    by a level-set function with 15 variables, mapped onto an LS-Dyna mesh of 1,600
+    eight-node solid elements with piecewise linear plasticity. Void elements are
+    deleted from the mesh, and the out-of-plane (z) direction is fixed.
+  evaluation_time:
+  - 2 minutes
+  language: Python
+  links: null
+  name: Transverse bending under pole impact
+  requirements: null
+  type: implementation
 impl_tulipa:
   description: Large linear program for optimal investment and operation of energy
     systems
   evaluation_time:
-  - minutes
   - hours
+  - minutes
   language: Julia / JuMP
   links:
   - type: website
@@ -1537,6 +2112,35 @@ impl_tulipa:
   - type: example
     url: https://github.com/TulipaEnergy/Tulipa-OBZ-CaseStudy
   name: TulipaEnergyModel.jl
+  requirements: null
+  type: implementation
+impl_vae_molecule_generation:
+  description: 'The goal of drug and material design is to identify novel molecules
+    that have certain desirable properties. We view this as an optimization problem,
+    in which we are searching for the molecules that maximize our quantitative desiderata.
+
+
+    Making and testing new compounds are costly and time-consuming, and the number
+    of potential candidates is overwhelming. Only about 10^8 substances have ever
+    been synthesized, whereas the range of potential drug-like molecules is estimated
+    to be between 10^23 and 10^60. Virtual screening can be used to speed up this
+    search. Virtual libraries containing thousands to hundreds of millions of candidates
+    can be assayed with first-principles simulations or statistical predictions based
+    on learned proxy models, and only
+
+    the most promising leads are selected and tested experimentally.
+
+
+    Ways to assess the generated molecules are the water−octanol partition coefficient
+    (logP), the synthetic accessibility score (SAS), and Quantitative Estimation of
+    Drug-likeness (QED), which ranges in value between 0 and 1, with higher values
+    indicating that the molecule is more drug-like.'
+  evaluation_time: null
+  language: Python
+  links:
+  - type: repository
+    url: https://github.com/Ryan-Rhys/Constrained-Bayesian-Optimisation-for-Automatic-Chemical-Design
+  name: VAE Molecule Generation
   requirements: null
   type: implementation
 impl_vehicle_dynamics:
@@ -1851,6 +2455,48 @@ suite_bbob_noisy:
       max: null
       min: 1
     type: continuous
+suite_biological_sequence_design:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: unknown
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: null
+    number: null
+    type: unknown
+  description: Biological sequence design
+  dynamic_type:
+  - none
+  evaluation_time:
+  - expensive
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_biological_sequence_design
+  long_name: null
+  modality:
+  - multimodal
+  name: Biological sequence design
+  noise_type:
+  - observational
+  objectives: null
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://arxiv.org/pdf/2203.12742
+    title: Biological sequence design
+    type: null
+  source:
+  - real-world
+  tags:
+  - form-submission
+  type: suite
+  variables:
+  - dim: null
+    type: categorical
 suite_bp:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2294,19 +2940,11 @@ suite_cuter:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: binary
 suite_cutest:
   allows_partial_evaluation: 'no'
   can_evaluate_objectives_independently: null
   code_examples: null
   constraints:
-  - equality: null
-    hard: 'yes'
-    number: null
-    type: box
   - equality: null
     hard: some
     number:
@@ -2314,7 +2952,7 @@ suite_cutest:
       min: 1
     type: unknown
   - equality: null
-    hard: yes
+    hard: 'yes'
     number: null
     type: box
   description: CUTEst for optimization software
@@ -2355,10 +2993,6 @@ suite_cutest:
       max: null
       min: 1
     type: integer
-  - dim:
-      max: null
-      min: 1
-    type: binary
 suite_dtlz:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -2561,19 +3195,15 @@ suite_expobench:
   code_examples: null
   constraints:
   - equality: null
-    hard: 'yes'
-    number: null
-    type: box
-  - equality: null
     hard: some
     number: null
     type: unknown
   - equality: null
-    hard: yes
+    hard: 'yes'
     number: null
     type: box
-  description: Wind farm layout optimization, gas filter design, pipe shape 
-    optimization, hyperparameter tuning, and hospital simulation
+  description: Wind farm layout optimization, gas filter design, pipe shape optimization,
+    hyperparameter tuning, and hospital simulation
   dynamic_type: null
   evaluation_time: null
   fidelity_levels: null
@@ -2695,8 +3325,8 @@ suite_gnbg_ii:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_iohgnbg
   - impl_gnbg_ii
+  - impl_iohgnbg
   long_name: null
   modality: null
   name: GNBG-II
@@ -2720,6 +3350,64 @@ suite_gnbg_ii:
       max: null
       min: 1
     type: continuous
+suite_guacamol:
+  allows_partial_evaluation: unknown
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'yes'
+    number: null
+    type: unknown
+  description: 'De novo molecular design is a computational technique to generate
+    novel compounds with desirable property profiles from scratch. It complements
+    virtual screening, where large virtual compound libraries are pregenerated, stored,
+    and then subsequently ranked on demand. Virtual screening is particularly useful
+    when the virtual compounds are readily available (commercially, or in in-house
+    screening collections), or easy to synthesize. Data sets sized on the order of
+    10^13 can be routinely screened under current computational constraints. However,
+    this is only a tiny fraction of drug-like chemical space, which has an estimated
+    size anywhere between 10^24 and 10^60 possible structures. This number might be
+    even larger considering new modalities such as PROTACs. Efficient approaches to
+    query larger combinatorial spaces without full enumeration via similarity to given
+    structures have been reported. However, it is not straightforward to perform more
+    complex, multiobjective queries without enumerating substantial parts of the space.
+
+
+    In contrast, in de novo design, only a relatively small number of molecules is
+    explicitly generated, and chemical space is explored via search or optimization
+    procedures. Thus, by focusing on the most relevant areas of chemical space for
+    the current multiobjective query, de novo design algorithms can in principle explore
+    the full chemical space, given any ranking or scoring function.'
+  dynamic_type:
+  - none
+  evaluation_time: null
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_guacamol
+  long_name: 'GuacaMol: Benchmarking Models for de Novo Molecular Design'
+  modality: null
+  name: GuacaMol
+  noise_type:
+  - none
+  objectives: null
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1021/acs.jcim.8b00839
+    title: GuacaMol
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: null
+    type: unknown
 suite_iohclustering:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3232,8 +3920,8 @@ suite_modact:
   evaluation_time: null
   fidelity_levels: null
   implementations:
-  - impl_pymoo
   - impl_modact
+  - impl_pymoo
   long_name: multiobjective design of actuators
   modality: null
   name: MODAct
@@ -3291,6 +3979,62 @@ suite_morepo:
   variables:
   - dim: 0
     type: unknown
+suite_optimization_of_a_spoiler_ice_airfoil_model:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: 'no'
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: null
+    number: 2
+    type: box
+  description: 'When operating in cold climate, the performance of the wind turbines
+    can be reduced by icing. In an extreme condition, heavy icing can even lead to
+    a complete stop of the turbine. Icing is also a risky condition for airplane wings
+    since it may induce flow separation at a small angles of attack, which then might
+    lead to stall and consequently loss of lift. Ice accretion is a complex process
+    which depends on both aerodynamics and thermodynamics. The process is affected
+    by many parameters, for instance, ambient temperature, surface properties, relative
+    speed of the airfoil, and the time span over which the icing event takes place.
+    As a result, numerous possibilities for an ice profile exist. Bragg et al. categorized
+    the leading-edge ice on the airfoils into four types: roughness, horn, streamwise,
+    and spanwise-ridge ice. The main characteristic of the horn ice is the presence
+    of the large protuberances which induce a large flow separation downstream of
+    the ice, and hence dramatically affect the aerodynamic performance, including
+    the lift, drag and moment coefficients. On the other hand, streamwise ice is smoothly
+    formed along the streamlines and is less dangerous in the sense of having adverse
+    effects on the aerodynamic performance.'
+  dynamic_type:
+  - none
+  evaluation_time:
+  - The authors disclose it takes 1 hour.
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_optimization_of_a_spoiler_ice_airfoil_model
+  long_name: Optimization of a spoiler-ice airfoil model
+  modality: null
+  name: Optimization of a spoiler-ice airfoil model
+  noise_type:
+  - none
+  objectives: null
+  problems: null
+  references:
+  - authors: []
+    link: null
+    title: 'Y. Morita, S. Rezaeiravesh, N. Tabatabaei, R. Vinuesa, K. Fukagata, and
+      P. Schlatter, “Applying Bayesian Optimization with Gaussian Process Regression
+      to Computational Fluid Dynamics Problems,” Journal of Computational Physics,
+      vol. 449, p. 110788, Jan. 2022, doi: 10.1016/j.jcp.2021.110788.'
+    type: null
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: null
+    type: continuous
 suite_pbo:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3527,6 +4271,33 @@ suite_sdp:
       max: null
       min: 1
     type: continuous
+suite_shape_optimization_of_a_diverging_channel:
+  allows_partial_evaluation: 'no'
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints: []
+  description: The objective of this section is to efficiently obtain the optimal
+    shape of the upper wall of a channel so that a target β along the edge of the
+    Turbulent Boundary Layer over the lower wall is achieved.
+  dynamic_type:
+  - none
+  evaluation_time: null
+  fidelity_levels: null
+  implementations: null
+  long_name: null
+  modality: null
+  name: Shape optimization of a diverging channel
+  noise_type: null
+  objectives: null
+  problems: null
+  references: null
+  source:
+  - real-world
+  tags: null
+  type: suite
+  variables:
+  - dim: null
+    type: continuous
 suite_submodular:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
@@ -3568,11 +4339,11 @@ suite_tulipa_energy:
   code_examples: null
   constraints:
   - equality: null
-    hard: 'yes'
+    hard: some
     number: null
     type: unknown
   - equality: null
-    hard: some
+    hard: 'yes'
     number: null
     type: unknown
   description: Determine the optimal investment and operation decisions for different
@@ -3611,6 +4382,65 @@ suite_tulipa_energy:
       max: null
       min: 1
     type: continuous
+suite_vae_molecule_generation:
+  allows_partial_evaluation: unknown
+  can_evaluate_objectives_independently: null
+  code_examples: null
+  constraints:
+  - equality: null
+    hard: 'yes'
+    number: null
+    type: unknown
+  description: 'The goal of drug and material design is to identify novel molecules
+    that have certain desirable properties. We view this as an optimization problem,
+    in which we are searching for the molecules that maximize our quantitative desiderata.
+
+
+    Making and testing new compounds are costly and time-consuming, and the number
+    of potential candidates is overwhelming. Only about 10^8 substances have ever
+    been synthesized, whereas the range of potential drug-like molecules is estimated
+    to be between 10^23 and 10^60. Virtual screening can be used to speed up this
+    search. Virtual libraries containing thousands to hundreds of millions of candidates
+    can be assayed with first-principles simulations or statistical predictions based
+    on learned proxy models, and only
+
+    the most promising leads are selected and tested experimentally.
+
+
+    Ways to assess the generated molecules are the water−octanol partition coefficient
+    (logP), the synthetic accessibility score (SAS), and Quantitative Estimation of
+    Drug-likeness (QED), which ranges in value between 0 and 1, with higher values
+    indicating that the molecule is more drug-like.'
+  dynamic_type:
+  - none
+  evaluation_time: null
+  fidelity_levels:
+  - 1
+  - 2
+  implementations:
+  - impl_vae_molecule_generation
+  long_name: null
+  modality: null
+  name: VAE Molecule Generation
+  noise_type:
+  - none
+  objectives: null
+  problems: null
+  references:
+  - authors: []
+    link:
+      type: null
+      url: https://doi.org/10.1039/c9sc04026a
+    title: VAE Molecule Generation
+    type: null
+  source:
+  - real-world
+  tags:
+  - form-submission
+  type: suite
+  variables:
+  - dim: null
+    type: unknown
 suite_vehicle_dynamics:
   allows_partial_evaluation: null
   can_evaluate_objectives_independently: null
