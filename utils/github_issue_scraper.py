@@ -5,6 +5,7 @@ import re
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
+import pandas as pd
 
 URL_PATTERN = re.compile(r"https?://[^\s<>\[\]()\"']+")
 REPO = "OpenOptimizationOrg/OPL"
@@ -114,131 +115,20 @@ def find_paper(citation: str):
         print(res)
 
 
-def find_public_email(author_name: str, institution: str | None = None):
-    """
-    Search the web for a publicly listed professional email.
-
-    Returns:
-        {
-            "email": ...,
-            "url": ...,
-            "source": ...
-        }
-        or None
-    """
-
-    query = f'"{author_name}"'
-
-    if institution:
-        query += f' "{institution}"'
-
-    query += " email"
-
-    # DuckDuckGo HTML search
-    search_url = "https://html.duckduckgo.com/html/"
-
-    response = requests.get(
-        search_url,
-        params={"q": query},
-        headers={"User-Agent": "Mozilla/5.0"},
-        timeout=30,
-    )
-    response.raise_for_status()
-    print(response.text)
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    results = []
-
-    for result in soup.select(".result"):
-        link = result.select_one(".result__a")
-
-        if not link:
-            continue
-
-        url = link.get("href")
-
-        if not url:
-            continue
-
-        title = link.get_text(" ", strip=True)
-
-        snippet = result.select_one(".result__snippet")
-        snippet = snippet.get_text(" ", strip=True) if snippet else ""
-
-        results.append(
-            {
-                "title": title,
-                "url": url,
-                "snippet": snippet,
-            }
-        )
-
-    print(results)
-
-    # Search the result pages for an explicitly published email
-    for result in results:
-        try:
-            page = requests.get(
-                result["url"],
-                headers={"User-Agent": "Mozilla/5.0"},
-                timeout=15,
-            )
-
-            if not page.ok:
-                continue
-
-            emails = EMAIL_RE.findall(page.text)
-
-            # Remove obvious non-personal/irrelevant addresses
-            emails = [
-                email
-                for email in emails
-                if not any(
-                    x in email.lower()
-                    for x in [
-                        "example.com",
-                        "example.org",
-                        "sentry.io",
-                        "wixpress.com",
-                        "cloudflare",
-                    ]
-                )
-            ]
-
-            if emails:
-                return {
-                    "email": emails[0],
-                    "url": result["url"],
-                    "source": result["title"],
-                }
-
-        except requests.RequestException:
-            continue
-
-    return None
-
-
 if __name__ == "__main__":
-    # find_public_email("Vanessa Volz", "Centrum Wiskunde & Informatica (CWI)")
-    # find_public_email("Vanessa Volz", "TU Dortmund University")
-
-    arxiv_link = "https://arxiv.org/abs/2512.00288"
-    print(arxiv_email(arxiv_link))
-    """
     issues = get_issues(
         repo=REPO,
         label=LABEL,
     )
+    data = []
 
     for issue in issues:
+        issue_data = {"issue_number": issue["number"], "title": issue["title"]}
         links = extract_links(issue.get("body", ""))
+        issue_data["links"] = links
         for l in links:
             if "arxiv.org" in l:
                 arxiv_emails = arxiv_email(l)
-                print("Arxiv emails:", arxiv_emails)
-        # if not links:
-        #    paper = find_paper(issue.get("body", ""))
-        print(issue["number"], issue["title"])
-        print(links)
-    """
+                issue_data["arxiv_emails"] = arxiv_emails
+        paper = find_paper(issue.get("body", ""))
+        print(issue_data)
