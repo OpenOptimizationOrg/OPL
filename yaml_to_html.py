@@ -72,6 +72,26 @@ DEFAULT_VISIBLE_COLUMNS = {
 }
 
 
+def stable_sort_key(value):
+    if hasattr(value, "model_dump"):
+        value = value.model_dump()
+    if isinstance(value, set):
+        value = [stable_sort_key(item) for item in value]
+    if isinstance(value, tuple):
+        value = list(value)
+    if isinstance(value, (dict, list)):
+        return json.dumps(value, sort_keys=True, default=str)
+    return str(value)
+
+
+def stable_iter(values):
+    if values is None:
+        return []
+    if isinstance(values, set):
+        return sorted(values, key=stable_sort_key)
+    return values
+
+
 def linkify_cell(value):
     if not isinstance(value, str):
         return value
@@ -141,7 +161,7 @@ def format_references(refs):
         return ""
 
     parts = []
-    for ref in refs:
+    for ref in stable_iter(refs):
         ref_dict = ref.model_dump() if hasattr(ref, "model_dump") else ref
         if not isinstance(ref_dict, dict):
             parts.append(str(ref_dict))
@@ -305,7 +325,7 @@ def format_variables_by_type(variables):
     if not variables:
         return values, ""
 
-    for variable in variables:
+    for variable in stable_iter(variables):
         variable_dict = variable.model_dump() if hasattr(variable, "model_dump") else variable
         if not isinstance(variable_dict, dict):
             continue
@@ -347,7 +367,7 @@ def list_variable_types(variables):
         return ""
 
     types = []
-    for variable in variables:
+    for variable in stable_iter(variables):
         variable_dict = variable.model_dump() if hasattr(variable, "model_dump") else variable
         if not isinstance(variable_dict, dict):
             continue
@@ -364,7 +384,7 @@ def list_constraint_types(constraints):
         return ""
 
     types = []
-    for constraint in constraints:
+    for constraint in stable_iter(constraints):
         constraint_dict = constraint.model_dump() if hasattr(constraint, "model_dump") else constraint
         if not isinstance(constraint_dict, dict):
             continue
@@ -419,7 +439,7 @@ def format_implementation_links(links):
         return ""
 
     urls = []
-    for link in links:
+    for link in stable_iter(links):
         link_dict = link.model_dump() if hasattr(link, "model_dump") else link
         if isinstance(link_dict, dict):
             url = str(link_dict.get("url") or "").strip()
@@ -430,7 +450,8 @@ def format_implementation_links(links):
 
     if not urls:
         return ""
-    return " | ".join(unique_preserve_order(urls))
+    unique_urls = unique_preserve_order(urls)
+    return " | ".join(sorted(unique_urls, key=stable_sort_key))
 
 
 def normalize_requirements(requirements):
@@ -464,7 +485,7 @@ def extract_implementation_fields(implementation_ids, library_items):
     descriptions = []
     requirements = []
 
-    for implementation_id in implementation_ids:
+    for implementation_id in stable_iter(implementation_ids):
         implementation = library_items.get(implementation_id)
         if not isinstance(implementation, Implementation):
             continue
@@ -474,7 +495,15 @@ def extract_implementation_fields(implementation_ids, library_items):
         if implementation.language:
             languages.append(str(implementation.language).strip())
         if implementation.evaluation_time:
-            evaluation_times.append(str(implementation.evaluation_time).strip())
+            if isinstance(implementation.evaluation_time, set):
+                for value in stable_iter(implementation.evaluation_time):
+                    text = str(value).strip()
+                    if text:
+                        evaluation_times.append(text)
+            else:
+                text = str(implementation.evaluation_time).strip()
+                if text:
+                    evaluation_times.append(text)
         if implementation.description:
             descriptions.append(str(implementation.description).strip())
 
@@ -489,7 +518,8 @@ def extract_implementation_fields(implementation_ids, library_items):
     result["Implementation Names"] = " | ".join(unique_preserve_order([v for v in names if v]))
     result["Implementation Languages"] = " | ".join(unique_preserve_order([v for v in languages if v]))
     result["Implementation Evaluation Times"] = " | ".join(unique_preserve_order([v for v in evaluation_times if v]))
-    result["Implementation Links"] = " | ".join(unique_preserve_order([v for v in links if v]))
+    unique_links = unique_preserve_order([v for v in links if v])
+    result["Implementation Links"] = " | ".join(sorted(unique_links, key=stable_sort_key))
     result["Implementation Descriptions"] = " | ".join(unique_preserve_order([v for v in descriptions if v]))
     result["Implementation Requirements"] = " | ".join(unique_preserve_order([v for v in requirements if v]))
 
@@ -524,7 +554,7 @@ def format_constraints_by_type(constraints, constraint_types):
             "",
         )
 
-    for constraint in constraints:
+    for constraint in stable_iter(constraints):
         constraint_dict = constraint.model_dump() if hasattr(constraint, "model_dump") else constraint
         if not isinstance(constraint_dict, dict):
             continue
