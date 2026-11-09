@@ -987,7 +987,7 @@ gen_randoptgen:
       link:
         type: doi
         url: https://doi.org/10.1145/3712256.3726478
-      title: RandOptGen: A Unified Random Problem Generator for Single- and Multi-Objective Optimization Problems with Mixed-Variable Input Spaces
+      title: 'RandOptGen: A Unified Random Problem Generator for Single- and Multi-Objective Optimization Problems with Mixed-Variable Input Spaces'
   source:
   - artificial
   tags: null
