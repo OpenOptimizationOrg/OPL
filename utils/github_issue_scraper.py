@@ -114,7 +114,6 @@ def find_paper(citation: str) -> dict:
     # Verify that the result matches enough
     # TODO: check for doi or arxiv id to check matches
     res = results[0]
-    print(res["relevance_score"])
     if res["relevance_score"] < 0.5:
         return {}
     else:
