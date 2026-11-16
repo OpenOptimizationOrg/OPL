@@ -68,7 +68,7 @@ def extract_emails(text: str) -> list[str]:
     return [mail.rstrip(".,;:!?") for mail in mails]
 
 
-def arxiv_email(arxiv_link: str):
+def arxiv_info(arxiv_link: str) -> dict:
     # Identify arxiv id from link (could be pdf format or /abs format)
     arxiv_id = None
     if "/abs/" in arxiv_link:
@@ -79,17 +79,23 @@ def arxiv_email(arxiv_link: str):
 
     response = requests.get(html_url, timeout=15)
     if response.status_code != 200:
-        return []
+        return {}
     response.raise_for_status()
+    # print(response.text)
     soup = BeautifulSoup(response.text, "html.parser")
     text = soup.get_text(" ", strip=True)
     emails = extract_emails(text)
-    return emails
+    title = soup.title.string if soup.title else "No Title Found"
+    info = {
+        "emails": emails,
+        "title": title,
+    }
+    return info
 
 
-def find_paper(citation: str):
+def find_paper(citation: str) -> dict:
     if not citation:
-        return None
+        return {}
     url = "https://api.openalex.org/works"
 
     params = {
@@ -103,16 +109,20 @@ def find_paper(citation: str):
     results = r.json()["results"]
 
     if not results:
-        return None
+        return {}
 
     # Verify that the result matches enough
-    print(results)
+    # TODO: check for doi or arxiv id to check matches
     res = results[0]
     print(res["relevance_score"])
     if res["relevance_score"] < 0.5:
-        return None
+        return {}
     else:
-        print(res)
+        return {
+            "authorships": res.get("authorships", []),
+            "doi": res.get("doi", ""),
+            "title": res.get("title", ""),
+        }
 
 
 if __name__ == "__main__":
@@ -122,13 +132,21 @@ if __name__ == "__main__":
     )
     data = []
 
-    for issue in issues:
+    for issue in issues[0:3]:  # Limiting to first 5 issues for testing
         issue_data = {"issue_number": issue["number"], "title": issue["title"]}
         links = extract_links(issue.get("body", ""))
         issue_data["links"] = links
         for l in links:
             if "arxiv.org" in l:
-                arxiv_emails = arxiv_email(l)
-                issue_data["arxiv_emails"] = arxiv_emails
-        paper = find_paper(issue.get("body", ""))
+                arxiv_info_dict = arxiv_info(l)
+                issue_data["emails"] = arxiv_info_dict.get("emails", [])
+                issue_data["title"] = arxiv_info_dict.get("title", "")
+        paper_data = ""
+        if issue_data.get("title"):
+            paper_data = issue_data.get("title", "")
+        else:
+            issue.get("body", "")
+        paper_data = find_paper(paper_data)
+
+        issue_data.update(paper_data)
         print(issue_data)
